@@ -1,0 +1,245 @@
+/* ==========================================================================
+   HUKI EBOOK - VINTAGE BROWN & TAILWIND CUSTOM ANIMATIONS
+   FACEBOOK SOCIAL NETWORK & MESSENGER EXTENSION
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap');
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #fcf9f2;
+  color: #3d2b1f;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Midnight Espresso Dark Mode Overrides */
+body.dark-mode {
+  background-color: #140d07;
+  color: #e6d7c3;
+}
+
+body.dark-mode .bg-vintage-50 {
+  background-color: #140d07 !important;
+}
+
+body.dark-mode .bg-vintage-100 {
+  background-color: #1f150c !important;
+}
+
+body.dark-mode .bg-white {
+  background-color: #261b10 !important;
+  border-color: #3d2b1a !important;
+  color: #e6d7c3 !important;
+}
+
+body.dark-mode .text-stone-900,
+body.dark-mode .text-stone-800 {
+  color: #f3e8d7 !important;
+}
+
+body.dark-mode .text-stone-700,
+body.dark-mode .text-stone-600 {
+  color: #d1c0aa !important;
+}
+
+body.dark-mode .bg-stone-100,
+body.dark-mode .bg-amber-50 {
+  background-color: #332315 !important;
+  border-color: #4a3521 !important;
+}
+
+body.dark-mode .border-stone-200,
+body.dark-mode .border-amber-200 {
+  border-color: #3d2b1a !important;
+}
+
+.font-serif-vintage {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-serif-reader {
+  font-family: 'Merriweather', Georgia, serif;
+}
+
+/* Custom Scrollbar - Vintage Paper Style */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f3ebd9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbb493;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a38965;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+  background: #1f150c;
+}
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #4a3521;
+}
+
+/* Keyframe Animations */
+@keyframes heartBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+.animate-heart-bounce {
+  animation: heartBounce 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-toast {
+  animation: toastIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Shimmer animation for deal progress */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.bg-shimmer {
+  background: linear-gradient(90deg, #d97706 0%, #f59e0b 50%, #d97706 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Custom Backdrop blur for modals */
+.backdrop-blur-vintage {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Ebook Reader Simulated Page Effect */
+.ebook-page-shadow {
+  box-shadow: inset 20px 0 30px -10px rgba(0, 0, 0, 0.08), inset -20px 0 30px -10px rgba(0, 0, 0, 0.08), 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* FACEBOOK STYLE REACTION POPUP BAR */
+.reaction-popup-container {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 8px;
+  background: white;
+  border: 1px solid #e7e5e4;
+  border-radius: 9999px;
+  padding: 6px 10px;
+  display: flex;
+  gap: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.15);
+  z-index: 30;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px) scale(0.9);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.group\/reaction:hover .reaction-popup-container,
+.reaction-popup-container.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.reaction-btn {
+  font-size: 1.4rem;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.reaction-btn:hover {
+  transform: scale(1.35) translateY(-4px);
+}
+
+/* PHOTO GRID LAYOUT (Facebook Style) */
+.photo-grid-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-height: 380px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.photo-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  max-height: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.photo-grid-3 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+  max-height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.photo-grid-3 img:first-child {
+  grid-row: span 2;
+}
+
+.photo-grid-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+  max-height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* MESSENGER CHAT DRAWER */
+.messenger-drawer-window {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 780px;
+  height: 520px;
+  max-width: calc(100vw - 3rem);
+  max-height: calc(100vh - 3rem);
+  z-index: 150;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.messenger-drawer-window.minimized {
+  height: 56px;
+  width: 320px;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .messenger-drawer-window {
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    height: 85vh;
+    border-radius: 20px 20px 0 0;
+  }
+}

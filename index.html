@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huki Ebook - Sàn TMĐT & Mạng Xã Hội Facebook Style với Messenger Chat</title>
+  <meta name="description" content="Sàn thương mại điện tử chuyên biệt về sách số & xuất bản, tích hợp mạng xã hội chuẩn Facebook (Đăng ảnh, Video, Reactions, Bình luận đa cấp) và Huki Messenger Chat 1-1 & Chat Group.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vintage: {
+              50: '#fdfbf7',
+              100: '#f6f0e4',
+              200: '#eae0cf',
+              300: '#d7c5aa',
+              400: '#bd9e75',
+              500: '#9e7b4e',
+              600: '#836139',
+              700: '#674a2b',
+              800: '#48331d',
+              900: '#2b1e11',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-vintage-50 text-stone-800 min-h-full flex flex-col antialiased relative">
+
+  <!-- ==========================================================================
+       TOP BAR & MARKETPLACE NAVIGATION HEADER
+       ========================================================================== -->
+  <header class="sticky top-0 z-50 bg-vintage-100/95 backdrop-blur-md border-b border-vintage-200/80 shadow-xs">
+    
+    <!-- Top Utility Bar (Shopee / Tiki Marketplace Style) -->
+    <div class="bg-vintage-900 text-vintage-100 text-xs py-1.5 px-4 border-b border-vintage-800">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center gap-4">
+          <a href="#" class="hover:text-amber-300 transition-colors flex items-center gap-1">
+            <i class="fa-solid fa-store text-amber-400"></i> Kênh Doanh Nghiệp & NXB
+          </a>
+          <span class="text-vintage-700">|</span>
+          <a href="#" class="hover:text-amber-300 transition-colors flex items-center gap-1">
+            <i class="fa-solid fa-mobile-screen-button"></i> Tải App Huki
+          </a>
+          <span class="text-vintage-700">|</span>
+          <a href="#" onclick="switchView('forum'); return false;" class="hover:text-amber-300 transition-colors flex items-center gap-1 text-amber-300 font-semibold">
+            <i class="fa-solid fa-comments"></i> Diễn Đàn Cộng Đồng (Facebook Style)
+          </a>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <!-- Midnight Espresso Dark Mode Toggle Switch -->
+          <button onclick="toggleDarkMode()" class="bg-amber-950/80 hover:bg-stone-800 border border-amber-700/50 text-amber-200 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 transition-colors font-bold">
+            <i class="fa-solid fa-moon text-amber-400"></i> <span>Chế Độ Đêm</span>
+          </button>
+          
+          <a href="#" class="hover:text-amber-300 transition-colors"><i class="fa-regular fa-circle-question"></i> Trợ Giúp</a>
+          <a href="#" class="hover:text-amber-300 transition-colors font-bold text-amber-400"><i class="fa-solid fa-crown"></i> Đăng Ký Gian Hàng Mall</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo Vintage Seal -->
+      <a href="#" onclick="switchView('store'); return false;" class="flex items-center gap-2.5 shrink-0 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-700 to-vintage-900 text-amber-100 flex items-center justify-center text-xl shadow-md border border-amber-500/30 group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-book-bookmark"></i>
+        </div>
+        <div>
+          <div class="font-serif-vintage font-extrabold text-xl text-stone-900 leading-none tracking-tight">Huki<span class="text-amber-800">Ebook</span></div>
+          <div class="text-[10px] font-bold uppercase tracking-widest text-amber-700 mt-0.5">Sàn TMĐT & Mạng Xã Hội Sách</div>
+        </div>
+      </a>
+
+      <!-- View Switcher (Sàn TMĐT vs Diễn Đàn) -->
+      <div class="bg-vintage-200/70 p-1 rounded-full flex gap-1 border border-vintage-300/60 shrink-0">
+        <button id="btn-view-store" onclick="switchView('store')" class="px-4 py-1.5 rounded-full font-bold text-xs bg-amber-800 text-white shadow-sm flex items-center gap-1.5 transition-all">
+          <i class="fa-solid fa-store"></i> <span>Sàn TMĐT (Store)</span>
+        </button>
+        <button id="btn-view-forum" onclick="switchView('forum')" class="px-4 py-1.5 rounded-full font-bold text-xs text-stone-600 hover:text-amber-900 flex items-center gap-1.5 transition-all">
+          <i class="fa-solid fa-comments"></i> <span>Diễn Đàn (Community)</span>
+        </button>
+      </div>
+
+      <!-- Marketplace Search Bar -->
+      <div class="flex-1 max-w-lg relative">
+        <div class="relative flex items-center">
+          <input type="text" id="global-search-input" placeholder="Tìm kiếm sách, tác giả, gian hàng NXB trên Sàn..." class="w-full bg-white border border-vintage-300 rounded-full py-2 pl-4 pr-10 text-xs text-stone-800 focus:outline-none focus:border-amber-700 focus:ring-2 focus:ring-amber-800/10 shadow-inner">
+          <button class="absolute right-1 w-7 h-7 bg-amber-800 hover:bg-amber-900 text-white rounded-full flex items-center justify-center text-xs transition-colors shadow">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Header Actions & Cart & Messenger Icon -->
+      <div class="flex items-center gap-2 shrink-0">
+        <!-- Messenger Direct Launcher Icon -->
+        <button onclick="toggleMessenger()" class="w-9 h-9 rounded-full bg-white border border-vintage-300 text-stone-700 hover:text-amber-800 hover:border-amber-500 flex items-center justify-center relative transition-colors shadow-2xs" title="Huki Messenger Chat">
+          <i class="fa-brands fa-facebook-messenger text-sm text-sky-600"></i>
+          <span class="absolute -top-1 -right-1 bg-sky-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white">3</span>
+        </button>
+
+        <!-- Wishlist Button -->
+        <button onclick="showToast('Danh sách sách đã lưu yêu thích!', 'info')" class="w-9 h-9 rounded-full bg-white border border-vintage-300 text-stone-700 hover:text-red-600 hover:border-red-400 flex items-center justify-center relative transition-colors shadow-2xs" title="Sách yêu thích">
+          <i class="fa-solid fa-heart text-sm text-red-500"></i>
+          <span id="wishlist-badge-count" class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white">2</span>
+        </button>
+
+        <button onclick="openCartDrawer()" class="w-9 h-9 rounded-full bg-white border border-vintage-300 text-stone-700 hover:text-amber-800 hover:border-amber-500 flex items-center justify-center relative transition-colors shadow-2xs" title="Giỏ hàng">
+          <i class="fa-solid fa-bag-shopping text-sm"></i>
+          <span id="cart-badge-count" class="absolute -top-1 -right-1 bg-amber-800 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white">1</span>
+        </button>
+
+        <button onclick="openCreatePostModal()" class="bg-gradient-to-r from-amber-800 to-vintage-900 hover:from-amber-900 hover:to-stone-900 text-white font-bold text-xs px-3.5 py-2 rounded-full shadow-sm flex items-center gap-1.5 transition-all">
+          <i class="fa-solid fa-pen-to-square"></i> <span>Đăng Bài</span>
+        </button>
+
+        <div class="pl-1 border-l border-vintage-300 flex items-center gap-2 cursor-pointer" title="Tài khoản">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Avatar" class="w-8 h-8 rounded-full object-cover border border-amber-400">
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN MARKETPLACE CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full">
+
+    <!-- ==========================================================================
+         VIEW 1: TRANG CHỦ SÀN TMĐT (STORE MARKETPLACE VIEW)
+         ========================================================================== -->
+    <section id="store-view" class="space-y-8">
+      
+      <!-- Banner Carousel & Voucher Hub (Shopee Marketplace Style) -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        
+        <!-- Main Campaign Banner Carousel -->
+        <div id="main-banner-carousel" class="lg:col-span-2 bg-gradient-to-r from-stone-900 via-vintage-900 to-amber-950 rounded-2xl p-6 text-white relative overflow-hidden shadow-xl flex flex-col justify-between min-h-[260px] border border-amber-900/50">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+
+        <!-- Voucher Hub Widget (Shopee Style) -->
+        <div class="bg-white border border-amber-200/80 rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between border-b border-vintage-200 pb-2 mb-3">
+              <h3 class="font-serif-vintage font-bold text-stone-900 text-sm flex items-center gap-1.5">
+                <i class="fa-solid fa-ticket text-amber-700"></i> Mã Giảm Giá Sàn Huki
+              </h3>
+              <span class="text-[11px] font-bold text-amber-800 hover:underline cursor-pointer">Xem tất cả</span>
+            </div>
+            
+            <div class="space-y-2">
+              <div class="bg-amber-50 border border-dashed border-amber-300 rounded-lg p-2.5 flex items-center justify-between">
+                <div>
+                  <div class="font-bold text-xs text-amber-900">FREESHIP EBOOK</div>
+                  <div class="text-[10px] text-stone-500">Giảm 100% phí tải Ebook</div>
+                </div>
+                <button onclick="showToast('Đã lưu mã Freeship vào ví!', 'success')" class="bg-amber-800 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow hover:bg-amber-900">Lưu</button>
+              </div>
+
+              <div class="bg-amber-50 border border-dashed border-amber-300 rounded-lg p-2.5 flex items-center justify-between">
+                <div>
+                  <div class="font-bold text-xs text-amber-900">GIẢM 50K NXB TRẺ</div>
+                  <div class="text-[10px] text-stone-500">Đơn từ 150k tại Gian hàng</div>
+                </div>
+                <button onclick="showToast('Đã lưu mã 50K NXB Trẻ!', 'success')" class="bg-amber-800 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow hover:bg-amber-900">Lưu</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3 pt-2 border-t border-stone-100 text-center">
+            <span class="text-[11px] text-stone-500">🔥 Đã có <strong class="text-amber-800">12.500+</strong> voucher được sử dụng tuần này</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Marketplace Categories Breakdown Grid -->
+      <div class="bg-white border border-stone-200/80 rounded-2xl p-5 shadow-sm">
+        <h3 class="font-serif-vintage font-bold text-stone-900 text-base mb-4 flex items-center gap-2">
+          <i class="fa-solid fa-border-all text-amber-800"></i> Phân Loại Danh Mục Sàn
+        </h3>
+        <div class="grid grid-cols-4 sm:grid-cols-8 gap-3 text-center">
+          
+          <button onclick="filterRecommendTab('all', this)" class="group p-2.5 rounded-xl hover:bg-amber-50 transition-colors border border-stone-100 hover:border-amber-200 flex flex-col items-center">
+            <div class="w-11 h-11 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-lg mb-1.5 group-hover:scale-110 transition-transform shadow-xs">
+              <i class="fa-solid fa-book-open"></i>
+            </div>
+            <span class="text-xs font-semibold text-stone-700 group-hover:text-amber-900">Tất Cả Sách</span>
+          </button>
+
+          <button onclick="filterRecommendTab('tam-ly', this)" class="group p-2.5 rounded-xl hover:bg-amber-50 transition-colors border border-stone-100 hover:border-amber-200 flex flex-col items-center">
+            <div class="w-11 h-11 rounded-full bg-stone-100 text-stone-800 flex items-center justify-center text-lg mb-1.5 group-hover:scale-110 transition-transform shadow-xs">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <span class="text-xs font-semibold text-stone-700 group-hover:text-amber-900">Tâm Lý Học</span>
+          </button>
+
+          <button onclick="filterRecommendTab('kinh-te', this)" class="group p-2.5 rounded-xl hover:bg-amber-50 transition-colors border border-stone-100 hover:border-amber-200 flex flex-col items-center">
+            <div class="w-11 h-11 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-lg mb-1.5 group-hover:scale-110 transition-transform shadow-xs">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <span class="text-xs font-semibold text-stone-700 group-hover:text-amber-900">Kinh Tế</span>
+          </button>
+
+          <button onclick="filterRecommendTab('cong-nghe', this)" class="group p-2.5 rounded-xl hover:bg-amber-50 transition-colors border border-stone-100 hover:border-amber-200 flex flex-col items-center">
+            <div class="w-11 h-11 rounded-full bg-stone-100 text-stone-800 flex items-center justify-center text-lg mb-1.5 group-hover:scale-110 transition-transform shadow-xs">
+              <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <span class="text-xs font-semibold text-stone-700 group-hover:text-amber-900">Công Nghệ</span>
+          </button>
+
+          <button onclick="filterRecommendTab('tieu-thuyet', this)" class="group p-2.5 rounded-xl hover:bg-amber-50 transition-colors border border-stone-100 hover:border-amber-200 flex flex-col items-center">
+            <div class="w-11 h-11 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-lg mb-1.5 group-hover:scale-110 transition-transform shadow-xs">
+              <i class="fa-solid fa-feather-pointed"></i>
+            </div>
+            <span class="text-xs font-semibold text-stone-700 group-hover:text-amber-900">Tiểu Thuyết</span>
+          </button>
+
+          <button onclick="filterRecommendTab('ky-nang', this)" class="group p-2.5 rounded-xl hover:bg-amber-50 transition-colors border border-stone-100 hover:border-amber-200 flex flex-col items-center">
+            <div class="w-11 h-11 rounded-full bg-stone-100 text-stone-800 flex items-center justify-center text-lg mb-1.5 group-hover:scale-110 transition-transform shadow-xs">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <span class="text-xs font-semibold text-stone-700 group-hover:text-amber-900">Kỹ Năng</span>
+          </button>
+
+          <button class="group p-2.5 rounded-xl hover:bg-amber-50 transition-colors border border-stone-100 hover:border-amber-200 flex flex-col items-center">
+            <div class="w-11 h-11 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-lg mb-1.5 group-hover:scale-110 transition-transform shadow-xs">
+              <i class="fa-solid fa-headphones"></i>
+            </div>
+            <span class="text-xs font-semibold text-stone-700 group-hover:text-amber-900">Sách Nói</span>
+          </button>
+
+          <button class="group p-2.5 rounded-xl hover:bg-amber-50 transition-colors border border-stone-100 hover:border-amber-200 flex flex-col items-center">
+            <div class="w-11 h-11 rounded-full bg-stone-100 text-stone-800 flex items-center justify-center text-lg mb-1.5 group-hover:scale-110 transition-transform shadow-xs">
+              <i class="fa-solid fa-crown"></i>
+            </div>
+            <span class="text-xs font-semibold text-stone-700 group-hover:text-amber-900">Gian Hàng Mall</span>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Flash Sale Giờ Vàng -->
+      <div class="bg-gradient-to-r from-amber-900 via-vintage-800 to-amber-950 rounded-2xl p-5 text-white shadow-md border border-amber-800/60">
+        <div class="flex justify-between items-center mb-4">
+          <div class="flex items-center gap-2">
+            <div class="bg-amber-500 text-amber-950 font-black text-xs px-2.5 py-1 rounded shadow flex items-center gap-1 uppercase tracking-wider">
+              <i class="fa-solid fa-bolt"></i> FLASH SALE
+            </div>
+            <span class="text-amber-200 text-xs font-bold">Khung giờ: 12:00 - 15:00</span>
+          </div>
+          <div class="flex items-center gap-1 text-xs text-amber-200 font-bold">
+            <span>Kết thúc trong:</span>
+            <span class="bg-stone-900 text-amber-400 px-2 py-0.5 rounded font-mono border border-amber-700">02</span> :
+            <span class="bg-stone-900 text-amber-400 px-2 py-0.5 rounded font-mono border border-amber-700">45</span> :
+            <span class="bg-stone-900 text-amber-400 px-2 py-0.5 rounded font-mono border border-amber-700">18</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="flash-sale-grid">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+      </div>
+
+      <!-- Huki Mall - Gian Hàng Doanh Nghiệp & NXB Chính Hãng -->
+      <div class="bg-white border border-amber-200/80 rounded-2xl p-5 shadow-sm">
+        <div class="flex justify-between items-center border-b border-stone-200 pb-3 mb-4">
+          <div>
+            <h3 class="font-serif-vintage font-bold text-stone-900 text-lg flex items-center gap-2">
+              <span class="bg-amber-800 text-amber-50 text-xs font-black px-2.5 py-0.5 rounded uppercase tracking-wider">HUKI MALL</span>
+              Gian Hàng Doanh Nghiệp & NXB Chính Hãng
+            </h3>
+            <p class="text-xs text-stone-500 mt-0.5">100% Bản quyền chính thống | Đổi trả 7 ngày | Hỗ trợ đọc offline</p>
+          </div>
+          <a href="#" class="text-xs font-bold text-amber-800 hover:underline">Xem tất cả gian hàng &rarr;</a>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          
+          <div class="bg-amber-50/50 border border-amber-200 rounded-xl p-3 flex items-center justify-between hover:border-amber-400 transition-colors">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-amber-800 text-white font-serif-vintage font-bold text-xs flex items-center justify-center shadow">
+                NXB
+              </div>
+              <div>
+                <div class="font-bold text-xs text-stone-900 flex items-center gap-1">
+                  NXB Trẻ <i class="fa-solid fa-circle-check text-sky-600 text-[10px]"></i>
+                </div>
+                <div class="text-[10px] text-stone-500">1.200+ Đầu Sách</div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <button onclick="openChatWithUser('nxb-tre', 'direct')" class="text-[10px] font-bold px-2 py-0.5 rounded bg-sky-100 text-sky-800 hover:bg-sky-200">
+                <i class="fa-solid fa-comments"></i> Chat
+              </button>
+              <button onclick="toggleFollowSeller('Nhà Xuất Bản Trẻ', this)" class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-800 text-white hover:bg-amber-900">
+                + Theo dõi
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-amber-50/50 border border-amber-200 rounded-xl p-3 flex items-center justify-between hover:border-amber-400 transition-colors">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-amber-700 text-white font-serif-vintage font-bold text-xs flex items-center justify-center shadow">
+                NN
+              </div>
+              <div>
+                <div class="font-bold text-xs text-stone-900 flex items-center gap-1">
+                  Nhã Nam <i class="fa-solid fa-circle-check text-sky-600 text-[10px]"></i>
+                </div>
+                <div class="text-[10px] text-stone-500">2.500+ Đầu Sách</div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <button onclick="openChatWithUser('nha-nam', 'direct')" class="text-[10px] font-bold px-2 py-0.5 rounded bg-sky-100 text-sky-800 hover:bg-sky-200">
+                <i class="fa-solid fa-comments"></i> Chat
+              </button>
+              <button onclick="toggleFollowSeller('Nhã Nam Books', this)" class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-800 text-white hover:bg-amber-900">
+                + Theo dõi
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-amber-50/50 border border-amber-200 rounded-xl p-3 flex items-center justify-between hover:border-amber-400 transition-colors">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-stone-800 text-white font-serif-vintage font-bold text-xs flex items-center justify-center shadow">
+                AB
+              </div>
+              <div>
+                <div class="font-bold text-xs text-stone-900 flex items-center gap-1">
+                  Alpha Books <i class="fa-solid fa-circle-check text-sky-600 text-[10px]"></i>
+                </div>
+                <div class="text-[10px] text-stone-500">980+ Đầu Sách</div>
+              </div>
+            </div>
+            <button onclick="toggleFollowSeller('Alpha Books', this)" class="text-[11px] font-bold px-2 py-1 rounded bg-amber-800 text-white hover:bg-amber-900">
+              + Theo dõi
+            </button>
+          </div>
+
+          <div class="bg-amber-50/50 border border-amber-200 rounded-xl p-3 flex items-center justify-between hover:border-amber-400 transition-colors">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-amber-900 text-white font-serif-vintage font-bold text-xs flex items-center justify-center shadow">
+                FN
+              </div>
+              <div>
+                <div class="font-bold text-xs text-stone-900 flex items-center gap-1">
+                  First News <i class="fa-solid fa-circle-check text-sky-600 text-[10px]"></i>
+                </div>
+                <div class="text-[10px] text-stone-500">1.800+ Đầu Sách</div>
+              </div>
+            </div>
+            <button onclick="toggleFollowSeller('First News', this)" class="text-[11px] font-bold px-2 py-1 rounded bg-amber-800 text-white hover:bg-amber-900">
+              + Theo dõi
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MAIN MARKETPLACE WITH FACET FILTER SIDEBAR & RECOMMENDATIONS -->
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        
+        <!-- LEFT FACET FILTER SIDEBAR -->
+        <aside class="space-y-4">
+          <div class="bg-white border border-stone-200 rounded-2xl p-4 shadow-sm space-y-4">
+            <div class="flex justify-between items-center border-b border-stone-200 pb-2">
+              <h4 class="font-serif-vintage font-bold text-stone-900 text-sm flex items-center gap-1.5">
+                <i class="fa-solid fa-filter text-amber-800"></i> Bộ Lọc Tìm Kiếm
+              </h4>
+              <button onclick="resetFacetFilters()" class="text-[11px] font-bold text-amber-800 hover:underline">
+                Xóa tất cả
+              </button>
+            </div>
+
+            <!-- Price Range Facet -->
+            <div>
+              <h5 class="font-bold text-xs text-stone-800 mb-2">Khoảng Giá (VND):</h5>
+              <div class="space-y-1.5 text-xs text-stone-600">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="facet-price" value="all" class="facet-price-radio text-amber-800" checked onclick="updateFacetFilter('price', 'all')">
+                  <span>Tất cả mức giá</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="facet-price" value="under100" class="facet-price-radio text-amber-800" onclick="updateFacetFilter('price', 'under100')">
+                  <span>Dưới 100.000đ</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="facet-price" value="100to200" class="facet-price-radio text-amber-800" onclick="updateFacetFilter('price', '100to200')">
+                  <span>100.000đ - 200.000đ</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="facet-price" value="over200" class="facet-price-radio text-amber-800" onclick="updateFacetFilter('price', 'over200')">
+                  <span>Trên 200.000đ</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Rating Facet -->
+            <div class="border-t border-stone-100 pt-3">
+              <h5 class="font-bold text-xs text-stone-800 mb-2">Đánh Giá Độc Giả:</h5>
+              <div class="space-y-1.5 text-xs text-stone-600">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="facet-rating" value="0" class="facet-rating-radio text-amber-800" checked onclick="updateFacetFilter('rating', 0)">
+                  <span>Tất cả</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="facet-rating" value="4" class="facet-rating-radio text-amber-800" onclick="updateFacetFilter('rating', 4)">
+                  <span class="text-amber-500 font-bold">Từ 4.0 ★ trở lên</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="facet-rating" value="5" class="facet-rating-radio text-amber-800" onclick="updateFacetFilter('rating', 5)">
+                  <span class="text-amber-500 font-bold">5.0 ★ Xuất sắc</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Book Format Facet -->
+            <div class="border-t border-stone-100 pt-3">
+              <h5 class="font-bold text-xs text-stone-800 mb-2">Định Dạng Sách:</h5>
+              <div class="space-y-1.5 text-xs text-stone-600">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="facet-format" value="all" class="facet-format-radio text-amber-800" checked onclick="updateFacetFilter('format', 'all')">
+                  <span>Tất cả định dạng</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="facet-format" value="epub" class="facet-format-radio text-amber-800" onclick="updateFacetFilter('format', 'epub')">
+                  <span>📱 Ebook EPUB / PDF</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="facet-format" value="audio" class="facet-format-radio text-amber-800" onclick="updateFacetFilter('format', 'audio')">
+                  <span>🎧 Sách Nói Audio</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="facet-format" value="paper" class="facet-format-radio text-amber-800" onclick="updateFacetFilter('format', 'paper')">
+                  <span>📖 Sách Giấy In Vintage</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </aside>
+
+        <!-- RIGHT RECOMMENDATIONS GRID -->
+        <div class="lg:col-span-3 space-y-4">
+          <div class="flex justify-between items-center border-b border-stone-200 pb-2">
+            <div class="flex gap-6 overflow-x-auto">
+              <button onclick="filterRecommendTab('all', this)" class="recommend-tab-btn pb-2 font-bold text-xs text-amber-800 border-b-2 border-amber-800 transition-colors whitespace-nowrap">
+                GỢI Ý HÔM NAY
+              </button>
+              <button onclick="filterRecommendTab('kinh-te', this)" class="recommend-tab-btn pb-2 font-bold text-xs text-stone-500 hover:text-amber-800 transition-colors border-b-2 border-transparent whitespace-nowrap">
+                SÁCH BÁN CHẠY
+              </button>
+              <button onclick="filterRecommendTab('tam-ly', this)" class="recommend-tab-btn pb-2 font-bold text-xs text-stone-500 hover:text-amber-800 transition-colors border-b-2 border-transparent whitespace-nowrap">
+                TÂM LÝ & KỸ NĂNG
+              </button>
+              <button onclick="filterRecommendTab('cong-nghe', this)" class="recommend-tab-btn pb-2 font-bold text-xs text-stone-500 hover:text-amber-800 transition-colors border-b-2 border-transparent whitespace-nowrap">
+                EBOOK ĐỘC QUYỀN
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Books Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="books-recommend-grid">
+            <!-- Rendered dynamically by app.js -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Forum Community Highlight Widget inside Store -->
+      <div class="bg-gradient-to-r from-amber-100 via-vintage-100 to-amber-200 rounded-2xl p-6 border border-amber-300 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-amber-800 text-white flex items-center justify-center text-xl shrink-0 shadow">
+            <i class="fa-solid fa-comments"></i>
+          </div>
+          <div>
+            <h4 class="font-serif-vintage font-bold text-stone-900 text-base">Diễn Đàn Đọc Sách & Kết Nối Doanh Nghiệp</h4>
+            <p class="text-xs text-stone-600">Đăng bài thảo luận, đọc bài review chân thực từ độc giả và nhận mã ưu đãi từ các Nhà xuất bản.</p>
+          </div>
+        </div>
+        <button onclick="switchView('forum')" class="bg-amber-800 hover:bg-amber-900 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow transition-colors shrink-0 flex items-center gap-2">
+          <i class="fa-solid fa-arrow-right"></i> Đến Diễn Đàn Ngay
+        </button>
+      </div>
+
+    </section>
+
+
+    <!-- ==========================================================================
+         VIEW 2: TRANG DIỄN ĐÀN (BOOK COMMUNITY SOCIAL NETWORK FACEBOOK STYLE)
+         ========================================================================== -->
+    <section id="forum-view" class="hidden space-y-6">
+      
+      <!-- Community Header Banner -->
+      <div class="bg-white border border-stone-200 rounded-2xl p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div>
+          <h2 class="font-serif-vintage font-extrabold text-xl text-stone-900 flex items-center gap-2">
+            <i class="fa-solid fa-users-viewfinder text-amber-800"></i> Diễn Đàn Mạng Xã Hội Đọc Sách Huki (Facebook Style)
+          </h2>
+          <p class="text-xs text-stone-500 mt-1">Không gian giao lưu chuẩn mạng xã hội: Đăng bài, đính kèm nhiều hình ảnh/video, bày tỏ cảm xúc Reactions, bình luận lồng nhau và Chat 1-1 / Group Messenger.</p>
+          <div class="flex flex-wrap gap-2 mt-3">
+            <button onclick="renderForumFeed('all')" class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-800 text-white shadow-xs"># Tất Cả Bài Viết</button>
+            <button onclick="renderForumFeed('enterprise')" class="text-xs font-semibold px-3 py-1 rounded-full bg-stone-100 text-stone-700 hover:bg-amber-100"># Gian Hàng NXB</button>
+            <button onclick="renderForumFeed('author')" class="text-xs font-semibold px-3 py-1 rounded-full bg-stone-100 text-stone-700 hover:bg-amber-100"># Tác Giả Giao Lưu</button>
+            <button onclick="renderForumFeed('reader')" class="text-xs font-semibold px-3 py-1 rounded-full bg-stone-100 text-stone-700 hover:bg-amber-100"># Review Độc Giả</button>
+          </div>
+        </div>
+        <button onclick="openCreatePostModal()" class="bg-amber-800 hover:bg-amber-900 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow transition-colors flex items-center gap-1.5 shrink-0">
+          <i class="fa-solid fa-pen-to-square"></i> Đăng Bài Viết Mới
+        </button>
+      </div>
+
+      <!-- Main Forum Layout Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- LEFT COLUMN: Post Feed -->
+        <div class="lg:col-span-2 space-y-4">
+          
+          <!-- Facebook Style Create Post Launcher Box -->
+          <div class="bg-white border border-stone-200 rounded-xl p-4 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Avatar" class="w-10 h-10 rounded-full object-cover border border-amber-300">
+              <div onclick="openCreatePostModal()" class="flex-1 bg-stone-100 hover:bg-stone-200/70 border border-stone-200 rounded-full px-4 py-2 text-xs text-stone-500 cursor-pointer transition-colors">
+                Bạn muốn chia sẻ cảm nhận, hình ảnh hay video sách gì hôm nay?
+              </div>
+            </div>
+            <div class="flex justify-between pt-2 border-t border-stone-100 text-xs font-semibold text-stone-600">
+              <button onclick="openCreatePostModal()" class="flex items-center gap-1.5 hover:text-amber-800 py-1 px-2 rounded hover:bg-amber-50">
+                <i class="fa-solid fa-image text-emerald-600 text-sm"></i> Đăng Ảnh
+              </button>
+              <button onclick="openCreatePostModal()" class="flex items-center gap-1.5 hover:text-amber-800 py-1 px-2 rounded hover:bg-amber-50">
+                <i class="fa-solid fa-video text-rose-600 text-sm"></i> Đăng Video
+              </button>
+              <button onclick="openCreatePostModal()" class="flex items-center gap-1.5 hover:text-amber-800 py-1 px-2 rounded hover:bg-amber-50">
+                <i class="fa-solid fa-book text-amber-700 text-sm"></i> Đính kèm Sách
+              </button>
+            </div>
+          </div>
+
+          <!-- Feed Posts Container -->
+          <div class="space-y-4" id="forum-post-feed">
+            <!-- Rendered dynamically by app.js -->
+          </div>
+
+        </div>
+
+
+        <!-- RIGHT COLUMN: Sidebar Widgets -->
+        <aside class="space-y-4">
+          
+          <!-- Enterprise Accounts Widget -->
+          <div class="bg-white border border-stone-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-serif-vintage font-bold text-stone-900 text-sm mb-3 flex items-center gap-1.5">
+              <i class="fa-solid fa-building-circle-check text-sky-600"></i> Gian Hàng NXB Nổi Bật
+            </h3>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 pb-2 border-b border-stone-100">
+                <div class="w-9 h-9 rounded-lg bg-amber-800 text-white font-serif-vintage font-bold text-xs flex items-center justify-center">NXB</div>
+                <div class="flex-1 min-w-0">
+                  <h5 class="font-bold text-xs text-stone-900 truncate">Nhà Xuất Bản Trẻ <i class="fa-solid fa-circle-check text-sky-600 text-[10px]"></i></h5>
+                  <div class="text-[10px] text-stone-500">14.5k người theo dõi</div>
+                </div>
+                <div class="flex gap-1">
+                  <button onclick="openChatWithUser('nxb-tre', 'direct')" class="text-[10px] font-bold px-2 py-1 rounded bg-sky-100 text-sky-800 hover:bg-sky-200">Chat</button>
+                  <button onclick="toggleFollowSeller('Nhà Xuất Bản Trẻ', this)" class="text-[10px] font-bold px-2 py-1 rounded bg-amber-800 text-white hover:bg-amber-900">+ Follow</button>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 pb-2 border-b border-stone-100">
+                <div class="w-9 h-9 rounded-lg bg-amber-700 text-white font-serif-vintage font-bold text-xs flex items-center justify-center">NN</div>
+                <div class="flex-1 min-w-0">
+                  <h5 class="font-bold text-xs text-stone-900 truncate">Nhã Nam Books <i class="fa-solid fa-circle-check text-sky-600 text-[10px]"></i></h5>
+                  <div class="text-[10px] text-stone-500">28.2k người theo dõi</div>
+                </div>
+                <div class="flex gap-1">
+                  <button onclick="openChatWithUser('nha-nam', 'direct')" class="text-[10px] font-bold px-2 py-1 rounded bg-sky-100 text-sky-800 hover:bg-sky-200">Chat</button>
+                  <button onclick="toggleFollowSeller('Nhã Nam Books', this)" class="text-[10px] font-bold px-2 py-1 rounded bg-amber-800 text-white hover:bg-amber-900">+ Follow</button>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-stone-800 text-white font-serif-vintage font-bold text-xs flex items-center justify-center">AB</div>
+                <div class="flex-1 min-w-0">
+                  <h5 class="font-bold text-xs text-stone-900 truncate">Alpha Books <i class="fa-solid fa-circle-check text-sky-600 text-[10px]"></i></h5>
+                  <div class="text-[10px] text-stone-500">9.8k người theo dõi</div>
+                </div>
+                <button onclick="toggleFollowSeller('Alpha Books', this)" class="text-[10px] font-bold px-2 py-1 rounded bg-amber-800 text-white hover:bg-amber-900">+ Follow</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Group Chat Clubs Widget (Facebook Group Chat) -->
+          <div class="bg-white border border-stone-200 rounded-xl p-4 shadow-sm">
+            <h3 class="font-serif-vintage font-bold text-stone-900 text-sm mb-3 flex items-center gap-1.5">
+              <i class="fa-solid fa-users text-amber-800"></i> Nhóm Chat Câu Lạc Bộ
+            </h3>
+            <div class="space-y-2 text-xs">
+              <div onclick="openChatWithUser('clb-kinh-te', 'group')" class="flex items-center justify-between p-2 rounded-lg hover:bg-amber-50 cursor-pointer border border-stone-100 transition-colors">
+                <div class="font-semibold text-stone-800 truncate">💬 CLB Sách Kinh Tế & Khởi Nghiệp</div>
+                <span class="text-[10px] text-amber-800 font-bold bg-amber-100 px-2 py-0.5 rounded-full">Vào Chat</span>
+              </div>
+              <div onclick="openChatWithUser('clb-manga', 'group')" class="flex items-center justify-between p-2 rounded-lg hover:bg-amber-50 cursor-pointer border border-stone-100 transition-colors">
+                <div class="font-semibold text-stone-800 truncate">💬 Hội Mê Manga & Light Novel</div>
+                <span class="text-[10px] text-amber-800 font-bold bg-amber-100 px-2 py-0.5 rounded-full">Vào Chat</span>
+              </div>
+              <div onclick="openChatWithUser('clb-vintage', 'group')" class="flex items-center justify-between p-2 rounded-lg hover:bg-amber-50 cursor-pointer border border-stone-100 transition-colors">
+                <div class="font-semibold text-stone-800 truncate">💬 Cộng Đồng Đọc Sách Vintage</div>
+                <span class="text-[10px] text-amber-800 font-bold bg-amber-100 px-2 py-0.5 rounded-full">Vào Chat</span>
+              </div>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       HUKI MESSENGER FLOATING CHAT WINDOW (FACEBOOK MESSENGER 1-1 & GROUP CHAT)
+       ========================================================================== -->
+  <div id="messenger-drawer" class="messenger-drawer-window bg-white border border-amber-300 shadow-2xl flex flex-col hidden">
+    <!-- Messenger Header Bar -->
+    <div class="bg-gradient-to-r from-amber-900 to-vintage-900 text-white px-4 py-2.5 flex items-center justify-between cursor-pointer" onclick="minimizeMessenger()">
+      <div class="flex items-center gap-2 font-serif-vintage font-bold text-sm">
+        <i class="fa-brands fa-facebook-messenger text-sky-400 text-base"></i>
+        <span>Huki Messenger Chat</span>
+      </div>
+      
+      <div class="flex items-center gap-2 text-amber-200">
+        <button onclick="event.stopPropagation(); minimizeMessenger();" class="hover:text-white p-1" title="Thu nhỏ/Mở rộng">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <button onclick="event.stopPropagation(); toggleMessenger();" class="hover:text-white p-1" title="Đóng chat">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Messenger Main Grid (Sidebar Threads + Active Chat Pane) -->
+    <div class="flex-1 flex overflow-hidden">
+      <!-- Left Threads Sidebar -->
+      <div class="w-64 border-r border-stone-200 bg-amber-50/40 flex flex-col shrink-0">
+        <!-- Chat Tabs (1-1 vs Group) -->
+        <div class="flex border-b border-stone-200 text-center bg-white">
+          <button id="tab-chat-direct" onclick="selectChatTab('direct')" class="flex-1 py-2 font-bold text-xs text-amber-800 border-b-2 border-amber-800 transition-colors">
+            Chat 1-1
+          </button>
+          <button id="tab-chat-group" onclick="selectChatTab('group')" class="flex-1 py-2 font-bold text-xs text-stone-500 hover:text-amber-800 transition-colors border-b-2 border-transparent">
+            Group CLB
+          </button>
+        </div>
+
+        <!-- Thread List Scroll -->
+        <div class="flex-1 overflow-y-auto p-2 space-y-1" id="messenger-thread-list">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+      </div>
+
+      <!-- Right Active Chat Pane -->
+      <div class="flex-1 flex flex-col bg-white" id="messenger-chat-pane">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING MESSENGER LAUNCHER BUTTON -->
+  <button onclick="toggleMessenger()" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-to-tr from-sky-600 to-amber-700 text-white text-2xl shadow-2xl flex items-center justify-center hover:scale-110 transition-transform group" title="Mở Huki Messenger Chat">
+    <i class="fa-brands fa-facebook-messenger group-hover:rotate-12 transition-transform"></i>
+    <span class="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow">3</span>
+  </button>
+
+  <!-- ==========================================================================
+       MODALS & DRAWERS
+       ========================================================================== -->
+  
+  <!-- 1. Quick View Book Modal -->
+  <div id="quick-view-modal" class="fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-vintage flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-amber-200">
+      <div class="p-4 border-b border-stone-200 flex justify-between items-center bg-amber-50/50">
+        <h3 class="font-serif-vintage font-bold text-stone-900 text-base flex items-center gap-2">
+          <i class="fa-solid fa-book text-amber-800"></i> Chi Tiết Sách Sàn
+        </h3>
+        <button onclick="closeQuickViewModal()" class="w-8 h-8 rounded-full text-stone-400 hover:text-stone-700 flex items-center justify-center text-sm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="p-6" id="quick-view-modal-body">
+        <!-- Dynamic content -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Interactive Ebook 5-Page Reader Modal -->
+  <div id="ebook-reader-modal" class="fixed inset-0 z-50 bg-stone-950/80 backdrop-blur-vintage flex items-center justify-center p-4 hidden">
+    <div class="bg-amber-50 rounded-2xl max-w-3xl w-full h-[85vh] shadow-2xl border-2 border-amber-300 flex flex-col overflow-hidden ebook-page-shadow">
+      
+      <!-- Reader Modal Header -->
+      <div class="p-4 bg-amber-100 border-b border-amber-300 flex justify-between items-center">
+        <div>
+          <span class="text-[10px] font-extrabold uppercase tracking-widest text-amber-800 bg-amber-200 px-2 py-0.5 rounded">Bản Đọc Thử Ebook EPUB</span>
+          <h3 id="reader-book-title" class="font-serif-vintage font-bold text-stone-900 text-base mt-1">Đại Dương Đen</h3>
+          <div id="reader-book-author" class="text-xs text-stone-600">Đặng Hoàng Giang</div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <!-- Font size controls -->
+          <div class="bg-white border border-amber-300 rounded-lg p-1 flex items-center gap-1 text-xs">
+            <button onclick="changeEbookFontSize(-1)" class="w-6 h-6 rounded hover:bg-amber-100 font-bold" title="Giảm cỡ chữ">A-</button>
+            <button onclick="changeEbookFontSize(1)" class="w-6 h-6 rounded hover:bg-amber-100 font-bold" title="Tăng cỡ chữ">A+</button>
+          </div>
+
+          <button onclick="closeEbookReader()" class="w-8 h-8 rounded-full bg-white text-stone-600 hover:text-stone-900 flex items-center justify-center border border-amber-300">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Reader Page Display Area -->
+      <div class="flex-1 p-8 overflow-y-auto bg-amber-50/90 flex flex-col justify-between" id="ebook-reader-container">
+        <div id="ebook-reader-content" class="max-w-xl mx-auto py-4">
+          <!-- Page paragraph injected -->
+        </div>
+
+        <!-- Page Footer Controls -->
+        <div class="flex items-center justify-between pt-4 border-t border-amber-200 text-xs font-bold text-stone-700">
+          <button onclick="prevEbookPage()" class="px-3 py-1.5 rounded-lg bg-amber-200 hover:bg-amber-300 text-stone-800 flex items-center gap-1">
+            &larr; Trang trước
+          </button>
+          <span id="reader-page-number" class="font-mono text-amber-900">Trang 1 / 5</span>
+          <button onclick="nextEbookPage()" class="px-3 py-1.5 rounded-lg bg-amber-800 hover:bg-amber-900 text-white flex items-center gap-1 shadow">
+            Trang tiếp &rarr;
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. Facebook Style Create Post Modal with Photo Grid & Video Support -->
+  <div id="create-post-modal" class="fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-vintage flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-xl w-full shadow-2xl border border-amber-200">
+      <div class="p-4 border-b border-stone-200 flex justify-between items-center bg-amber-50/50">
+        <h3 class="font-serif-vintage font-bold text-stone-900 text-base flex items-center gap-2">
+          <i class="fa-solid fa-pen-to-square text-amber-800"></i> Đăng Bài Viết Mới Chuẩn Facebook
+        </h3>
+        <button onclick="closeCreatePostModal()" class="w-8 h-8 rounded-full text-stone-400 hover:text-stone-700 flex items-center justify-center text-sm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="p-6">
+        <form id="create-post-form" onsubmit="handleCreatePostSubmit(event)" class="space-y-4">
+          <div>
+            <label class="block font-bold text-xs text-stone-900 mb-1">Loại tài khoản đăng bài:</label>
+            <select id="post-author-type" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-2.5 text-xs text-stone-800 focus:outline-none focus:border-amber-700">
+              <option value="reader">Độc Giả VIP (Cá nhân)</option>
+              <option value="enterprise">Gian Hàng Doanh Nghiệp / NXB (Verified)</option>
+              <option value="author">Tác Giả Xác Thực (Verified)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block font-bold text-xs text-stone-900 mb-1">Đính kèm sách trên Sàn (tùy chọn):</label>
+            <select id="create-post-book-select" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-2.5 text-xs text-stone-800 focus:outline-none focus:border-amber-700">
+              <!-- Loaded dynamically -->
+            </select>
+          </div>
+
+          <div>
+            <label class="block font-bold text-xs text-stone-900 mb-1">Đính kèm nhiều hình ảnh review (Facebook Photo Grid):</label>
+            <input type="file" accept="image/*" multiple onchange="handleFakeImageUpload(event)" class="text-xs text-stone-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-100 file:text-amber-900 hover:file:bg-amber-200">
+            <div id="post-image-preview-grid" class="flex flex-wrap gap-2 mt-2 hidden">
+              <!-- Upload previews injected -->
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-bold text-xs text-stone-900 mb-1">Đính kèm URL Video review (tùy chọn):</label>
+            <input type="text" id="post-video-url-input" placeholder="Dán đường dẫn Video MP4..." class="w-full bg-stone-50 border border-stone-300 rounded-lg p-2.5 text-xs text-stone-800 focus:outline-none focus:border-amber-700">
+          </div>
+
+          <div>
+            <label class="block font-bold text-xs text-stone-900 mb-1">Nội dung bài viết:</label>
+            <textarea id="post-content-input" rows="4" placeholder="Chia sẻ góc nhìn, review sách hoặc video phát hành Ebook đến cộng đồng..." class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 text-xs text-stone-800 focus:outline-none focus:border-amber-700" required></textarea>
+          </div>
+
+          <div class="flex justify-end gap-3 pt-2">
+            <button type="button" onclick="closeCreatePostModal()" class="border border-stone-300 text-stone-700 font-bold text-xs px-4 py-2 rounded-lg hover:bg-stone-100">Hủy</button>
+            <button type="submit" class="bg-amber-800 hover:bg-amber-900 text-white font-bold text-xs px-5 py-2 rounded-lg shadow">
+              <i class="fa-solid fa-paper-plane"></i> Đăng Bài Ngay
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer Overlay & Drawer -->
+  <div id="cart-drawer-overlay" onclick="closeCartDrawer()" class="fixed inset-0 z-50 bg-stone-900/50 backdrop-blur-xs hidden"></div>
+  <div id="cart-drawer" class="fixed right-0 top-0 bottom-0 z-50 w-full max-w-sm bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 border-l border-amber-200">
+    <div class="p-4 border-b border-stone-200 flex justify-between items-center bg-amber-50">
+      <h3 class="font-serif-vintage font-bold text-stone-900 text-base flex items-center gap-2">
+        <i class="fa-solid fa-bag-shopping text-amber-800"></i> Giỏ Hàng Ebook
+      </h3>
+      <button onclick="closeCartDrawer()" class="w-8 h-8 rounded-full text-stone-400 hover:text-stone-700 flex items-center justify-center text-sm">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-4 space-y-3" id="cart-items-container">
+      <!-- Items dynamically injected -->
+    </div>
+
+    <div class="p-4 border-t border-stone-200 bg-amber-50/60 space-y-3">
+      <div class="flex justify-between items-center text-sm font-extrabold text-stone-900">
+        <span>Tổng thanh toán:</span>
+        <span id="cart-total-price" class="text-amber-800 text-base">0 ₫</span>
+      </div>
+      <button onclick="showToast('Đang kết nối cổng thanh toán VNPay / MoMo!', 'success')" class="w-full bg-amber-800 hover:bg-amber-900 text-white font-bold text-xs py-3 rounded-xl shadow flex items-center justify-center gap-2">
+        <i class="fa-solid fa-credit-card"></i> Tiến Hành Thanh Toán Sàn
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 left-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- FOOTER MARKETPLACE -->
+  <footer class="bg-vintage-900 text-vintage-300 text-xs py-10 mt-12 border-t border-amber-950">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <div class="font-serif-vintage font-extrabold text-lg text-amber-100 mb-2 flex items-center gap-2">
+          <i class="fa-solid fa-book-bookmark text-amber-500"></i> Huki Ebook Marketplace
+        </div>
+        <p class="text-vintage-400 leading-relaxed">Sàn thương mại điện tử sách số bản quyền hàng đầu, tích hợp mạng xã hội kết nối Độc giả, Tác giả và Doanh nghiệp Xuất bản.</p>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-amber-200 text-sm mb-3">Về Sàn Huki</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-amber-300">Giới thiệu về Huki</a></li>
+          <li><a href="#" class="hover:text-amber-300">Gian hàng Huki Mall</a></li>
+          <li><a href="#" class="hover:text-amber-300">Quy chế hoạt động Sàn TMĐT</a></li>
+          <li><a href="#" class="hover:text-amber-300">Chính sách bảo mật bản quyền</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-amber-200 text-sm mb-3">Dành Cho Người Bán / NXB</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="hover:text-amber-300">Mở gian hàng Doanh nghiệp</a></li>
+          <li><a href="#" class="hover:text-amber-300">Quy trình đăng ký Tác giả</a></li>
+          <li><a href="#" class="hover:text-amber-300">Hệ thống quản trị bán hàng</a></li>
+          <li><a href="#" class="hover:text-amber-300">Giải pháp phát hành Ebook số</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-amber-200 text-sm mb-3">Kết Nối & Cổng Thanh Toán</h4>
+        <p class="text-vintage-400 mb-3">Hỗ trợ các hình thức thanh toán trực tuyến:</p>
+        <div class="flex gap-2 text-xl text-amber-400">
+          <i class="fa-brands fa-cc-visa"></i>
+          <i class="fa-brands fa-cc-mastercard"></i>
+          <i class="fa-solid fa-qrcode"></i>
+          <i class="fa-solid fa-wallet"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 pt-6 mt-8 border-t border-vintage-800 text-center text-vintage-500">
+      <p>© 2026 Huki Ebook Marketplace & Community Forum. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
