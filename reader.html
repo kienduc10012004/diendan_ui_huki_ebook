@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đắc Nhân Tâm - Huki Reader Studio Pro</title>
+  
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="m-0 p-0 font-sans bg-[#141716] text-[#f8f6f1] overflow-hidden selection:bg-terracotta-500 selection:text-white">
+
+  <!-- ==========================================================================
+       PROTECTED PDF / DOCUMENT READER (DARK STUDIO EXACT REPLICA)
+       ========================================================================== -->
+  <div class="pdf-reader" id="pdf-reader-root">
+
+    <!-- 1. Top Fixed Studio Toolbar -->
+    <header class="pdf-toolbar">
+      
+      <!-- Left Controls: Back, Sidebar Toggle, Book Info -->
+      <div class="pdf-toolbar-group">
+        <a href="javascript:history.back()" title="Quay lại danh mục" aria-label="Quay lại">
+          <i class="fa-solid fa-arrow-left text-sm"></i>
+        </a>
+        <button id="btn-toggle-sidebar" class="active" onclick="togglePdfSidebar()" title="Bật/tắt thanh trang bên" aria-label="Danh sách trang">
+          <i class="fa-solid fa-bars-staggered text-sm"></i>
+        </button>
+        <div class="pdf-title">
+          <strong id="reader-doc-title">Đắc Nhân Tâm</strong>
+          <span id="reader-doc-author">Dale Carnegie • Bản quyền EPUB/PDF</span>
+        </div>
+      </div>
+
+      <!-- Center Controls: Page Paging (< [16] / 322 >) -->
+      <div class="pdf-page-control">
+        <button onclick="pdfPrevPage()" title="Trang trước (Phím ←)" aria-label="Trang trước">
+          <i class="fa-solid fa-chevron-left text-xs"></i>
+        </button>
+        <input type="number" id="pdf-page-input" value="16" min="1" max="322" onchange="pdfGoToPage(this.value)" aria-label="Số trang hiện tại">
+        <span>/ 322</span>
+        <button onclick="pdfNextPage()" title="Trang tiếp (Phím →)" aria-label="Trang tiếp">
+          <i class="fa-solid fa-chevron-right text-xs"></i>
+        </button>
+      </div>
+
+      <!-- Right Controls: Save State, Zoom, Fit Mode, Fullscreen -->
+      <div class="pdf-toolbar-group">
+        <span class="reader-save-state saved" title="Tiến độ đọc được tự động lưu lên đám mây Huki">
+          <i class="fa-solid fa-circle-check text-xs"></i>
+          <span>Đã lưu</span>
+        </span>
+
+        <button onclick="pdfZoomOut()" title="Thu nhỏ (-)" aria-label="Thu nhỏ">
+          <i class="fa-solid fa-minus text-xs"></i>
+        </button>
+        <span id="pdf-zoom-val" class="text-xs font-bold text-stone-300 min-w-[42px] text-center">100%</span>
+        <button onclick="pdfZoomIn()" title="Phóng to (+)" aria-label="Phóng to">
+          <i class="fa-solid fa-plus text-xs"></i>
+        </button>
+
+        <button onclick="pdfToggleFit()" id="btn-fit-mode" title="Vừa chiều rộng màn hình" aria-label="Vừa chiều rộng">
+          <i class="fa-solid fa-arrows-left-right text-xs"></i>
+        </button>
+
+        <button onclick="pdfToggleFullscreen()" id="btn-fullscreen" title="Toàn màn hình (F11)" aria-label="Toàn màn hình">
+          <i class="fa-solid fa-expand text-xs"></i>
+        </button>
+      </div>
+
+    </header>
+
+    <!-- 2. Reading Progress Track Line (3px Gradient) -->
+    <div class="pdf-progress-track">
+      <i id="pdf-progress-fill" style="width: 5%;"></i>
+    </div>
+
+    <!-- 3. Main Workspace: Thumbnails Sidebar + Center Reading Stage -->
+    <main class="pdf-workspace">
+
+      <!-- Left Thumbnails Sidebar (Open by Default) -->
+      <aside class="pdf-sidebar open" id="pdf-sidebar-panel" aria-label="Mục lục danh sách trang">
+        <header>
+          <div>
+            <span>MỤC LỤC TRANG</span>
+            <strong>322 trang</strong>
+          </div>
+          <button onclick="togglePdfSidebar()" title="Đóng thanh bên" aria-label="Đóng thanh bên">
+            <i class="fa-solid fa-xmark text-sm"></i>
+          </button>
+        </header>
+
+        <div class="pdf-thumbnails">
+          
+          <!-- Thumbnail Page 14 -->
+          <button onclick="pdfSelectThumbnail(14)">
+            <div class="pdf-mini-page">
+              <div class="mini-line" style="width: 80%;"></div>
+              <div class="mini-line" style="width: 95%;"></div>
+              <div class="mini-line" style="width: 70%;"></div>
+              <div class="mini-line" style="width: 90%;"></div>
+              <div class="mini-line" style="width: 60%;"></div>
+              <i>14</i>
+            </div>
+            <small>Trang 14</small>
+          </button>
+
+          <!-- Thumbnail Page 15 -->
+          <button onclick="pdfSelectThumbnail(15)">
+            <div class="pdf-mini-page">
+              <div class="mini-line" style="width: 90%;"></div>
+              <div class="mini-line" style="width: 85%;"></div>
+              <div class="mini-line" style="width: 100%;"></div>
+              <div class="mini-line" style="width: 65%;"></div>
+              <i>15</i>
+            </div>
+            <small>Trang 15</small>
+          </button>
+
+          <!-- Thumbnail Page 16 (ACTIVE) -->
+          <button class="active" onclick="pdfSelectThumbnail(16)">
+            <div class="pdf-mini-page">
+              <div class="mini-line" style="width: 85%; background: #d96d3d;"></div>
+              <div class="mini-line" style="width: 100%; background: #d96d3d;"></div>
+              <div class="mini-line" style="width: 92%; background: #d96d3d;"></div>
+              <div class="mini-line" style="width: 75%; background: #d96d3d;"></div>
+              <i>16</i>
+            </div>
+            <small class="text-terracotta-400 font-bold">Trang 16</small>
+          </button>
+
+          <!-- Thumbnail Page 17 -->
+          <button onclick="pdfSelectThumbnail(17)">
+            <div class="pdf-mini-page">
+              <div class="mini-line" style="width: 95%;"></div>
+              <div class="mini-line" style="width: 90%;"></div>
+              <div class="mini-line" style="width: 80%;"></div>
+              <div class="mini-line" style="width: 60%;"></div>
+              <i>17</i>
+            </div>
+            <small>Trang 17</small>
+          </button>
+
+          <!-- Thumbnail Page 18 -->
+          <button onclick="pdfSelectThumbnail(18)">
+            <div class="pdf-mini-page">
+              <div class="mini-line" style="width: 70%;"></div>
+              <div class="mini-line" style="width: 85%;"></div>
+              <div class="mini-line" style="width: 95%;"></div>
+              <div class="mini-line" style="width: 40%;"></div>
+              <i>18</i>
+            </div>
+            <small>Trang 18</small>
+          </button>
+
+          <!-- Thumbnail Page 19 -->
+          <button onclick="pdfSelectThumbnail(19)">
+            <div class="pdf-mini-page">
+              <div class="mini-line" style="width: 100%;"></div>
+              <div class="mini-line" style="width: 90%;"></div>
+              <div class="mini-line" style="width: 85%;"></div>
+              <div class="mini-line" style="width: 75%;"></div>
+              <i>19</i>
+            </div>
+            <small>Trang 19</small>
+          </button>
+
+        </div>
+      </aside>
+
+      <!-- Center Reading Stage (Protected Canvas with DRM Watermark) -->
+      <section class="pdf-stage" id="pdf-stage-area">
+        
+        <div class="pdf-canvas-shell" id="pdf-canvas-shell">
+          
+          <!-- 9-Grid Translucent DRM Watermark Layer -->
+          <div class="pdf-watermarks" aria-hidden="true">
+            <span>Huỳnh Gia Huy<br>hu***@gmail.com<br>7a4e990b</span>
+            <span>Huỳnh Gia Huy<br>hu***@gmail.com<br>7a4e990b</span>
+            <span>Huỳnh Gia Huy<br>hu***@gmail.com<br>7a4e990b</span>
+            <span>Huỳnh Gia Huy<br>hu***@gmail.com<br>7a4e990b</span>
+            <span>Huỳnh Gia Huy<br>hu***@gmail.com<br>7a4e990b</span>
+            <span>Huỳnh Gia Huy<br>hu***@gmail.com<br>7a4e990b</span>
+            <span>Huỳnh Gia Huy<br>hu***@gmail.com<br>7a4e990b</span>
+            <span>Huỳnh Gia Huy<br>hu***@gmail.com<br>7a4e990b</span>
+            <span>Huỳnh Gia Huy<br>hu***@gmail.com<br>7a4e990b</span>
+          </div>
+
+          <!-- Top Running Header Banner -->
+          <div class="pdf-page-top-banner">
+            <span>HOW TO WIN FRIENDS &amp; INFLUENCE PEOPLE</span>
+          </div>
+
+          <!-- Book Page Authentic Body Copy -->
+          <div class="pdf-page-body-text">
+            <p>
+              Nếu bạn muốn biết thêm về cách cư xử với người khác, hãy thử áp dụng nguyên tắc này vào chính cuộc sống của bạn. Hãy nhìn lại những hành động gần đây và tự hỏi xem bạn có đang đòi hỏi người khác phải hoàn hảo trong khi chính bản thân bạn lại đầy rẫy những khiếm khuyết hay không.
+            </p>
+            <p>
+              Benjamin Franklin, một trong những nhân vật kiệt xuất nhất của lịch sử nước Mỹ, đã từng chia sẻ bí quyết thành công của mình trong nghệ thuật thu phục lòng người: <em>"Tôi sẽ không nói xấu bất kỳ ai, và sẽ nói tất cả những điều tốt đẹp mà tôi biết về mọi người."</em>
+            </p>
+            <p>
+              Bất kỳ kẻ ngu ngốc nào cũng có thể chỉ trích, lên án và phàn nàn - và hầu hết những kẻ ngốc đều làm như vậy. Nhưng phải cần có nhân cách và sự tự chủ để hiểu và tha thứ cho người khác.
+            </p>
+            <p>
+              Một vĩ nhân từng nói: <em>"Người vĩ đại thể hiện sự vĩ đại của mình qua cách họ đối xử với những kẻ tiểu nhân."</em>
+            </p>
+            <p>
+              Thay vì lên án người khác, hãy cố gắng hiểu họ. Hãy tìm hiểu xem tại sao họ lại làm những điều họ làm. Điều đó có lợi và thú vị hơn nhiều so với việc chỉ trích; nó sinh ra sự đồng cảm, lòng khoan dung và sự tử tế. <strong>"Hiểu tất cả là tha thứ tất cả."</strong>
+            </p>
+          </div>
+
+          <!-- Bottom Running Footer (Author & Current Page) -->
+          <div class="pdf-page-footer">
+            <span>Dale Carnegie</span>
+            <span id="pdf-footer-page-num">16</span>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- 4. Bottom Fixed Statusbar -->
+    <footer class="pdf-statusbar">
+      <span>🛡️ Bản đọc cá nhân có watermark</span>
+      <span>Trang <strong id="pdf-status-page">16</strong>/322 · <strong id="pdf-status-percent">5%</strong></span>
+      <span>Phím ← → để chuyển trang</span>
+    </footer>
+
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Lightweight Standalone Action Script (Zero DOM innerHTML replacement) -->
+  <script src="app.js"></script>
+  <script>
+    let currentPdfPage = 16;
+    const totalPdfPages = 322;
+    let currentZoomPercent = 100;
+    let isFitWidth = false;
+
+    function togglePdfSidebar() {
+      const sidebar = document.getElementById('pdf-sidebar-panel');
+      const btn = document.getElementById('btn-toggle-sidebar');
+      if (sidebar) {
+        const isOpen = sidebar.classList.toggle('open');
+        if (btn) btn.classList.toggle('active', isOpen);
+      }
+    }
+
+    function updatePageUI(page) {
+      currentPdfPage = Math.max(1, Math.min(totalPdfPages, page));
+      const pageInput = document.getElementById('pdf-page-input');
+      const footerPage = document.getElementById('pdf-footer-page-num');
+      const statusPage = document.getElementById('pdf-status-page');
+      const statusPercent = document.getElementById('pdf-status-percent');
+      const progressFill = document.getElementById('pdf-progress-fill');
+
+      if (pageInput) pageInput.value = currentPdfPage;
+      if (footerPage) footerPage.innerText = currentPdfPage;
+      if (statusPage) statusPage.innerText = currentPdfPage;
+
+      const percent = Math.round((currentPdfPage / totalPdfPages) * 100);
+      if (statusPercent) statusPercent.innerText = percent + '%';
+      if (progressFill) progressFill.style.width = percent + '%';
+
+      // Update active thumbnail
+      const thumbnails = document.querySelectorAll('.pdf-thumbnails button');
+      thumbnails.forEach((tb) => {
+        tb.classList.remove('active');
+        const small = tb.querySelector('small');
+        if (small) {
+          small.className = 'text-stone-300 font-normal';
+          if (small.innerText.includes('Trang ' + currentPdfPage)) {
+            tb.classList.add('active');
+            small.className = 'text-terracotta-400 font-bold';
+          }
+        }
+      });
+    }
+
+    function pdfPrevPage() {
+      if (currentPdfPage > 1) {
+        updatePageUI(currentPdfPage - 1);
+        showToast('Trang ' + currentPdfPage + ' / ' + totalPdfPages, 'info');
+      } else {
+        showToast('Bạn đang ở trang đầu tiên!', 'info');
+      }
+    }
+
+    function pdfNextPage() {
+      if (currentPdfPage < totalPdfPages) {
+        updatePageUI(currentPdfPage + 1);
+        showToast('Trang ' + currentPdfPage + ' / ' + totalPdfPages, 'info');
+      } else {
+        showToast('Bạn đã đọc đến trang cuối cùng!', 'info');
+      }
+    }
+
+    function pdfGoToPage(val) {
+      const p = parseInt(val, 10);
+      if (!isNaN(p)) {
+        updatePageUI(p);
+      }
+    }
+
+    function pdfSelectThumbnail(page) {
+      updatePageUI(page);
+      showToast('Chuyển tới Trang ' + page, 'success');
+    }
+
+    function pdfZoomIn() {
+      currentZoomPercent = Math.min(180, currentZoomPercent + 15);
+      applyZoom();
+    }
+
+    function pdfZoomOut() {
+      currentZoomPercent = Math.max(70, currentZoomPercent - 15);
+      applyZoom();
+    }
+
+    function applyZoom() {
+      const canvas = document.getElementById('pdf-canvas-shell');
+      const zoomLabel = document.getElementById('pdf-zoom-val');
+      if (canvas) {
+        canvas.style.transform = 'scale(' + (currentZoomPercent / 100) + ')';
+        canvas.style.transformOrigin = 'top center';
+      }
+      if (zoomLabel) zoomLabel.innerText = currentZoomPercent + '%';
+    }
+
+    function pdfToggleFit() {
+      isFitWidth = !isFitWidth;
+      const canvas = document.getElementById('pdf-canvas-shell');
+      const btn = document.getElementById('btn-fit-mode');
+      if (btn) btn.classList.toggle('active', isFitWidth);
+      if (canvas) {
+        if (isFitWidth) {
+          canvas.style.width = 'min(980px, 98%)';
+          showToast('Đã chuyển sang chế độ Vừa chiều rộng', 'info');
+        } else {
+          canvas.style.width = 'min(720px, 100%)';
+          showToast('Chế độ kích thước chuẩn', 'info');
+        }
+      }
+    }
+
+    function pdfToggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+        showToast('Toàn màn hình', 'info');
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen().catch(() => {});
+          showToast('Thoát toàn màn hình', 'info');
+        }
+      }
+    }
+
+    // Keyboard navigation (Phím ← và →)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        pdfNextPage();
+      } else if (e.key === 'ArrowLeft') {
+        pdfPrevPage();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="vi" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tủ Sách Cá Nhân & Tiến Độ Đọc - Huki Ebook</title>
+  
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            pine: {
+              50: '#edf7f3',
+              100: '#d5ede4',
+              200: '#aedac8',
+              300: '#7bc1a8',
+              400: '#4da386',
+              500: '#206b54',
+              600: '#195543',
+              700: '#144234',
+              800: '#10352a',
+              900: '#0c2b22',
+              950: '#071813',
+            },
+            terracotta: {
+              50: '#fdf4f2',
+              100: '#fbe8e4',
+              200: '#f7d4cc',
+              300: '#f0b5a7',
+              400: '#e58771',
+              500: '#e35938',
+              600: '#cf4927',
+              700: '#ad3a1d',
+              800: '#8c311c',
+              900: '#742e1d',
+              950: '#3f140c',
+            },
+            parchment: '#FAF7F0',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            serif: ['"Merriweather"', 'Georgia', 'serif'],
+            headline: ['"Playfair Display"', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#FAF7F0] dark:bg-[#07130F] text-stone-800 dark:text-stone-200 min-h-screen flex flex-col font-sans transition-colors duration-200">
+
+  <!-- ==========================================================================
+       1. GLOBAL UNIFIED HEADER
+       ========================================================================== -->
+  <header class="sticky top-0 z-40 bg-white/95 dark:bg-[#0C2B22]/95 backdrop-blur-md border-b border-stone-200/80 dark:border-pine-800 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4 py-3">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group flex-shrink-0">
+        <div class="w-10 h-10 rounded-xl bg-pine-950 dark:bg-emerald-600 text-white flex items-center justify-center font-headline font-black text-xl shadow-md group-hover:scale-105 transition-all">
+          H
+        </div>
+        <div>
+          <div class="font-headline font-black text-lg tracking-tight text-pine-950 dark:text-stone-100 flex items-center gap-1">
+            Huki<span class="text-terracotta-500 font-sans font-bold text-xs uppercase tracking-wider bg-terracotta-50 dark:bg-terracotta-950/60 px-1.5 py-0.5 rounded border border-terracotta-200/60 dark:border-terracotta-800">Ebook</span>
+          </div>
+          <div class="text-[10px] text-stone-400 uppercase tracking-widest font-semibold hidden sm:block">Sàn Sách Số Bản Quyền</div>
+        </div>
+      </a>
+
+      <!-- Global Search Bar -->
+      <div class="flex-1 max-w-xl mx-2 hidden md:block">
+        <form action="books.html" method="GET" class="relative">
+          <input 
+            type="text" 
+            name="q"
+            placeholder="Tìm kiếm trong tủ sách của bạn..." 
+            class="w-full pl-10 pr-4 py-2.5 rounded-full bg-stone-100/90 dark:bg-pine-900/60 border border-stone-200 dark:border-pine-800/80 text-xs text-stone-800 dark:text-stone-200 focus:outline-none focus:ring-2 focus:ring-pine-900/20 dark:focus:ring-emerald-500/20 focus:bg-white dark:focus:bg-pine-900 transition-all placeholder:text-stone-400"
+          >
+          <div class="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 text-xs">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </form>
+      </div>
+
+      <!-- Nav Links & Quick Actions -->
+      <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+        <nav class="hidden lg:flex items-center gap-1 mr-2 text-xs font-bold text-stone-600 dark:text-stone-300">
+          <a href="index.html" class="px-3 py-2 rounded-lg hover:text-terracotta-500 hover:bg-stone-100 dark:hover:bg-pine-900/60 transition-colors">Trang Chủ</a>
+          <a href="books.html" class="px-3 py-2 rounded-lg hover:text-terracotta-500 hover:bg-stone-100 dark:hover:bg-pine-900/60 transition-colors">Sàn Sách Số</a>
+          <a href="index.html#forum" class="px-3 py-2 rounded-lg hover:text-terracotta-500 hover:bg-stone-100 dark:hover:bg-pine-900/60 transition-colors">Diễn Đàn</a>
+          <a href="library.html" class="px-3 py-2 rounded-lg text-pine-950 dark:text-emerald-300 bg-stone-100 dark:bg-pine-900/80 font-bold">Tủ Sách</a>
+        </nav>
+
+        <!-- Cart Icon with dynamic badge -->
+        <a href="checkout.html" class="relative w-9 h-9 rounded-xl bg-stone-100 dark:bg-pine-900 text-stone-700 dark:text-stone-300 flex items-center justify-center hover:text-terracotta-500 transition-colors" title="Giỏ hàng">
+          <i class="fa-solid fa-cart-shopping text-sm"></i>
+          <span class="cart-badge-count absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-terracotta-500 text-white text-[10px] font-black items-center justify-center shadow-sm" style="display: none;">0</span>
+        </a>
+
+        <!-- Dark Mode Toggle -->
+        <button onclick="toggleTheme()" class="w-9 h-9 rounded-xl bg-stone-100 dark:bg-pine-900 text-stone-700 dark:text-stone-300 flex items-center justify-center hover:text-amber-500 transition-colors" title="Chuyển chế độ sáng/tối">
+          <i class="fa-solid fa-moon dark:hidden text-sm"></i>
+          <i class="fa-solid fa-sun hidden dark:block text-sm text-amber-400"></i>
+        </button>
+
+        <!-- User Profile Avatar -->
+        <a href="library.html" class="flex items-center gap-2 pl-2 border-l border-stone-200 dark:border-pine-800">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Avatar" class="w-8 h-8 rounded-xl object-cover border border-stone-300 dark:border-pine-700 shadow-sm">
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       2. USER PROFILE & STATS HERO BANNER
+       ========================================================================== -->
+  <div class="bg-white/60 dark:bg-pine-950/40 border-b border-stone-200/60 dark:border-pine-800/60 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        
+        <!-- User Info -->
+        <div class="flex items-center gap-4">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80" alt="Profile Avatar" class="w-20 h-20 rounded-2xl object-cover border-2 border-emerald-500 shadow-md">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <h1 class="font-headline font-black text-2xl text-pine-950 dark:text-stone-100">
+                Nguyễn Hoàng Nam
+              </h1>
+              <span class="px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-800 text-[10px] font-extrabold uppercase tracking-wider">
+                👑 Huki VIP
+              </span>
+            </div>
+            <p class="text-xs text-stone-500 dark:text-stone-400">
+              Đã gia nhập từ Tháng 1, 2025 • Thiết bị: Huki Web Reader & iPad Mini
+            </p>
+          </div>
+        </div>
+
+        <!-- Quick 4 Stats Matrix -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="stat-spec-box">
+            <div class="text-[10px] text-stone-400 uppercase font-bold">Sách Đã Mua</div>
+            <div class="text-base font-headline font-black text-pine-950 dark:text-stone-100 mt-0.5">15 cuốn</div>
+          </div>
+          <div class="stat-spec-box">
+            <div class="text-[10px] text-stone-400 uppercase font-bold">Chuỗi Đọc (Streak)</div>
+            <div class="text-base font-headline font-black text-terracotta-500 mt-0.5">🔥 12 ngày</div>
+          </div>
+          <div class="stat-spec-box">
+            <div class="text-[10px] text-stone-400 uppercase font-bold">Trang Đã Đọc</div>
+            <div class="text-base font-headline font-black text-emerald-600 dark:text-emerald-400 mt-0.5">3,420 trang</div>
+          </div>
+          <div class="stat-spec-box">
+            <div class="text-[10px] text-stone-400 uppercase font-bold">Huki Xu Tích Lũy</div>
+            <div class="text-base font-headline font-black text-amber-500 mt-0.5">14,250 Xu</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       3. READING CHALLENGE & HEATMAP ROW
+       ========================================================================== -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      
+      <!-- Reading Challenge 2026 (5 cols) -->
+      <div class="lg:col-span-5 bg-white dark:bg-pine-950 p-6 rounded-3xl border border-stone-200/80 dark:border-pine-800 shadow-sm flex flex-col justify-between space-y-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-xl bg-terracotta-50 dark:bg-terracotta-950/60 text-terracotta-500 flex items-center justify-center font-bold text-sm">
+              <i class="fa-solid fa-bullseye"></i>
+            </div>
+            <div>
+              <h3 class="font-headline font-bold text-sm text-pine-950 dark:text-stone-100">Thử Thách Đọc Sách 2026</h3>
+              <div class="text-[11px] text-stone-400">Mục tiêu: 24 cuốn sách</div>
+            </div>
+          </div>
+          <span class="font-headline font-black text-lg text-terracotta-500 font-mono">50%</span>
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex justify-between text-xs font-bold">
+            <span class="text-stone-600 dark:text-stone-400">12 / 24 cuốn hoàn thành</span>
+            <span class="text-emerald-600">Đang đúng tiến độ (+2 cuốn)</span>
+          </div>
+          <div class="h-2.5 rounded-full bg-stone-100 dark:bg-pine-900 overflow-hidden">
+            <div class="h-full rounded-full bg-gradient-to-r from-terracotta-500 to-amber-500" style="width: 50%;"></div>
+          </div>
+        </div>
+
+        <div class="pt-2 border-t border-stone-100 dark:border-pine-800 flex items-center justify-between text-[11px] text-stone-500">
+          <span>Còn 12 cuốn để cán đích 2026</span>
+          <a href="books.html" class="font-bold text-terracotta-500 hover:underline">Thêm sách vào kệ +</a>
+        </div>
+      </div>
+
+      <!-- 52-Week Reading Heatmap (7 cols) -->
+      <div class="lg:col-span-7 bg-white dark:bg-pine-950 p-6 rounded-3xl border border-stone-200/80 dark:border-pine-800 shadow-sm space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="font-headline font-bold text-sm text-pine-950 dark:text-stone-100 flex items-center gap-2">
+            <i class="fa-solid fa-chart-simple text-emerald-600"></i> Ma Trận Hoạt Động Đọc (52 Tuần)
+          </h3>
+          <div class="flex items-center gap-1.5 text-[10px] text-stone-400">
+            <span>Ít</span>
+            <span class="w-2.5 h-2.5 rounded-sm bg-stone-100 dark:bg-pine-900"></span>
+            <span class="w-2.5 h-2.5 rounded-sm bg-[#aedac8] dark:bg-[#195543]"></span>
+            <span class="w-2.5 h-2.5 rounded-sm bg-[#4da386] dark:bg-[#2d866a]"></span>
+            <span class="w-2.5 h-2.5 rounded-sm bg-[#0c3227] dark:bg-[#7bc1a8]"></span>
+            <span>Nhiều</span>
+          </div>
+        </div>
+
+        <!-- Heatmap Grid -->
+        <div class="heatmap-container overflow-x-auto py-2">
+          <!-- 24 columns representing weeks -->
+          <div class="flex gap-1">
+            <div class="heatmap-col"><div class="heatmap-cell level-1"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-1"></div><div class="heatmap-cell level-3"></div></div>
+            <div class="heatmap-col"><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-1"></div></div>
+            <div class="heatmap-col"><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-4"></div></div>
+            <div class="heatmap-col"><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-1"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-2"></div></div>
+            <div class="heatmap-col"><div class="heatmap-cell level-1"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-1"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-3"></div></div>
+            <div class="heatmap-col"><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-4"></div></div>
+            <div class="heatmap-col"><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-1"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div></div>
+            <div class="heatmap-col"><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-1"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-1"></div></div>
+            <div class="heatmap-col"><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-4"></div></div>
+            <div class="heatmap-col"><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-1"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-2"></div></div>
+            <div class="heatmap-col"><div class="heatmap-cell level-1"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-3"></div></div>
+            <div class="heatmap-col"><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-1"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div></div>
+            <div class="heatmap-col"><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-1"></div><div class="heatmap-cell level-3"></div></div>
+            <div class="heatmap-col"><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-2"></div></div>
+            <div class="heatmap-col"><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-1"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div></div>
+            <div class="heatmap-col"><div class="heatmap-cell level-1"></div><div class="heatmap-cell level-3"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-4"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-2"></div><div class="heatmap-cell level-1"></div></div>
+          </div>
+        </div>
+        <div class="text-[11px] text-stone-400 flex items-center justify-between pt-1">
+          <span>Tổng cộng 148 ngày đọc trong năm 2026</span>
+          <span class="text-terracotta-500 font-bold">Tháng đọc nhiều nhất: Tháng 2</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ==========================================================================
+         4. PERSONAL BOOKSHELF SECTION (TỦ SÁCH CÁ NHÂN)
+         ========================================================================== -->
+    <section class="space-y-6">
+      
+      <!-- Shelf Tabs -->
+      <div class="flex items-center justify-between border-b border-stone-200/80 dark:border-pine-800 pb-4 overflow-x-auto gap-4">
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <button id="library-tab-all" onclick="renderLibraryShelf('all')" class="library-tab-btn active px-4 py-2 rounded-xl text-xs font-bold transition-all">
+            📚 Tất Cả Sách Bản Quyền [15]
+          </button>
+          <button id="library-tab-reading" onclick="renderLibraryShelf('reading')" class="library-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all">
+            📖 Đang Đọc Dở [3]
+          </button>
+          <button id="library-tab-completed" onclick="renderLibraryShelf('completed')" class="library-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all">
+            ✅ Đã Đọc Xong [4]
+          </button>
+          <button id="library-tab-favourites" onclick="renderLibraryShelf('favourites')" class="library-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all">
+            ❤️ Yêu Thích
+          </button>
+        </div>
+
+        <a href="books.html" class="px-4 py-2 rounded-xl bg-pine-950 dark:bg-emerald-600 hover:bg-terracotta-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all whitespace-nowrap">
+          <i class="fa-solid fa-plus text-[10px]"></i> Mua Thêm Sách Mới
+        </a>
+      </div>
+
+      <!-- Library Grid (Pre-rendered Static HTML) -->
+      <div id="library-books-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        
+        <!-- Book 1: Sức Mạnh Của Thói Quen (Đang đọc) -->
+        <div class="bg-white dark:bg-pine-950 rounded-2xl p-4 border border-stone-200/80 dark:border-pine-800 shadow-sm flex flex-col justify-between hover:border-emerald-500 transition-all group">
+          <div>
+            <div class="relative overflow-hidden rounded-xl mb-3 cursor-pointer" onclick="window.location.href='reader.html?id=1'">
+              <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=500&q=80" alt="Sức Mạnh Của Thói Quen" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+              <span class="absolute top-2 left-2 bg-emerald-700/90 text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded backdrop-blur-sm">DRM Vault</span>
+              <span class="absolute bottom-2 right-2 bg-pine-950/80 text-white text-[10px] font-bold px-2 py-0.5 rounded backdrop-blur-sm">75%</span>
+            </div>
+            <div class="space-y-1">
+              <div class="text-[10px] text-amber-500 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-star"></i> 4.9 <span class="text-stone-400 font-normal">• NXB Trẻ</span>
+              </div>
+              <h4 class="font-headline font-bold text-sm text-pine-950 dark:text-stone-100 line-clamp-1 hover:text-terracotta-500 cursor-pointer" onclick="window.location.href='reader.html?id=1'">Sức Mạnh Của Thói Quen</h4>
+              <p class="text-xs text-stone-500 dark:text-stone-400">Charles Duhigg</p>
+            </div>
+            <div class="mt-3 space-y-1">
+              <div class="flex justify-between text-[10px] text-stone-500 font-semibold">
+                <span>Trang 228 / 304</span>
+                <span class="text-emerald-600 font-bold">75%</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-stone-100 dark:bg-pine-900 overflow-hidden">
+                <div class="h-full bg-emerald-600 rounded-full" style="width: 75%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 dark:border-pine-800 grid grid-cols-2 gap-2">
+            <a href="reader.html?id=1" class="text-xs font-bold py-2 rounded-xl bg-pine-900 hover:bg-pine-800 text-white flex items-center justify-center gap-1 shadow-sm transition-all">
+              <i class="fa-solid fa-book-open text-[11px]"></i> Đọc tiếp
+            </a>
+            <a href="book-detail.html?id=1" class="text-xs font-bold py-2 rounded-xl border border-stone-200 dark:border-pine-800 hover:bg-stone-50 dark:hover:bg-pine-900 text-stone-700 dark:text-stone-300 flex items-center justify-center gap-1 transition-all">
+              <i class="fa-solid fa-circle-info text-[11px]"></i> Chi tiết
+            </a>
+          </div>
+        </div>
+
+        <!-- Book 2: Atomic Habits (Đã đọc xong) -->
+        <div class="bg-white dark:bg-pine-950 rounded-2xl p-4 border border-stone-200/80 dark:border-pine-800 shadow-sm flex flex-col justify-between hover:border-emerald-500 transition-all group">
+          <div>
+            <div class="relative overflow-hidden rounded-xl mb-3 cursor-pointer" onclick="window.location.href='reader.html?id=2'">
+              <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&q=80" alt="Atomic Habits" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+              <span class="absolute top-2 left-2 bg-emerald-700/90 text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded backdrop-blur-sm">DRM Vault</span>
+              <span class="absolute bottom-2 right-2 bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">100% Xong</span>
+            </div>
+            <div class="space-y-1">
+              <div class="text-[10px] text-amber-500 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-star"></i> 5.0 <span class="text-stone-400 font-normal">• NXB Thế Giới</span>
+              </div>
+              <h4 class="font-headline font-bold text-sm text-pine-950 dark:text-stone-100 line-clamp-1 hover:text-terracotta-500 cursor-pointer" onclick="window.location.href='reader.html?id=2'">Atomic Habits - Thay Đổi Tí Hon</h4>
+              <p class="text-xs text-stone-500 dark:text-stone-400">James Clear</p>
+            </div>
+            <div class="mt-3 space-y-1">
+              <div class="flex justify-between text-[10px] text-stone-500 font-semibold">
+                <span>Đã đọc 320 / 320 trang</span>
+                <span class="text-emerald-600 font-bold">100%</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-stone-100 dark:bg-pine-900 overflow-hidden">
+                <div class="h-full bg-emerald-600 rounded-full" style="width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 dark:border-pine-800 grid grid-cols-2 gap-2">
+            <a href="reader.html?id=2" class="text-xs font-bold py-2 rounded-xl bg-stone-100 hover:bg-stone-200 dark:bg-pine-900 dark:hover:bg-pine-800 text-pine-900 dark:text-stone-100 flex items-center justify-center gap-1 transition-all">
+              <i class="fa-solid fa-rotate-left text-[11px]"></i> Đọc lại
+            </a>
+            <a href="book-detail.html?id=2" class="text-xs font-bold py-2 rounded-xl border border-stone-200 dark:border-pine-800 hover:bg-stone-50 dark:hover:bg-pine-900 text-stone-700 dark:text-stone-300 flex items-center justify-center gap-1 transition-all">
+              <i class="fa-solid fa-circle-info text-[11px]"></i> Chi tiết
+            </a>
+          </div>
+        </div>
+
+        <!-- Book 3: Tâm Lý Học Về Tiền (Đang đọc) -->
+        <div class="bg-white dark:bg-pine-950 rounded-2xl p-4 border border-stone-200/80 dark:border-pine-800 shadow-sm flex flex-col justify-between hover:border-emerald-500 transition-all group">
+          <div>
+            <div class="relative overflow-hidden rounded-xl mb-3 cursor-pointer" onclick="window.location.href='reader.html?id=3'">
+              <img src="https://images.unsplash.com/photo-1592496431122-2349e0fbc666?w=500&q=80" alt="Tâm Lý Học Về Tiền" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+              <span class="absolute top-2 left-2 bg-emerald-700/90 text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded backdrop-blur-sm">DRM Vault</span>
+              <span class="absolute bottom-2 right-2 bg-pine-950/80 text-white text-[10px] font-bold px-2 py-0.5 rounded backdrop-blur-sm">45%</span>
+            </div>
+            <div class="space-y-1">
+              <div class="text-[10px] text-amber-500 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-star"></i> 4.8 <span class="text-stone-400 font-normal">• NXB Trẻ</span>
+              </div>
+              <h4 class="font-headline font-bold text-sm text-pine-950 dark:text-stone-100 line-clamp-1 hover:text-terracotta-500 cursor-pointer" onclick="window.location.href='reader.html?id=3'">Tâm Lý Học Về Tiền</h4>
+              <p class="text-xs text-stone-500 dark:text-stone-400">Morgan Housel</p>
+            </div>
+            <div class="mt-3 space-y-1">
+              <div class="flex justify-between text-[10px] text-stone-500 font-semibold">
+                <span>Trang 135 / 300</span>
+                <span class="text-emerald-600 font-bold">45%</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-stone-100 dark:bg-pine-900 overflow-hidden">
+                <div class="h-full bg-emerald-600 rounded-full" style="width: 45%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 dark:border-pine-800 grid grid-cols-2 gap-2">
+            <a href="reader.html?id=3" class="text-xs font-bold py-2 rounded-xl bg-pine-900 hover:bg-pine-800 text-white flex items-center justify-center gap-1 shadow-sm transition-all">
+              <i class="fa-solid fa-book-open text-[11px]"></i> Đọc tiếp
+            </a>
+            <a href="book-detail.html?id=3" class="text-xs font-bold py-2 rounded-xl border border-stone-200 dark:border-pine-800 hover:bg-stone-50 dark:hover:bg-pine-900 text-stone-700 dark:text-stone-300 flex items-center justify-center gap-1 transition-all">
+              <i class="fa-solid fa-circle-info text-[11px]"></i> Chi tiết
+            </a>
+          </div>
+        </div>
+
+        <!-- Book 4: Nghệ Thuật Tư Duy Rành Mạch -->
+        <div class="bg-white dark:bg-pine-950 rounded-2xl p-4 border border-stone-200/80 dark:border-pine-800 shadow-sm flex flex-col justify-between hover:border-emerald-500 transition-all group">
+          <div>
+            <div class="relative overflow-hidden rounded-xl mb-3 cursor-pointer" onclick="window.location.href='reader.html?id=4'">
+              <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=500&q=80" alt="Nghệ Thuật Tư Duy Rành Mạch" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+              <span class="absolute top-2 left-2 bg-emerald-700/90 text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded backdrop-blur-sm">DRM Vault</span>
+              <span class="absolute bottom-2 right-2 bg-pine-950/80 text-white text-[10px] font-bold px-2 py-0.5 rounded backdrop-blur-sm">20%</span>
+            </div>
+            <div class="space-y-1">
+              <div class="text-[10px] text-amber-500 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-star"></i> 4.9 <span class="text-stone-400 font-normal">• NXB Thế Giới</span>
+              </div>
+              <h4 class="font-headline font-bold text-sm text-pine-950 dark:text-stone-100 line-clamp-1 hover:text-terracotta-500 cursor-pointer" onclick="window.location.href='reader.html?id=4'">Nghệ Thuật Tư Duy Rành Mạch</h4>
+              <p class="text-xs text-stone-500 dark:text-stone-400">Rolf Dobelli</p>
+            </div>
+            <div class="mt-3 space-y-1">
+              <div class="flex justify-between text-[10px] text-stone-500 font-semibold">
+                <span>Trang 52 / 260</span>
+                <span class="text-emerald-600 font-bold">20%</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-stone-100 dark:bg-pine-900 overflow-hidden">
+                <div class="h-full bg-emerald-600 rounded-full" style="width: 20%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 dark:border-pine-800 grid grid-cols-2 gap-2">
+            <a href="reader.html?id=4" class="text-xs font-bold py-2 rounded-xl bg-pine-900 hover:bg-pine-800 text-white flex items-center justify-center gap-1 shadow-sm transition-all">
+              <i class="fa-solid fa-book-open text-[11px]"></i> Đọc tiếp
+            </a>
+            <a href="book-detail.html?id=4" class="text-xs font-bold py-2 rounded-xl border border-stone-200 dark:border-pine-800 hover:bg-stone-50 dark:hover:bg-pine-900 text-stone-700 dark:text-stone-300 flex items-center justify-center gap-1 transition-all">
+              <i class="fa-solid fa-circle-info text-[11px]"></i> Chi tiết
+            </a>
+          </div>
+        </div>
+
+        <!-- Book 5: Don't Make Me Think -->
+        <div class="bg-white dark:bg-pine-950 rounded-2xl p-4 border border-stone-200/80 dark:border-pine-800 shadow-sm flex flex-col justify-between hover:border-emerald-500 transition-all group">
+          <div>
+            <div class="relative overflow-hidden rounded-xl mb-3 cursor-pointer" onclick="window.location.href='reader.html?id=5'">
+              <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=500&q=80" alt="Don't Make Me Think" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+              <span class="absolute top-2 left-2 bg-emerald-700/90 text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded backdrop-blur-sm">DRM Vault</span>
+              <span class="absolute bottom-2 right-2 bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">100% Xong</span>
+            </div>
+            <div class="space-y-1">
+              <div class="text-[10px] text-amber-500 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-star"></i> 5.0 <span class="text-stone-400 font-normal">• O'Reilly Media</span>
+              </div>
+              <h4 class="font-headline font-bold text-sm text-pine-950 dark:text-stone-100 line-clamp-1 hover:text-terracotta-500 cursor-pointer" onclick="window.location.href='reader.html?id=5'">Don't Make Me Think</h4>
+              <p class="text-xs text-stone-500 dark:text-stone-400">Steve Krug</p>
+            </div>
+            <div class="mt-3 space-y-1">
+              <div class="flex justify-between text-[10px] text-stone-500 font-semibold">
+                <span>Đã đọc 216 / 216 trang</span>
+                <span class="text-emerald-600 font-bold">100%</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-stone-100 dark:bg-pine-900 overflow-hidden">
+                <div class="h-full bg-emerald-600 rounded-full" style="width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 dark:border-pine-800 grid grid-cols-2 gap-2">
+            <a href="reader.html?id=5" class="text-xs font-bold py-2 rounded-xl bg-stone-100 hover:bg-stone-200 dark:bg-pine-900 dark:hover:bg-pine-800 text-pine-900 dark:text-stone-100 flex items-center justify-center gap-1 transition-all">
+              <i class="fa-solid fa-rotate-left text-[11px]"></i> Đọc lại
+            </a>
+            <a href="book-detail.html?id=5" class="text-xs font-bold py-2 rounded-xl border border-stone-200 dark:border-pine-800 hover:bg-stone-50 dark:hover:bg-pine-900 text-stone-700 dark:text-stone-300 flex items-center justify-center gap-1 transition-all">
+              <i class="fa-solid fa-circle-info text-[11px]"></i> Chi tiết
+            </a>
+          </div>
+        </div>
+
+        <!-- Book 6: Deep Work -->
+        <div class="bg-white dark:bg-pine-950 rounded-2xl p-4 border border-stone-200/80 dark:border-pine-800 shadow-sm flex flex-col justify-between hover:border-emerald-500 transition-all group">
+          <div>
+            <div class="relative overflow-hidden rounded-xl mb-3 cursor-pointer" onclick="window.location.href='reader.html?id=6'">
+              <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=500&q=80" alt="Deep Work" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+              <span class="absolute top-2 left-2 bg-emerald-700/90 text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded backdrop-blur-sm">DRM Vault</span>
+              <span class="absolute bottom-2 right-2 bg-pine-950/80 text-white text-[10px] font-bold px-2 py-0.5 rounded backdrop-blur-sm">60%</span>
+            </div>
+            <div class="space-y-1">
+              <div class="text-[10px] text-amber-500 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-star"></i> 4.9 <span class="text-stone-400 font-normal">• Grand Central</span>
+              </div>
+              <h4 class="font-headline font-bold text-sm text-pine-950 dark:text-stone-100 line-clamp-1 hover:text-terracotta-500 cursor-pointer" onclick="window.location.href='reader.html?id=6'">Deep Work - Làm Ra Làm Chơi Ra Chơi</h4>
+              <p class="text-xs text-stone-500 dark:text-stone-400">Cal Newport</p>
+            </div>
+            <div class="mt-3 space-y-1">
+              <div class="flex justify-between text-[10px] text-stone-500 font-semibold">
+                <span>Trang 180 / 300</span>
+                <span class="text-emerald-600 font-bold">60%</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-stone-100 dark:bg-pine-900 overflow-hidden">
+                <div class="h-full bg-emerald-600 rounded-full" style="width: 60%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 dark:border-pine-800 grid grid-cols-2 gap-2">
+            <a href="reader.html?id=6" class="text-xs font-bold py-2 rounded-xl bg-pine-900 hover:bg-pine-800 text-white flex items-center justify-center gap-1 shadow-sm transition-all">
+              <i class="fa-solid fa-book-open text-[11px]"></i> Đọc tiếp
+            </a>
+            <a href="book-detail.html?id=6" class="text-xs font-bold py-2 rounded-xl border border-stone-200 dark:border-pine-800 hover:bg-stone-50 dark:hover:bg-pine-900 text-stone-700 dark:text-stone-300 flex items-center justify-center gap-1 transition-all">
+              <i class="fa-solid fa-circle-info text-[11px]"></i> Chi tiết
+            </a>
+          </div>
+        </div>
+
+        <!-- Book 7: Clean Code -->
+        <div class="bg-white dark:bg-pine-950 rounded-2xl p-4 border border-stone-200/80 dark:border-pine-800 shadow-sm flex flex-col justify-between hover:border-emerald-500 transition-all group">
+          <div>
+            <div class="relative overflow-hidden rounded-xl mb-3 cursor-pointer" onclick="window.location.href='reader.html?id=7'">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&q=80" alt="Clean Code" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+              <span class="absolute top-2 left-2 bg-emerald-700/90 text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded backdrop-blur-sm">DRM Vault</span>
+              <span class="absolute bottom-2 right-2 bg-pine-950/80 text-white text-[10px] font-bold px-2 py-0.5 rounded backdrop-blur-sm">35%</span>
+            </div>
+            <div class="space-y-1">
+              <div class="text-[10px] text-amber-500 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-star"></i> 5.0 <span class="text-stone-400 font-normal">• Prentice Hall</span>
+              </div>
+              <h4 class="font-headline font-bold text-sm text-pine-950 dark:text-stone-100 line-clamp-1 hover:text-terracotta-500 cursor-pointer" onclick="window.location.href='reader.html?id=7'">Clean Code - Mã Sạch</h4>
+              <p class="text-xs text-stone-500 dark:text-stone-400">Robert C. Martin</p>
+            </div>
+            <div class="mt-3 space-y-1">
+              <div class="flex justify-between text-[10px] text-stone-500 font-semibold">
+                <span>Trang 162 / 464</span>
+                <span class="text-emerald-600 font-bold">35%</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-stone-100 dark:bg-pine-900 overflow-hidden">
+                <div class="h-full bg-emerald-600 rounded-full" style="width: 35%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 dark:border-pine-800 grid grid-cols-2 gap-2">
+            <a href="reader.html?id=7" class="text-xs font-bold py-2 rounded-xl bg-pine-900 hover:bg-pine-800 text-white flex items-center justify-center gap-1 shadow-sm transition-all">
+              <i class="fa-solid fa-book-open text-[11px]"></i> Đọc tiếp
+            </a>
+            <a href="book-detail.html?id=7" class="text-xs font-bold py-2 rounded-xl border border-stone-200 dark:border-pine-800 hover:bg-stone-50 dark:hover:bg-pine-900 text-stone-700 dark:text-stone-300 flex items-center justify-center gap-1 transition-all">
+              <i class="fa-solid fa-circle-info text-[11px]"></i> Chi tiết
+            </a>
+          </div>
+        </div>
+
+        <!-- Book 8: Dám Bị Ghét -->
+        <div class="bg-white dark:bg-pine-950 rounded-2xl p-4 border border-stone-200/80 dark:border-pine-800 shadow-sm flex flex-col justify-between hover:border-emerald-500 transition-all group">
+          <div>
+            <div class="relative overflow-hidden rounded-xl mb-3 cursor-pointer" onclick="window.location.href='reader.html?id=8'">
+              <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500&q=80" alt="Dám Bị Ghét" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+              <span class="absolute top-2 left-2 bg-emerald-700/90 text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded backdrop-blur-sm">DRM Vault</span>
+              <span class="absolute bottom-2 right-2 bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">100% Xong</span>
+            </div>
+            <div class="space-y-1">
+              <div class="text-[10px] text-amber-500 font-bold flex items-center gap-1">
+                <i class="fa-solid fa-star"></i> 4.8 <span class="text-stone-400 font-normal">• NXB Nhã Nam</span>
+              </div>
+              <h4 class="font-headline font-bold text-sm text-pine-950 dark:text-stone-100 line-clamp-1 hover:text-terracotta-500 cursor-pointer" onclick="window.location.href='reader.html?id=8'">Dám Bị Ghét</h4>
+              <p class="text-xs text-stone-500 dark:text-stone-400">Koga Fumitake, Kishimi Ichiro</p>
+            </div>
+            <div class="mt-3 space-y-1">
+              <div class="flex justify-between text-[10px] text-stone-500 font-semibold">
+                <span>Đã đọc 336 / 336 trang</span>
+                <span class="text-emerald-600 font-bold">100%</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-stone-100 dark:bg-pine-900 overflow-hidden">
+                <div class="h-full bg-emerald-600 rounded-full" style="width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-stone-100 dark:border-pine-800 grid grid-cols-2 gap-2">
+            <a href="reader.html?id=8" class="text-xs font-bold py-2 rounded-xl bg-stone-100 hover:bg-stone-200 dark:bg-pine-900 dark:hover:bg-pine-800 text-pine-900 dark:text-stone-100 flex items-center justify-center gap-1 transition-all">
+              <i class="fa-solid fa-rotate-left text-[11px]"></i> Đọc lại
+            </a>
+            <a href="book-detail.html?id=8" class="text-xs font-bold py-2 rounded-xl border border-stone-200 dark:border-pine-800 hover:bg-stone-50 dark:hover:bg-pine-900 text-stone-700 dark:text-stone-300 flex items-center justify-center gap-1 transition-all">
+              <i class="fa-solid fa-circle-info text-[11px]"></i> Chi tiết
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       5. FOOTER
+       ========================================================================== -->
+  <footer class="bg-white dark:bg-pine-950 border-t border-stone-200/80 dark:border-pine-800 mt-16 py-12 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-stone-100 dark:border-pine-800">
+        <div class="space-y-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-pine-950 dark:bg-emerald-600 text-white flex items-center justify-center font-headline font-black text-base">H</div>
+            <span class="font-headline font-bold text-base text-pine-950 dark:text-stone-100">Huki Ebook</span>
+          </div>
+          <p class="text-xs text-stone-500 dark:text-stone-400 leading-relaxed">
+            Sàn TMĐT Sách Số & Mạng Xã Hội Đọc Sách hàng đầu Việt Nam. Khám phá tri thức không giới hạn.
+          </p>
+        </div>
+        <div>
+          <div class="font-bold text-xs text-stone-900 dark:text-stone-100 uppercase tracking-wider mb-3">Sàn Sách Số</div>
+          <ul class="space-y-2 text-xs text-stone-500 dark:text-stone-400">
+            <li><a href="books.html" class="hover:text-terracotta-500">Tất cả tựa sách</a></li>
+            <li><a href="books.html?cat=ky-nang" class="hover:text-terracotta-500">Phát triển bản thân</a></li>
+            <li><a href="books.html?cat=kinh-te" class="hover:text-terracotta-500">Kinh doanh & Khởi nghiệp</a></li>
+            <li><a href="books.html?cat=cong-nghe" class="hover:text-terracotta-500">Công nghệ & Trí tuệ AI</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold text-xs text-stone-900 dark:text-stone-100 uppercase tracking-wider mb-3">Hỗ Trợ Độc Giả</div>
+          <ul class="space-y-2 text-xs text-stone-500 dark:text-stone-400">
+            <li><a href="reader.html?id=1&sample=true" class="hover:text-terracotta-500">Trình đọc Huki Reader</a></li>
+            <li><a href="library.html" class="hover:text-terracotta-500">Đồng bộ thiết bị Kindle / iPad</a></li>
+            <li><a href="#" class="hover:text-terracotta-500">Chính sách bản quyền DRM</a></li>
+            <li><a href="#" class="hover:text-terracotta-500">Liên hệ & Khiếu nại bản quyền</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold text-xs text-stone-900 dark:text-stone-100 uppercase tracking-wider mb-3">Thanh Toán An Toàn</div>
+          <p class="text-xs text-stone-500 dark:text-stone-400 mb-3">Hỗ trợ MoMo, VNPay, VietQR, Visa, Mastercard.</p>
+          <div class="flex items-center gap-2 text-2xl text-stone-400">
+            <i class="fa-brands fa-cc-visa"></i>
+            <i class="fa-brands fa-cc-mastercard"></i>
+            <i class="fa-solid fa-qrcode"></i>
+          </div>
+        </div>
+      </div>
+      <div class="pt-6 text-center text-xs text-stone-400">
+        © 2026 Huki Ebook Platform. Mọi quyền được bảo lưu. Tác phẩm bảo vệ bản quyền số theo chuẩn IDPF EPUB3.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Toast Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+  <script>
+    function renderLibraryShelf(tab) {
+      document.querySelectorAll('.library-tab-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById('library-tab-' + tab);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const cards = document.querySelectorAll('#library-books-grid > div');
+      cards.forEach((card, idx) => {
+        let isVisible = true;
+        if (tab === 'reading') {
+          // Show reading books (indices 0, 2, 3, 5, 6)
+          isVisible = [0, 2, 3, 5, 6].includes(idx);
+        } else if (tab === 'completed') {
+          // Show completed books (indices 1, 4, 7)
+          isVisible = [1, 4, 7].includes(idx);
+        } else if (tab === 'favourites') {
+          // Show favourite books (indices 0, 1, 2)
+          isVisible = [0, 1, 2].includes(idx);
+        }
+        card.style.display = isVisible ? 'flex' : 'none';
+      });
+
+      const tabNames = {
+        'all': 'Tất Cả Sách Bản Quyền',
+        'reading': 'Sách Đang Đọc Dở',
+        'completed': 'Sách Đã Đọc Xong',
+        'favourites': 'Sách Yêu Thích'
+      };
+      showToast('Đang hiển thị: ' + (tabNames[tab] || tab), 'info');
+    }
+  </script>
+</body>
+</html>

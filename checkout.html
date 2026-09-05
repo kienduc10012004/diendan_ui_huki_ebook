@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="vi" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ Hàng & Thanh Toán Bản Quyền - Huki Ebook</title>
+  
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            pine: {
+              50: '#edf7f3',
+              100: '#d5ede4',
+              200: '#aedac8',
+              300: '#7bc1a8',
+              400: '#4da386',
+              500: '#206b54',
+              600: '#195543',
+              700: '#144234',
+              800: '#10352a',
+              900: '#0c2b22',
+              950: '#071813',
+            },
+            terracotta: {
+              50: '#fdf4f2',
+              100: '#fbe8e4',
+              200: '#f7d4cc',
+              300: '#f0b5a7',
+              400: '#e58771',
+              500: '#e35938',
+              600: '#cf4927',
+              700: '#ad3a1d',
+              800: '#8c311c',
+              900: '#742e1d',
+              950: '#3f140c',
+            },
+            parchment: '#FAF7F0',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            serif: ['"Merriweather"', 'Georgia', 'serif'],
+            headline: ['"Playfair Display"', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#FAF7F0] dark:bg-[#07130F] text-stone-800 dark:text-stone-200 min-h-screen flex flex-col font-sans transition-colors duration-200">
+
+  <!-- ==========================================================================
+       1. GLOBAL UNIFIED HEADER
+       ========================================================================== -->
+  <header class="sticky top-0 z-40 bg-white/95 dark:bg-[#0C2B22]/95 backdrop-blur-md border-b border-stone-200/80 dark:border-pine-800 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4 py-3">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group flex-shrink-0">
+        <div class="w-10 h-10 rounded-xl bg-pine-950 dark:bg-emerald-600 text-white flex items-center justify-center font-headline font-black text-xl shadow-md group-hover:scale-105 transition-all">
+          H
+        </div>
+        <div>
+          <div class="font-headline font-black text-lg tracking-tight text-pine-950 dark:text-stone-100 flex items-center gap-1">
+            Huki<span class="text-terracotta-500 font-sans font-bold text-xs uppercase tracking-wider bg-terracotta-50 dark:bg-terracotta-950/60 px-1.5 py-0.5 rounded border border-terracotta-200/60 dark:border-terracotta-800">Ebook</span>
+          </div>
+          <div class="text-[10px] text-stone-400 uppercase tracking-widest font-semibold hidden sm:block">Sàn Sách Số Bản Quyền</div>
+        </div>
+      </a>
+
+      <!-- Step Indicator -->
+      <div class="hidden sm:flex items-center gap-4 text-xs font-bold">
+        <span class="text-pine-950 dark:text-emerald-300 flex items-center gap-1.5">
+          <span class="w-5 h-5 rounded-full bg-pine-950 dark:bg-emerald-600 text-white flex items-center justify-center text-[10px]">1</span> Giỏ hàng
+        </span>
+        <i class="fa-solid fa-chevron-right text-[10px] text-stone-300"></i>
+        <span class="text-terracotta-500 flex items-center gap-1.5">
+          <span class="w-5 h-5 rounded-full bg-terracotta-500 text-white flex items-center justify-center text-[10px]">2</span> Thanh toán số
+        </span>
+        <i class="fa-solid fa-chevron-right text-[10px] text-stone-300"></i>
+        <span class="text-stone-400 flex items-center gap-1.5">
+          <span class="w-5 h-5 rounded-full bg-stone-200 dark:bg-pine-900 text-stone-500 flex items-center justify-center text-[10px]">3</span> Đọc tức thì
+        </span>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="flex items-center gap-3">
+        <button onclick="toggleTheme()" class="w-9 h-9 rounded-xl bg-stone-100 dark:bg-pine-900 text-stone-700 dark:text-stone-300 flex items-center justify-center hover:text-amber-500 transition-colors" title="Chuyển chế độ sáng/tối">
+          <i class="fa-solid fa-moon dark:hidden text-sm"></i>
+          <i class="fa-solid fa-sun hidden dark:block text-sm text-amber-400"></i>
+        </button>
+        <a href="books.html" class="text-xs font-bold text-stone-600 dark:text-stone-300 hover:text-terracotta-500 flex items-center gap-1">
+          <i class="fa-solid fa-arrow-left text-[10px]"></i> Tiếp tục chọn sách
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       2. CHECKOUT MAIN CONTENT
+       ========================================================================== -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
+    
+    <div>
+      <h1 class="font-headline font-black text-2xl sm:text-3xl text-pine-950 dark:text-stone-100 tracking-tight">
+        Giỏ Hàng & Thanh Toán Bản Quyền
+      </h1>
+      <p class="text-xs text-stone-500 dark:text-stone-400 mt-1">
+        Sách số mua sẽ được cấp chứng chỉ bản quyền DRM và kích hoạt vĩnh viễn vào Tủ Sách cá nhân của bạn ngay sau khi thanh toán.
+      </p>
+    </div>
+
+    <!-- Empty Cart State -->
+    <div id="checkout-empty-cart" class="py-16 text-center space-y-4 bg-white dark:bg-pine-950 rounded-3xl border border-stone-200/80 dark:border-pine-800" style="display: none;">
+      <div class="text-5xl text-stone-300 dark:text-pine-700"><i class="fa-solid fa-cart-shopping"></i></div>
+      <h3 class="font-headline font-bold text-lg text-pine-950 dark:text-stone-100">Giỏ hàng của bạn đang trống</h3>
+      <p class="text-xs text-stone-500 max-w-sm mx-auto">Hãy khám phá hơn 15,000+ đầu sách số bản quyền phong phú trên sàn Huki Ebook.</p>
+      <a href="books.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-terracotta-500 hover:bg-terracotta-600 text-white font-bold text-xs shadow-lg shadow-terracotta-500/20 transition-all">
+        <i class="fa-solid fa-compass"></i> Khám Phá Sàn Sách Số Ngay
+      </a>
+    </div>
+
+    <!-- Content Grid (Items + Order Summary) -->
+    <div id="checkout-content-grid" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left: Items list & Payment Methods (7 cols) -->
+      <div class="lg:col-span-7 space-y-6">
+        
+        <!-- Cart Items Box -->
+        <div class="bg-white dark:bg-pine-950 p-6 rounded-3xl border border-stone-200/80 dark:border-pine-800 shadow-sm space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-stone-100 dark:border-pine-800">
+            <h3 class="font-headline font-bold text-sm text-pine-950 dark:text-stone-100 flex items-center gap-2">
+              <i class="fa-solid fa-book text-emerald-600"></i> Danh Sách Tựa Sách Chọn Mua
+            </h3>
+            <span class="text-xs text-stone-400">Bản quyền số vĩnh viễn</span>
+          </div>
+
+          <div id="checkout-items-list" class="space-y-3">
+            
+            <!-- Cart Item 1: Sức Mạnh Của Thói Quen -->
+            <div class="p-3.5 rounded-2xl bg-stone-50 dark:bg-pine-900/40 border border-stone-200/80 dark:border-pine-800 flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3 min-w-0">
+                <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=200&q=80" alt="Sức Mạnh Của Thói Quen" class="w-12 h-16 rounded-lg object-cover shadow-sm shrink-0">
+                <div class="min-w-0 space-y-0.5">
+                  <span class="inline-flex items-center gap-1 text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-700 dark:text-emerald-400">
+                    <i class="fa-solid fa-file-lines text-[8px]"></i> EPUB3 Bản Quyền
+                  </span>
+                  <h4 class="font-headline font-bold text-xs text-pine-950 dark:text-stone-100 truncate">Sức Mạnh Của Thói Quen</h4>
+                  <div class="text-[10px] text-stone-400">Charles Duhigg • NXB Trẻ</div>
+                </div>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="font-headline font-extrabold text-xs text-red-600 dark:text-red-400">135.200 ₫</div>
+                <div class="text-[10px] text-stone-400 line-through">169.000 ₫</div>
+                <button onclick="showToast('Đã xóa sách khỏi giỏ hàng!', 'info')" class="text-[10px] text-stone-400 hover:text-red-500 transition-colors mt-0.5" title="Xóa">
+                  <i class="fa-regular fa-trash-can"></i> Xóa
+                </button>
+              </div>
+            </div>
+
+            <!-- Cart Item 2: Atomic Habits -->
+            <div class="p-3.5 rounded-2xl bg-stone-50 dark:bg-pine-900/40 border border-stone-200/80 dark:border-pine-800 flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3 min-w-0">
+                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=200&q=80" alt="Atomic Habits" class="w-12 h-16 rounded-lg object-cover shadow-sm shrink-0">
+                <div class="min-w-0 space-y-0.5">
+                  <span class="inline-flex items-center gap-1 text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-700 dark:text-emerald-400">
+                    <i class="fa-solid fa-file-lines text-[8px]"></i> EPUB3 + Audio Studio
+                  </span>
+                  <h4 class="font-headline font-bold text-xs text-pine-950 dark:text-stone-100 truncate">Atomic Habits - Thay Đổi Tí Hon</h4>
+                  <div class="text-[10px] text-stone-400">James Clear • NXB Thế Giới</div>
+                </div>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="font-headline font-extrabold text-xs text-red-600 dark:text-red-400">141.750 ₫</div>
+                <div class="text-[10px] text-stone-400 line-through">189.000 ₫</div>
+                <button onclick="showToast('Đã xóa sách khỏi giỏ hàng!', 'info')" class="text-[10px] text-stone-400 hover:text-red-500 transition-colors mt-0.5" title="Xóa">
+                  <i class="fa-regular fa-trash-can"></i> Xóa
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Payment Method Selection -->
+        <div class="bg-white dark:bg-pine-950 p-6 rounded-3xl border border-stone-200/80 dark:border-pine-800 shadow-sm space-y-4">
+          <div class="pb-3 border-b border-stone-100 dark:border-pine-800">
+            <h3 class="font-headline font-bold text-sm text-pine-950 dark:text-stone-100 flex items-center gap-2">
+              <i class="fa-solid fa-credit-card text-terracotta-500"></i> Phương Thức Thanh Toán Số
+            </h3>
+            <p class="text-[11px] text-stone-400 mt-0.5">Xác nhận tự động qua cổng thanh toán liên kết 24/7</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div onclick="selectPaymentMethod('momo', this)" class="payment-choice-card active">
+              <div class="w-9 h-9 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center font-bold text-sm flex-shrink-0">
+                M
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="text-xs font-bold text-stone-900 dark:text-stone-100">Ví MoMo</div>
+                <div class="text-[10px] text-stone-400">Quét mã QR tức thì</div>
+              </div>
+              <i class="fa-solid fa-circle-check text-emerald-600 text-sm"></i>
+            </div>
+
+            <div onclick="selectPaymentMethod('vnpay', this)" class="payment-choice-card">
+              <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs flex-shrink-0">
+                VN
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="text-xs font-bold text-stone-900 dark:text-stone-100">VNPAY-QR</div>
+                <div class="text-[10px] text-stone-400">Hơn 40 ứng dụng ngân hàng</div>
+              </div>
+              <i class="fa-regular fa-circle text-stone-300 text-sm"></i>
+            </div>
+
+            <div onclick="selectPaymentMethod('vietqr', this)" class="payment-choice-card">
+              <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs flex-shrink-0">
+                <i class="fa-solid fa-qrcode"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="text-xs font-bold text-stone-900 dark:text-stone-100">Chuyển Khoản VietQR</div>
+                <div class="text-[10px] text-stone-400">Khớp lệnh tự động 10s</div>
+              </div>
+              <i class="fa-regular fa-circle text-stone-300 text-sm"></i>
+            </div>
+
+            <div onclick="selectPaymentMethod('card', this)" class="payment-choice-card">
+              <div class="w-9 h-9 rounded-xl bg-stone-100 dark:bg-pine-900 text-stone-700 dark:text-stone-300 flex items-center justify-center font-bold text-xs flex-shrink-0">
+                <i class="fa-brands fa-cc-visa"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="text-xs font-bold text-stone-900 dark:text-stone-100">Thẻ Visa / MasterCard</div>
+                <div class="text-[10px] text-stone-400">Bảo mật chuẩn PCI-DSS</div>
+              </div>
+              <i class="fa-regular fa-circle text-stone-300 text-sm"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: Order Summary, Voucher & Confirm Button (5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <div class="bg-white dark:bg-pine-950 p-6 rounded-3xl border border-stone-200/80 dark:border-pine-800 shadow-sm space-y-5 sticky top-24">
+          <div class="pb-3 border-b border-stone-100 dark:border-pine-800">
+            <h3 class="font-headline font-bold text-sm text-pine-950 dark:text-stone-100">
+              Tóm Tắt Đơn Hàng Sách Số
+            </h3>
+          </div>
+
+          <!-- Coupon Code Input -->
+          <div class="space-y-2">
+            <label class="text-[11px] font-bold text-stone-700 dark:text-stone-300">Mã Khuyến Mãi / Voucher</label>
+            <div class="flex gap-2">
+              <input 
+                type="text" 
+                id="checkout-coupon-input" 
+                value="HUKI2026"
+                placeholder="Nhập mã HUKI2026..." 
+                class="flex-1 text-xs px-3.5 py-2.5 rounded-xl border border-stone-200 dark:border-pine-800 bg-stone-50 dark:bg-pine-900 text-stone-900 dark:text-stone-100 uppercase font-mono focus:outline-none focus:ring-2 focus:ring-terracotta-500/20"
+              >
+              <button onclick="applyCouponCode()" class="px-4 py-2.5 rounded-xl bg-pine-950 dark:bg-emerald-600 hover:bg-terracotta-500 text-white font-bold text-xs transition-all shadow-sm">
+                Áp Dụng
+              </button>
+            </div>
+            <div class="text-[10px] text-stone-400 flex items-center gap-1">
+              <i class="fa-solid fa-tag text-terracotta-500"></i> Mã gợi ý: <span class="font-mono font-bold text-terracotta-500 cursor-pointer" onclick="document.getElementById('checkout-coupon-input').value='HUKI2026'; applyCouponCode();">HUKI2026</span> (-20.000đ)
+            </div>
+          </div>
+
+          <!-- Huki Coins Checkbox -->
+          <div class="p-3.5 rounded-2xl bg-amber-50 dark:bg-pine-900/40 border border-amber-200/80 dark:border-amber-800/60 flex items-center justify-between">
+            <label class="flex items-center gap-2.5 cursor-pointer">
+              <input type="checkbox" onchange="toggleCheckoutCoins(this)" class="w-4 h-4 text-terracotta-500 rounded focus:ring-terracotta-500">
+              <div>
+                <div class="text-xs font-bold text-amber-900 dark:text-amber-300 flex items-center gap-1">
+                  <i class="fa-solid fa-coins text-amber-500"></i> Dùng 5,000 Huki Xu
+                </div>
+                <div class="text-[10px] text-amber-700 dark:text-amber-400">Số dư hiện tại: 14,250 Xu</div>
+              </div>
+            </label>
+            <span class="text-xs font-bold text-amber-900 dark:text-amber-300">-5.000đ</span>
+          </div>
+
+          <!-- Price Breakdown (Pre-calculated Static Values) -->
+          <div class="space-y-2.5 pt-2 border-t border-stone-100 dark:border-pine-800 text-xs">
+            <div class="flex justify-between text-stone-600 dark:text-stone-400">
+              <span>Tạm tính sách số (2 cuốn):</span>
+              <span id="checkout-subtotal" class="font-bold text-stone-900 dark:text-stone-100 font-mono">276.950 ₫</span>
+            </div>
+            <div id="checkout-discount-row" class="flex justify-between text-terracotta-500">
+              <span>Giảm giá Voucher (HUKI2026):</span>
+              <span id="checkout-discount-amount" class="font-bold font-mono">-20.000 ₫</span>
+            </div>
+            <div id="checkout-coin-row" class="justify-between text-amber-600 dark:text-amber-400" style="display: none;">
+              <span>Giảm trừ Huki Xu:</span>
+              <span id="checkout-coin-amount" class="font-bold font-mono">-0 ₫</span>
+            </div>
+            <div class="flex justify-between text-emerald-600 dark:text-emerald-400 font-semibold">
+              <span>Phí phân phối DRM số:</span>
+              <span>MIỄN PHÍ</span>
+            </div>
+            <div class="flex justify-between text-sm font-headline font-black text-pine-950 dark:text-stone-100 pt-3 border-t border-stone-200 dark:border-pine-800">
+              <span>Tổng thanh toán:</span>
+              <span id="checkout-final-total" class="text-lg text-red-600 dark:text-red-400 font-mono">256.950 ₫</span>
+            </div>
+          </div>
+
+          <!-- Confirm CTA Button -->
+          <button onclick="handleConfirmOrder()" class="w-full py-4 rounded-2xl bg-terracotta-500 hover:bg-terracotta-600 text-white font-headline font-bold text-sm flex items-center justify-center gap-2 shadow-xl shadow-terracotta-500/25 hover:scale-[1.01] transition-all">
+            <i class="fa-solid fa-lock"></i> Thanh Toán <span id="checkout-btn-total">256.950 ₫</span> & Đọc Ngay
+          </button>
+
+          <div class="text-center text-[11px] text-stone-400 flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-shield-halved text-emerald-600"></i> Giao dịch bảo mật 256-bit SSL
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+       3. INSTANT RECEIPT SUCCESS MODAL (HAPPY CASE)
+       ========================================================================== -->
+  <div id="receipt-success-modal" class="receipt-modal-backdrop" style="display: none;">
+    <div class="bg-white dark:bg-pine-950 rounded-3xl p-8 max-w-md w-full border border-stone-200 dark:border-pine-800 shadow-2xl space-y-6 text-center relative animate-in fade-in zoom-in-95 duration-200">
+      
+      <div class="w-16 h-16 rounded-3xl bg-emerald-100 dark:bg-pine-800 text-emerald-600 dark:text-emerald-300 flex items-center justify-center text-3xl mx-auto shadow-lg shadow-emerald-500/20">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+
+      <div class="space-y-1">
+        <h3 class="font-headline font-black text-2xl text-pine-950 dark:text-stone-100">
+          Thanh Toán Thành Công!
+        </h3>
+        <p class="text-xs text-stone-500 dark:text-stone-400">
+          Bản quyền số đã được gắn mã số định danh và kích hoạt tức thì vào tài khoản của bạn.
+        </p>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-stone-50 dark:bg-pine-900/40 border border-stone-200/80 dark:border-pine-800 text-left space-y-2 text-xs">
+        <div class="flex justify-between">
+          <span class="text-stone-400">Mã đơn hàng:</span>
+          <span class="font-mono font-bold text-stone-800 dark:text-stone-200">#HK-2026-89412</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-stone-400">Thời gian cấp phép:</span>
+          <span class="font-bold text-stone-800 dark:text-stone-200">Vừa xong (Tức thì)</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-stone-400">Trạng thái bản quyền:</span>
+          <span class="font-bold text-emerald-600">Đã mã hóa DRM Huki Vault</span>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <button onclick="closeReceiptModalAndRead()" class="w-full py-3.5 rounded-2xl bg-terracotta-500 hover:bg-terracotta-600 text-white font-headline font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition-all">
+          <i class="fa-solid fa-book-open"></i> Mở Tủ Sách & Đọc Ngay
+        </button>
+        <a href="books.html" class="block w-full py-2.5 text-xs font-bold text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors">
+          Tiếp tục mua sách khác
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+  <script>
+    let subtotal = 276950;
+    let couponDiscount = 20000;
+    let coinsDiscount = 0;
+
+    function recalculateTotal() {
+      const finalTotal = Math.max(0, subtotal - couponDiscount - coinsDiscount);
+      const formattedTotal = finalTotal.toLocaleString('vi-VN') + ' ₫';
+      
+      const finalEl = document.getElementById('checkout-final-total');
+      const btnEl = document.getElementById('checkout-btn-total');
+      if (finalEl) finalEl.innerText = formattedTotal;
+      if (btnEl) btnEl.innerText = formattedTotal;
+    }
+
+    function selectPaymentMethod(type, el) {
+      document.querySelectorAll('.payment-choice-card').forEach(card => {
+        card.classList.remove('active');
+        const icon = card.querySelector('.fa-circle-check, .fa-circle');
+        if (icon) {
+          icon.className = 'fa-regular fa-circle text-stone-300 text-sm';
+        }
+      });
+
+      if (el) {
+        el.classList.add('active');
+        const icon = el.querySelector('.fa-circle');
+        if (icon) {
+          icon.className = 'fa-solid fa-circle-check text-emerald-600 text-sm';
+        }
+      }
+      showToast('Đã chọn phương thức thanh toán', 'info');
+    }
+
+    function applyCouponCode() {
+      const input = document.getElementById('checkout-coupon-input');
+      const code = input ? input.value.trim().toUpperCase() : '';
+      const discountRow = document.getElementById('checkout-discount-row');
+      const discountAmount = document.getElementById('checkout-discount-amount');
+
+      if (code === 'HUKI2026' || code === 'HUKIVIP') {
+        couponDiscount = code === 'HUKIVIP' ? 30000 : 20000;
+        if (discountRow) discountRow.style.display = 'flex';
+        if (discountAmount) discountAmount.innerText = '-' + couponDiscount.toLocaleString('vi-VN') + ' ₫';
+        showToast('Áp dụng thành công mã ' + code + ' (-' + couponDiscount.toLocaleString('vi-VN') + 'đ)!', 'success');
+      } else if (code === '') {
+        couponDiscount = 0;
+        if (discountRow) discountRow.style.display = 'none';
+        showToast('Đã hủy mã giảm giá', 'info');
+      } else {
+        showToast('Mã khuyến mãi không hợp lệ hoặc đã hết hạn!', 'error');
+        return;
+      }
+      recalculateTotal();
+    }
+
+    function toggleCheckoutCoins(checkbox) {
+      const coinRow = document.getElementById('checkout-coin-row');
+      const coinAmount = document.getElementById('checkout-coin-amount');
+      if (checkbox && checkbox.checked) {
+        coinsDiscount = 5000;
+        if (coinRow) coinRow.style.display = 'flex';
+        if (coinAmount) coinAmount.innerText = '-5.000 ₫';
+        showToast('Đã dùng 5.000 Huki Xu giảm 5.000đ!', 'success');
+      } else {
+        coinsDiscount = 0;
+        if (coinRow) coinRow.style.display = 'none';
+      }
+      recalculateTotal();
+    }
+
+    function handleConfirmOrder() {
+      const modal = document.getElementById('receipt-success-modal');
+      if (modal) {
+        modal.style.display = 'flex';
+        showToast('Thanh toán thành công! Bản quyền sách đã được cấp.', 'success');
+      }
+    }
+
+    function closeReceiptModalAndRead() {
+      window.location.href = 'library.html';
+    }
+  </script>
+</body>
+</html>
