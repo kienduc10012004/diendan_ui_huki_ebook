@@ -2895,38 +2895,138 @@ function switchView(viewName) {
   const forumView = document.getElementById('forum-view');
   const btnStore = document.getElementById('btn-view-store');
   const btnForum = document.getElementById('btn-view-forum');
+  const railBtnStore = document.getElementById('rail-btn-store');
+  const railBtnForum = document.getElementById('rail-btn-forum');
+  const sidebarNavStore = document.getElementById('sidebar-nav-store');
+  const sidebarNavForum = document.getElementById('sidebar-nav-forum');
 
   if (viewName === 'forum') {
     storeView?.classList.add('hidden');
     forumView?.classList.remove('hidden');
 
+    // Header buttons
     if (btnStore) {
-      btnStore.classList.remove('bg-amber-800', 'text-white', 'shadow-sm', 'active');
-      btnStore.classList.add('text-stone-600', 'dark:text-stone-300');
+      btnStore.className = 'px-3.5 py-1.5 rounded-full font-bold text-xs text-stone-600 dark:text-stone-300 hover:text-emerald-800 flex items-center gap-1.5 transition-all';
     }
     if (btnForum) {
-      btnForum.classList.remove('text-stone-600', 'dark:text-stone-300');
-      btnForum.classList.add('bg-amber-800', 'text-white', 'shadow-sm', 'active');
+      btnForum.className = 'px-3.5 py-1.5 rounded-full font-bold text-xs bg-emerald-800 text-white shadow-sm flex items-center gap-1.5 transition-all active';
     }
 
-    renderGoodreadsFeed('all');
+    // Sidebar rail buttons
+    railBtnStore?.classList.remove('active');
+    railBtnForum?.classList.add('active');
+
+    // Sidebar Level 2 nav links
+    sidebarNavStore?.classList.remove('crisply-nav-link-active-figma');
+    sidebarNavForum?.classList.add('crisply-nav-link-active-figma');
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    showToast('Đang xem Mạng Xã Hội Độc Giả HUKI!', 'info');
   } else {
     forumView?.classList.add('hidden');
     storeView?.classList.remove('hidden');
 
+    // Header buttons
     if (btnForum) {
-      btnForum.classList.remove('bg-amber-800', 'text-white', 'shadow-sm', 'active');
-      btnForum.classList.add('text-stone-600', 'dark:text-stone-300');
+      btnForum.className = 'px-3.5 py-1.5 rounded-full font-bold text-xs text-stone-600 dark:text-stone-300 hover:text-emerald-800 flex items-center gap-1.5 transition-all';
     }
     if (btnStore) {
-      btnStore.classList.remove('text-stone-600', 'dark:text-stone-300');
-      btnStore.classList.add('bg-amber-800', 'text-white', 'shadow-sm', 'active');
+      btnStore.className = 'px-3.5 py-1.5 rounded-full font-bold text-xs bg-emerald-800 text-white shadow-sm flex items-center gap-1.5 transition-all active';
     }
 
+    // Sidebar rail buttons
+    railBtnForum?.classList.remove('active');
+    railBtnStore?.classList.add('active');
+
+    // Sidebar Level 2 nav links
+    sidebarNavForum?.classList.remove('crisply-nav-link-active-figma');
+    sidebarNavStore?.classList.add('crisply-nav-link-active-figma');
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    showToast('Đang xem Sàn Thương Mại Sách Số & Ebook Bản Quyền!', 'info');
   }
 }
+
+// Interactive Community Poll Handler (Figma Screen 2)
+let userHasVotedPoll = false;
+function voteCommunityPoll(optionIdx) {
+  if (userHasVotedPoll) {
+    showToast('Bạn đã bỏ phiếu trong cuộc bình chọn này rồi!', 'info');
+    return;
+  }
+  userHasVotedPoll = true;
+
+  const opt1 = document.getElementById('poll-opt-1');
+  const opt2 = document.getElementById('poll-opt-2');
+  const opt3 = document.getElementById('poll-opt-3');
+
+  if (optionIdx === 1) {
+    opt1?.querySelector('.poll-progress-fill')?.classList.add('active-voted');
+    showToast('Cảm ơn bạn đã bình chọn cho Team Sách Giấy truyền thống! 📖', 'success');
+  } else if (optionIdx === 2) {
+    opt2?.querySelector('.poll-progress-fill')?.classList.add('active-voted');
+    showToast('Cảm ơn bạn đã bình chọn cho Team Ebook tiện lợi & ghi chú nhanh! 📱', 'success');
+  } else if (optionIdx === 3) {
+    opt3?.querySelector('.poll-progress-fill')?.classList.add('active-voted');
+    showToast('Cảm ơn bạn đã bình chọn cho Linh hoạt cả hai tuỳ hoàn cảnh! ☕', 'success');
+  }
+}
+
+// Forum Filter Tabs (Figma Screen 2)
+function filterForumTab(tabKey, element) {
+  document.querySelectorAll('#forum-filter-tabs .feed-tab-btn').forEach(btn => {
+    btn.className = 'feed-tab-btn text-xs font-bold px-3.5 py-1.5 rounded-full text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-pine-800 transition-colors flex items-center gap-1.5';
+  });
+
+  if (element) {
+    element.className = 'feed-tab-btn active text-xs font-bold px-3.5 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-900 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 flex items-center gap-1.5';
+  }
+
+  const titles = {
+    'for-you': 'Bảng tin dành cho bạn',
+    'following': 'Bài viết từ người bạn đang theo dõi',
+    'review': 'Danh sách bài Review & Chấm sao',
+    'discuss': 'Các chủ đề thảo luận sôi nổi',
+    'clubs': 'Hoạt động các Câu Lạc Bộ Sách',
+    'challenge': 'Tiến độ Thử Thách Đọc 2026'
+  };
+
+  showToast(`Đang lọc: ${titles[tabKey] || tabKey}`, 'info');
+}
+
+// Post Like Counter Toggle
+function togglePostLike(btnEl, baseCount) {
+  const icon = btnEl.querySelector('i');
+  const isLiked = icon.classList.contains('fa-solid');
+
+  if (isLiked) {
+    icon.className = 'fa-regular fa-heart text-stone-400';
+    btnEl.classList.remove('text-rose-600');
+    showToast('Đã bỏ thích bài viết', 'info');
+  } else {
+    icon.className = 'fa-solid fa-heart text-rose-500';
+    btnEl.classList.add('text-rose-600');
+    showToast('Đã thích bài viết! ❤️', 'success');
+  }
+}
+
+function focusCommentInput(inputId) {
+  showToast('Hãy để lại bình luận chia sẻ cảm nghĩ của bạn!', 'info');
+}
+
+function handleQuickForumPost() {
+  const input = document.getElementById('forum-quick-post-input');
+  const text = input ? input.value.trim() : '';
+
+  if (!text) {
+    showToast('Vui lòng nhập nội dung bài viết trước khi đăng!', 'error');
+    return;
+  }
+
+  if (input) input.value = '';
+  showToast('Đã đăng bài viết thành công lên Mạng Xã Hội Độc Giả HUKI! 🎉', 'success');
+}
+
 
 // --- 17. CREATE POST MODAL & UTILS ---
 

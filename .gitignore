@@ -1,3 +1,6 @@
 .agents/
 .claude/
 .gemini/
+.stitch-reference/
+node_modules/
+dist/

@@ -3501,5 +3501,288 @@ body.dark-mode .star-prog-bar-track {
   }
 }
 
+/* ==========================================================================
+   FIGMA DESIGN SYSTEM EXTENSION - EXACT REPLICA (SIDEBAR, FORUM, STORE)
+   ========================================================================== */
 
+/* 1. Sidebar Nav & Drawer Specific Styling */
+.crisply-rail-code-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #e6f4ea;
+  color: #166534;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  transition: all 0.15s ease;
+  border: 1px solid rgba(22, 101, 52, 0.15);
+}
 
+body.dark-mode .crisply-rail-code-btn {
+  background: #143828;
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.2);
+}
+
+.crisply-rail-code-btn:hover {
+  background: #d1fae5;
+  transform: scale(1.04);
+}
+
+.crisply-nav-link-active-figma {
+  background: #edf7f3 !important;
+  color: #166534 !important;
+  font-weight: 700 !important;
+  border-radius: 12px;
+}
+
+body.dark-mode .crisply-nav-link-active-figma {
+  background: #143828 !important;
+  color: #4ade80 !important;
+}
+
+.crisply-nav-link-active-figma i {
+  color: #166534 !important;
+}
+
+body.dark-mode .crisply-nav-link-active-figma i {
+  color: #4ade80 !important;
+}
+
+.badge-pro-pill {
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: #e6f4ea;
+  color: #166534;
+  border: 1px solid rgba(22, 101, 52, 0.2);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+body.dark-mode .badge-pro-pill {
+  background: #143828;
+  color: #4ade80;
+  border-color: rgba(74, 222, 128, 0.3);
+}
+
+.badge-hot-pill {
+  font-size: 9px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 9999px;
+  background: #fff7ed;
+  color: #ea580c;
+  border: 1px solid #ffedd5;
+  letter-spacing: 0.05em;
+}
+
+body.dark-mode .badge-hot-pill {
+  background: #431407;
+  color: #fb923c;
+  border-color: #7c2d12;
+}
+
+.crisply-sub-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 9999px;
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+body.dark-mode .crisply-sub-badge {
+  background: #1e293b;
+  color: #94a3b8;
+}
+
+.crisply-sub-badge-green {
+  background: #e6f4ea !important;
+  color: #166534 !important;
+}
+
+body.dark-mode .crisply-sub-badge-green {
+  background: #143828 !important;
+  color: #4ade80 !important;
+}
+
+.custom-label-placeholder-box {
+  border: 1.5px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 18px 12px;
+  text-align: center;
+  color: #64748b;
+  font-size: 11.5px;
+  line-height: 1.5;
+  background: rgba(248, 250, 252, 0.7);
+}
+
+body.dark-mode .custom-label-placeholder-box {
+  border-color: #334155;
+  color: #94a3b8;
+  background: rgba(15, 38, 30, 0.4);
+}
+
+.crisply-drawer-footer {
+  padding-top: 14px;
+  margin-top: auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #64748b;
+}
+
+body.dark-mode .crisply-drawer-footer {
+  border-top-color: rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+}
+
+/* 2. Forum Green Hero & Stats */
+.forum-hero-banner {
+  background: linear-gradient(135deg, #0d3829 0%, #154e3f 50%, #0b2e21 100%);
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.forum-hero-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 85% 30%, rgba(255,255,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.forum-stat-glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.forum-stat-glass-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+/* 3. Luxury Amber Quote Callout */
+.luxury-quote-callout {
+  background: #fffbeb;
+  border-left: 3.5px solid #f59e0b;
+  border-radius: 0 14px 14px 0;
+  padding: 14px 18px;
+  color: #78350f;
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+body.dark-mode .luxury-quote-callout {
+  background: rgba(245, 158, 11, 0.1);
+  border-left-color: #fbbf24;
+  color: #fef3c7;
+}
+
+/* 4. Interactive Community Poll */
+.poll-container-box {
+  background: #fafaf9;
+  border: 1px solid #e7e5e4;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+body.dark-mode .poll-container-box {
+  background: #0d231b;
+  border-color: #174233;
+}
+
+.poll-option-row {
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 11px 14px;
+}
+
+body.dark-mode .poll-option-row {
+  background: #123025;
+  border-color: #1b4535;
+}
+
+.poll-option-row:hover {
+  border-color: #10b981;
+}
+
+.poll-progress-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: #dcfce7;
+  z-index: 1;
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.dark-mode .poll-progress-fill {
+  background: rgba(34, 197, 94, 0.22);
+}
+
+.poll-progress-fill.active-voted {
+  background: #bbf7d0;
+}
+
+body.dark-mode .poll-progress-fill.active-voted {
+  background: rgba(34, 197, 94, 0.35);
+}
+
+/* 5. GitHub Style Reading Heatmap */
+.activity-heatmap-grid {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  gap: 4.5px;
+}
+
+.heatmap-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: #e2e8f0;
+  transition: transform 0.15s ease;
+}
+
+body.dark-mode .heatmap-cell {
+  background: #1e293b;
+}
+
+.heatmap-cell:hover {
+  transform: scale(1.3);
+  z-index: 5;
+}
+
+.heatmap-cell.level-1 { background: #bbf7d0; }
+.heatmap-cell.level-2 { background: #4ade80; }
+.heatmap-cell.level-3 { background: #22c55e; }
+.heatmap-cell.level-4 { background: #16a34a; }
+.heatmap-cell.level-5 { background: #15803d; }
+
+body.dark-mode .heatmap-cell.level-1 { background: #064e3b; }
+body.dark-mode .heatmap-cell.level-2 { background: #047857; }
+body.dark-mode .heatmap-cell.level-3 { background: #059669; }
+body.dark-mode .heatmap-cell.level-4 { background: #10b981; }
+body.dark-mode .heatmap-cell.level-5 { background: #34d399; }
