@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function SellerRegisterPage() {
   return (
     <div className="w-full bg-[#fbf9f5] text-on-surface font-body-md antialiased min-h-screen py-6">
-      <main className="flex-1 overflow-y-auto px-4 sm:px-8 py-4 lg:px-12 max-w-[1560px] mx-auto w-full">
+      <main className="flex-1 overflow-y-auto px-4 sm:px-8 py-4 lg:px-12 max-w-[1680px] mx-auto w-full">
 
 <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-[#e8e5df] gap-4">
 <div>

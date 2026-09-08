@@ -59,9 +59,9 @@ export default function DeviceManagementPage() {
     <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-20 font-body-md">
       {/* Breadcrumbs */}
       <nav className="flex items-center gap-2 text-body-sm text-on-surface-variant mb-6 flex-wrap">
-        <Link to="/" className="hover:text-[#ac2c19] transition-colors">Trang chủ</Link>
+        <Link to="/" className="hover:text-primary transition-colors">Trang chủ</Link>
         <span>/</span>
-        <Link to="/profile" className="hover:text-[#ac2c19] transition-colors">Cài Đặt Tài Khoản</Link>
+        <Link to="/profile" className="hover:text-primary transition-colors">Cài Đặt Tài Khoản</Link>
         <span>/</span>
         <span className="text-theme-primary font-semibold">Bảo Mật & Quản Lý Thiết Bị Đọc DRM</span>
       </nav>

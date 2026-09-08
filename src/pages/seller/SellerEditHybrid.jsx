@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function SellerEditHybrid() {
   return (
     <div className="w-full bg-background text-on-surface antialiased min-h-screen py-6 pb-28 font-body-md text-body-md">
-      <main className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-space-lg">
+      <main className="w-full max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-space-lg">
 
         <section className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-2 border-b border-surface-variant">
           <div>
@@ -836,7 +836,7 @@ export default function SellerEditHybrid() {
         </div>
 
         <footer className="fixed bottom-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-t border-surface-variant shadow-lg h-[70px]">
-          <div className="max-w-[1440px] w-full mx-auto h-full px-space-lg flex items-center justify-between">
+          <div className="max-w-[1680px] w-full mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-secondary-fixed/40 flex items-center justify-center text-secondary">

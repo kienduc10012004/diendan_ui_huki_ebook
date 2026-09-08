@@ -29,6 +29,7 @@ export default function AppLayout() {
 
   // Reader page can be minimal or special, all other pages get the full layout
   const isReaderPage = location.pathname === '/reader';
+  const isChatPage = location.pathname.startsWith('/chat') || location.pathname.startsWith('/messages');
 
   if (isReaderPage) {
     return <Outlet />;
@@ -44,7 +45,7 @@ export default function AppLayout() {
         toggleSidebar
       }}
     >
-      <div className="min-h-screen bg-background text-on-surface flex flex-col antialiased selection:bg-tertiary-fixed selection:text-on-tertiary-fixed font-sans">
+      <div className={`bg-background text-on-surface flex flex-col antialiased selection:bg-tertiary-fixed selection:text-on-tertiary-fixed font-sans ${isChatPage ? 'h-screen max-h-screen overflow-hidden' : 'min-h-screen'}`}>
         {/* Unified E-Commerce Header */}
         <StoreHeader
           onToggleSidebar={toggleSidebar}
@@ -52,7 +53,7 @@ export default function AppLayout() {
           isSidebarCollapsed={isSidebarCollapsed}
         />
 
-        <div className="flex-1 flex flex-row relative min-h-[calc(100vh-108px)]">
+        <div className={`flex-1 flex flex-row relative ${isChatPage ? 'overflow-hidden min-h-0' : 'min-h-[calc(100vh-108px)]'}`}>
           {/* Hierarchical Multi-Level Sidebar */}
           <HierarchicalSidebar
             isCollapsed={isSidebarCollapsed}
@@ -67,14 +68,15 @@ export default function AppLayout() {
               flex-1 flex flex-col min-w-0 transition-all duration-300 ease-in-out
               ${isSidebarCollapsed ? 'lg:ml-[68px]' : 'lg:ml-[310px]'}
               ml-0
+              ${isChatPage ? 'overflow-hidden min-h-0' : ''}
             `}
           >
-            <main id="main-content" tabIndex="-1" className="flex-1 min-w-0 outline-none">
+            <main id="main-content" tabIndex="-1" className={`flex-1 min-w-0 outline-none ${isChatPage ? 'overflow-hidden min-h-0 flex flex-col' : ''}`}>
               <Outlet />
             </main>
 
             {/* Unified E-Commerce Footer */}
-            <StoreFooter />
+            {!isChatPage && <StoreFooter />}
           </div>
         </div>
       </div>

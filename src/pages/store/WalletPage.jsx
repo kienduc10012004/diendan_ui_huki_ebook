@@ -154,11 +154,11 @@ export default function WalletPage() {
       {/* Breadcrumbs & Title Bar */}
       <div className="mb-8">
         <nav className="flex items-center gap-2 text-body-sm text-on-surface-variant mb-2">
-          <Link to="/" className="hover:text-[#ac2c19] transition-colors">Trang chủ</Link>
+          <Link to="/" className="hover:text-primary transition-colors">Trang chủ</Link>
           <span className="material-symbols-outlined text-xs">chevron_right</span>
-          <Link to="/profile" className="hover:text-[#ac2c19] transition-colors">Tài khoản</Link>
+          <Link to="/profile" className="hover:text-primary transition-colors">Tài khoản</Link>
           <span className="material-symbols-outlined text-xs">chevron_right</span>
-          <span className="text-[var(--theme-primary,#003B2B)] font-semibold">Ví & Điểm Thưởng</span>
+          <span className="text-theme-primary font-semibold">Ví & Điểm Thưởng</span>
         </nav>
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>

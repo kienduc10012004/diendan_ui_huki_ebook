@@ -21,7 +21,7 @@ export default function HomePage() {
 <h1 className="font-display-lg text-display-lg font-medium text-white tracking-tight leading-[1.12]">
               THE NEXT CHAPTER IN YOUR READING JOURNEY
             </h1>
-<p className="font-body-lg text-body-lg text-inverse-on-surface/85 max-w-[620px]">
+<p className="font-body-lg text-body-lg text-white/90 max-w-[620px] leading-relaxed">
               Mua sách thật, bản quyền chuẩn mực. Đọc Ebook tức thì trên mọi nền tảng và kết nối cùng hơn 250.000 độc giả tâm huyết trên HUKI.
             </p>
 </div>
@@ -56,25 +56,25 @@ export default function HomePage() {
 <span className="material-symbols-outlined text-on-surface-variant text-[20px] mr-2">search</span>
 <input className="w-full bg-transparent border-none text-on-surface font-body-md text-[15px] focus:outline-none placeholder:text-on-surface-variant/60" placeholder="Tìm tên sách, tác giả, ISBN, chủ đề muốn khám phá..." type="text" />
 </div>
-<button className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-secondary-container text-on-secondary-container font-title-md text-[14px] font-bold hover:brightness-105 shadow-md flex items-center justify-center gap-2 transition-all">
+<button className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-secondary-container text-on-secondary-container font-title-md text-[14px] font-bold hover:brightness-105 shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer">
 <span>Tìm kiếm</span>
 <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
 </button>
 </div>
 
-<div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-[12px] text-inverse-on-surface/80 font-body-sm">
-<span className="text-tertiary-fixed font-medium">Gợi ý tìm kiếm:</span>
-<Link className="hover:text-white underline decoration-white/30 underline-offset-2" to="/books">Tâm lý học</Link>
-<span>•</span>
-<Link className="hover:text-white underline decoration-white/30 underline-offset-2" to="/books">Kinh doanh</Link>
-<span>•</span>
-<Link className="hover:text-white underline decoration-white/30 underline-offset-2" to="/">Trí tuệ nhân tạo AI</Link>
-<span>•</span>
-<Link className="hover:text-white underline decoration-white/30 underline-offset-2" to="/books">Tiểu thuyết kinh điển</Link>
-<span>•</span>
-<Link className="hover:text-white underline decoration-white/30 underline-offset-2" to="/book/atomic-habits">Atomic Habits</Link>
-<span>•</span>
-<Link className="hover:text-white underline decoration-white/30 underline-offset-2" to="/books">Chữa lành tâm thức</Link>
+<div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-[12.5px] text-white/95 font-body-sm">
+<span className="text-[var(--theme-header-top-accent,#94f5d6)] font-bold">Gợi ý tìm kiếm:</span>
+<Link className="text-white hover:text-[var(--theme-header-top-accent,#94f5d6)] underline decoration-white/40 underline-offset-2 transition-colors" to="/books">Tâm lý học</Link>
+<span className="text-white/40">•</span>
+<Link className="text-white hover:text-[var(--theme-header-top-accent,#94f5d6)] underline decoration-white/40 underline-offset-2 transition-colors" to="/books">Kinh doanh</Link>
+<span className="text-white/40">•</span>
+<Link className="text-white hover:text-[var(--theme-header-top-accent,#94f5d6)] underline decoration-white/40 underline-offset-2 transition-colors" to="/">Trí tuệ nhân tạo AI</Link>
+<span className="text-white/40">•</span>
+<Link className="text-white hover:text-[var(--theme-header-top-accent,#94f5d6)] underline decoration-white/40 underline-offset-2 transition-colors" to="/books">Tiểu thuyết kinh điển</Link>
+<span className="text-white/40">•</span>
+<Link className="text-white hover:text-[var(--theme-header-top-accent,#94f5d6)] underline decoration-white/40 underline-offset-2 transition-colors" to="/book/atomic-habits">Atomic Habits</Link>
+<span className="text-white/40">•</span>
+<Link className="text-white hover:text-[var(--theme-header-top-accent,#94f5d6)] underline decoration-white/40 underline-offset-2 transition-colors" to="/books">Chữa lành tâm thức</Link>
 </div>
 </div>
 </section>
@@ -520,26 +520,29 @@ export default function HomePage() {
 </div>
 </section>
 
-<section className="rounded-3xl overflow-hidden border border-outline-variant/40 relative bg-gradient-to-r from-[#00382B] via-[#005B46] to-[#043328] text-white p-8 lg:p-12 shadow-lg">
+<section 
+  style={{ background: 'linear-gradient(to right, var(--theme-hero-from, #00382B), var(--theme-hero-via, #004D38), var(--theme-hero-to, #00271E))' }}
+  className="rounded-3xl overflow-hidden border border-white/15 relative text-white p-8 lg:p-12 shadow-xl"
+>
 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 <div className="lg:col-span-8 flex flex-col gap-4">
-<span className="bg-secondary-container text-on-secondary-container font-label-sm text-[11px] font-bold px-3 py-1 rounded-full w-fit tracking-wider">
+<span className="bg-secondary-container text-on-secondary-container font-label-sm text-[11px] font-bold px-3 py-1 rounded-full w-fit tracking-wider shadow-xs">
               BỘ SƯU TẬP CHUYÊN ĐỀ ĐẶC BIỆT
             </span>
-<h3 className="font-display-lg text-headline-lg lg:text-display-lg font-medium leading-tight">
+<h3 className="font-display-lg text-headline-lg lg:text-display-lg font-bold leading-tight text-white">
               ĐỌC ĐỂ HIỂU MÌNH - Tuyển tập Tâm lý học &amp; Chữa lành tâm thức
             </h3>
-<blockquote className="font-headline-sm italic text-inverse-on-surface/90 border-l-2 border-secondary-container pl-4 my-1">
+<blockquote className="font-headline-sm italic text-white font-medium border-l-3 border-secondary-container pl-4 my-1 leading-relaxed">
               "Khi bạn bắt đầu nhìn sâu vào bên trong chính mình, cả thế giới hỗn độn bên ngoài bỗng trở nên sáng tỏ và bình yên lạ thường."
             </blockquote>
-<p className="font-body-md text-inverse-on-surface/80 max-w-[680px]">
+<p className="font-body-md text-white font-normal max-w-[680px] leading-relaxed text-sm sm:text-base">
               Tuyển tập 24 tác phẩm kinh điển từ Carl Jung, Thích Nhất Hạnh, Erich Fromm và Viktor Frankl. Giảm ngay 30% khi mua trọn bộ ebook hoặc combo sách bìa cứng.
             </p>
 <div className="flex items-center gap-4 mt-2">
-<button className="px-6 py-3 rounded-xl bg-secondary-container text-on-secondary-container font-title-md text-[14px] font-bold hover:brightness-105 transition-all shadow-md">
+<button className="px-6 py-3 rounded-xl bg-secondary-container text-on-secondary-container font-title-md text-[14px] font-bold hover:brightness-105 transition-all shadow-md cursor-pointer">
                 Khám phá bộ sưu tập ngay
               </button>
-<button className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-title-md text-[14px] font-semibold border border-white/20 transition-all backdrop-blur-sm">
+<button className="px-6 py-3 rounded-xl bg-white/20 hover:bg-white/30 text-white font-title-md text-[14px] font-semibold border border-white/40 transition-all backdrop-blur-sm cursor-pointer shadow-sm">
                 Đọc thử Ebook miễn phí
               </button>
 </div>
@@ -1167,21 +1170,24 @@ export default function HomePage() {
 </div>
 </section>
 
-<section className="rounded-3xl bg-[#004D38] text-white p-8 lg:p-10 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+<section 
+  style={{ background: 'linear-gradient(to right, var(--theme-hero-from, #00382B), var(--theme-hero-via, #004D38), var(--theme-hero-to, #00271E))' }}
+  className="rounded-3xl text-white p-8 lg:p-10 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden border border-white/15 shadow-xl"
+>
 <div className="max-w-[540px]">
-<div className="flex items-center gap-2 text-secondary-container font-label-sm text-[12px] font-bold uppercase tracking-wider mb-2">
+<div className="flex items-center gap-2 text-[var(--theme-header-top-accent,#94f5d6)] font-label-sm text-[12px] font-bold uppercase tracking-wider mb-2">
 <span className="material-symbols-outlined text-[18px]">mail</span> BẢN TIN SALON VĂN HỌC
           </div>
-<h3 className="font-headline-md text-headline-sm font-semibold leading-snug">
+<h3 className="font-headline-md text-headline-sm sm:text-headline-md font-bold leading-snug text-white">
             Nhận Ngay Mã Ưu Đãi 20% Cho Đơn Hàng Đầu Tiên
           </h3>
-<p className="font-body-sm text-inverse-on-surface/80 mt-1">
+<p className="font-body-sm text-white font-normal mt-1.5 leading-relaxed text-sm sm:text-base">
             Cập nhật review sách chuyên sâu từ các dịch giả uy tín, danh mục sách tặng miễn phí hàng tuần và vé tham dự giao lưu tác giả độc quyền.
           </p>
 </div>
-<div className="w-full md:w-auto flex flex-col sm:flex-row items-center gap-2">
-<input className="w-full sm:w-[320px] px-4 py-3.5 rounded-xl bg-surface-container-lowest text-on-surface font-body-md text-[14px] focus:outline-none border-none shadow-md placeholder:text-on-surface-variant/60" placeholder="Nhập địa chỉ email của bạn..." type="email" />
-<button className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-secondary-container text-on-secondary-container font-title-md text-[14px] font-bold hover:brightness-105 transition-all shrink-0 shadow-md">
+<div className="w-full md:w-auto flex flex-col sm:flex-row items-center gap-2.5">
+<input className="w-full sm:w-[320px] px-4 py-3.5 rounded-xl bg-white text-gray-900 font-body-md text-[14px] focus:outline-none border-none shadow-md placeholder:text-gray-500" placeholder="Nhập địa chỉ email của bạn..." type="email" />
+<button className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-secondary-container text-on-secondary-container font-title-md text-[14px] font-bold hover:brightness-105 transition-all shrink-0 shadow-md cursor-pointer">
             Đăng ký ngay
           </button>
 </div>

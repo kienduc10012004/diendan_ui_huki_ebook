@@ -66,36 +66,38 @@ export default function StoreHeader({ onToggleSidebar, onToggleMobileSidebar, is
       </div>
 
       {/* Main Header Bar (h-[62px]) */}
-      <div className="h-[62px] w-full px-4 md:px-6 flex items-center justify-between gap-3 lg:gap-6 shrink-0">
+      <div className="h-[62px] w-full pr-4 md:pr-6 pl-0 flex items-center justify-between gap-3 lg:gap-6 shrink-0">
         {/* Left: Sidebar Toggle & Brand Logo */}
-        <div className="flex items-center gap-3">
-          {/* Hamburger / Sidebar Toggle Button */}
-          <button
-            onClick={() => {
-              if (window.innerWidth < 1024) {
-                if (onToggleMobileSidebar) onToggleMobileSidebar();
-              } else {
-                if (onToggleSidebar) onToggleSidebar();
-              }
-            }}
-            className="w-9 h-9 rounded-xl flex items-center justify-center text-[var(--theme-primary,#003b2b)] bg-[var(--theme-secondary-subtle,#f0f6f4)] hover:bg-[var(--theme-primary,#003b2b)] hover:text-white border border-[var(--theme-border,#d6e3df)] hover:border-[var(--theme-primary,#003b2b)] active:scale-95 transition-all shadow-2xs shrink-0 cursor-pointer"
-            title={isSidebarCollapsed ? 'Mở rộng menu điều hướng' : 'Thu gọn menu điều hướng'}
-            aria-label="Toggle Sidebar Navigation"
-          >
-            <span className="material-symbols-outlined text-[20px] transition-transform duration-200">
-              {isSidebarCollapsed ? 'menu' : 'menu_open'}
-            </span>
-          </button>
+        <div className="flex items-center">
+          {/* Hamburger / Sidebar Toggle Button Box (68px width matches mini-rail center alignment) */}
+          <div className="w-[56px] lg:w-[68px] flex items-center justify-center shrink-0">
+            <button
+              onClick={() => {
+                if (window.innerWidth < 1024) {
+                  if (onToggleMobileSidebar) onToggleMobileSidebar();
+                } else {
+                  if (onToggleSidebar) onToggleSidebar();
+                }
+              }}
+              className="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface hover:text-primary hover:bg-surface-container active:scale-95 transition-all cursor-pointer"
+              title={isSidebarCollapsed ? 'Mở rộng menu điều hướng' : 'Thu gọn menu điều hướng'}
+              aria-label="Toggle Sidebar Navigation"
+            >
+              <span className="material-symbols-outlined text-[22px] transition-transform duration-200">
+                {isSidebarCollapsed ? 'menu' : 'menu_open'}
+              </span>
+            </button>
+          </div>
 
-          <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-xl bg-[var(--theme-primary,#003b2b)] flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform shrink-0">
+          <Link to="/" className="flex items-center gap-2.5 group pr-2">
+            <div className="w-10 h-10 rounded-xl bg-theme-primary flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform shrink-0">
               <span className="material-symbols-outlined text-xl">menu_book</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-editorial text-xl md:text-2xl font-bold tracking-tight text-[var(--theme-primary,#003b2b)] leading-none">
+              <span className="font-editorial text-xl md:text-2xl font-bold tracking-tight text-theme-primary leading-none">
                 HUKI EBOOK
               </span>
-              <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-[var(--theme-accent,#ac2c19)] font-bold mt-0.5">
+              <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-[#ac2c19] font-bold mt-0.5">
                 Sách Số &amp; Sách In
               </span>
             </div>
@@ -268,6 +270,29 @@ export default function StoreHeader({ onToggleSidebar, onToggleMobileSidebar, is
             )}
           </div>
 
+          {/* Messenger / Tin nhắn & Trò chuyện */}
+          <Link
+            to="/chat"
+            className={`relative p-2 rounded-xl transition-all flex items-center justify-center group ${
+              location.pathname.startsWith('/chat') || location.pathname.startsWith('/messages')
+                ? 'bg-[var(--theme-primary,#003b2b)] text-white shadow-xs'
+                : 'hover:bg-[var(--theme-secondary-subtle,#f2fbf9)] text-[var(--theme-text,#17201f)] border border-transparent hover:border-[var(--theme-border,#e8e5df)]'
+            }`}
+            title="Tin nhắn & Trò chuyện"
+            aria-label="Tin nhắn & Trò chuyện"
+          >
+            <span className={`material-symbols-outlined text-2xl transition-colors ${
+              location.pathname.startsWith('/chat') || location.pathname.startsWith('/messages')
+                ? 'text-white'
+                : 'group-hover:text-[var(--theme-primary,#003b2b)]'
+            }`}>
+              chat
+            </span>
+            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.2 min-w-[18px] h-[18px] rounded-full flex items-center justify-center shadow-xs animate-pulse">
+              1
+            </span>
+          </Link>
+
           {/* Cart Icon with Live Counter */}
           <Link
             to="/cart"
@@ -435,7 +460,7 @@ export default function StoreHeader({ onToggleSidebar, onToggleMobileSidebar, is
                       <button
                         type="button"
                         onClick={toggleDarkMode}
-                        className={`w-8 h-4.5 rounded-full p-0.5 transition-colors cursor-pointer ${
+                        className={`w-8 h-5 rounded-full p-0.5 flex items-center transition-colors cursor-pointer ${
                           isDarkMode ? 'bg-[var(--theme-primary,#003b2b)]' : 'bg-gray-300'
                         }`}
                         aria-label="Chuyển đổi Dark mode"

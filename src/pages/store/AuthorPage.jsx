@@ -152,9 +152,9 @@ export default function AuthorPage() {
 
         {/* Profile Bar */}
         <div className="px-6 sm:px-8 pb-8 pt-0 relative">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 -mt-16 sm:-mt-18 mb-6">
-            <div className="flex flex-col sm:flex-row items-start sm:items-end gap-5">
-              <div className="relative shrink-0">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-theme-border/60">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              <div className="relative shrink-0 -mt-14 sm:-mt-16">
                 <img
                   className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover ring-4 ring-white shadow-xl bg-white"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf8X-5HnLBV4VIw0BCdP-wUMRAI67_BZfUhYoAPEljm-ZdDw0qmLQxhUVnw6k0t9bRVHGR_vthVoEYGCJaXDnqbdeU3dodRGmwATUmRGVvjUJHMwbi8dE3lIhdcdDWFkZ3dUj_gf-ANWc4qEodT8bgmu1L-WmFvtrLg99EdOyUh0b3rDDhhotexyEaUmz5Y4bqgr93js5BvdwQUJPSmUjS2rnV9U0Urkz-ISgOmICuFNFe08RfAx0r4Q"
@@ -164,7 +164,7 @@ export default function AuthorPage() {
                   <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
                 </span>
               </div>
-              <div className="pt-2 sm:pt-0">
+              <div className="pt-2 sm:pt-3">
                 <div className="flex items-center gap-2 flex-wrap mb-1">
                   <h1 className="font-editorial text-2xl sm:text-3xl font-bold text-on-surface">James Clear</h1>
                   <span className="bg-theme-secondary-subtle text-theme-primary px-2.5 py-0.5 rounded-full text-xs font-semibold border border-theme-border">Mỹ</span>
@@ -175,7 +175,7 @@ export default function AuthorPage() {
             </div>
 
             {/* Actions */}
-            <div className="flex items-center gap-3 flex-wrap">
+            <div className="flex items-center gap-3 flex-wrap self-start md:self-center pt-2 md:pt-0">
               <button
                 onClick={handleFollow}
                 className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 shadow-sm cursor-pointer ${

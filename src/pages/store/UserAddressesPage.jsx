@@ -84,16 +84,16 @@ export default function UserAddressesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fbf9f4] py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-theme-bg py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         
         {/* Navigation Breadcrumb */}
-        <div className="flex items-center gap-2 text-xs text-[#6b7280] mb-6">
-          <Link to="/profile" className="hover:text-[#003b2b] font-medium">Tài Khoản</Link>
+        <div className="flex items-center gap-2 text-xs text-on-surface-variant mb-6">
+          <Link to="/profile" className="hover:text-theme-primary font-medium">Tài Khoản</Link>
           <span>/</span>
-          <Link to="/settings" className="hover:text-[#003b2b] font-medium">Cài Đặt</Link>
+          <Link to="/settings" className="hover:text-theme-primary font-medium">Cài Đặt</Link>
           <span>/</span>
-          <span className="text-[#17201f] font-semibold">Sổ Địa Chỉ Giao Hàng</span>
+          <span className="text-on-surface font-semibold">Sổ Địa Chỉ Giao Hàng</span>
         </div>
 
         {/* Header Bar */}

@@ -41,21 +41,21 @@ export default function BookCard({ book }) {
         </div>
 
         {/* Publisher Tag */}
-        <p className="text-[11px] font-semibold text-[#6b7280] uppercase tracking-wider truncate mb-1">
+        <p className="text-[11px] font-semibold text-theme-text-muted uppercase tracking-wider truncate mb-1">
           {book.publisher}
         </p>
 
         {/* Book Title */}
         <Link
           to={`/book/${book.id}`}
-          className="font-bold text-sm text-theme-text line-clamp-2 hover:text-[#ac2c19] transition-colors leading-snug mb-1"
+          className="font-bold text-sm text-theme-text line-clamp-2 hover:text-theme-accent transition-colors leading-snug mb-1"
           title={book.title}
         >
           {book.title}
         </Link>
 
         {/* Author */}
-        <p className="text-xs text-[#6b7280] truncate mb-2">
+        <p className="text-xs text-theme-text-muted truncate mb-2">
           {book.author}
         </p>
 
@@ -63,20 +63,20 @@ export default function BookCard({ book }) {
         <div className="flex items-center gap-1 text-xs text-theme-text mb-3">
           <span className="material-symbols-outlined text-[#f59e0b] text-sm fill-current">star</span>
           <span className="font-bold">{book.rating}</span>
-          <span className="text-[#6b7280] text-[11px]">({book.reviewCount.toLocaleString()} đánh giá)</span>
+          <span className="text-theme-text-muted text-[11px]">({book.reviewCount.toLocaleString()} đánh giá)</span>
         </div>
       </div>
 
       {/* Pricing & Add to Cart Action */}
       <div className="pt-2 border-t border-theme-border/60 flex items-center justify-between">
         <div>
-          <span className="text-[10px] text-[#6b7280] block">Giá Ebook từ</span>
+          <span className="text-[10px] text-theme-text-muted block">Giá Ebook từ</span>
           <div className="flex items-baseline gap-1.5">
-            <span className="font-bold text-sm text-[#ac2c19]">
+            <span className="font-bold text-sm text-theme-accent">
               {book.priceEbook.toLocaleString()}đ
             </span>
             {book.originalPriceEbook && (
-              <span className="text-[10px] text-[#9ca3af] line-through">
+              <span className="text-[10px] text-theme-text-muted/70 line-through">
                 {book.originalPriceEbook.toLocaleString()}đ
               </span>
             )}

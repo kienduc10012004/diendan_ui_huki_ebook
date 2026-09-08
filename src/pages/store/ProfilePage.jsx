@@ -50,34 +50,36 @@ export default function ProfilePage() {
 <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent"></div>
 </div>
 
-<div className="px-8 pb-6 pt-0 relative">
-<div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 -mt-14 pb-5 border-b border-outline-variant/50">
+<div className="px-6 md:px-8 pb-6 pt-0 relative">
+<div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-outline-variant/50">
 
-<div className="flex flex-col sm:flex-row items-start sm:items-end gap-5">
+<div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
 
-<div className="relative group">
-<img className="w-[104px] h-[104px] rounded-full object-cover ring-4 ring-surface-container-lowest shadow-lg border-2 border-primary/40 bg-white" alt="Portrait photo of Nguyen Minh Anh, a Vietnamese female reader in her late twenties, warm gentle smile, holding a hardcover book with soft natural morning light in an airy studio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8CQmH-QjU5CJxzbNRKMzKbOkTZU2dYnnAEtOsDhF77nYohJnqNg5IdziFz4fChk4ExFkhYouQ-3xNmmTER7BWwcfFOVEixWtIIb_eQitcG9T_m7sCpJlZVIYbjhjFaoSy0U8NBdgP2D08B4Mw1OtzDfsjOi1r-c4lzUEoVHqwEK2YBuKMUxeN0N52Og9rfsZEndR_JD744nftu4_-tlKptEpiN55xTd8jCw2SM4-QoigRA9CE2XoOgA" />
-<span className="absolute bottom-1 right-1 w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center text-[12px] ring-2 ring-white" title="Đã xác thực danh tính bạn đọc">
-<span className="material-symbols-outlined text-[14px]">verified</span>
+{/* Avatar with negative top margin to overlap banner */}
+<div className="relative group shrink-0 -mt-14 sm:-mt-16">
+<img className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover ring-4 ring-white shadow-xl border-2 border-primary/30 bg-white" alt="Portrait photo of Nguyen Minh Anh, a Vietnamese female reader in her late twenties, warm gentle smile, holding a hardcover book with soft natural morning light in an airy studio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8CQmH-QjU5CJxzbNRKMzKbOkTZU2dYnnAEtOsDhF77nYohJnqNg5IdziFz4fChk4ExFkhYouQ-3xNmmTER7BWwcfFOVEixWtIIb_eQitcG9T_m7sCpJlZVIYbjhjFaoSy0U8NBdgP2D08B4Mw1OtzDfsjOi1r-c4lzUEoVHqwEK2YBuKMUxeN0N52Og9rfsZEndR_JD744nftu4_-tlKptEpiN55xTd8jCw2SM4-QoigRA9CE2XoOgA" />
+<span className="absolute bottom-1 right-1 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-[13px] ring-2 ring-white shadow-sm" title="Đã xác thực danh tính bạn đọc">
+<span className="material-symbols-outlined text-[15px]">verified</span>
 </span>
 </div>
 
-<div className="space-y-1.5 pt-2">
+{/* User Name and Meta Info (Cleanly positioned inside card body) */}
+<div className="space-y-1.5 pt-2 sm:pt-3">
 <div className="flex flex-wrap items-center gap-2.5">
-<h1 className="font-headline-lg text-[28px] font-semibold text-on-surface leading-tight">
+<h1 className="font-headline-lg text-2xl sm:text-3xl font-bold text-on-surface leading-tight">
                       Nguyễn Minh Anh
                     </h1>
-<span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/30 font-label-sm font-semibold">
+<span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/30 font-label-sm font-semibold text-xs">
 <span className="material-symbols-outlined text-[13px] material-symbols-fill">verified</span>
                       Độc giả tích cực
                     </span>
-<span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#fea619]/15 text-[#855300] border border-[#fea619]/40 font-label-sm font-semibold">
+<span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#fea619]/15 text-[#855300] border border-[#fea619]/40 font-label-sm font-semibold text-xs">
 <span className="material-symbols-outlined text-[13px]">psychology</span>
                       Chủ CLB Phát Triển Bản Thân
                     </span>
 </div>
 
-<div className="flex flex-wrap items-center gap-y-1 gap-x-3 text-body-sm text-on-surface-variant">
+<div className="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs sm:text-sm text-on-surface-variant">
 <span className="font-medium text-on-surface">@minhanh.reads</span>
 <span>•</span>
 <span className="inline-flex items-center gap-1">
@@ -97,17 +99,18 @@ export default function ProfilePage() {
 </div>
 </div>
 
-<div className="flex items-center gap-2.5 self-start lg:self-end">
-<button className="h-10 px-5 rounded-xl bg-primary/10 hover:bg-primary/15 text-primary border border-primary/30 font-title-md text-sm font-semibold inline-flex items-center gap-1.5 transition-all shadow-xs">
+{/* Actions */}
+<div className="flex items-center gap-2.5 self-start lg:self-center pt-2 lg:pt-0">
+<button className="h-10 px-5 rounded-xl bg-primary/10 hover:bg-primary/15 text-primary border border-primary/30 font-title-md text-xs sm:text-sm font-semibold inline-flex items-center gap-1.5 transition-all shadow-xs cursor-pointer">
 <span className="material-symbols-outlined text-[18px]">done</span>
 <span>Đang Theo Dõi</span>
 <span className="material-symbols-outlined text-[16px]">expand_more</span>
 </button>
-<button className="h-10 px-4 rounded-xl bg-surface-container-lowest hover:bg-surface-container border border-outline-variant/80 text-on-surface font-title-md text-sm font-medium inline-flex items-center gap-1.5 transition-all">
+<button className="h-10 px-4 rounded-xl bg-surface-container-lowest hover:bg-surface-container border border-outline-variant/80 text-on-surface font-title-md text-xs sm:text-sm font-medium inline-flex items-center gap-1.5 transition-all cursor-pointer">
 <span className="material-symbols-outlined text-[18px]">mail</span>
 <span>Nhắn Tin</span>
 </button>
-<button className="w-10 h-10 rounded-xl bg-surface-container-lowest hover:bg-surface-container border border-outline-variant/80 text-on-surface-variant flex items-center justify-center transition-all" title="Tùy chọn khác">
+<button className="w-10 h-10 rounded-xl bg-surface-container-lowest hover:bg-surface-container border border-outline-variant/80 text-on-surface-variant flex items-center justify-center transition-all cursor-pointer" title="Tùy chọn khác">
 <span className="material-symbols-outlined text-[20px]">more_horiz</span>
 </button>
 </div>

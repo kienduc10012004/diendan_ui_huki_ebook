@@ -57,6 +57,7 @@ const SellerCreateHybrid = page(() => import('./pages/seller/SellerCreateHybrid'
 const SellerEditHybrid = page(() => import('./pages/seller/SellerEditHybrid'));
 const SellerCorrection = page(() => import('./pages/seller/SellerCorrection'));
 const EdgeCasesLibrary = page(() => import('./pages/seller/EdgeCasesLibrary'));
+const MessengerPage = page(() => import('./pages/store/MessengerPage'));
 
 export default function App() {
   return (
@@ -114,6 +115,9 @@ export default function App() {
                   <Route path="/audio" element={<Navigate to="/audiobooks" replace />} />
                   <Route path="/podcasts" element={<Navigate to="/audiobooks" replace />} />
                   <Route path="/cart" element={<CartPage />} />
+                  <Route path="/chat" element={<MessengerPage />} />
+                  <Route path="/messages" element={<MessengerPage />} />
+                  <Route path="/message" element={<Navigate to="/chat" replace />} />
                   <Route path="/seller" element={<SellerPortalPage />} />
 
                   {/* Authenticated customer area. */}

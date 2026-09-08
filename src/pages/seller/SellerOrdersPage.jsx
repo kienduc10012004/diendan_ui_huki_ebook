@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function SellerOrdersPage() {
   return (
     <div className="w-full bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen py-6">
-      <main className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <main className="w-full max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
 
 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-space-sm pb-1">
 <div>

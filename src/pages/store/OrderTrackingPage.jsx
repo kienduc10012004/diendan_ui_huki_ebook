@@ -74,9 +74,9 @@ export default function OrderTrackingPage() {
     <div className="w-full max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-20 font-body-md">
       {/* Breadcrumbs */}
       <nav className="flex items-center text-body-sm text-on-surface-variant mb-6 gap-2 flex-wrap">
-        <Link to="/" className="hover:text-[#ac2c19] transition-colors">Trang chủ</Link>
+        <Link to="/" className="hover:text-primary transition-colors">Trang chủ</Link>
         <span>/</span>
-        <Link to="/profile" className="hover:text-[#ac2c19] transition-colors">Tài Khoản Độc Giả</Link>
+        <Link to="/profile" className="hover:text-primary transition-colors">Tài Khoản Độc Giả</Link>
         <span>/</span>
         <span className="text-theme-primary font-semibold">Chi Tiết Đơn Hàng #{id}</span>
       </nav>

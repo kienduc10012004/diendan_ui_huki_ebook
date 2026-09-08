@@ -164,9 +164,9 @@ export default function ShopPage() {
     <div className="w-full max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-20 font-body-md">
       {/* Breadcrumb */}
       <nav className="text-body-sm text-on-surface-variant flex items-center gap-2 mb-6">
-        <Link to="/" className="hover:text-[#ac2c19] transition-colors">Trang chủ</Link>
+        <Link to="/" className="hover:text-primary transition-colors">Trang chủ</Link>
         <span>/</span>
-        <Link to="/books" className="hover:text-[#ac2c19] transition-colors">Sàn TMĐT</Link>
+        <Link to="/books" className="hover:text-primary transition-colors">Sàn TMĐT</Link>
         <span>/</span>
         <span className="text-theme-primary font-semibold">Alpha Books Official Store</span>
       </nav>
@@ -198,23 +198,26 @@ export default function ShopPage() {
         </div>
 
         {/* Profile Bar */}
-        <div className="px-6 sm:px-8 py-6 bg-theme-surface flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative">
-          <div className="flex items-center gap-5 -mt-14 sm:-mt-16 relative z-10">
-            <div className="w-24 h-24 md:w-28 md:h-28 rounded-2xl bg-theme-surface p-1.5 shadow-xl border-2 border-theme-surface shrink-0">
-              <div className="w-full h-full rounded-xl bg-theme-primary text-white flex flex-col items-center justify-center relative overflow-hidden shadow-inner">
-                <span className="font-editorial font-bold text-2xl md:text-3xl">AB</span>
-                <span className="absolute bottom-1 text-[9px] uppercase tracking-tighter text-emerald-300 font-bold">Alpha Books</span>
+        <div className="px-6 sm:px-8 pb-6 pt-2 bg-theme-surface flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 relative z-10 w-full lg:w-auto">
+            {/* Publisher Logo Avatar (Negative Top Margin scoped only here) */}
+            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-white p-1.5 shadow-xl border-4 border-white shrink-0 -mt-14 sm:-mt-16 relative z-20">
+              <div className="w-full h-full rounded-xl bg-theme-primary text-white flex flex-col items-center justify-center relative overflow-hidden shadow-inner p-1">
+                <span className="font-editorial font-bold text-2xl sm:text-3xl leading-none">AB</span>
+                <span className="text-[8.5px] uppercase tracking-wider text-emerald-300 font-bold mt-1">Alpha Books</span>
               </div>
             </div>
-            <div className="pt-2">
-              <div className="flex items-center gap-2 flex-wrap">
-                <h2 className="text-2xl md:text-3xl font-bold font-editorial text-on-surface">Alpha Books Official</h2>
+
+            {/* Shop Details */}
+            <div className="pt-1 sm:pt-2 flex-1 min-w-0">
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold font-editorial text-on-surface">Alpha Books Official</h2>
                 <span className="bg-[#ac2c19]/10 text-[#ac2c19] px-2.5 py-0.5 rounded-full text-xs font-bold flex items-center gap-1">
                   <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
                   Gian Hàng Chính Hãng - Mall
                 </span>
               </div>
-              <div className="flex items-center gap-4 mt-2 text-xs sm:text-sm text-on-surface-variant flex-wrap">
+              <div className="flex items-center gap-3 sm:gap-4 mt-2 text-xs sm:text-sm text-on-surface-variant flex-wrap">
                 <span className="flex items-center gap-1 text-amber-600 font-bold">
                   <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                   4.9/5 <span className="text-on-surface-variant font-normal">(18.4k đánh giá)</span>
@@ -230,10 +233,10 @@ export default function ShopPage() {
           </div>
 
           {/* Action buttons */}
-          <div className="flex items-center gap-3 w-full lg:w-auto justify-end flex-wrap">
+          <div className="flex items-center gap-3 w-full lg:w-auto justify-start lg:justify-end flex-wrap pt-2 lg:pt-0">
             <button
               onClick={handleFollow}
-              className={`flex-1 sm:flex-none px-6 py-2.5 font-semibold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2 text-sm ${
+              className={`flex-1 sm:flex-none px-6 py-2.5 font-semibold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2 text-sm cursor-pointer ${
                 isFollowed
                   ? 'bg-emerald-50 text-emerald-800 border border-emerald-300'
                   : 'bg-[#ac2c19] hover:bg-[#8e1404] text-white'
@@ -245,18 +248,18 @@ export default function ShopPage() {
               {isFollowed ? 'Đang Theo Dõi' : 'Theo Dõi Shop'}
             </button>
             <Link
-              to="/seller/chat"
-              className="flex-1 sm:flex-none px-5 py-2.5 bg-theme-surface border border-theme-border hover:border-theme-primary text-on-surface font-semibold rounded-xl transition-all flex items-center justify-center gap-2 text-sm"
+              to="/chat?shop=alpha-books"
+              className="flex-1 sm:flex-none px-5 py-2.5 bg-theme-surface border border-theme-border hover:border-theme-primary hover:bg-theme-secondary-subtle text-on-surface font-semibold rounded-xl transition-all flex items-center justify-center gap-2 text-sm shadow-2xs"
             >
               <span className="material-symbols-outlined text-[18px]">chat</span>
-              Chat Tư Vấn
+              <span>Chat Tư Vấn</span>
             </Link>
             <button
               onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
                 showToast('Đã sao chép liên kết gian hàng!', 'success');
               }}
-              className="p-2.5 bg-theme-surface border border-theme-border hover:border-theme-primary text-on-surface rounded-xl transition-all"
+              className="p-2.5 bg-theme-surface border border-theme-border hover:border-theme-primary text-on-surface rounded-xl transition-all cursor-pointer shadow-2xs"
               title="Chia sẻ cửa hàng"
             >
               <span className="material-symbols-outlined text-[18px]">share</span>

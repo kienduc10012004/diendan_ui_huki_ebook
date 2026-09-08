@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function EdgeCasesLibrary() {
   return (
     <div className="w-full bg-background text-on-surface antialiased min-h-screen py-6">
-      <div className="max-w-[1280px] mx-auto px-4 md:px-6 mb-4">
+      <div className="max-w-[1680px] mx-auto px-4 md:px-6 mb-4">
         <div className="bg-primary text-on-primary px-4 py-2.5 rounded-xl flex items-center justify-between shadow-sm">
           <div className="w-full flex items-center justify-between font-body-sm text-body-sm">
             <div className="flex items-center gap-2">
@@ -19,7 +19,7 @@ export default function EdgeCasesLibrary() {
         </div>
       </div>
 
-      <main className="max-w-[1280px] mx-auto px-4 md:px-6 py-2 space-y-space-3xl">
+      <main className="max-w-[1680px] mx-auto px-4 md:px-6 py-2 space-y-space-3xl">
 
 <section className="bg-surface-container-lowest p-space-xl rounded-xl border border-outline-variant shadow-sm relative overflow-hidden">
 <div className="absolute -right-16 -top-16 w-64 h-64 bg-tertiary-fixed-dim/20 rounded-full blur-3xl pointer-events-none"></div>

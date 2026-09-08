@@ -54,11 +54,11 @@ export default function OrderReturnPage() {
     <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-20 font-body-md">
       {/* Breadcrumbs */}
       <nav className="text-body-sm text-on-surface-variant flex items-center gap-2 mb-6">
-        <Link to="/" className="hover:text-[#ac2c19] transition-colors">Trang chủ</Link>
+        <Link to="/" className="hover:text-primary transition-colors">Trang chủ</Link>
         <span>/</span>
-        <Link to="/orders" className="hover:text-[#ac2c19] transition-colors">Lịch sử đơn hàng</Link>
+        <Link to="/orders" className="hover:text-primary transition-colors">Lịch sử đơn hàng</Link>
         <span>/</span>
-        <Link to={`/orders/${id}`} className="hover:text-[#ac2c19] transition-colors">Đơn hàng #{id}</Link>
+        <Link to={`/orders/${id}`} className="hover:text-primary transition-colors">Đơn hàng #{id}</Link>
         <span>/</span>
         <span className="text-theme-primary font-semibold">Yêu Cầu Đổi Trả Sách In</span>
       </nav>

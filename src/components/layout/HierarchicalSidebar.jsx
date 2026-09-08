@@ -51,7 +51,14 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
           to: '/audiobooks',
           icon: 'headphones',
           badge: 'Studio',
-          badgeColor: 'bg-[#006953]'
+        },
+        {
+          id: 'store-chat',
+          title: 'Tin Nhắn & Chat Messenger',
+          to: '/chat',
+          icon: 'chat',
+          badge: 'Live',
+          badgeColor: 'bg-emerald-600'
         },
         {
           id: 'store-cart',
@@ -298,6 +305,7 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
     { id: 'mini-home', to: '/', icon: 'home', title: 'Trang Chủ Sàn TMĐT' },
     { id: 'mini-books', to: '/books', icon: 'menu_book', title: 'Khám Phá Sách' },
     { id: 'mini-community', to: '/community', icon: 'forum', title: 'Mạng Xã Hội Độc Giả' },
+    { id: 'mini-chat', to: '/chat', icon: 'chat', title: 'Tin Nhắn & Chat Messenger', badge: '1' },
     ...(isLoggedIn ? [{ id: 'mini-library', to: '/library', icon: 'auto_stories', title: 'Tủ Sách & Tiến Độ Đọc' }] : []),
     ...(isLoggedIn ? [{ id: 'mini-reader', to: '/reader', icon: 'chrome_reader_mode', title: 'Trình Đọc Ebook Web' }] : []),
     ...(hasRole('seller') ? [{ id: 'mini-seller', to: '/seller/dashboard', icon: 'storefront', title: 'Kênh Người Bán & Quản Lý' }] : []),

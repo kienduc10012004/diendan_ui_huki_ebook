@@ -38,7 +38,7 @@ export default function CartPage() {
       author: 'Yuval Noah Harari',
       format: 'Sách giấy',
       price: 185000,
-      cover: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB56y96Y2_e7L19n-7LzJmQ0s4_F1nLq0G_z5_0G_1L5n-7LzJmQ0s4_F1nLq0G_z5_0G_1L5n-7LzJmQ0s4_F1nLq0G_z5'
+      cover: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80'
     }
   ]);
 
