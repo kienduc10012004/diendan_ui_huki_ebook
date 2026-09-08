@@ -1,159 +1,40 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function ProfilePage() {
   return (
-    <div className="stitch-page min-h-full flex flex-col font-body-md text-on-surface bg-[#f8faf9] antialiased selection:bg-primary/20 selection:text-primary">
-      <style>{".material-symbols-outlined {\n      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;\n      display: inline-block;\n      vertical-align: middle;\n      line-height: 1;\n    }\n    .material-symbols-fill {\n      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;\n    }\n    .book-spine-effect {\n      position: relative;\n    }\n    .book-spine-effect::before {\n      content: '';\n      position: absolute;\n      top: 0;\n      bottom: 0;\n      left: 0;\n      width: 14px;\n      background: linear-gradient(to right, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.06) 35%, transparent 100%);\n      pointer-events: none;\n      z-index: 10;\n      border-top-left-radius: inherit;\n      border-bottom-left-radius: inherit;\n    }"}</style>
-
-
-<div className="flex flex-1 min-h-screen">
-
-<aside className="w-[68px] bg-surface-container-lowest border-r border-outline-variant/60 flex flex-col items-center py-4 fixed top-0 bottom-0 left-0 z-40 select-none">
-
-<a className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary via-[#00523f] to-tertiary flex items-center justify-center text-white shadow-sm hover:scale-105 transition-all mb-6 group relative" href="#" title="HUKI EBOOK Trang chủ">
-<span className="font-headline-md font-bold tracking-tight text-xl">H</span>
-<div className="absolute left-[72px] bg-inverse-surface text-white text-[12px] px-2.5 py-1 rounded shadow-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">
-          HUKI EBOOK
+    <div className="w-full min-h-screen flex flex-col font-body-md text-on-surface bg-theme-bg py-4 md:py-6">
+      <div className="max-w-[1440px] w-full mx-auto px-4 md:px-6 pt-2 pb-2">
+        <div className="flex items-center justify-between">
+          <nav className="flex items-center gap-2 text-body-sm text-on-surface-variant">
+            <Link className="hover:text-primary inline-flex items-center gap-1 font-medium transition-colors" to="/">
+              <span className="material-symbols-outlined text-sm">arrow_back</span>
+              <span>Quay lại Bảng Tin</span>
+            </Link>
+            <span className="text-outline-variant/80">/</span>
+            <span className="hover:text-primary cursor-pointer">Cộng đồng</span>
+            <span className="text-outline-variant/80">/</span>
+            <span className="hover:text-primary cursor-pointer">Độc giả</span>
+            <span className="text-outline-variant/80">/</span>
+            <span className="text-on-surface font-semibold">Nguyễn Minh Anh (@minhanh.reads)</span>
+          </nav>
+          <div className="text-xs text-on-surface-variant flex items-center gap-1.5 bg-surface-container-lowest px-2.5 py-1 rounded-full border border-outline-variant/60">
+            <span className="w-2 h-2 rounded-full bg-tertiary-container"></span>
+            <span>Trực tuyến 15 phút trước trên HUKI Reader</span>
+          </div>
         </div>
-</Link>
+      </div>
 
-<nav className="flex flex-col items-center gap-3 w-full px-2 flex-1">
-
-<a className="w-12 h-12 rounded-xl flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all group relative" href="#" title="Sàn Sách Điện Tử">
-<span className="material-symbols-outlined text-[22px]">storefront</span>
-<span className="absolute left-[70px] bg-inverse-surface text-white text-[11px] font-medium px-2 py-1 rounded shadow-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">Sàn TMĐT</span>
-</Link>
-
-<a className="w-12 h-12 rounded-xl flex items-center justify-center bg-primary/10 text-primary border border-primary/25 shadow-sm transition-all group relative" href="#" title="Mạng Xã Hội Sách HUKI (Đang mở)">
-<span className="material-symbols-outlined text-[22px] material-symbols-fill text-primary">groups</span>
-<span className="absolute left-0 top-3 bottom-3 w-1 bg-primary rounded-r-full"></span>
-<span className="absolute left-[70px] bg-inverse-surface text-white text-[11px] font-medium px-2 py-1 rounded shadow-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">Cộng Đồng Độc Giả</span>
-</Link>
-
-<a className="w-12 h-12 rounded-xl flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all group relative" href="#" title="Tủ Sách Của Tôi">
-<span className="material-symbols-outlined text-[22px]">auto_stories</span>
-<span className="absolute left-[70px] bg-inverse-surface text-white text-[11px] font-medium px-2 py-1 rounded shadow-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">Tủ Sách Cá Nhân</span>
-</Link>
-
-<a className="w-12 h-12 rounded-xl flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all group relative" href="#" title="HUKI Reader">
-<span className="material-symbols-outlined text-[22px]">chrome_reader_mode</span>
-<span className="absolute left-[70px] bg-inverse-surface text-white text-[11px] font-medium px-2 py-1 rounded shadow-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">Trình Đọc Ebook</span>
-</Link>
-
-<a className="w-12 h-12 rounded-xl flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all group relative" href="#" title="Thử Thách &amp; Mục Tiêu">
-<span className="material-symbols-outlined text-[22px]">trophy</span>
-<span className="absolute left-[70px] bg-inverse-surface text-white text-[11px] font-medium px-2 py-1 rounded shadow-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">Thử Thách &amp; Thống Kê</span>
-</Link>
-
-<a className="w-12 h-12 rounded-xl flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all group relative" href="#" title="Câu Lạc Bộ Đọc Sách">
-<span className="material-symbols-outlined text-[22px]">local_library</span>
-<span className="absolute left-[70px] bg-inverse-surface text-white text-[11px] font-medium px-2 py-1 rounded shadow-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">CLB Bạn Đọc</span>
-</Link>
-</nav>
-
-<div className="flex flex-col items-center gap-3 w-full px-2 pt-3 border-t border-outline-variant/40">
-<a className="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all group relative" href="#">
-<span className="material-symbols-outlined text-[20px]">help</span>
-<span className="absolute left-[70px] bg-inverse-surface text-white text-[11px] font-medium px-2 py-1 rounded shadow-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">Trợ Giúp &amp; Hướng Dẫn</span>
-</Link>
-<a className="w-10 h-10 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all group relative" href="#">
-<span className="material-symbols-outlined text-[20px]">settings</span>
-<span className="absolute left-[70px] bg-inverse-surface text-white text-[11px] font-medium px-2 py-1 rounded shadow-md opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-50">Cài Đặt Tài Khoản</span>
-</Link>
-</div>
-</aside>
-
-<div className="pl-[68px] flex-1 flex flex-col min-w-0">
-
-<header className="bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/70 sticky top-0 z-30 shadow-sm">
-
-<div className="bg-surface-container-low border-b border-outline-variant/40 py-1 px-8 text-center text-xs font-medium text-on-surface-variant flex items-center justify-center gap-2">
-<span className="inline-flex items-center px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm font-semibold">TINH HOA ĐỌC</span>
-<span>Nền tảng đọc sách điện tử bản quyền &amp; cộng đồng độc giả tinh hoa Việt Nam</span>
-<span className="mx-2 text-outline-variant">|</span>
-<span className="text-primary font-medium hover:underline cursor-pointer">Khám phá Thử thách Mùa Thu 2026 →</span>
-</div>
-
-<div className="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between gap-6">
-
-<div className="flex items-center gap-8">
-<a className="flex items-center gap-2.5" href="#">
-<span className="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center font-headline-sm font-bold shadow-sm">H</span>
-<span className="font-headline-md text-xl font-bold tracking-tight text-on-surface">HUKI <span className="text-primary font-normal">COMMUNITY</span></span>
-</Link>
-
-<div className="hidden md:flex items-center bg-surface-container-low p-1 rounded-xl border border-outline-variant/50">
-<a className="px-3.5 py-1.5 rounded-lg text-body-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors" href="#">
-                Sàn TMĐT
-              </Link>
-<a className="px-3.5 py-1.5 rounded-lg text-body-sm font-semibold bg-surface-container-lowest text-primary shadow-xs border border-outline-variant/30 flex items-center gap-1.5" href="#">
-<span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                Mạng Xã Hội Sách
-              </Link>
-</div>
-</div>
-
-<div className="flex-1 max-w-[540px]">
-<div className="relative w-full">
-<span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
-<input className="w-full h-10 pl-10 pr-12 rounded-xl bg-surface-container-low border border-outline-variant/70 text-body-md text-on-surface placeholder:text-on-surface-variant/60 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Tìm sách, bài viết, độc giả, CLB... ⌘K" type="text" />
-<span className="absolute right-3 top-1/2 -translate-y-1/2 px-1.5 py-0.5 text-[11px] font-mono text-on-surface-variant/70 bg-surface-container rounded border border-outline-variant/60">⌘K</span>
-</div>
-</div>
-
-<div className="flex items-center gap-3">
-<button className="hidden lg:inline-flex items-center gap-1.5 px-4 h-9 rounded-xl bg-primary text-white font-title-md text-sm font-semibold hover:bg-primary-container shadow-sm hover:shadow transition-all">
-<span className="material-symbols-outlined text-[18px]">edit_note</span>
-<span>+ Đăng bài</span>
-</button>
-
-<button className="w-9 h-9 rounded-xl text-on-surface-variant hover:text-primary hover:bg-surface-container flex items-center justify-center relative transition-colors" title="Thông báo">
-<span className="material-symbols-outlined text-[20px]">notifications</span>
-<span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-tertiary"></span>
-</button>
-
-<button className="w-9 h-9 rounded-xl text-on-surface-variant hover:text-primary hover:bg-surface-container flex items-center justify-center transition-colors" title="Tin nhắn">
-<span className="material-symbols-outlined text-[20px]">chat_bubble_outline</span>
-</button>
-
-<div className="h-8 w-[1px] bg-outline-variant/60 mx-1"></div>
-<a className="flex items-center gap-2 p-1 pl-1.5 rounded-xl hover:bg-surface-container transition-colors group" href="#">
-<img className="w-8 h-8 rounded-full object-cover ring-1 ring-primary/30" alt="Modern close-up portrait of Minh Tri, a Vietnamese reader with thoughtful expression, wearing round eyeglasses and dark green crewneck sweater, soft bookstore background lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJXgkrKJwduHLrDLt4law2d0wRxMyCo94VrVdVMEq-2dEs9-ErQYzgaqw_qYujk1gafb_Q5FKuGwaYAEP7ytJ2nTuKetllsIyMSRXbu1bBQpcjeGoguk37NjR7XhjcVbt9NiQIUHD-FM0KnYv_ZvQoPH_wljoBcMnmjwHbCAXOtHv_PpHgiyl74FNXixEmhWHQLkculysHPDAO87V16x3ox2-klH2ljswHx8qOtOmLyQz9HGhPzsA9ig" />
-<span className="material-symbols-outlined text-on-surface-variant text-base group-hover:text-on-surface">expand_more</span>
-</Link>
-</div>
-</div>
-</header>
-
-<div className="max-w-[1440px] w-full mx-auto px-6 pt-4 pb-2">
-<div className="flex items-center justify-between">
-<nav className="flex items-center gap-2 text-body-sm text-on-surface-variant">
-<a className="hover:text-primary inline-flex items-center gap-1 font-medium transition-colors" href="#">
-<span className="material-symbols-outlined text-sm">arrow_back</span>
-<span>Quay lại Bảng Tin</span>
-</Link>
-<span className="text-outline-variant/80">/</span>
-<span className="hover:text-primary cursor-pointer">Cộng đồng</span>
-<span className="text-outline-variant/80">/</span>
-<span className="hover:text-primary cursor-pointer">Độc giả</span>
-<span className="text-outline-variant/80">/</span>
-<span className="text-on-surface font-semibold">Nguyễn Minh Anh (@minhanh.reads)</span>
-</nav>
-<div className="text-xs text-on-surface-variant flex items-center gap-1.5 bg-surface-container-lowest px-2.5 py-1 rounded-full border border-outline-variant/60">
-<span className="w-2 h-2 rounded-full bg-tertiary-container"></span>
-<span>Trực tuyến 15 phút trước trên HUKI Reader</span>
-</div>
-</div>
-</div>
-
-<main className="max-w-[1440px] w-full mx-auto px-6 pb-16 flex-1 flex flex-col">
+      <main className="max-w-[1440px] w-full mx-auto px-4 md:px-6 pb-16 flex-1 flex flex-col">
 
 <section className="mt-2 bg-surface-container-lowest rounded-3xl border border-outline-variant/70 shadow-book-card overflow-hidden">
 
-<div className="relative h-[220px] w-full bg-gradient-to-r from-[#17382f] via-[#1e4b3e] to-[#2b594b] overflow-hidden">
+<div
+  className="relative h-[220px] w-full overflow-hidden"
+  style={{ background: 'linear-gradient(to right, var(--theme-hero-from, #003B2B), var(--theme-hero-via, #004D38), var(--theme-hero-to, #00271E))' }}
+>
 
-<div className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay" alt="Atmospheric warm aesthetic library desk at dusk with leather bound books, warm antique reading lamp glow, gentle foliage shadows, and open vintage journal on oak table." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7UQNdAkxndM8FZkoZPszneTwSZYrS-WTXC0M3OVCyiYVLFDA7de7wX8bBlGxmrS6d2QO2Gl5sy1Y1faCEHnK8qJY4FCm5cU248F5q0VhqVPwfQZlA7SUCqD73crnVYpJvMmQmRJnjUOgQqgBe1Zf2nOoVWm-ITw6tsIUwzWSfJKASqw72_fIsxKqDhViCQpYls9yxTxxXl9vCv_2FlRA4epwGIvzcBKXWsha2CLhr9_WqDqFAy9kbHA')"></div>
+<div className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay" alt="Atmospheric warm aesthetic library desk at dusk with leather bound books, warm antique reading lamp glow, gentle foliage shadows, and open vintage journal on oak table." style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7UQNdAkxndM8FZkoZPszneTwSZYrS-WTXC0M3OVCyiYVLFDA7de7wX8bBlGxmrS6d2QO2Gl5sy1Y1faCEHnK8qJY4FCm5cU248F5q0VhqVPwfQZlA7SUCqD73crnVYpJvMmQmRJnjUOgQqgBe1Zf2nOoVWm-ITw6tsIUwzWSfJKASqw72_fIsxKqDhViCQpYls9yxTxxXl9vCv_2FlRA4epwGIvzcBKXWsha2CLhr9_WqDqFAy9kbHA')" }}></div>
 
 <div className="absolute inset-0 flex items-center justify-between px-12 pointer-events-none">
 <div className="max-w-md hidden lg:block text-white/70 italic font-display-lg text-lg leading-relaxed">
@@ -379,7 +260,7 @@ export default function ProfilePage() {
 </div>
 
 <div className="w-full bg-surface-container h-2.5 rounded-full overflow-hidden p-0.5 border border-outline-variant/40">
-<div className="bg-primary h-full rounded-full transition-all duration-500" style="width: 71%;"></div>
+<div className="bg-primary h-full rounded-full transition-all duration-500" style={{ width: '71%' }}></div>
 </div>
 <p className="mt-3 text-xs text-on-surface-variant leading-relaxed">
                   Minh Anh đang vượt 2 cuốn so với tiến độ trung bình năm 2026.
@@ -512,7 +393,7 @@ export default function ProfilePage() {
                         Tiến độ: <strong className="text-on-surface font-semibold">36%</strong> (114/304 trang)
                       </div>
 <div className="w-full bg-surface-container h-1.5 rounded-full mt-1.5 overflow-hidden">
-<div className="bg-primary h-full rounded-full" style="width: 36%;"></div>
+<div className="bg-primary h-full rounded-full" style={{ width: '36%' }}></div>
 </div>
 </div>
 </div>
@@ -521,7 +402,7 @@ export default function ProfilePage() {
 <span className="material-symbols-outlined text-[14px]">edit_calendar</span>
                       Đọc hôm nay
                     </span>
-<a className="font-semibold text-primary hover:text-primary-container flex items-center gap-0.5" href="#">
+<Link className="font-semibold text-primary hover:text-primary-container flex items-center gap-0.5" to="/">
                       Xem Cuốn Sách
                       <span className="material-symbols-outlined text-[14px]">chevron_right</span>
 </Link>
@@ -541,7 +422,7 @@ export default function ProfilePage() {
                         Tiến độ: <strong className="text-on-surface font-semibold">62%</strong> (142/228 trang)
                       </div>
 <div className="w-full bg-surface-container h-1.5 rounded-full mt-1.5 overflow-hidden">
-<div className="bg-primary h-full rounded-full" style="width: 62%;"></div>
+<div className="bg-primary h-full rounded-full" style={{ width: '62%' }}></div>
 </div>
 </div>
 </div>
@@ -550,7 +431,7 @@ export default function ProfilePage() {
 <span className="material-symbols-outlined text-[14px]">schedule</span>
                       2 ngày trước
                     </span>
-<a className="font-semibold text-primary hover:text-primary-container flex items-center gap-0.5" href="#">
+<Link className="font-semibold text-primary hover:text-primary-container flex items-center gap-0.5" to="/">
                       Xem Cuốn Sách
                       <span className="material-symbols-outlined text-[14px]">chevron_right</span>
 </Link>
@@ -562,7 +443,7 @@ export default function ProfilePage() {
 <section>
 <div className="flex items-center justify-between mb-4">
 <h2 className="font-headline-sm text-lg font-bold text-on-surface">Bài Viết &amp; Thảo Luận Gần Đây</h2>
-<a className="text-xs font-semibold text-primary hover:underline" href="#">Tất cả 28 bài viết →</Link>
+<Link className="text-xs font-semibold text-primary hover:underline" to="/community">Tất cả 28 bài viết →</Link>
 </div>
 
 <article className="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/70 shadow-book-card space-y-4">
@@ -699,7 +580,7 @@ export default function ProfilePage() {
 <h2 className="font-headline-sm text-lg font-bold text-on-surface">Tủ Sách Yêu Thích Tuyển Chọn</h2>
 <p className="text-xs text-on-surface-variant">5 tác phẩm định hình phong cách đọc của Minh Anh</p>
 </div>
-<a className="text-xs font-semibold text-primary hover:underline" href="#">Xem tất cả 47 cuốn →</Link>
+<Link className="text-xs font-semibold text-primary hover:underline" to="/">Xem tất cả 47 cuốn →</Link>
 </div>
 
 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5">
@@ -790,7 +671,7 @@ export default function ProfilePage() {
 <span className="font-semibold text-primary">36%</span>
 </div>
 <div className="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-<div className="bg-[#1F8A70] h-full rounded-full" style="width: 36%;"></div>
+<div className="bg-[#1F8A70] h-full rounded-full" style={{ width: '36%' }}></div>
 </div>
 </div>
 <button className="mt-4 w-full py-2.5 px-4 rounded-xl bg-primary hover:bg-primary-container text-white font-title-md text-xs font-semibold shadow-sm transition-all flex items-center justify-center gap-1.5">
@@ -816,7 +697,7 @@ export default function ProfilePage() {
 <span className="font-semibold text-primary">38%</span>
 </div>
 <div className="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-<div className="bg-primary h-full rounded-full" style="width: 38%;"></div>
+<div className="bg-primary h-full rounded-full" style={{ width: '38%' }}></div>
 </div>
 </div>
 
@@ -826,7 +707,7 @@ export default function ProfilePage() {
 <span className="font-semibold text-[#13846a]">26%</span>
 </div>
 <div className="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-<div className="bg-[#13846a] h-full rounded-full" style="width: 26%;"></div>
+<div className="bg-[#13846a] h-full rounded-full" style={{ width: '26%' }}></div>
 </div>
 </div>
 
@@ -836,7 +717,7 @@ export default function ProfilePage() {
 <span className="font-semibold text-[#855300]">18%</span>
 </div>
 <div className="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-<div className="bg-[#855300] h-full rounded-full" style="width: 18%;"></div>
+<div className="bg-[#855300] h-full rounded-full" style={{ width: '18%' }}></div>
 </div>
 </div>
 
@@ -846,7 +727,7 @@ export default function ProfilePage() {
 <span className="font-semibold text-[#ac2c19]">12%</span>
 </div>
 <div className="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-<div className="bg-[#ac2c19] h-full rounded-full" style="width: 12%;"></div>
+<div className="bg-[#ac2c19] h-full rounded-full" style={{ width: '12%' }}></div>
 </div>
 </div>
 
@@ -856,7 +737,7 @@ export default function ProfilePage() {
 <span className="font-semibold text-on-surface-variant">6%</span>
 </div>
 <div className="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-<div className="bg-outline-variant h-full rounded-full" style="width: 6%;"></div>
+<div className="bg-outline-variant h-full rounded-full" style={{ width: '6%' }}></div>
 </div>
 </div>
 </div>
@@ -959,39 +840,7 @@ export default function ProfilePage() {
 </div>
 </div>
 </div>
-</main>
-
-<footer className="bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant dark:border-outline w-full mt-space-3xl">
-<div className="max-w-[1280px] mx-auto px-margin-desktop py-space-2xl flex flex-col justify-between">
-<div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-outline-variant/40">
-<div className="flex items-center gap-3">
-<span className="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center font-headline-md font-bold text-lg">H</span>
-<div>
-<span className="font-headline-md text-headline-md font-semibold text-primary dark:text-inverse-primary">HUKI EBOOK</span>
-<p className="text-xs text-on-surface-variant">Nền tảng đọc sách &amp; thư viện số bản quyền tiêu chuẩn quốc tế</p>
-</div>
-</div>
-<div className="flex flex-wrap items-center justify-center gap-6">
-<a className="text-on-surface-variant dark:text-inverse-on-surface font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Về Huki Ebook</Link>
-<a className="text-on-surface-variant dark:text-inverse-on-surface font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Điều khoản sử dụng</Link>
-<a className="text-on-surface-variant dark:text-inverse-on-surface font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Chính sách bảo mật</Link>
-<a className="text-on-surface-variant dark:text-inverse-on-surface font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Hướng dẫn mua hàng</Link>
-<a className="text-on-surface-variant dark:text-inverse-on-surface font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Liên hệ hỗ trợ</Link>
-</div>
-</div>
-<div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-body-sm text-on-surface-variant/80 gap-3 text-center sm:text-left">
-<span>© 2025 HUKI EBOOK. Bản quyền thuộc về Công ty TNHH Sách Điện Tử Huki.</span>
-<div className="flex items-center gap-4 text-xs">
-<span>Mã số thuế: 0317892341</span>
-<span>•</span>
-<span>Được cấp phép bởi Cục Xuất Bản Việt Nam</span>
-</div>
-</div>
-</div>
-</footer>
-</div>
-</div>
-
+      </main>
     </div>
   );
 }

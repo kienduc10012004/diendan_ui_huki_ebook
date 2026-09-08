@@ -1,147 +1,10 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function SellerPortalPage() {
   return (
-    <div className="stitch-page bg-[#FAF8F5] text-on-surface antialiased selection:bg-tertiary-fixed-dim selection:text-on-tertiary-fixed w-full overflow-x-hidden">
-      <style>{".material-symbols-outlined {\n      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;\n      display: inline-block;\n      vertical-align: middle;\n      line-height: 1;\n    }\n    .spine-crease {\n      box-shadow: inset 5px 0 10px -3px rgba(0,0,0,0.22);\n    }\n    .subtle-paper-shadow {\n      box-shadow: 0 4px 20px -2px rgba(20, 29, 28, 0.05), 0 2px 6px -1px rgba(20, 29, 28, 0.02);\n    }\n    .hover-lift {\n      transition: transform 0.25s ease, box-shadow 0.25s ease;\n    }\n    .hover-lift:hover {\n      transform: translateY(-3px);\n      box-shadow: 0 14px 28px -4px rgba(20, 29, 28, 0.08), 0 4px 12px -2px rgba(20, 29, 28, 0.03);\n    }"}</style>
-
-
-<aside className="fixed left-0 top-0 h-screen w-[68px] bg-[#141D1C] text-surface-container-low flex flex-col items-center py-5 z-50 border-r border-[#293231]/60 shadow-md">
-
-<a className="w-11 h-11 rounded-xl bg-tertiary flex items-center justify-center text-white mb-8 hover:brightness-110 transition-all shadow-sm" href="#" title="Huki Ebook Ecosystem">
-<span className="material-symbols-outlined text-[24px]">menu_book</span>
-</Link>
-
-<nav className="flex flex-col gap-5 items-center w-full px-2">
-
-<a className="w-12 h-12 rounded-xl bg-tertiary text-white flex flex-col items-center justify-center transition-all relative group shadow-sm" href="#" title="Kênh Người Bán (Đang chọn)">
-<span className="material-symbols-outlined text-[22px] fill-icon">storefront</span>
-<span className="text-[9px] font-label-sm font-semibold mt-0.5 tracking-tight">Đối Tác</span>
-<span className="absolute -right-2 top-1/2 -translate-y-1/2 w-1.5 h-6 bg-secondary-container rounded-l-full"></span>
-</Link>
-
-<a className="w-12 h-12 rounded-xl text-surface-container-highest hover:text-white hover:bg-[#293231] flex flex-col items-center justify-center transition-all group" href="#" title="Sàn TMĐT Sách">
-<span className="material-symbols-outlined text-[22px]">shopping_bag</span>
-<span className="text-[9px] font-label-sm text-[#94A3B8] group-hover:text-white mt-0.5">Sách Giấy</span>
-</Link>
-
-<a className="w-12 h-12 rounded-xl text-surface-container-highest hover:text-white hover:bg-[#293231] flex flex-col items-center justify-center transition-all group" href="#" title="Cộng Đồng &amp; Diễn Đàn Sách">
-<span className="material-symbols-outlined text-[22px]">forum</span>
-<span className="text-[9px] font-label-sm text-[#94A3B8] group-hover:text-white mt-0.5">Cộng Đồng</span>
-</Link>
-
-<a className="w-12 h-12 rounded-xl text-surface-container-highest hover:text-white hover:bg-[#293231] flex flex-col items-center justify-center transition-all group" href="#" title="Tủ Sách Trực Tuyến">
-<span className="material-symbols-outlined text-[22px]">local_library</span>
-<span className="text-[9px] font-label-sm text-[#94A3B8] group-hover:text-white mt-0.5">Tủ Sách</span>
-</Link>
-
-<a className="w-12 h-12 rounded-xl text-surface-container-highest hover:text-white hover:bg-[#293231] flex flex-col items-center justify-center transition-all group" href="#" title="Trình Đọc HUKI Reader">
-<span className="material-symbols-outlined text-[22px]">chrome_reader_mode</span>
-<span className="text-[9px] font-label-sm text-[#94A3B8] group-hover:text-white mt-0.5">Reader</span>
-</Link>
-
-<a className="w-12 h-12 rounded-xl text-surface-container-highest hover:text-white hover:bg-[#293231] flex flex-col items-center justify-center transition-all group" href="#" title="Thử Thách Đọc Sách">
-<span className="material-symbols-outlined text-[22px]">military_tech</span>
-<span className="text-[9px] font-label-sm text-[#94A3B8] group-hover:text-white mt-0.5">Thử Thách</span>
-</Link>
-</nav>
-
-<div className="mt-auto flex flex-col items-center gap-3">
-<a className="w-10 h-10 rounded-lg text-surface-container-highest hover:text-white flex items-center justify-center transition-colors" href="#" title="Hỗ Trợ &amp; Hướng Dẫn">
-<span className="material-symbols-outlined text-[20px]">help</span>
-</Link>
-<a className="w-9 h-9 rounded-full bg-surface-container ring-1 ring-outline-variant/30 flex items-center justify-center overflow-hidden" href="#" title="Tài Khoản">
-<span className="material-symbols-outlined text-[22px] text-tertiary">account_circle</span>
-</Link>
-</div>
-</aside>
-
-<div className="ml-[68px] w-[calc(100%-68px)] max-w-full overflow-x-hidden min-h-screen flex flex-col">
-
-<div className="w-full bg-[#FAF8F5] border-b border-[#E8E5DF] text-[#59413C] text-[12px] font-body-sm py-2 px-4 sm:px-6">
-<div className="max-w-[1240px] mx-auto flex flex-wrap items-center justify-between gap-2">
-<div className="flex items-center gap-3 flex-wrap">
-<span className="inline-flex items-center gap-1 font-title-md text-[12px] text-tertiary">
-<span className="material-symbols-outlined text-[15px] fill-icon">verified</span>
-            Nền tảng phát hành và sách điện tử bản quyền số 1 Việt Nam
-          </span>
-<span className="text-[#D2DCDA] hidden sm:inline">|</span>
-<span className="hover:text-primary transition-colors cursor-pointer hidden md:inline">Cổng xác thực DRM Tiêu Chuẩn Quốc Gia</span>
-</div>
-<div className="flex items-center gap-4 sm:gap-6 flex-wrap">
-<a className="flex items-center gap-1 hover:text-primary transition-colors" href="tel:19008866">
-<span className="material-symbols-outlined text-[15px]">headset_mic</span>
-            Hotline đối tác: <strong className="font-semibold text-on-surface">1900 8866 (Nhánh 2)</strong>
-</Link>
-<span className="text-[#D2DCDA]">|</span>
-<a className="hover:text-primary transition-colors hidden sm:inline" href="#onboarding">Trung tâm hỗ trợ NXB</Link>
-<span className="text-[#D2DCDA] hidden sm:inline">|</span>
-<a className="font-title-md text-tertiary hover:text-primary transition-colors flex items-center gap-0.5" href="#login-portal">
-            Đăng nhập đối tác
-            <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-</Link>
-</div>
-</div>
-</div>
-
-<header className="w-full bg-surface-container-lowest border-b border-outline-variant/60 shadow-sm sticky top-0 z-40 px-4 sm:px-6">
-<div className="w-full h-[72px] flex items-center justify-between max-w-[1240px] mx-auto">
-
-<div className="flex items-center gap-8">
-<a className="font-headline-md text-headline-md font-semibold text-primary flex items-center gap-space-xs tracking-tight shrink-0" href="#">
-<span className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
-<span className="material-symbols-outlined text-[20px]">auto_stories</span>
-</span>
-<span className="font-display-lg text-[25px] text-[#141D1C] font-semibold">HUKI <span className="text-primary font-normal">EBOOK</span></span>
-</Link>
-
-<nav className="hidden xl:flex items-center gap-6 text-[14px]">
-<a className="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">Trang chủ</Link>
-<a className="text-on-surface-variant font-body-md hover:text-primary transition-colors flex items-center gap-1" href="#">
-              Sàn TMĐT Sách
-              <span className="text-[10px] font-label-sm uppercase bg-surface-container px-1.5 py-0.5 rounded text-tertiary">Mới</span>
-</Link>
-<a className="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">Mạng Xã Hội Sách</Link>
-<a className="text-on-surface-variant font-body-md hover:text-primary transition-colors" href="#">Tác giả</Link>
-
-<a className="bg-tertiary text-white font-title-md text-[13px] px-3.5 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm" href="#">
-<span className="material-symbols-outlined text-[16px] fill-icon">storefront</span>
-              Kênh Người Bán
-            </Link>
-</nav>
-</div>
-
-<div className="flex items-center gap-3 md:gap-4 shrink-0">
-<div className="relative w-48 sm:w-60 md:w-64">
-<span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-[#8D706B]">search</span>
-<input className="w-full h-10 pl-9 pr-3 text-[13px] font-body-md bg-surface border border-outline-variant rounded-lg focus:outline-none focus:border-primary" placeholder="Tìm tác phẩm, tác giả..." type="text" />
-</div>
-<div className="flex items-center gap-1 sm:gap-2 text-on-surface-variant">
-<button className="p-2 hover:bg-surface-container rounded-lg transition-colors relative" title="Thông báo đối tác">
-<span className="material-symbols-outlined text-[20px]">notifications</span>
-<span className="w-2 h-2 rounded-full bg-primary absolute top-2 right-2"></span>
-</button>
-<button className="p-2 hover:bg-surface-container rounded-lg transition-colors" title="Giỏ hàng thử nghiệm">
-<span className="material-symbols-outlined text-[20px]">shopping_bag</span>
-</button>
-</div>
-<div className="h-6 w-px bg-outline-variant/50 hidden sm:block"></div>
-
-<div className="flex items-center gap-2.5 pl-1 cursor-pointer">
-<div className="w-9 h-9 rounded-full bg-tertiary-fixed-dim/40 border border-tertiary/20 flex items-center justify-center font-title-md text-tertiary text-[13px]">
-              MT
-            </div>
-<div className="hidden lg:flex flex-col text-left leading-tight">
-<span className="font-title-md text-[13px] text-on-surface">Minh Trí</span>
-<span className="font-label-sm text-[10px] text-[#8D706B]">Đại diện NXB</span>
-</div>
-</div>
-</div>
-</div>
-</header>
-
-<main className="flex-1 w-full max-w-[1240px] mx-auto px-6 py-space-xl">
+    <div className="w-full bg-[#FAF8F5] text-on-surface antialiased min-h-screen py-6">
+      <main className="flex-1 w-full max-w-[1240px] mx-auto px-4 sm:px-6">
 
 <section className="grid grid-cols-12 gap-gutter items-center py-space-xl border-b border-[#E8E5DF]">
 <div className="col-span-12 lg:col-span-7 flex flex-col gap-space-md">
@@ -162,15 +25,15 @@ export default function SellerPortalPage() {
           </p>
 
 <div className="flex flex-wrap items-center gap-4 pt-2">
-<a className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-tertiary text-white font-title-md text-[15px] hover:bg-[#005140] transition-all shadow-sm hover:shadow-md" href="#onboarding">
+<Link className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-tertiary text-white font-title-md text-[15px] hover:bg-[#005140] transition-all shadow-sm hover:shadow-md" to="/seller/edge-cases">
 <span className="material-symbols-outlined text-[20px] fill-icon">add_business</span>
               Đăng Ký Bán Hàng Ngay
               <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
 </Link>
-<a className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-white border border-[#E8E5DF] text-on-surface font-title-md text-[15px] hover:bg-surface-container transition-all" href="#value-prop">
+<Link className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-white border border-[#E8E5DF] text-on-surface font-title-md text-[15px] hover:bg-surface-container transition-all" to="/seller/product/edit-hybrid">
               Tìm Hiểu Quy Trình
             </Link>
-<a className="font-title-md text-[14px] text-primary hover:underline ml-2 flex items-center gap-1" href="#login-portal">
+<Link className="font-title-md text-[14px] text-primary hover:underline ml-2 flex items-center gap-1" to="/profile">
               Đã có tài khoản người bán? Đăng nhập →
             </Link>
 </div>
@@ -706,7 +569,7 @@ export default function SellerPortalPage() {
 </div>
 </div>
 <div className="mt-8 text-center">
-<a className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg bg-tertiary text-white font-title-md text-[15px] hover:bg-[#005140] transition-all shadow-sm" href="#register-modal">
+<Link className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg bg-tertiary text-white font-title-md text-[15px] hover:bg-[#005140] transition-all shadow-sm" to="/seller/edge-cases">
             Bắt Đầu Bước 01 Ngay Bây Giờ
             <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
 </Link>
@@ -928,11 +791,11 @@ export default function SellerPortalPage() {
               Mở rộng kênh bán lẻ, nâng tầm ấn phẩm số và gia nhập mạng lưới các nhà xuất bản hàng đầu tại Việt Nam ngay hôm nay.
             </p>
 <div className="flex flex-wrap items-center gap-4">
-<a className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-tertiary font-title-md text-[15px] font-bold hover:bg-[#FAF8F5] transition-all shadow-md" href="#onboarding">
+<Link className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-tertiary font-title-md text-[15px] font-bold hover:bg-[#FAF8F5] transition-all shadow-md" to="/seller/product/edit-hybrid">
 <span className="material-symbols-outlined text-[20px] fill-icon">add_business</span>
                 Đăng Ký Mở Gian Hàng Ngay
               </Link>
-<a className="inline-flex items-center gap-2 px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-title-md text-[15px] transition-all backdrop-blur-sm" href="#">
+<Link className="inline-flex items-center gap-2 px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-title-md text-[15px] transition-all backdrop-blur-sm" to="/seller/edge-cases">
 <span className="material-symbols-outlined text-[20px]">download</span>
                 Tải Bộ Tài Liệu Hướng Dẫn (PDF)
               </Link>
@@ -951,74 +814,7 @@ export default function SellerPortalPage() {
 </div>
 </div>
 </section>
-</main>
-
-<footer className="w-full bg-surface-container-low border-t border-outline-variant/60 mt-space-2xl">
-<div className="max-w-[1240px] mx-auto px-6 py-space-2xl">
-<div className="grid grid-cols-1 md:grid-cols-12 gap-gutter pb-space-xl border-b border-[#E8E5DF]">
-
-<div className="md:col-span-4 flex flex-col gap-3">
-<a className="font-headline-md text-headline-md font-semibold text-primary flex items-center gap-space-xs" href="#">
-<span className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white">
-<span className="material-symbols-outlined text-[18px]">auto_stories</span>
-</span>
-<span className="font-display-lg text-[22px] text-[#141D1C]">HUKI <span className="text-primary font-normal">EBOOK</span></span>
-</Link>
-<p className="font-body-md text-[13px] text-on-surface-variant leading-[22px] max-w-[340px]">
-              Nền tảng thương mại điện tử kết hợp phát hành sách số bản quyền hàng đầu Việt Nam. Tôn vinh giá trị tri thức và quyền tác giả.
-            </p>
-<div className="flex items-center gap-3 pt-2 text-[#8D706B]">
-<span className="text-[12px] font-label-sm">Đã thông báo với</span>
-<span className="px-2 py-0.5 rounded bg-white border border-[#E8E5DF] text-[11px] font-bold text-tertiary">Bộ Công Thương</span>
-</div>
-</div>
-
-<div className="md:col-span-2">
-<h5 className="font-title-md text-[14px] text-on-surface mb-3">Về HUKI Ebook</h5>
-<ul className="space-y-2 font-body-md text-[13px] text-on-surface-variant">
-<li><a className="hover:text-primary transition-colors" href="#">Giới thiệu nền tảng</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">Mạng Xã Hội Sách</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">Tác quyền &amp; Bản quyền</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">Tuyển dụng</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">Tin tức xuất bản</Link></li>
-</ul>
-</div>
-
-<div className="md:col-span-3">
-<h5 className="font-title-md text-[14px] text-on-surface mb-3">Dành Cho Người Bán</h5>
-<ul className="space-y-2 font-body-md text-[13px] text-on-surface-variant">
-<li><a className="text-tertiary font-medium hover:underline" href="#onboarding">Quy trình mở gian hàng</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">Quy chuẩn kỹ thuật Ebook DRM</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">Chính sách phí &amp; Chiết khấu</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">Cổng API kết nối kho hàng</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">Đăng nhập HUKI Seller Studio</Link></li>
-</ul>
-</div>
-
-<div className="md:col-span-3">
-<h5 className="font-title-md text-[14px] text-on-surface mb-3">Chính Sách &amp; Hỗ Trợ</h5>
-<ul className="space-y-2 font-body-md text-[13px] text-on-surface-variant">
-<li><a className="hover:text-primary transition-colors" href="#">Điều khoản sử dụng</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">Chính sách bảo mật thông tin</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">Chính sách đổi trả &amp; Hoàn tiền</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">Hướng dẫn thanh toán PayOS</Link></li>
-<li><a className="hover:text-primary transition-colors" href="#">Liên hệ bộ phận kỹ thuật</Link></li>
-</ul>
-</div>
-</div>
-
-<div className="pt-6 flex flex-col md:flex-row items-center justify-between text-[12px] font-body-sm text-on-surface-variant gap-3">
-<p>© 2025 HUKI EBOOK. Bản quyền thuộc về Công ty TNHH Sách Điện Tử Huki.</p>
-<div className="flex items-center gap-4 flex-wrap">
-<span>Giấy phép xuất bản điện tử số 88/GP-BTTTT cấp ngày 15/03/2024</span>
-<span className="text-[#D2DCDA] hidden sm:inline">|</span>
-<span className="text-tertiary font-semibold">Bản quyền số bảo vệ bởi DRM Tiêu Chuẩn Quốc Gia</span>
-</div>
-</div>
-</div>
-</footer>
-</div>
-
+      </main>
     </div>
   );
 }

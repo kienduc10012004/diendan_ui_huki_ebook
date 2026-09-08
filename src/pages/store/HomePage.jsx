@@ -1,189 +1,13 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   return (
-    <div className="stitch-page bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-row selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
-      <style>{".material-symbols-outlined {\n      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;\n      display: inline-block;\n      vertical-align: middle;\n      line-height: 1;\n    }\n    .spine-crease {\n      position: relative;\n    }\n    .spine-crease::after {\n      content: '';\n      position: absolute;\n      left: 0;\n      top: 0;\n      bottom: 0;\n      width: 14px;\n      background: linear-gradient(to right, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.06) 24%, transparent 100%);\n      pointer-events: none;\n      border-top-left-radius: inherit;\n      border-bottom-left-radius: inherit;\n    }\n    .book-card-shadow {\n      box-shadow: 0 4px 20px -2px rgba(23, 32, 31, 0.05), 0 2px 6px -1px rgba(23, 32, 31, 0.02);\n      transition: all 0.25s ease-in-out;\n    }\n    .book-card-shadow:hover {\n      box-shadow: 0 16px 32px -4px rgba(23, 32, 31, 0.12), 0 6px 12px -2px rgba(23, 32, 31, 0.04);\n      transform: translateY(-3px);\n    }"}</style>
+    <div className="w-full max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-12">
 
-
-<aside className="fixed top-0 left-0 bottom-0 w-[68px] bg-surface-container-lowest border-r border-outline-variant/30 flex flex-col items-center py-4 z-50 select-none">
-
-<button className="w-10 h-10 rounded-[10px] bg-tertiary text-on-tertiary flex items-center justify-center hover:bg-tertiary-container transition-colors shadow-sm mb-6" title="HUKI Workspace">
-<span className="material-symbols-outlined text-[20px]">code</span>
-</button>
-
-<nav className="flex flex-col gap-2 items-center w-full px-2">
-
-<a className="w-11 h-11 rounded-xl bg-tertiary-fixed/40 text-tertiary flex items-center justify-center transition-all group relative" href="#" title="Sàn Sách">
-<span className="material-symbols-outlined text-[22px] fill-icon">storefront</span>
-<span className="absolute left-[70px] bg-inverse-surface text-inverse-on-surface text-[12px] py-1 px-2.5 rounded opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity font-body-sm whitespace-nowrap shadow-md z-50">Sàn Thương Mại</span>
-</Link>
-
-<a className="w-11 h-11 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-tertiary flex items-center justify-center transition-colors group relative" href="#" title="Mạng Xã Hội">
-<span className="material-symbols-outlined text-[22px]">forum</span>
-<span className="absolute left-[70px] bg-inverse-surface text-inverse-on-surface text-[12px] py-1 px-2.5 rounded opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity font-body-sm whitespace-nowrap shadow-md z-50">Cộng Đồng Bạn Đọc</span>
-</Link>
-
-<a className="w-11 h-11 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-tertiary flex items-center justify-center transition-colors group relative" href="#" title="Tủ Sách Cá Nhân">
-<span className="material-symbols-outlined text-[22px]">local_library</span>
-<span className="absolute left-[70px] bg-inverse-surface text-inverse-on-surface text-[12px] py-1 px-2.5 rounded opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity font-body-sm whitespace-nowrap shadow-md z-50">Tủ Sách Của Tôi</span>
-</Link>
-
-<a className="w-11 h-11 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-tertiary flex items-center justify-center transition-colors group relative" href="#" title="HUKI Reader Ebook">
-<span className="material-symbols-outlined text-[22px]">auto_stories</span>
-<span className="absolute left-[70px] bg-inverse-surface text-inverse-on-surface text-[12px] py-1 px-2.5 rounded opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity font-body-sm whitespace-nowrap shadow-md z-50">Trình Đọc Ebook</span>
-</Link>
-
-<a className="w-11 h-11 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-primary flex items-center justify-center transition-colors group relative" href="#" title="Thử Thách Đọc Sách">
-<span className="material-symbols-outlined text-[22px]">local_fire_department</span>
-<span className="absolute left-[70px] bg-inverse-surface text-inverse-on-surface text-[12px] py-1 px-2.5 rounded opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity font-body-sm whitespace-nowrap shadow-md z-50">Thử Thách Đọc 2026</span>
-</Link>
-</nav>
-
-<div className="w-8 h-[1px] bg-outline-variant/40 my-4"></div>
-
-<div className="flex flex-col gap-2 items-center w-full px-2">
-<a className="w-11 h-11 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-tertiary flex items-center justify-center transition-colors group relative" href="#" title="Thống Kê Đọc">
-<span className="material-symbols-outlined text-[22px]">bar_chart</span>
-<span className="absolute left-[70px] bg-inverse-surface text-inverse-on-surface text-[12px] py-1 px-2.5 rounded opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity font-body-sm whitespace-nowrap shadow-md z-50">Thống Kê Đọc Sách</span>
-</Link>
-<a className="w-11 h-11 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-tertiary flex items-center justify-center transition-colors group relative" href="#" title="Câu Lạc Bộ Sách">
-<span className="material-symbols-outlined text-[22px]">groups</span>
-<span className="absolute left-[70px] bg-inverse-surface text-inverse-on-surface text-[12px] py-1 px-2.5 rounded opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity font-body-sm whitespace-nowrap shadow-md z-50">Câu Lạc Bộ Sách</span>
-</Link>
-<a className="w-11 h-11 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-tertiary flex items-center justify-center transition-colors group relative" href="#" title="Dành Cho Nhà Xuất Bản">
-<span className="material-symbols-outlined text-[22px]">apartment</span>
-<span className="absolute left-[70px] bg-inverse-surface text-inverse-on-surface text-[12px] py-1 px-2.5 rounded opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity font-body-sm whitespace-nowrap shadow-md z-50">Đối Tác Xuất Bản</span>
-</Link>
-</div>
-
-<div className="mt-auto flex flex-col gap-2 items-center w-full px-2">
-<button className="w-11 h-11 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface flex items-center justify-center transition-colors" title="Kho Ứng Dụng HUKI">
-<span className="material-symbols-outlined text-[22px]">apps</span>
-</button>
-<button className="w-11 h-11 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface flex items-center justify-center transition-colors" title="Cài Đặt">
-<span className="material-symbols-outlined text-[22px]">settings</span>
-</button>
-</div>
-</aside>
-
-<div className="pl-[68px] flex-1 flex flex-col min-w-0">
-
-<div className="w-full bg-surface-container-low border-b border-outline-variant/30 text-on-surface-variant font-body-sm text-[12px] leading-[34px] h-[34px] px-margin-desktop">
-<div className="max-w-[1520px] mx-auto flex items-center justify-between">
-<div className="flex items-center gap-4">
-<a className="hover:text-tertiary transition-colors flex items-center gap-1" href="#">
-<span className="material-symbols-outlined text-[14px]">store</span> Kênh dành cho người bán
-          </Link>
-<span className="text-outline-variant">|</span>
-<a className="hover:text-tertiary transition-colors flex items-center gap-1" href="#">
-<span className="material-symbols-outlined text-[14px]">download</span> Tải ứng dụng HUKI
-          </Link>
-<span className="text-outline-variant">|</span>
-<a className="hover:text-tertiary transition-colors" href="#">Kết nối</Link>
-<span className="text-outline-variant">|</span>
-<a className="hover:text-tertiary transition-colors" href="#">Chính sách</Link>
-<span className="text-outline-variant">|</span>
-<a className="hover:text-tertiary transition-colors" href="#">Hỗ trợ</Link>
-</div>
-<div className="flex items-center gap-5">
-<button className="flex items-center gap-1.5 hover:text-tertiary transition-colors">
-<span className="material-symbols-outlined text-[15px]">light_mode</span> Giao diện Sáng
-          </button>
-<a className="flex items-center gap-1 hover:text-tertiary transition-colors" href="#">
-<span className="material-symbols-outlined text-[15px]">help</span> Trợ giúp
-          </Link>
-<a className="flex items-center gap-1 hover:text-tertiary transition-colors" href="#">
-<span className="material-symbols-outlined text-[15px]">notifications</span> Thông báo
-          </Link>
-<div className="flex items-center gap-1 font-medium text-tertiary">
-<span>Tiếng Việt</span>
-<span className="material-symbols-outlined text-[14px]">expand_more</span>
-</div>
-</div>
-</div>
-</div>
-
-<header className="w-full bg-surface-container-lowest sticky top-0 z-40 border-b border-outline-variant/30 shadow-sm h-[74px]">
-<div className="max-w-[1520px] mx-auto h-full px-margin-desktop flex items-center justify-between gap-6">
-
-<div className="flex items-center gap-8">
-<a className="flex items-center gap-2 text-decoration-none" href="#">
-<div className="w-10 h-10 rounded-lg bg-tertiary flex items-center justify-center text-on-tertiary shadow-sm">
-<span className="material-symbols-outlined text-[24px]">menu_book</span>
-</div>
-<div className="flex flex-col">
-<span className="font-headline-md text-headline-sm font-semibold tracking-tight text-tertiary leading-none">HUKI EBOOK</span>
-<span className="font-label-sm text-[10px] tracking-wider text-secondary uppercase font-semibold mt-1">Literary Salon &amp; Marketplace</span>
-</div>
-</Link>
-
-<div className="hidden lg:flex items-center bg-surface-container p-1 rounded-full border border-outline-variant/30">
-<a className="px-4 py-1.5 rounded-full bg-surface-container-lowest text-tertiary font-title-md text-[13px] shadow-sm flex items-center gap-1.5 font-semibold" href="#">
-<span className="material-symbols-outlined text-[16px]">shopping_cart</span> Sàn TMĐT
-            </Link>
-<a className="px-4 py-1.5 rounded-full text-on-surface-variant hover:text-tertiary font-title-md text-[13px] flex items-center gap-1.5 transition-colors" href="#">
-<span className="material-symbols-outlined text-[16px]">diversity_3</span> Mạng Xã Hội Sách
-            </Link>
-</div>
-</div>
-
-<div className="flex-1 max-w-[580px]">
-<div className="flex items-center bg-surface-container-low border border-outline-variant/60 rounded-xl px-3 h-[46px] focus-within:border-tertiary focus-within:bg-surface-container-lowest focus-within:shadow-sm transition-all">
-<div className="flex items-center gap-1 pr-3 border-r border-outline-variant/50 text-on-surface-variant font-body-sm text-[13px] whitespace-nowrap cursor-pointer hover:text-tertiary">
-<span>Tất cả</span>
-<span className="material-symbols-outlined text-[16px]">expand_more</span>
-</div>
-<input className="w-full bg-transparent border-none text-on-surface font-body-md text-[14px] px-3 focus:outline-none placeholder:text-on-surface-variant/60" placeholder="Tìm kiếm sách, tác giả, nhà xuất bản, ISBN..." type="text" />
-<button className="w-8 h-8 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center hover:bg-tertiary-container transition-colors shrink-0">
-<span className="material-symbols-outlined text-[18px]">search</span>
-</button>
-</div>
-</div>
-
-<div className="flex items-center gap-4">
-
-<a className="w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant relative transition-colors" href="#" title="Danh sách yêu thích">
-<span className="material-symbols-outlined text-[22px]">favorite</span>
-<span className="absolute top-1 right-1 w-4 h-4 bg-primary text-on-primary text-[10px] font-bold rounded-full flex items-center justify-center">5</span>
-</Link>
-
-<a className="w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant relative transition-colors" href="#" title="Thông báo">
-<span className="material-symbols-outlined text-[22px]">notifications</span>
-<span className="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full ring-2 ring-surface-container-lowest"></span>
-</Link>
-
-<a className="flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface" href="#">
-<div className="relative">
-<span className="material-symbols-outlined text-[22px] text-tertiary">shopping_bag</span>
-<span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full flex items-center justify-center">3</span>
-</div>
-<div className="hidden sm:flex flex-col text-left">
-<span className="font-label-sm text-[10px] text-on-surface-variant">Giỏ hàng</span>
-<span className="font-title-md text-[12px] font-semibold text-tertiary">353.000₫</span>
-</div>
-</Link>
-
-<div className="flex items-center gap-2 pl-2 border-l border-outline-variant/40 cursor-pointer">
-<div className="w-9 h-9 rounded-full ring-2 ring-tertiary/20 overflow-hidden bg-surface-container">
-<img className="w-full h-full object-cover" alt="Chân dung avatar độc giả nam thanh lịch Minh Trí, biểu cảm tươi tắn trong góc cà phê sách ấm áp với kệ sách mờ ảo phía sau, ánh sáng tự nhiên tinh tế, phong cách chụp chân dung editorial chuyên nghiệp màu sắc ấm áp ngọc lục bảo và kem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_Qsrh5I3Wle2Nd7qn5yg7qX5I04Rwh5f28AZR0QosIjPapx1_LYcd0fpdGqXJr5zRPLFmg02MqFQ1HFAgUI0RE8aJkogxgrD7EbUixL9UCQy-0Sds62YwBdXZKfKzdZ4URR5rRUfcEX9qGA2h4NMG0AZPzt141m6FsoV4igG8Nj4gouJm1fcL4sd5gv0bjk2oBkH6_R8XJIsjnXE5pCco6fMVnJ_0TE5gJbD17r3sqZ0Q5JxBYg_SzQ" />
-</div>
-<div className="hidden xl:flex flex-col">
-<div className="flex items-center gap-1">
-<span className="font-title-md text-[13px] font-semibold text-on-surface">Minh Trí</span>
-<span className="bg-secondary-container text-on-secondary-container text-[9px] font-bold px-1.5 py-0.2 rounded font-label-sm">VIP</span>
-</div>
-<span className="font-label-sm text-[11px] text-tertiary font-medium">Hạng Học Giả</span>
-</div>
-</div>
-</div>
-</div>
-</header>
-
-<main className="w-full max-w-[1520px] mx-auto px-margin-desktop py-8 flex flex-col gap-12">
-
-<section className="w-full relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#00382B] via-[#004D38] to-[#00271E] text-on-tertiary shadow-xl min-h-[500px] flex flex-col justify-between p-10 lg:p-14 border border-tertiary/40">
+<section 
+  style={{ background: 'linear-gradient(to bottom right, var(--theme-hero-from, #00382B), var(--theme-hero-via, #004D38), var(--theme-hero-to, #00271E))' }}
+  className="w-full relative rounded-3xl overflow-hidden text-on-tertiary shadow-xl min-h-[500px] flex flex-col justify-between p-10 lg:p-14 border border-tertiary/40">
 
 <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-tertiary-fixed/10 blur-3xl pointer-events-none"></div>
 <div className="absolute -left-12 bottom-0 w-80 h-80 rounded-full bg-secondary-container/10 blur-3xl pointer-events-none"></div>
@@ -240,17 +64,17 @@ export default function HomePage() {
 
 <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-[12px] text-inverse-on-surface/80 font-body-sm">
 <span className="text-tertiary-fixed font-medium">Gợi ý tìm kiếm:</span>
-<a className="hover:text-white underline decoration-white/30 underline-offset-2" href="#">Tâm lý học</Link>
+<Link className="hover:text-white underline decoration-white/30 underline-offset-2" to="/books">Tâm lý học</Link>
 <span>•</span>
-<a className="hover:text-white underline decoration-white/30 underline-offset-2" href="#">Kinh doanh</Link>
+<Link className="hover:text-white underline decoration-white/30 underline-offset-2" to="/books">Kinh doanh</Link>
 <span>•</span>
-<a className="hover:text-white underline decoration-white/30 underline-offset-2" href="#">Trí tuệ nhân tạo AI</Link>
+<Link className="hover:text-white underline decoration-white/30 underline-offset-2" to="/">Trí tuệ nhân tạo AI</Link>
 <span>•</span>
-<a className="hover:text-white underline decoration-white/30 underline-offset-2" href="#">Tiểu thuyết kinh điển</Link>
+<Link className="hover:text-white underline decoration-white/30 underline-offset-2" to="/books">Tiểu thuyết kinh điển</Link>
 <span>•</span>
-<a className="hover:text-white underline decoration-white/30 underline-offset-2" href="#">Atomic Habits</Link>
+<Link className="hover:text-white underline decoration-white/30 underline-offset-2" to="/book/atomic-habits">Atomic Habits</Link>
 <span>•</span>
-<a className="hover:text-white underline decoration-white/30 underline-offset-2" href="#">Chữa lành tâm thức</Link>
+<Link className="hover:text-white underline decoration-white/30 underline-offset-2" to="/books">Chữa lành tâm thức</Link>
 </div>
 </div>
 </section>
@@ -261,7 +85,7 @@ export default function HomePage() {
 <span className="material-symbols-outlined text-tertiary text-[22px]">explore</span>
             Khám Phá Nhanh Theo Chủ Đề
           </h2>
-<a className="font-title-md text-[14px] text-tertiary hover:underline flex items-center gap-1 font-semibold" href="#">
+<Link className="font-title-md text-[14px] text-tertiary hover:underline flex items-center gap-1 font-semibold" to="/books">
             Xem tất cả danh mục <span className="material-symbols-outlined text-[16px]">chevron_right</span>
 </Link>
 </div>
@@ -350,14 +174,14 @@ export default function HomePage() {
               <span className="bg-inverse-surface text-inverse-on-surface px-2 py-1 rounded text-[12px] font-mono">36</span>
 </div>
 </div>
-<a className="font-title-md text-[14px] text-primary hover:underline flex items-center gap-1 font-semibold" href="#">
+<Link className="font-title-md text-[14px] text-primary hover:underline flex items-center gap-1 font-semibold" to="/books">
             Xem toàn bộ Flash Sale <span className="material-symbols-outlined text-[16px]">chevron_right</span>
 </Link>
 </div>
 
 <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
 
-<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col relative group">
+<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col relative group cursor-pointer hover:border-tertiary/50 transition-all">
 <span className="absolute top-4 left-4 z-20 bg-primary text-on-primary font-label-sm text-[11px] font-bold px-2 py-0.5 rounded shadow">-31%</span>
 <button className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors">
 <span className="material-symbols-outlined text-[18px]">favorite</span>
@@ -370,7 +194,7 @@ export default function HomePage() {
 <span>4.9</span>
 <span className="text-on-surface-variant font-normal">(1.420)</span>
 </div>
-<h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug">Nhà Giả Kim (Tái bản đặc biệt)</h4>
+<Link to="/book/nha-gia-kim"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Nhà Giả Kim (Tái bản đặc biệt)</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Paulo Coelho</p>
 <div className="mt-3 pt-2 border-t border-outline-variant/20 flex flex-col">
 <div className="flex items-baseline gap-2">
@@ -385,7 +209,7 @@ export default function HomePage() {
 </div>
 </div>
 
-<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col relative group">
+<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col relative group cursor-pointer hover:border-tertiary/50 transition-all">
 <span className="absolute top-4 left-4 z-20 bg-primary text-on-primary font-label-sm text-[11px] font-bold px-2 py-0.5 rounded shadow">-15%</span>
 <button className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors">
 <span className="material-symbols-outlined text-[18px]">favorite</span>
@@ -398,7 +222,7 @@ export default function HomePage() {
 <span>4.9</span>
 <span className="text-on-surface-variant font-normal">(980)</span>
 </div>
-<h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug">Tâm Lý Học Về Tiền</h4>
+<Link to="/book/tam-ly-hoc-ve-tien"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Tâm Lý Học Về Tiền</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Morgan Housel</p>
 <div className="mt-3 pt-2 border-t border-outline-variant/20 flex flex-col">
 <div className="flex items-baseline gap-2">
@@ -412,7 +236,7 @@ export default function HomePage() {
 </div>
 </div>
 
-<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col relative group">
+<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col relative group cursor-pointer hover:border-tertiary/50 transition-all">
 <span className="absolute top-4 left-4 z-20 bg-primary text-on-primary font-label-sm text-[11px] font-bold px-2 py-0.5 rounded shadow">-25%</span>
 <button className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors">
 <span className="material-symbols-outlined text-[18px]">favorite</span>
@@ -425,7 +249,7 @@ export default function HomePage() {
 <span>5.0</span>
 <span className="text-on-surface-variant font-normal">(3.110)</span>
 </div>
-<h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug">Thay Đổi Tí Hon Hiệu Quả Bất Ngờ</h4>
+<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Thay Đổi Tí Hon Hiệu Quả Bất Ngờ</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">James Clear</p>
 <div className="mt-3 pt-2 border-t border-outline-variant/20 flex flex-col">
 <div className="flex items-baseline gap-2">
@@ -439,7 +263,7 @@ export default function HomePage() {
 </div>
 </div>
 
-<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col relative group">
+<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col relative group cursor-pointer hover:border-tertiary/50 transition-all">
 <span className="absolute top-4 left-4 z-20 bg-primary text-on-primary font-label-sm text-[11px] font-bold px-2 py-0.5 rounded shadow">-30%</span>
 <button className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors">
 <span className="material-symbols-outlined text-[18px]">favorite</span>
@@ -452,7 +276,7 @@ export default function HomePage() {
 <span>4.8</span>
 <span className="text-on-surface-variant font-normal">(420)</span>
 </div>
-<h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug">Đột Phá AI &amp; Tương Lai Loài Người</h4>
+<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Đột Phá AI &amp; Tương Lai Loài Người</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Max Tegmark</p>
 <div className="mt-3 pt-2 border-t border-outline-variant/20 flex flex-col">
 <div className="flex items-baseline gap-2">
@@ -466,7 +290,7 @@ export default function HomePage() {
 </div>
 </div>
 
-<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col relative group">
+<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col relative group cursor-pointer hover:border-tertiary/50 transition-all">
 <span className="absolute top-4 left-4 z-20 bg-primary text-on-primary font-label-sm text-[11px] font-bold px-2 py-0.5 rounded shadow">-20%</span>
 <button className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors">
 <span className="material-symbols-outlined text-[18px]">favorite</span>
@@ -479,7 +303,7 @@ export default function HomePage() {
 <span>4.9</span>
 <span className="text-on-surface-variant font-normal">(2.180)</span>
 </div>
-<h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug">Dám Bị Ghét</h4>
+<Link to="/book/dam-bi-ghet"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Dám Bị Ghét</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Kishimi Ichiro &amp; Koga Fumitake</p>
 <div className="mt-3 pt-2 border-t border-outline-variant/20 flex flex-col">
 <div className="flex items-baseline gap-2">
@@ -493,7 +317,7 @@ export default function HomePage() {
 </div>
 </div>
 
-<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col relative group">
+<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col relative group cursor-pointer hover:border-tertiary/50 transition-all">
 <span className="absolute top-4 left-4 z-20 bg-primary text-on-primary font-label-sm text-[11px] font-bold px-2 py-0.5 rounded shadow">-22%</span>
 <button className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors">
 <span className="material-symbols-outlined text-[18px]">favorite</span>
@@ -506,7 +330,7 @@ export default function HomePage() {
 <span>4.9</span>
 <span className="text-on-surface-variant font-normal">(1.870)</span>
 </div>
-<h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug">Tư Duy Nhanh Và Chậm</h4>
+<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Tư Duy Nhanh Và Chậm</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Daniel Kahneman</p>
 <div className="mt-3 pt-2 border-t border-outline-variant/20 flex flex-col">
 <div className="flex items-baseline gap-2">
@@ -556,7 +380,7 @@ export default function HomePage() {
 <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Cội Nguồn Tri Thức của nhà bác học Yuval Noah Harari, tông màu kem ngà và xanh cổ vịt lịch lãm, hình ảnh lịch sử văn minh nhân loại được thể hiện tinh tế mang phong vị hàn lâm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAahWq-O8ZZn50FXO2Ffh5G7bABTQCGBC0oLuWQHyBAPLufVQpmjylouUJqJgAJp83JsnQAFJ_ETlHZJ542ADUa266CMGia7A410cOiCQqd7A2g9cDYPMPTelbTkoqYAtXvSQ9MaMtvmanDOarYO11x3pYzC8VZ6iiOQQ1zM1HJgDQQVTZTZubqU-PRdhJqGuL3AQNB0uNd6sZn41MbAqLsaDUMMCrp4iNB5e2JdKHt_QEPAOLKHtpfQw" />
 <span className="absolute bottom-2 left-2 bg-inverse-surface/80 backdrop-blur-sm text-inverse-on-surface font-label-sm text-[10px] px-2 py-0.5 rounded">Ebook + Sách Giấy</span>
 </div>
-<h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug">Sapiens: Lược Sử Loài Người</h4>
+<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Sapiens: Lược Sử Loài Người</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Yuval Noah Harari</p>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mt-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
@@ -580,7 +404,7 @@ export default function HomePage() {
 <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Rừng Na Uy của Haruki Murakami, tông màu đỏ sẫm kết hợp xanh lục thẩm mỹ Nhật Bản, phong cảnh tuyết trắng rơi lãng đãng đậm chất trữ tình văn chương hiện đại." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA1xP3paoLAqBU3fKHmRDckUIE8iPzVZoNNBZhxhSwMiSKPx5pxgdTFt5D8C-BIv7ydsAWRxjc6vxLDWdemsBQBMs5XvueBE9BbE636D26rl2dCtf7SYQDTU6SRHgh96uAlcBIZpqzDpVLEa-kpiAPjj9u5y4vngAViz3HHDqV3Hi7Tn8RqAQYH-FMvsuROg6hRJAqb2loxUuR8Sckc93MuOsVDdg0M_2xAiqfdZhaVMwTTRzFUgYQXw" />
 <span className="absolute bottom-2 left-2 bg-inverse-surface/80 backdrop-blur-sm text-inverse-on-surface font-label-sm text-[10px] px-2 py-0.5 rounded">Tái Bản 2026</span>
 </div>
-<h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug">Rừng Na Uy (Bản Dịch Mới)</h4>
+<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Rừng Na Uy (Bản Dịch Mới)</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Haruki Murakami</p>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mt-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
@@ -604,7 +428,7 @@ export default function HomePage() {
 <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Deep Work Làm Việc Sâu của Cal Newport, thiết kế tối giản hiện đại với khối màu xanh đậm và đường nét thanh thoát, biểu tượng cho sự tập trung tuyệt đối." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeAldOchs0jay4pfEB0J0t3--m5JpoFgODgKxnbamTXfQc3Q9wUABUJSkfstf6A8pXWiI6Y3uVi4oMfQQFC7-VLtuAb2AiiFIZm2rBmlOuf_mVOJIAK5PCBKUDl2EFR7AFI1fHiekfjNFuQVj8MtDymmATqTvDT2KRbP4A8htfV-YDlGcocEa_rVDhnbcrAFIUHjRpNjY-BWR1qcovQ_uHsrTbdYiM78YuF0gReQlUxEhJei5cqEktMA" />
 <span className="absolute bottom-2 left-2 bg-inverse-surface/80 backdrop-blur-sm text-inverse-on-surface font-label-sm text-[10px] px-2 py-0.5 rounded">Được Đánh Giá Cao</span>
 </div>
-<h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug">Deep Work: Làm Việc Sâu</h4>
+<Link to="/book/deep-work"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Deep Work: Làm Việc Sâu</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Cal Newport</p>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mt-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
@@ -628,7 +452,7 @@ export default function HomePage() {
 <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Muôn Kiếp Nhân Sinh tập 3 của tác giả Nguyên Phong, minh họa hoa sen thanh tịnh và luân xa ánh sáng huyền diệu trên nền tranh thủy mặc màu xanh ngọc bích êm đềm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ8ebcHFsos4ubMNEXwR6C1JXMygF__I6x474rm8P8Sm1nDYpa_CTT5wBb-NkMzfYzu1oBjqTNDeyJyzlW_-xR6CQ-bp3l_BIajAnOl1_LrC95ExyimgbHfH2bbOM_vRqrAqfnus2lnsFor1vxKnPS9GiUVRC0dj5Y678Sgl4gOhHVxgqDiR5yQG43OSJwFIADGowh0oko0NkkAK9iVZlXGuZynAVyN7D8bYUnUu32lWEi1BZcJEj1hg" />
 <span className="absolute bottom-2 left-2 bg-secondary-container text-on-secondary-container font-label-sm text-[10px] px-2 py-0.5 rounded font-bold">Bán Chạy Nhất</span>
 </div>
-<h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug">Muôn Kiếp Nhân Sinh (Trọn bộ)</h4>
+<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Muôn Kiếp Nhân Sinh (Trọn bộ)</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Nguyên Phong</p>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mt-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
@@ -652,7 +476,7 @@ export default function HomePage() {
 <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Không Diệt Không Sinh Đừng Sợ Hãi của Thiền sư Thích Nhất Hạnh, typography chữ thư pháp hiện đại thanh tịnh trên nền giấy mỹ thuật mộc mạc màu be ấm cúng." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIVd9e_xnuEa_DW6YY3L3loH6GzqT5fbdDVDUXUGPYTiwNwtsNRPsq0IDnExW68G2riBcucukM_GYSYHVIumaHSrkG6PaiousV-H7pu3UnxOPIuJWrGBo7V9SPhF9SSq4DcP2sCNM2f5IquMZ9GAjqxLJg1dxRIjLO863oh6Z8IkjciAsYS6H2z39GOVXtRqI6lEmbMpcauoOMktSp2zLuGCZFwKvcUV_nka0vi9jIw5VpguiyBRdUVg" />
 <span className="absolute bottom-2 left-2 bg-inverse-surface/80 backdrop-blur-sm text-inverse-on-surface font-label-sm text-[10px] px-2 py-0.5 rounded">Tâm Linh Chữa Lành</span>
 </div>
-<h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug">Không Diệt Không Sinh Đừng Sợ Hãi</h4>
+<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Không Diệt Không Sinh Đừng Sợ Hãi</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Thích Nhất Hạnh</p>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mt-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
@@ -676,7 +500,7 @@ export default function HomePage() {
 <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Chiến Tranh Tiền Tệ của Song Hongbing, màu vàng đồng và xanh navy quyền lực, họa tiết đồng tiền cổ và đồ thị tài chính thế giới tinh xảo đẳng cấp." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB9X3iVNCsQDE09EyZoO09SvACM8dE3-aqidJnYjQGppCxNWng3hSqiFoImsWnJZeIW2cqwb4rkZpr7RERqQBGCN0RpLHcrt5EDs4tnZr_yZKIgYu__ty6b-a-OWg11m0XJEzrL5bSmPBMNGZw56FM6xANQbeO-ynAzcRXaOhwx6I5afV1mx6bi6L1pZyG7TGevA5xtH8ncPE9HYZK3o8wUGe426L_R3OIxQZOs1EvxsV3Rr2G6IEh0g" />
 <span className="absolute bottom-2 left-2 bg-inverse-surface/80 backdrop-blur-sm text-inverse-on-surface font-label-sm text-[10px] px-2 py-0.5 rounded">Kinh Tế Tài Chính</span>
 </div>
-<h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug">Chiến Tranh Tiền Tệ (Bộ 5 cuốn)</h4>
+<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Chiến Tranh Tiền Tệ (Bộ 5 cuốn)</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Song Hongbing</p>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mt-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
@@ -743,7 +567,7 @@ export default function HomePage() {
 </div>
 <h3 className="font-headline-sm text-headline-sm font-semibold text-on-surface">Kinh Doanh &amp; Khởi Nghiệp</h3>
 </div>
-<a className="font-title-md text-[13px] text-tertiary hover:underline font-semibold flex items-center gap-1" href="#">
+<Link className="font-title-md text-[13px] text-tertiary hover:underline font-semibold flex items-center gap-1" to="/books">
             Xem 1.250+ đầu sách <span className="material-symbols-outlined text-[16px]">chevron_right</span>
 </Link>
 </div>
@@ -830,7 +654,7 @@ export default function HomePage() {
 </div>
 <h3 className="font-headline-sm text-headline-sm font-semibold text-on-surface">Công Nghệ &amp; Trí Tuệ Nhân Tạo AI</h3>
 </div>
-<a className="font-title-md text-[13px] text-tertiary hover:underline font-semibold flex items-center gap-1" href="#">
+<Link className="font-title-md text-[13px] text-tertiary hover:underline font-semibold flex items-center gap-1" to="/books">
             Xem 680+ đầu sách <span className="material-symbols-outlined text-[16px]">chevron_right</span>
 </Link>
 </div>
@@ -989,7 +813,7 @@ export default function HomePage() {
 <h3 className="font-headline-sm text-headline-sm font-semibold text-on-surface">Gặp Gỡ Tác Giả Yêu Thích</h3>
 <p className="font-body-sm text-[13px] text-on-surface-variant mt-0.5">Theo dõi trang cá nhân tác giả để nhận thông báo ấn phẩm mới và giao lưu trực tuyến</p>
 </div>
-<a className="font-title-md text-[13px] text-tertiary hover:underline font-semibold flex items-center gap-1" href="#">
+<Link className="font-title-md text-[13px] text-tertiary hover:underline font-semibold flex items-center gap-1" to="/">
             Xem tất cả tác giả <span className="material-symbols-outlined text-[16px]">chevron_right</span>
 </Link>
 </div>
@@ -1058,7 +882,7 @@ export default function HomePage() {
 <h3 className="font-headline-sm text-headline-sm font-semibold text-on-surface">Nhà Xuất Bản &amp; Đối Tác Bản Quyền</h3>
 <p className="font-body-sm text-[13px] text-on-surface-variant mt-0.5">Cam kết 100% sách thật, ấn bản chuẩn chỉ từ các đơn vị uy tín hàng đầu</p>
 </div>
-<a className="font-title-md text-[13px] text-tertiary hover:underline font-semibold flex items-center gap-1" href="#">
+<Link className="font-title-md text-[13px] text-tertiary hover:underline font-semibold flex items-center gap-1" to="/">
             Xem tất cả gian hàng chính hãng <span className="material-symbols-outlined text-[16px]">chevron_right</span>
 </Link>
 </div>
@@ -1134,7 +958,7 @@ export default function HomePage() {
             </div>
 <h3 className="font-headline-sm text-headline-sm font-semibold text-on-surface mt-0.5">Cộng Đồng Đang Đọc &amp; Thảo Luận Gì?</h3>
 </div>
-<a className="font-title-md text-[13px] text-tertiary hover:underline font-semibold flex items-center gap-1" href="#">
+<Link className="font-title-md text-[13px] text-tertiary hover:underline font-semibold flex items-center gap-1" to="/community">
             Ghé thăm Diễn Đàn Đọc <span className="material-symbols-outlined text-[16px]">chevron_right</span>
 </Link>
 </div>
@@ -1362,86 +1186,6 @@ export default function HomePage() {
           </button>
 </div>
 </section>
-</main>
-
-<footer className="w-full bg-[#00382B] text-inverse-on-surface mt-space-3xl border-t border-outline-variant/30">
-<div className="max-w-[1520px] mx-auto px-margin-desktop py-14 flex flex-col justify-between">
-
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
-
-<div className="lg:col-span-2 flex flex-col gap-4">
-<div className="flex items-center gap-2.5">
-<div className="w-9 h-9 rounded-lg bg-tertiary-container text-on-tertiary flex items-center justify-center">
-<span className="material-symbols-outlined text-[22px]">menu_book</span>
-</div>
-<span className="font-headline-md text-headline-sm font-semibold text-white tracking-tight">HUKI EBOOK</span>
-</div>
-<p className="font-body-md text-[13px] text-inverse-on-surface/75 max-w-[380px] leading-relaxed">
-              Hệ sinh thái Sàn Thương Mại Điện Tử và Mạng Xã Hội Bạn Đọc hàng đầu Việt Nam. Nơi tôn vinh giá trị sách thật, tri thức bản quyền và văn hóa đọc tinh tế.
-            </p>
-<div className="flex items-center gap-3 mt-1">
-<a className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors" href="#" title="Facebook">
-<span className="material-symbols-outlined text-[18px]">public</span>
-</Link>
-<a className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors" href="#" title="Youtube">
-<span className="material-symbols-outlined text-[18px]">smart_display</span>
-</Link>
-<a className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors" href="#" title="TikTok">
-<span className="material-symbols-outlined text-[18px]">podcasts</span>
-</Link>
-<a className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors" href="#" title="Zalo">
-<span className="material-symbols-outlined text-[18px]">chat</span>
-</Link>
-</div>
-</div>
-
-<div className="flex flex-col gap-3">
-<h4 className="font-title-md text-[14px] font-semibold text-white uppercase tracking-wider">Về Huki Ebook</h4>
-<a className="font-body-sm text-[13px] text-inverse-on-surface/70 hover:text-white transition-colors" href="#">Giới thiệu về Huki</Link>
-<a className="font-body-sm text-[13px] text-inverse-on-surface/70 hover:text-white transition-colors" href="#">Tuyển dụng nhân tài</Link>
-<a className="font-body-sm text-[13px] text-inverse-on-surface/70 hover:text-white transition-colors" href="#">Điều khoản sử dụng</Link>
-<a className="font-body-sm text-[13px] text-inverse-on-surface/70 hover:text-white transition-colors" href="#">Chính sách bảo mật</Link>
-<a className="font-body-sm text-[13px] text-inverse-on-surface/70 hover:text-white transition-colors" href="#">Bản quyền &amp; DRM sách số</Link>
-</div>
-
-<div className="flex flex-col gap-3">
-<h4 className="font-title-md text-[14px] font-semibold text-white uppercase tracking-wider">Hỗ Trợ Khách Hàng</h4>
-<a className="font-body-sm text-[13px] text-inverse-on-surface/70 hover:text-white transition-colors" href="#">Trung tâm trợ giúp độc giả</Link>
-<a className="font-body-sm text-[13px] text-inverse-on-surface/70 hover:text-white transition-colors" href="#">Hướng dẫn mua sách giấy &amp; Ebook</Link>
-<a className="font-body-sm text-[13px] text-inverse-on-surface/70 hover:text-white transition-colors" href="#">Chính sách đổi trả &amp; hoàn tiền</Link>
-<a className="font-body-sm text-[13px] text-inverse-on-surface/70 hover:text-white transition-colors" href="#">Phương thức vận chuyển hỏa tốc</Link>
-<a className="font-body-sm text-[13px] text-inverse-on-surface/70 hover:text-white transition-colors" href="#">Cài đặt ứng dụng HUKI Reader</Link>
-</div>
-
-<div className="flex flex-col gap-3">
-<h4 className="font-title-md text-[14px] font-semibold text-white uppercase tracking-wider">Hợp Tác &amp; Thanh Toán</h4>
-<a className="font-body-sm text-[13px] text-inverse-on-surface/70 hover:text-white transition-colors" href="#">Dành cho Nhà Xuất Bản &amp; Tác Giả</Link>
-<a className="font-body-sm text-[13px] text-inverse-on-surface/70 hover:text-white transition-colors" href="#">Mở gian hàng chính hãng (Mall)</Link>
-<a className="font-body-sm text-[13px] text-inverse-on-surface/70 hover:text-white transition-colors" href="#">Tiếp thị liên kết độc giả (Affiliate)</Link>
-<div className="mt-2 pt-2 border-t border-white/10">
-<span className="font-label-sm text-[11px] text-inverse-on-surface/60 uppercase block mb-2">Thanh toán an toàn</span>
-<div className="flex items-center gap-2">
-<span className="px-2 py-1 rounded bg-white text-[#17201F] text-[10px] font-bold">VISA</span>
-<span className="px-2 py-1 rounded bg-white text-[#17201F] text-[10px] font-bold">MasterCard</span>
-<span className="px-2 py-1 rounded bg-[#A50064] text-white text-[10px] font-bold">MoMo</span>
-<span className="px-2 py-1 rounded bg-[#005BAA] text-white text-[10px] font-bold">VNPay</span>
-</div>
-</div>
-</div>
-</div>
-
-<div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-inverse-on-surface/60 font-body-sm">
-<p>© 2026 HUKI EBOOK. Bản quyền thuộc về Công ty TNHH Sách Điện Tử Huki.</p>
-<div className="flex items-center gap-4">
-<span>Giấy phép hoạt động số 128/GP-BTTTT cấp năm 2023</span>
-<span>•</span>
-<span className="text-tertiary-fixed">Đã chứng nhận Sàn Sách Bản Quyền</span>
-</div>
-</div>
-</div>
-</footer>
-</div>
-
     </div>
   );
 }

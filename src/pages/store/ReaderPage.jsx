@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useReader } from '../../context/ReaderContext';
 
 export default function ReaderPage() {
+  const location = useLocation();
   const {
     theme, setTheme, fontSize, changeFontSize,
     currentChapter, setCurrentChapter,
@@ -10,6 +11,12 @@ export default function ReaderPage() {
   } = useReader();
 
   const [showToc, setShowToc] = useState(false);
+
+  // Đọc book từ query param hoặc navigation state
+  const bookIdFromQuery = new URLSearchParams(location.search).get('book');
+  const bookIdFromState = location.state?.bookId;
+  const activeBookId = bookIdFromQuery || bookIdFromState || 'atomic-habits';
+  const activeBookTitle = location.state?.bookTitle || 'Atomic Habits – Thay Đổi Tí Hon, Hiệu Quả Bất Ngờ';
 
   const themeClasses = {
     warm: 'bg-[#f8f6f1] text-[#17201f]',
@@ -86,7 +93,7 @@ export default function ReaderPage() {
       <header className={`h-16 px-4 md:px-8 border-b flex items-center justify-between z-40 shrink-0 ${cardThemeClasses[theme]}`}>
         <div className="flex items-center gap-3">
           <Link
-            to="/book/atomic-habits"
+            to={`/book/${activeBookId}`}
             className="flex items-center gap-1 text-xs font-semibold px-3 py-1.5 rounded-lg hover:bg-black/5"
             title="Quay lại Chi tiết Sách"
           >
@@ -103,8 +110,8 @@ export default function ReaderPage() {
           </Link>
           <div className="h-4 w-px bg-[#e8e5df]" aria-hidden="true"></div>
           <div className="max-w-xs md:max-w-md truncate">
-            <h1 className="font-bold text-xs md:text-sm truncate">Atomic Habits – Thay Đổi Tí Hon, Hiệu Quả Bất Ngờ</h1>
-            <p className="text-[10px] text-[#6b7280] truncate">James Clear • Bản quyền HUKI DRM</p>
+            <h1 className="font-bold text-xs md:text-sm truncate">{activeBookTitle}</h1>
+            <p className="text-[10px] text-[#6b7280] truncate">ID: {activeBookId} • Bản quyền HUKI DRM</p>
           </div>
         </div>
 

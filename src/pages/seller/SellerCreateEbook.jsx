@@ -1,130 +1,18 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function SellerCreateEbook() {
   return (
-    <div className="stitch-page bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
-      <style>{".material-symbols-outlined {\n      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;\n      display: inline-block;\n      vertical-align: middle;\n      line-height: 1;\n    }\n    .custom-spine-effect {\n      position: relative;\n    }\n    .custom-spine-effect::after {\n      content: \"\";\n      position: absolute;\n      top: 0;\n      left: 0;\n      bottom: 0;\n      width: 14px;\n      background: linear-gradient(to right, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.06) 25%, transparent 100%);\n      pointer-events: none;\n      border-top-left-radius: inherit;\n      border-bottom-left-radius: inherit;\n    }"}</style>
-
-
-<header className="w-full h-[64px] bg-surface-container-lowest border-b border-surface-variant sticky top-0 z-50 px-6 flex items-center justify-between">
-<div className="flex items-center gap-6">
-<div className="flex items-center gap-3">
-<span className="w-9 h-9 rounded-xl bg-tertiary text-on-tertiary flex items-center justify-center font-bold shadow-sm">
-<span className="material-symbols-outlined text-[20px]" data-icon="auto_stories">auto_stories</span>
-</span>
-<div>
-<div className="flex items-center gap-2">
-<span className="font-headline-md text-headline-sm font-semibold tracking-tight text-on-surface">HUKI</span>
-<span className="font-label-sm text-label-sm uppercase bg-surface-container text-tertiary px-2 py-0.5 rounded font-semibold tracking-wider">SELLER CENTER</span>
-</div>
-</div>
-</div>
-<div className="h-5 w-[1px] bg-surface-variant"></div>
-<div className="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-lg border border-surface-container-high">
-<span className="material-symbols-outlined text-[18px] text-tertiary" data-icon="verified">verified</span>
-<span className="font-title-md text-[13px] font-semibold text-on-surface">Alpha Books Official Store</span>
-<span className="font-label-sm text-[11px] bg-tertiary-container text-on-tertiary px-1.5 py-0.5 rounded font-medium">Bản Quyền Đã Xác Minh</span>
-</div>
-</div>
-
-<div className="flex items-center gap-4">
-<div className="relative w-72">
-<span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]" data-icon="search">search</span>
-<input className="w-full h-9 pl-9 pr-3 rounded-lg bg-surface border border-surface-variant text-body-sm focus:border-tertiary focus:ring-0" placeholder="Tìm kiếm tài liệu, SKU, đơn hàng..." type="text" />
-</div>
-<div className="flex items-center gap-2">
-<button className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container text-on-surface-variant relative">
-<span className="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
-<span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary ring-2 ring-surface-container-lowest"></span>
-</button>
-<button className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container text-on-surface-variant">
-<span className="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
-</button>
-<div className="h-6 w-[1px] bg-surface-variant mx-1"></div>
-<div className="flex items-center gap-2.5 pl-1 cursor-pointer">
-<img className="w-8 h-8 rounded-full object-cover ring-1 ring-surface-variant" alt="A dignified professional portrait of an editorial manager wearing glasses and a dark linen shirt, soft library lighting in background, natural warm tone" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxq_7T4Sluulc1W5qgIYv_FCRpnJ5_bwjj6YRK5CHKKk6lKorNzApwNnPCsmT4NW-9uGoG9PHuxxuCMDI5KK_pAMEWWz_kBr0JsA42-OOeEpUT2uYhrRjR09YH3ANerj9T4y1WFbzeBFWoftURkVtzkVUcFxt47BFP-7efNEdJWBA7J8i2p2Jx9RGGqT-kLARb91u6Aauo9y7goKI9yo95eg5fF8mqv2TCgdkoIZzBxewBSogadjtYRg" />
-<div className="flex flex-col text-left">
-<span className="font-title-md text-[13px] text-on-surface leading-tight">Minh Trí (Biên Tập)</span>
-<span className="font-body-sm text-[11px] text-on-surface-variant leading-tight">Nhà Xuất Bản Đối Tác</span>
-</div>
-<span className="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="expand_more">expand_more</span>
-</div>
-</div>
-</div>
-</header>
-
-<div className="flex-1 flex max-w-[1440px] w-full mx-auto min-h-0">
-
-<aside className="w-[240px] flex-shrink-0 bg-surface-container-lowest border-r border-surface-variant py-6 px-4 flex flex-col justify-between">
-<div className="space-y-6">
-<div>
-<span className="font-label-sm text-[11px] uppercase tracking-wider text-on-surface-variant px-2 font-semibold">Quản Lý Gian Hàng</span>
-<nav className="mt-2.5 space-y-1">
-<a className="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
-<span className="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
-<span className="font-body-md text-[13px]">Bảng Điều Khiển</span>
-</Link>
-<a className="flex items-center gap-3 px-3 py-2 rounded-lg bg-surface-container text-tertiary font-medium" href="#">
-<span className="material-symbols-outlined text-[20px] text-tertiary fill-icon" data-icon="inventory_2" data-weight="fill">inventory_2</span>
-<span className="font-title-md text-[13px]">Kho Sách &amp; Ebook</span>
-</Link>
-<a className="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
-<span className="material-symbols-outlined text-[20px]" data-icon="receipt_long">receipt_long</span>
-<span className="font-body-md text-[13px]">Đơn Đặt Mua &amp; DRM</span>
-</Link>
-<a className="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
-<span className="material-symbols-outlined text-[20px]" data-icon="security">security</span>
-<span className="font-body-md text-[13px]">Quản Trị Tác Quyền</span>
-</Link>
-</nav>
-</div>
-<div>
-<span className="font-label-sm text-[11px] uppercase tracking-wider text-on-surface-variant px-2 font-semibold">Tài Chính &amp; Doanh Thu</span>
-<nav className="mt-2.5 space-y-1">
-<a className="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
-<span className="material-symbols-outlined text-[20px]" data-icon="payments">payments</span>
-<span className="font-body-md text-[13px]">Doanh Số Bán Số</span>
-</Link>
-<a className="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
-<span className="material-symbols-outlined text-[20px]" data-icon="local_offer">local_offer</span>
-<span className="font-body-md text-[13px]">Chiến Dịch Khuyến Mãi</span>
-</Link>
-</nav>
-</div>
-<div>
-<span className="font-label-sm text-[11px] uppercase tracking-wider text-on-surface-variant px-2 font-semibold">Cài Đặt</span>
-<nav className="mt-2.5 space-y-1">
-<a className="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
-<span className="material-symbols-outlined text-[20px]" data-icon="store">store</span>
-<span className="font-body-md text-[13px]">Hồ Sơ Nhà Xuất Bản</span>
-</Link>
-<a className="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" href="#">
-<span className="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
-<span className="font-body-md text-[13px]">Thiết Lập DRM &amp; Bảo Mật</span>
-</Link>
-</nav>
-</div>
-</div>
-
-<div className="p-3.5 bg-surface-container-low rounded-xl border border-surface-container-high">
-<div className="flex items-center gap-2 text-tertiary">
-<span className="material-symbols-outlined text-[18px]" data-icon="verified_user">verified_user</span>
-<span className="font-title-md text-[12px] font-semibold">HUKI Core DRM v3.4</span>
-</div>
-<p className="font-body-sm text-[11px] text-on-surface-variant mt-1.5 leading-relaxed">Mọi tệp số được mã hóa đa tầng và đóng dấu watermark thời gian thực khi độc giả mở sách.</p>
-</div>
-</aside>
-
-<main className="flex-1 flex flex-col min-w-0 bg-surface">
+    <div className="w-full bg-background text-on-background font-body-md text-body-md antialiased min-h-screen py-6 pb-24">
+      <main className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
 
 <div className="px-8 py-5 border-b border-surface-variant bg-surface-container-lowest/80 backdrop-blur-md sticky top-[64px] z-40">
 <div className="flex items-center justify-between">
 <div>
 <div className="flex items-center gap-2 font-body-sm text-[12px] text-on-surface-variant">
-<a className="hover:text-tertiary" href="#">Kho Sách &amp; Ebook</Link>
+<Link className="hover:text-tertiary" to="/">Kho Sách &amp; Ebook</Link>
 <span>/</span>
-<a className="hover:text-tertiary" href="#">Thêm Sản Phẩm Mới</Link>
+<Link className="hover:text-tertiary" to="/seller/product/create-hybrid">Thêm Sản Phẩm Mới</Link>
 <span>/</span>
 <span className="text-on-surface font-medium">Bản Quyền Số (Ebook)</span>
 </div>
@@ -200,27 +88,27 @@ export default function SellerCreateEbook() {
 <span className="font-label-sm text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold block mb-3">THÔNG TIN SẢN PHẨM</span>
 <nav className="space-y-1.5 font-body-sm text-[13px]">
 
-<a className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg bg-surface-container text-tertiary font-semibold" href="#section-basic">
+<Link className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg bg-surface-container text-tertiary font-semibold" to="/seller/product/edit-hybrid">
 <span className="w-2 h-2 rounded-full bg-tertiary"></span>
 <span>Thông Tin Cơ Bản</span>
 </Link>
 
-<a className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-on-surface hover:bg-surface-container-low transition-colors" href="#section-category">
+<Link className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-on-surface hover:bg-surface-container-low transition-colors" to="/seller/edge-cases">
 <span className="material-symbols-outlined text-[16px] text-tertiary fill-icon" data-icon="check_circle" data-weight="fill">check_circle</span>
 <span>Phân Loại Sách</span>
 </Link>
 
-<a className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-on-surface hover:bg-surface-container-low transition-colors" href="#section-media">
+<Link className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-on-surface hover:bg-surface-container-low transition-colors" to="/">
 <span className="material-symbols-outlined text-[16px] text-tertiary fill-icon" data-icon="check_circle" data-weight="fill">check_circle</span>
 <span>Ảnh &amp; Media</span>
 </Link>
 
-<a className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-on-surface hover:bg-surface-container-low transition-colors" href="#section-pricing">
+<Link className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-on-surface hover:bg-surface-container-low transition-colors" to="/">
 <span className="material-symbols-outlined text-[16px] text-tertiary fill-icon" data-icon="check_circle" data-weight="fill">check_circle</span>
 <span>Giá Ebook</span>
 </Link>
 
-<a className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-on-surface bg-tertiary-fixed/40 font-semibold border-l-2 border-tertiary" href="#section-ebook-content">
+<Link className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-on-surface bg-tertiary-fixed/40 font-semibold border-l-2 border-tertiary" to="/seller/product/edit-hybrid">
 <div className="flex items-center gap-2.5">
 <span className="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
 <span className="text-tertiary">Nội Dung Ebook</span>
@@ -228,12 +116,12 @@ export default function SellerCreateEbook() {
 <span className="font-label-sm text-[10px] bg-tertiary text-on-tertiary px-1 rounded font-bold">DRM</span>
 </Link>
 
-<a className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#section-rights">
+<Link className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" to="/seller/product/edit-hybrid">
 <span className="w-2 h-2 rounded-full border border-outline"></span>
 <span>Quyền Phân Phối</span>
 </Link>
 
-<a className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#section-publish">
+<Link className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" to="/">
 <span className="w-2 h-2 rounded-full border border-outline"></span>
 <span>Xuất Bản</span>
 </Link>
@@ -308,7 +196,7 @@ export default function SellerCreateEbook() {
 <label className="block font-title-md text-[13px] font-semibold text-on-surface mb-1.5">Ngôn ngữ <span className="text-primary">*</span></label>
 <div className="relative">
 <select className="w-full h-11 px-3.5 rounded-xl border border-surface-variant bg-surface font-body-md text-on-surface appearance-none focus:border-tertiary focus:ring-1 focus:ring-tertiary">
-<option selected="">Tiếng Việt</option>
+<option>Tiếng Việt</option>
 <option>English</option>
 <option>Song ngữ Anh - Việt</option>
 </select>
@@ -350,7 +238,7 @@ export default function SellerCreateEbook() {
 <div>
 <div className="flex items-center justify-between mb-1.5">
 <label className="font-title-md text-[13px] font-semibold text-on-surface">Tác giả <span className="text-primary">*</span></label>
-<a className="font-body-sm text-[11px] text-tertiary hover:underline" href="#">Không tìm thấy? Đề xuất mới</Link>
+<Link className="font-body-sm text-[11px] text-tertiary hover:underline" to="/">Không tìm thấy? Đề xuất mới</Link>
 </div>
 <div className="relative">
 <input className="w-full h-11 pl-3.5 pr-8 rounded-xl border border-surface-variant bg-surface font-body-md text-on-surface focus:border-tertiary focus:ring-1 focus:ring-tertiary font-medium" type="text" value="James Clear" />
@@ -570,7 +458,7 @@ export default function SellerCreateEbook() {
 </div>
 <div className="pt-2 flex items-center gap-4 text-body-sm text-on-surface">
 <label className="flex items-center gap-2 cursor-pointer">
-<input checked="" className="text-tertiary focus:ring-tertiary" name="sample_rule" type="radio" />
+<input defaultChecked className="text-tertiary focus:ring-tertiary" name="sample_rule" type="radio" />
 <span className="font-medium text-[13px]">Tự động trích xuất 30 trang đầu tiên từ tệp chính (10% nội dung)</span>
 </label>
 </div>
@@ -597,7 +485,7 @@ export default function SellerCreateEbook() {
 </div>
 <div className="p-4 rounded-xl border border-outline-variant bg-surface space-y-3">
 <label className="flex items-start gap-3 cursor-pointer">
-<input checked="" className="w-5 h-5 rounded border-outline text-tertiary focus:ring-tertiary mt-0.5" type="checkbox" />
+<input defaultChecked className="w-5 h-5 rounded border-outline text-tertiary focus:ring-tertiary mt-0.5" type="checkbox" />
 <div className="text-body-sm">
 <span className="font-title-md text-[13px] font-semibold text-on-surface block">
                     Tôi xác nhận gian hàng Alpha Books Official sở hữu hợp pháp bản quyền phân phối nội dung số này trên nền tảng HUKI.
@@ -619,7 +507,7 @@ export default function SellerCreateEbook() {
 </div>
 <div className="space-y-2.5">
 <label className="flex items-center gap-3 p-3 rounded-xl border border-surface-variant hover:bg-surface cursor-pointer">
-<input checked="" className="text-tertiary focus:ring-tertiary" name="publish_mode" type="radio" />
+<input defaultChecked className="text-tertiary focus:ring-tertiary" name="publish_mode" type="radio" />
 <div>
 <span className="font-title-md text-[13px] font-semibold text-on-surface block">Tự động phát hành sau khi HUKI thẩm định DRM thành công</span>
 <span className="font-body-sm text-[12px] text-on-surface-variant">Sách sẽ ngay lập tức xuất hiện trên kho tìm kiếm và cửa hàng HUKI Ebook sau 15-30 phút kiểm duyệt.</span>
@@ -678,7 +566,7 @@ export default function SellerCreateEbook() {
 </div>
 
 <div className="w-full h-2 bg-surface-container rounded-full overflow-hidden">
-<div className="h-full bg-tertiary rounded-full" style="width: 85%"></div>
+<div className="h-full bg-tertiary rounded-full" style={{ width: '85%' }}></div>
 </div>
 <p className="font-body-sm text-[11px] text-on-surface-variant leading-snug">
               Còn <strong>1 mục</strong> cần xác nhận trước khi gửi duyệt xuất bản chính thức.
@@ -717,7 +605,6 @@ export default function SellerCreateEbook() {
 </div>
 </div>
 </main>
-</div>
 
 <aside className="fixed bottom-0 left-0 right-0 h-[68px] bg-surface-container-lowest/95 backdrop-blur-md border-t border-surface-variant z-50 px-8 shadow-lg">
 <div className="max-w-[1440px] h-full mx-auto flex items-center justify-between">

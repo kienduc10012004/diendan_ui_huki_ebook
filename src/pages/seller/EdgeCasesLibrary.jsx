@@ -1,75 +1,25 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function EdgeCasesLibrary() {
   return (
-    <div className="stitch-page bg-background text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen">
-      <style>{".material-symbols-outlined {\n      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;\n      display: inline-block;\n      vertical-align: middle;\n      line-height: 1;\n    }\n    .spine-crease {\n      position: relative;\n    }\n    .spine-crease::before {\n      content: '';\n      position: absolute;\n      top: 0;\n      bottom: 0;\n      left: 0;\n      width: 14px;\n      background: linear-gradient(to right, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0.06) 25%, transparent 100%);\n      pointer-events: none;\n      border-top-left-radius: inherit;\n      border-bottom-left-radius: inherit;\n      z-index: 10;\n    }\n    /* Custom delicate scrollbar */\n    ::-webkit-scrollbar {\n      width: 6px;\n      height: 6px;\n    }\n    ::-webkit-scrollbar-track {\n      background: #F8F5F0;\n    }\n    ::-webkit-scrollbar-thumb {\n      background: #DBE5E2;\n      border-radius: 9999px;\n    }"}</style>
+    <div className="w-full bg-background text-on-surface antialiased min-h-screen py-6">
+      <div className="max-w-[1280px] mx-auto px-4 md:px-6 mb-4">
+        <div className="bg-primary text-on-primary px-4 py-2.5 rounded-xl flex items-center justify-between shadow-sm">
+          <div className="w-full flex items-center justify-between font-body-sm text-body-sm">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-[20px] text-primary-fixed" data-icon="cloud_off">cloud_off</span>
+              <span className="font-semibold">Mô phỏng Chế Độ Ngoại Tuyến (Offline Demo):</span>
+              <span className="hidden sm:inline">Thay đổi được lưu an toàn trên trình duyệt cục bộ.</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-xs bg-black/20 px-2 py-0.5 rounded font-mono">Offline-Cache v2.4</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-
-<header className="bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm sticky top-0 z-50">
-<div className="w-full h-[72px] flex items-center justify-between max-w-[1280px] mx-auto px-margin-desktop">
-
-<div className="flex items-center gap-space-lg">
-<a className="font-headline-md text-headline-md font-semibold text-primary dark:text-inverse-primary flex items-center gap-space-xs tracking-tight" href="#">
-<span className="material-symbols-outlined text-primary text-[28px]" data-icon="menu_book">menu_book</span>
-<span>HUKI EBOOK</span>
-<span className="text-xs bg-tertiary text-on-tertiary px-2 py-0.5 rounded font-label-sm tracking-normal uppercase ml-1">Seller Studio</span>
-</Link>
-
-<nav className="hidden md:flex items-center gap-space-md ml-4">
-<a className="text-on-surface-variant dark:text-inverse-on-surface font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors pb-space-xs" href="#">Trang chủ</Link>
-<a className="text-primary dark:text-inverse-primary font-title-md text-title-md border-b-2 border-primary dark:border-inverse-primary pb-space-xs" href="#">Sách</Link>
-<a className="text-on-surface-variant dark:text-inverse-on-surface font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors pb-space-xs" href="#">Thể loại</Link>
-<a className="text-on-surface-variant dark:text-inverse-on-surface font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors pb-space-xs" href="#">Tác giả</Link>
-<a className="text-on-surface-variant dark:text-inverse-on-surface font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors pb-space-xs" href="#">Khuyến mãi</Link>
-</nav>
-</div>
-
-<div className="flex items-center gap-space-md">
-<div className="relative hidden lg:block w-72">
-<span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="search">search</span>
-<input className="w-full h-10 pl-9 pr-3 rounded-lg border border-outline-variant bg-surface-container-lowest font-body-sm text-body-sm focus:border-primary focus:ring-0 focus:outline-none transition-colors" placeholder="Tìm ID sách, ISBN, tác giả..." type="text" />
-</div>
-<div className="flex items-center gap-space-xs text-on-surface-variant">
-<button className="p-2 hover:bg-surface-container dark:hover:bg-surface-variant transition-colors rounded-lg relative" title="Yêu thích">
-<span className="material-symbols-outlined text-[22px]" data-icon="favorite">favorite</span>
-</button>
-<button className="p-2 hover:bg-surface-container dark:hover:bg-surface-variant transition-colors rounded-lg relative" title="Giỏ hàng">
-<span className="material-symbols-outlined text-[22px]" data-icon="shopping_bag">shopping_bag</span>
-</button>
-<button className="p-2 hover:bg-surface-container dark:hover:bg-surface-variant transition-colors rounded-lg relative" title="Thông báo">
-<span className="material-symbols-outlined text-[22px]" data-icon="notifications">notifications</span>
-<span className="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full"></span>
-</button>
-</div>
-
-<div className="flex items-center gap-space-xs pl-space-xs border-l border-outline-variant">
-<img className="w-8 h-8 rounded-full border border-outline-variant object-cover" alt="Chân dung nhà phát hành Minh Trí, trang phục nhã nhặn phong cách biên tập viên văn học thanh lịch tại studio đọc sách hiện đại." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIyi4QUM3Jwy5s973JvgV5jOeF87EV_4pgyPEyalXrt7voLLmCEjzwW-UsX0jGmkFEsqiGxDXud7iKAI626BN83n-psqwxJslY-Urrua_aysHmLQdp-Wd1c5DSc3FH113fxmsh07C_3eUjCOydhA8TYjaGt-qmvFkslrt6q-OIjmE-Hz8ALtA42fGN6yyPgLJ5g05aYHwAlH38PjBOS1ubhNK8xpiuB1YyDwQz-eim2Qfz7sdwKU5wrg" />
-<div className="hidden xl:flex flex-col text-left">
-<span className="font-label-md text-label-md font-semibold text-on-surface leading-tight">Minh Trí</span>
-<span className="font-label-sm text-label-sm text-outline">NXB Nhã Nam</span>
-</div>
-</div>
-</div>
-</div>
-</header>
-
-<div className="bg-primary text-on-primary px-margin-desktop py-2.5 flex items-center justify-between shadow-sm">
-<div className="max-w-[1280px] mx-auto w-full flex items-center justify-between font-body-sm text-body-sm">
-<div className="flex items-center gap-2">
-<span className="material-symbols-outlined text-[20px] text-primary-fixed" data-icon="cloud_off">cloud_off</span>
-<span className="font-semibold">Mất Kết Nối Mạng:</span>
-<span>Thay đổi chưa thể đồng bộ lên máy chủ HUKI. Dữ liệu đang được bảo lưu an toàn trên trình duyệt cục bộ.</span>
-</div>
-<div className="flex items-center gap-3">
-<span className="text-xs bg-black/20 px-2 py-0.5 rounded font-mono">Offline-Cache v2.4</span>
-<button className="text-xs font-semibold underline hover:text-primary-fixed transition-colors">Kiểm tra kết nối</button>
-</div>
-</div>
-</div>
-
-<main className="max-w-[1280px] mx-auto px-margin-desktop py-space-xl space-y-space-3xl">
+      <main className="max-w-[1280px] mx-auto px-4 md:px-6 py-2 space-y-space-3xl">
 
 <section className="bg-surface-container-lowest p-space-xl rounded-xl border border-outline-variant shadow-sm relative overflow-hidden">
 <div className="absolute -right-16 -top-16 w-64 h-64 bg-tertiary-fixed-dim/20 rounded-full blur-3xl pointer-events-none"></div>
@@ -670,13 +620,13 @@ export default function EdgeCasesLibrary() {
 
 <div className="border border-outline-variant rounded-xl p-4 bg-surface-container-lowest flex flex-col items-center justify-center text-center h-72">
 <div className="w-16 h-24 bg-surface-container rounded border border-outline-variant mb-3 flex items-center justify-center text-outline relative overflow-hidden">
-<div className="absolute bottom-0 left-0 right-0 bg-tertiary/20" style="height: 68%;"></div>
+<div className="absolute bottom-0 left-0 right-0 bg-tertiary/20" style={{ height: '68%' }}></div>
 <span className="material-symbols-outlined text-[24px] text-tertiary animate-pulse" data-icon="image">image</span>
 </div>
 <span className="font-body-sm text-body-sm font-semibold text-on-surface">Đang tải: bia-chinh.jpg</span>
 <span className="text-xs text-outline mt-0.5">3.4 MB / 5.0 MB (68%)</span>
 <div className="w-full bg-surface-container rounded-full h-1.5 mt-3 overflow-hidden">
-<div className="bg-tertiary h-1.5 rounded-full" style="width: 68%"></div>
+<div className="bg-tertiary h-1.5 rounded-full" style={{ width: '68%' }}></div>
 </div>
 <button className="text-xs text-error hover:underline mt-2">Hủy tải</button>
 </div>
@@ -749,7 +699,7 @@ export default function EdgeCasesLibrary() {
 <h4 className="font-title-md text-title-md font-bold text-on-surface">Atomic-Habits-Final.pdf</h4>
 <p className="font-body-sm text-body-sm text-outline mt-0.5">48.2 MB · Còn khoảng 18 giây...</p>
 <div className="w-full bg-surface-container rounded-full h-2 mt-3 overflow-hidden">
-<div className="bg-tertiary h-2 rounded-full" style="width: 72%"></div>
+<div className="bg-tertiary h-2 rounded-full" style={{ width: '72%' }}></div>
 </div>
 
 <div className="mt-3 p-2 bg-emerald-50 border border-emerald-200 rounded text-xs text-emerald-900 flex items-start gap-1.5">
@@ -1163,7 +1113,7 @@ export default function EdgeCasesLibrary() {
 <span className="text-tertiary font-bold">78%</span>
 </div>
 <div className="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
-<div className="bg-tertiary h-1.5 rounded-full" style="width: 78%"></div>
+<div className="bg-tertiary h-1.5 rounded-full" style={{ width: '78%' }}></div>
 </div>
 <span className="text-[11px] text-outline block">Có thể tiếp tục chỉnh sửa trường khác</span>
 </div>
@@ -1253,39 +1203,7 @@ export default function EdgeCasesLibrary() {
 </div>
 </div>
 </section>
-</main>
-
-<footer className="bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant dark:border-outline w-full mt-space-3xl">
-<div className="max-w-[1280px] mx-auto px-margin-desktop py-space-2xl flex flex-col justify-between">
-<div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-outline-variant/60">
-<div>
-<span className="font-headline-md text-headline-md font-semibold text-primary dark:text-inverse-primary block">
-            HUKI EBOOK
-          </span>
-<p className="font-body-sm text-body-sm text-on-surface-variant dark:text-inverse-on-surface mt-1 max-w-md">
-            Hệ sinh thái xuất bản số và phân phối sách bản quyền hàng đầu Việt Nam. Chuẩn hóa trải nghiệm biên tập cho tác giả và nhà xuất bản.
-          </p>
-</div>
-<div className="flex flex-wrap gap-space-md">
-<a className="text-on-surface-variant dark:text-inverse-on-surface font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Về Huki Ebook</Link>
-<a className="text-on-surface-variant dark:text-inverse-on-surface font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Điều khoản sử dụng</Link>
-<a className="text-on-surface-variant dark:text-inverse-on-surface font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Chính sách bảo mật</Link>
-<a className="text-on-surface-variant dark:text-inverse-on-surface font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Hướng dẫn mua hàng</Link>
-<a className="text-on-surface-variant dark:text-inverse-on-surface font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Liên hệ hỗ trợ</Link>
-</div>
-</div>
-<div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 font-label-sm text-label-sm text-on-surface-variant dark:text-inverse-on-surface">
-<span>© 2025 HUKI EBOOK. Bản quyền thuộc về Công ty TNHH Sách Điện Tử Huki.</span>
-<div className="flex items-center gap-4">
-<span className="flex items-center gap-1 text-tertiary font-semibold">
-<span className="w-2 h-2 rounded-full bg-tertiary"></span> Hệ thống Máy chủ Sẵn sàng (99.98%)
-          </span>
-<span>Mã tài liệu: SPEC-UI-19.6-PROD</span>
-</div>
-</div>
-</div>
-</footer>
-
+      </main>
     </div>
   );
 }

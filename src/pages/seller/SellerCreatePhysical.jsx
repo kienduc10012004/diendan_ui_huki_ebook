@@ -1,185 +1,15 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function SellerCreatePhysical() {
   return (
-    <div className="stitch-page h-full antialiased font-body-md text-body-md text-on-surface bg-background flex">
-      <style>{".material-symbols-outlined {\n      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;\n      display: inline-block;\n      vertical-align: middle;\n      line-height: 1;\n    }\n    .spine-crease {\n      background: linear-gradient(to right, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.03) 4%, transparent 10%);\n    }\n    html {\n      scroll-behavior: smooth;\n    }"}</style>
-
-
-
-
-<aside className="w-[240px] flex-shrink-0 bg-surface-container-lowest border-r border-surface-container-high h-screen flex flex-col sticky top-0 z-30 select-none">
-
-<div className="px-5 py-4 border-b border-surface-container">
-<div className="flex items-center gap-2 mb-1">
-<span className="material-symbols-outlined text-primary text-xl" data-icon="menu_book">menu_book</span>
-<span className="font-headline-sm text-headline-sm font-semibold text-primary tracking-tight">HUKI</span>
-<span className="font-label-sm text-[10px] px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-semibold tracking-wider uppercase">Kênh Bán</span>
-</div>
-
-<div className="mt-3 p-2.5 rounded-lg bg-surface-container-low border border-surface-container-high flex items-center justify-between">
-<div className="flex items-center gap-2 min-w-0">
-<div className="w-7 h-7 rounded-md bg-tertiary text-white flex items-center justify-center font-bold text-xs flex-shrink-0">
-            α
-          </div>
-<div className="min-w-0">
-<div className="flex items-center gap-1">
-<span className="font-label-md text-label-md font-semibold text-on-surface truncate">Alpha Books</span>
-<span className="material-symbols-outlined text-tertiary text-sm fill-icon" data-icon="verified">verified</span>
-</div>
-<p className="font-label-sm text-[10px] text-tertiary font-medium">NXB Đối Tác Cấp 1</p>
-</div>
-</div>
-<span className="material-symbols-outlined text-on-surface-variant text-base" data-icon="unfold_more">unfold_more</span>
-</div>
-</div>
-
-<div className="flex-1 overflow-y-auto py-3 px-3 space-y-4">
-
-<div>
-<p className="px-2 mb-1.5 font-label-sm text-[10px] uppercase text-outline tracking-wider font-semibold">TỔNG QUAN</p>
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" href="#">
-<span className="material-symbols-outlined text-lg" data-icon="dashboard">dashboard</span>
-<span className="font-body-md text-body-md">Bảng Điều Khiển</span>
-</Link>
-</div>
-
-<div>
-<p className="px-2 mb-1.5 font-label-sm text-[10px] uppercase text-outline tracking-wider font-semibold">BÁN HÀNG</p>
-<div className="space-y-0.5">
-<a className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" href="#">
-<div className="flex items-center gap-2.5">
-<span className="material-symbols-outlined text-lg" data-icon="receipt_long">receipt_long</span>
-<span className="font-body-md text-body-md">Đơn Hàng</span>
-</div>
-<span className="px-1.5 py-0.2 rounded-full bg-primary text-white font-label-sm text-[10px] font-bold">12</span>
-</Link>
-
-<a className="flex items-center justify-between px-3 py-2 rounded-lg bg-[#006953] text-white font-semibold transition-colors shadow-sm" href="#">
-<div className="flex items-center gap-2.5">
-<span className="material-symbols-outlined text-lg fill-icon" data-icon="auto_stories">auto_stories</span>
-<span className="font-title-md text-title-md text-white">Sản Phẩm</span>
-</div>
-<span className="w-1.5 h-1.5 rounded-full bg-white"></span>
-</Link>
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" href="#">
-<span className="material-symbols-outlined text-lg" data-icon="inventory_2">inventory_2</span>
-<span className="font-body-md text-body-md">Kho Hàng Vật Lý</span>
-</Link>
-</div>
-</div>
-
-<div>
-<p className="px-2 mb-1.5 font-label-sm text-[10px] uppercase text-outline tracking-wider font-semibold">MARKETING</p>
-<div className="space-y-0.5">
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" href="#">
-<span className="material-symbols-outlined text-lg" data-icon="sell">sell</span>
-<span className="font-body-md text-body-md">Khuyến Mãi &amp; Giảm Giá</span>
-</Link>
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" href="#">
-<span className="material-symbols-outlined text-lg" data-icon="loyalty">loyalty</span>
-<span className="font-body-md text-body-md">Voucher &amp; Combo</span>
-</Link>
-</div>
-</div>
-
-<div>
-<p className="px-2 mb-1.5 font-label-sm text-[10px] uppercase text-outline tracking-wider font-semibold">CỬA HÀNG</p>
-<div className="space-y-0.5">
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" href="#">
-<span className="material-symbols-outlined text-lg" data-icon="storefront">storefront</span>
-<span className="font-body-md text-body-md">Hồ Sơ Gian Hàng</span>
-</Link>
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" href="#">
-<span className="material-symbols-outlined text-lg" data-icon="group">group</span>
-<span className="font-body-md text-body-md">Thành Viên &amp; Quyền</span>
-</Link>
-</div>
-</div>
-
-<div>
-<p className="px-2 mb-1.5 font-label-sm text-[10px] uppercase text-outline tracking-wider font-semibold">DỮ LIỆU &amp; TÀI CHÍNH</p>
-<div className="space-y-0.5">
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" href="#">
-<span className="material-symbols-outlined text-lg" data-icon="monitoring">monitoring</span>
-<span className="font-body-md text-body-md">Phân Tích Bán Hàng</span>
-</Link>
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" href="#">
-<span className="material-symbols-outlined text-lg" data-icon="account_balance_wallet">account_balance_wallet</span>
-<span className="font-body-md text-body-md">Đối Soát Doanh Thu</span>
-</Link>
-</div>
-</div>
-</div>
-
-<div className="p-3 border-t border-surface-container space-y-1 bg-surface-container-lowest">
-<a className="flex items-center gap-2 px-2.5 py-1.5 text-xs text-on-surface-variant hover:text-on-surface" href="#">
-<span className="material-symbols-outlined text-base" data-icon="help">help</span>
-<span>Trung Tâm Hỗ Trợ</span>
-</Link>
-<a className="flex items-center gap-2 px-2.5 py-1.5 text-xs text-on-surface-variant hover:text-on-surface" href="#">
-<span className="material-symbols-outlined text-base" data-icon="settings">settings</span>
-<span>Cài Đặt Cửa Hàng</span>
-</Link>
-<a className="flex items-center gap-2 px-2.5 py-1.5 text-xs text-primary font-medium hover:underline" href="#">
-<span className="material-symbols-outlined text-base" data-icon="arrow_back">arrow_back</span>
-<span>Quay Lại Sàn HUKI</span>
-</Link>
-</div>
-</aside>
-
-
-
-<div className="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto">
-
-<header className="h-16 bg-surface-container-lowest border-b border-surface-container px-8 flex items-center justify-between sticky top-0 z-20">
-
-<div className="flex items-center gap-3">
-<div className="flex items-center gap-2 text-xs text-on-surface-variant">
-<span>Kênh Người Bán</span>
-<span className="text-outline">/</span>
-<a className="hover:text-primary transition-colors" href="#">Sản Phẩm</Link>
-<span className="text-outline">/</span>
-<span className="text-on-surface font-medium">Thêm Sản Phẩm Mới</span>
-</div>
-<span className="h-3 w-px bg-surface-container"></span>
-<span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary/10 text-tertiary text-[11px] font-medium">
-<span className="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
-          Cửa hàng đang hoạt động
-        </span>
-</div>
-
-<div className="flex items-center gap-4">
-<div className="relative w-64">
-<span className="material-symbols-outlined absolute left-3 top-2.5 text-outline text-base" data-icon="search">search</span>
-<input className="w-full h-9 pl-9 pr-3 rounded-lg border border-surface-container bg-surface-bright text-xs text-on-surface placeholder:text-outline focus:border-tertiary focus:ring-0 focus:outline-none" placeholder="Tìm theo SKU, tên sách..." type="text" />
-</div>
-<button className="relative p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-lg transition-colors">
-<span className="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
-<span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary"></span>
-</button>
-<div className="h-6 w-px bg-surface-container"></div>
-
-<div className="flex items-center gap-2.5 pl-1 cursor-pointer">
-<div className="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center font-title-md text-xs text-primary font-bold">
-            MT
-          </div>
-<div className="text-left hidden xl:block">
-<p className="font-label-md text-label-md font-semibold text-on-surface leading-none">Minh Trí</p>
-<p className="font-label-sm text-[11px] text-outline leading-tight mt-0.5">Quản trị viên</p>
-</div>
-<span className="material-symbols-outlined text-outline text-sm" data-icon="expand_more">expand_more</span>
-</div>
-</div>
-</header>
-
-<main className="flex-1 pb-24">
+    <div className="w-full bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen py-6 pb-24">
+      <main className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
 <div className="max-w-[1240px] mx-auto px-6 py-6 space-y-6">
 
 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-surface-container pb-5">
 <div>
-<a className="inline-flex items-center gap-1.5 text-xs text-tertiary font-medium hover:underline mb-2" href="#">
+<Link className="inline-flex items-center gap-1.5 text-xs text-tertiary font-medium hover:underline mb-2" to="/seller/product/edit-hybrid">
 <span className="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span>
               Danh Sách Sản Phẩm
             </Link>
@@ -228,7 +58,7 @@ export default function SellerCreatePhysical() {
 </div>
 </div>
 <div className="w-5 h-5 rounded-full bg-[#006953] text-white flex items-center justify-center">
-<span className="material-symbols-outlined text-xs" data-icon="check" style="font-variation-settings: 'wght' 700;">check</span>
+<span className="material-symbols-outlined text-xs" data-icon="check" style={{ fontVariationSettings: "'wght' 700" }}>check</span>
 </div>
 </div>
 <p className="font-body-sm text-body-sm text-on-surface-variant mt-2.5 leading-relaxed">
@@ -282,31 +112,31 @@ export default function SellerCreatePhysical() {
 <p className="px-3 py-1.5 font-label-sm text-[11px] uppercase tracking-wider text-outline font-bold">
               MỤC NỘI DUNG
             </p>
-<a className="flex items-center justify-between px-3 py-2 rounded-lg bg-surface-container-low text-tertiary font-medium text-xs border-l-2 border-[#006953]" href="#sec-basic">
+<Link className="flex items-center justify-between px-3 py-2 rounded-lg bg-surface-container-low text-tertiary font-medium text-xs border-l-2 border-[#006953]" to="/seller/product/edit-hybrid">
 <span className="truncate">Thông Tin Cơ Bản</span>
 <span className="w-1.5 h-1.5 rounded-full bg-[#006953]"></span>
 </Link>
-<a className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container text-xs transition-colors" href="#sec-category">
+<Link className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container text-xs transition-colors" to="/seller/edge-cases">
 <span className="truncate">Phân Loại Sách</span>
 <span className="material-symbols-outlined text-tertiary text-xs" data-icon="check_circle">check_circle</span>
 </Link>
-<a className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container text-xs transition-colors" href="#sec-media">
+<Link className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container text-xs transition-colors" to="/">
 <span className="truncate">Ảnh &amp; Media</span>
 <span className="material-symbols-outlined text-tertiary text-xs" data-icon="check_circle">check_circle</span>
 </Link>
-<a className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container text-xs transition-colors" href="#sec-pricing">
+<Link className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container text-xs transition-colors" to="/">
 <span className="truncate">Giá Bán</span>
 <span className="material-symbols-outlined text-tertiary text-xs" data-icon="check_circle">check_circle</span>
 </Link>
-<a className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container text-xs transition-colors" href="#sec-inventory">
+<Link className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container text-xs transition-colors" to="/">
 <span className="truncate">Kho Hàng</span>
 <span className="material-symbols-outlined text-secondary text-xs" data-icon="error">error</span>
 </Link>
-<a className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container text-xs transition-colors" href="#sec-shipping">
+<Link className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container text-xs transition-colors" to="/seller/product/create-physical">
 <span className="truncate">Vận Chuyển</span>
 <span className="material-symbols-outlined text-secondary text-xs" data-icon="error">error</span>
 </Link>
-<a className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container text-xs transition-colors" href="#sec-publish">
+<Link className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container text-xs transition-colors" to="/seller/edge-cases">
 <span className="truncate">Xuất Bản</span>
 <span className="material-symbols-outlined text-outline text-xs" data-icon="radio_button_unchecked">radio_button_unchecked</span>
 </Link>
@@ -373,7 +203,7 @@ export default function SellerCreatePhysical() {
 <div>
 <label className="block font-title-md text-xs font-semibold text-on-surface mb-1.5">Ngôn ngữ bản in</label>
 <select className="w-full rounded-lg border border-surface-container px-3.5 py-2.5 text-sm text-on-surface focus:border-tertiary focus:ring-0">
-<option selected="">Tiếng Việt</option>
+<option>Tiếng Việt</option>
 <option>Tiếng Anh (Bản gốc)</option>
 <option>Song ngữ</option>
 </select>
@@ -405,7 +235,7 @@ export default function SellerCreatePhysical() {
 <div>
 <label className="block font-title-md text-xs font-semibold text-on-surface mb-1.5">Định dạng bìa</label>
 <select className="w-full rounded-lg border border-surface-container px-3.5 py-2.5 text-sm text-on-surface focus:border-tertiary focus:ring-0">
-<option selected="">Bìa cứng có áo ôm (Hardcover w/ Jacket)</option>
+<option>Bìa cứng có áo ôm (Hardcover w/ Jacket)</option>
 <option>Bìa mềm cao cấp (Paperback)</option>
 <option>Bìa da đặc biệt đánh số</option>
 </select>
@@ -423,7 +253,7 @@ export default function SellerCreatePhysical() {
 <div>
 <label className="block font-title-md text-xs font-semibold text-on-surface mb-1.5">Thể loại chính *</label>
 <select className="w-full rounded-lg border border-surface-container px-3.5 py-2.5 text-sm text-on-surface focus:border-tertiary focus:ring-0">
-<option selected="">Phát Triển Bản Thân &amp; Kỹ Năng</option>
+<option>Phát Triển Bản Thân &amp; Kỹ Năng</option>
 <option>Kinh Doanh &amp; Khởi Nghiệp</option>
 <option>Văn Học Kinh Điển</option>
 </select>
@@ -437,7 +267,7 @@ export default function SellerCreatePhysical() {
 <div>
 <div className="flex items-center justify-between mb-1.5">
 <label className="font-title-md text-xs font-semibold text-on-surface">Tác giả *</label>
-<a className="text-tertiary font-label-sm text-[11px] hover:underline" href="#">Không tìm thấy? Đề xuất tác giả mới</Link>
+<Link className="text-tertiary font-label-sm text-[11px] hover:underline" to="/">Không tìm thấy? Đề xuất tác giả mới</Link>
 </div>
 <div className="relative">
 <span className="material-symbols-outlined absolute left-3 top-2.5 text-outline text-lg" data-icon="person">person</span>
@@ -623,7 +453,7 @@ export default function SellerCreatePhysical() {
 </div>
 </div>
 <label className="relative inline-flex items-center cursor-pointer">
-<input checked="" className="sr-only peer" type="checkbox" />
+<input defaultChecked className="sr-only peer" type="checkbox" />
 <div className="w-10 h-5 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#006953]"></div>
 </label>
 </div>
@@ -631,25 +461,25 @@ export default function SellerCreatePhysical() {
 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
 <div>
 <label className="block font-label-sm text-xs font-medium text-on-surface mb-1">Khối lượng (g) *</label>
-<input className="w-full rounded-lg border border-surface-container px-3 py-2 text-sm text-on-surface focus:border-tertiary focus:ring-0" type="number" value="450" />
+<input className="w-full rounded-lg border border-surface-container px-3 py-2 text-sm text-on-surface focus:border-tertiary focus:ring-0" type="number" defaultValue="450" />
 </div>
 <div>
 <label className="block font-label-sm text-xs font-medium text-on-surface mb-1">Dài (cm) *</label>
-<input className="w-full rounded-lg border border-surface-container px-3 py-2 text-sm text-on-surface focus:border-tertiary focus:ring-0" type="number" value="21" />
+<input className="w-full rounded-lg border border-surface-container px-3 py-2 text-sm text-on-surface focus:border-tertiary focus:ring-0" type="number" defaultValue="21" />
 </div>
 <div>
 <label className="block font-label-sm text-xs font-medium text-on-surface mb-1">Rộng (cm) *</label>
-<input className="w-full rounded-lg border border-surface-container px-3 py-2 text-sm text-on-surface focus:border-tertiary focus:ring-0" type="number" value="15" />
+<input className="w-full rounded-lg border border-surface-container px-3 py-2 text-sm text-on-surface focus:border-tertiary focus:ring-0" type="number" defaultValue="15" />
 </div>
 <div>
 <label className="block font-label-sm text-xs font-medium text-on-surface mb-1">Cao (cm) *</label>
-<input className="w-full rounded-lg border border-surface-container px-3 py-2 text-sm text-on-surface focus:border-tertiary focus:ring-0" step="0.5" type="number" value="3.5" />
+<input className="w-full rounded-lg border border-surface-container px-3 py-2 text-sm text-on-surface focus:border-tertiary focus:ring-0" step="0.5" type="number" defaultValue="3.5" />
 </div>
 </div>
 <div>
 <label className="block font-title-md text-xs font-semibold text-on-surface mb-1.5">Thời gian chuẩn bị hàng *</label>
-<select className="w-full rounded-lg border border-surface-container px-3.5 py-2.5 text-sm text-on-surface focus:border-tertiary focus:ring-0">
-<option selected="">Trong vòng 24 giờ (1 ngày làm việc)</option>
+<select defaultValue="Trong vòng 24 giờ (1 ngày làm việc)" className="w-full rounded-lg border border-surface-container px-3.5 py-2.5 text-sm text-on-surface focus:border-tertiary focus:ring-0">
+<option>Trong vòng 24 giờ (1 ngày làm việc)</option>
 <option>Trong vòng 48 giờ (2 ngày làm việc)</option>
 <option>Hàng đặt trước (Pre-order 7-14 ngày)</option>
 </select>
@@ -663,7 +493,7 @@ export default function SellerCreatePhysical() {
 </div>
 <div className="space-y-3">
 <label className="flex items-start gap-3 p-3.5 rounded-lg border border-surface-container hover:bg-surface-container-low cursor-pointer transition-colors">
-<input checked="" className="mt-0.5 text-[#006953] focus:ring-0 focus:outline-none" name="publish_mode" type="radio" />
+<input defaultChecked className="mt-0.5 text-[#006953] focus:ring-0 focus:outline-none" name="publish_mode" type="radio" />
 <div>
 <span className="block text-xs font-semibold text-on-surface">Tự động hiển thị và mở bán ngay sau khi HUKI duyệt</span>
 <span className="block text-[11px] text-outline mt-0.5">Sản phẩm sẽ xuất hiện lập tức trên gian hàng Alpha Books khi được đội ngũ phê duyệt hợp lệ.</span>
@@ -715,7 +545,7 @@ export default function SellerCreatePhysical() {
 </div>
 
 <div className="w-full h-2 rounded-full bg-surface-container overflow-hidden">
-<div className="h-full rounded-full bg-[#006953]" style="width: 71%;"></div>
+<div className="h-full rounded-full bg-[#006953]" style={{ width: '71%' }}></div>
 </div>
 <p className="text-[11px] text-secondary font-medium flex items-center gap-1.5">
 <span className="material-symbols-outlined text-sm" data-icon="info">info</span>
@@ -764,7 +594,7 @@ export default function SellerCreatePhysical() {
                 Cần hướng dẫn về bản quyền ISBN hoặc quy chuẩn lưu kho?
               </p>
 <div className="pt-1">
-<a className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:underline" href="tel:19008866">
+<Link className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:underline" to="/">
 <span className="material-symbols-outlined text-sm" data-icon="call">call</span>
                   Hotline: 1900 8866 (Nhánh 2)
                 </Link>
@@ -799,8 +629,6 @@ export default function SellerCreatePhysical() {
 </button>
 </div>
 </footer>
-</div>
-
     </div>
   );
 }

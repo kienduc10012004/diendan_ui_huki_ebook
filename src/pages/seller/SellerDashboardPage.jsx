@@ -1,190 +1,10 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function SellerDashboardPage() {
   return (
-    <div className="stitch-page bg-surface text-on-surface antialiased h-screen overflow-hidden flex flex-row">
-      <style>{".material-symbols-outlined {\n      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;\n      display: inline-block;\n      vertical-align: middle;\n      line-height: 1;\n    }\n    .custom-scroll::-webkit-scrollbar {\n      width: 6px;\n      height: 6px;\n    }\n    .custom-scroll::-webkit-scrollbar-track {\n      background: transparent;\n    }\n    .custom-scroll::-webkit-scrollbar-thumb {\n      background: #dbe5e2;\n      border-radius: 4px;\n    }\n    .custom-scroll::-webkit-scrollbar-thumb:hover {\n      background: #8d706b;\n    }\n    .paper-edge {\n      background-image: linear-gradient(to right, rgba(20, 29, 28, 0.08) 0%, rgba(20, 29, 28, 0.01) 6%, transparent 12%);\n    }"}</style>
-
-
-<aside className="w-[260px] h-full flex-shrink-0 bg-surface-container-lowest border-r border-surface-variant flex flex-col justify-between z-30 select-none">
-<div className="flex flex-col h-full overflow-hidden">
-
-<div className="px-5 py-4 border-b border-surface-variant">
-<div className="flex items-center gap-2">
-<div className="w-8 h-8 rounded-lg bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-base shadow-sm">
-            H
-          </div>
-<div>
-<div className="flex items-center gap-1.5">
-<span className="font-headline-sm text-headline-sm tracking-tight text-primary leading-none">HUKI</span>
-<span className="font-label-sm text-label-sm bg-tertiary-fixed text-on-tertiary-fixed px-1.5 py-0.5 rounded tracking-wider">SELLER</span>
-</div>
-<p className="font-label-sm text-label-sm text-on-surface-variant font-medium mt-0.5">KÊNH NGƯỜI BÁN</p>
-</div>
-</div>
-
-<button className="mt-3.5 w-full flex items-center justify-between px-2.5 py-2 rounded-lg bg-surface-container-low border border-surface-variant hover:border-tertiary transition-colors text-left group">
-<div className="flex items-center gap-2 overflow-hidden">
-<div className="w-6 h-6 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed text-xs font-bold shrink-0">
-              α
-            </div>
-<div className="truncate">
-<div className="flex items-center gap-1">
-<span className="font-label-md text-label-md text-on-surface font-semibold truncate">Alpha Books Official</span>
-<span className="material-symbols-outlined text-[14px] text-tertiary fill-icon">verified</span>
-</div>
-<p className="font-label-sm text-label-sm text-on-surface-variant">Nhà xuất bản đối tác</p>
-</div>
-</div>
-<span className="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-tertiary transition-colors">unfold_more</span>
-</button>
-</div>
-
-<nav className="flex-1 px-3 py-3 overflow-y-auto custom-scroll space-y-4">
-
-<div>
-<p className="px-3 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant/70 font-semibold mb-1">Tổng quan</p>
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-surface-container-low text-tertiary font-title-md text-title-md border-l-4 border-tertiary shadow-sm" href="#">
-<span className="material-symbols-outlined text-[20px] fill-icon">dashboard</span>
-<span className="flex-1 font-semibold">Tổng Quan</span>
-</Link>
-</div>
-
-<div>
-<p className="px-3 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant/70 font-semibold mb-1">Bán hàng</p>
-<div className="space-y-0.5">
-<a className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#">
-<div className="flex items-center gap-2.5">
-<span className="material-symbols-outlined text-[20px]">local_mall</span>
-<span className="font-body-md text-body-md">Đơn Hàng</span>
-</div>
-<span className="px-1.5 py-0.5 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed-variant font-bold">12</span>
-</Link>
-<a className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#">
-<div className="flex items-center gap-2.5">
-<span className="material-symbols-outlined text-[20px]">menu_book</span>
-<span className="font-body-md text-body-md">Sản Phẩm</span>
-</div>
-<span className="font-label-sm text-label-sm text-on-surface-variant">148</span>
-</Link>
-<a className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#">
-<div className="flex items-center gap-2.5">
-<span className="material-symbols-outlined text-[20px]">inventory_2</span>
-<span className="font-body-md text-body-md">Kho Hàng</span>
-</div>
-<span className="px-1.5 py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed-variant font-bold">5</span>
-</Link>
-</div>
-</div>
-
-<div>
-<p className="px-3 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant/70 font-semibold mb-1">Marketing</p>
-<div className="space-y-0.5">
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#">
-<span className="material-symbols-outlined text-[20px]">campaign</span>
-<span className="font-body-md text-body-md">Khuyến Mãi</span>
-</Link>
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#">
-<span className="material-symbols-outlined text-[20px]">confirmation_number</span>
-<span className="font-body-md text-body-md">Voucher Sách</span>
-</Link>
-</div>
-</div>
-
-<div>
-<p className="px-3 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant/70 font-semibold mb-1">Cửa hàng</p>
-<div className="space-y-0.5">
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#">
-<span className="material-symbols-outlined text-[20px]">storefront</span>
-<span className="font-body-md text-body-md">Thông Tin Cửa Hàng</span>
-</Link>
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#">
-<span className="material-symbols-outlined text-[20px]">group</span>
-<span className="font-body-md text-body-md">Thành Viên &amp; Phân Quyền</span>
-</Link>
-</div>
-</div>
-
-<div>
-<p className="px-3 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant/70 font-semibold mb-1">Dữ liệu</p>
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#">
-<span className="material-symbols-outlined text-[20px]">monitoring</span>
-<span className="font-body-md text-body-md">Phân Tích &amp; Báo Cáo</span>
-</Link>
-</div>
-</nav>
-
-<div className="p-3 border-t border-surface-variant space-y-1 bg-surface-container-lowest">
-<a className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-primary transition-colors" href="#">
-<span className="material-symbols-outlined text-[18px]">help_center</span>
-<span className="font-body-sm text-body-sm">Trung Tâm Hỗ Trợ</span>
-</Link>
-<a className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-primary transition-colors" href="#">
-<span className="material-symbols-outlined text-[18px]">settings</span>
-<span className="font-body-sm text-body-sm">Cài Đặt Cửa Hàng</span>
-</Link>
-<a className="flex items-center justify-between px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-tertiary transition-colors mt-1 pt-2 border-t border-surface-variant/50" href="#">
-<span className="font-body-sm text-body-sm font-medium">Quay lại Sàn HUKI</span>
-<span className="material-symbols-outlined text-[16px]">arrow_outward</span>
-</Link>
-</div>
-</div>
-</aside>
-
-<div className="flex-1 h-full flex flex-col overflow-hidden">
-
-<header className="h-[68px] w-full bg-surface-container-lowest border-b border-surface-variant flex items-center justify-between px-8 z-20 shrink-0">
-
-<div className="flex items-center gap-4">
-<div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-surface-container text-tertiary border border-tertiary/20">
-<span className="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
-<span className="font-label-sm text-label-sm font-semibold">Cửa hàng đang hoạt động</span>
-</div>
-<div className="h-4 w-[1px] bg-surface-variant"></div>
-<div className="flex items-center gap-1.5 font-body-sm text-body-sm text-on-surface-variant">
-<span>Kênh Người Bán</span>
-<span className="material-symbols-outlined text-[14px]">chevron_right</span>
-<span className="text-on-surface font-medium">Bảng Điều Khiển Tổng Quan</span>
-</div>
-</div>
-
-<div className="flex items-center gap-3">
-
-<div className="relative w-64">
-<span className="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-[18px]">search</span>
-<input className="w-full h-9 pl-9 pr-3 text-body-sm font-body-sm rounded-lg bg-surface border border-surface-variant focus:outline-none focus:border-tertiary transition-colors" placeholder="Tìm mã đơn, tên sách, SKU..." type="text" />
-</div>
-
-<button className="w-9 h-9 flex items-center justify-center rounded-lg border border-surface-variant text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Trợ giúp">
-<span className="material-symbols-outlined text-[20px]">contact_support</span>
-</button>
-
-<button className="relative w-9 h-9 flex items-center justify-center rounded-lg border border-surface-variant text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" title="Thông báo">
-<span className="material-symbols-outlined text-[20px]">notifications</span>
-<span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary ring-2 ring-surface-container-lowest"></span>
-</button>
-<div className="h-6 w-[1px] bg-surface-variant mx-1"></div>
-
-<button className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-title-md text-[13px] font-semibold shadow-sm transition-all">
-<span className="material-symbols-outlined text-[18px]">add_circle</span>
-<span>Thêm Sản Phẩm Mới</span>
-</button>
-
-<div className="flex items-center gap-2 pl-2 border-l border-surface-variant">
-<div className="relative">
-<img className="w-9 h-9 rounded-full object-cover border border-surface-variant" alt="Minh Trí, an experienced book store operations manager in his 30s wearing a clean linen collar shirt with warm library ambient lighting. Natural portrait photography, warm editorial aesthetic with soft creamy paper tones, highly detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs3BPz18apLVs_Hn6VMNIL-gradCxSdQrBLhGXecswwZaeDMkQOp0n_E9rzBTXlmOa_IJtQglehQiWmpKc_sSWJI7WF5SwdSPmsPVAOGtXoh2wnaLc2S3SgRUxCjCGwcViWoIalvSd2G7o18xEQH7jg2BtSI1iNHgWoc7NVE72lP0z5bIq1v4ZtPs996IU38dvrAM4CKRVDH_-gXd1E3Cw-3ZS5VOoIxS5a0ryeM34owa1Ra2-Q5DLCA" />
-<span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-tertiary border-2 border-surface-container-lowest"></span>
-</div>
-<div className="text-left hidden xl:block">
-<p className="font-label-md text-label-md font-semibold text-on-surface leading-tight">Minh Trí</p>
-<p className="font-label-sm text-label-sm text-on-surface-variant">Quản trị viên</p>
-</div>
-</div>
-</div>
-</header>
-
-<main className="flex-1 overflow-y-auto custom-scroll p-8 bg-surface space-y-6">
+    <div className="w-full bg-surface text-on-surface antialiased min-h-screen py-6">
+      <main className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
 
 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-2 border-b border-surface-variant/60">
 <div>
@@ -200,7 +20,7 @@ export default function SellerDashboardPage() {
 <div className="relative">
 <select className="appearance-none h-9 pl-3 pr-8 rounded-lg bg-surface-container-lowest border border-surface-variant font-label-md text-label-md text-on-surface font-medium hover:border-outline focus:outline-none focus:border-tertiary cursor-pointer transition-colors shadow-sm">
 <option>Hôm nay (07/09)</option>
-<option selected="">7 ngày gần nhất (01/09 - 07/09)</option>
+<option>7 ngày gần nhất (01/09 - 07/09)</option>
 <option>30 ngày qua</option>
 <option>Tháng này (Tháng 9/2025)</option>
 </select>
@@ -242,7 +62,7 @@ export default function SellerDashboardPage() {
 </div>
 <div className="mt-4 pt-3 border-t border-surface-variant/60 flex items-center justify-between">
 <span className="font-label-sm text-label-sm text-on-surface-variant">Sách giấy: 9 · Ebook: 3</span>
-<a className="font-label-md text-label-md text-tertiary font-semibold flex items-center gap-0.5 group-hover:underline" href="#">
+<Link className="font-label-md text-label-md text-tertiary font-semibold flex items-center gap-0.5 group-hover:underline" to="/seller/orders">
                 Xử lý đơn <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
 </Link>
 </div>
@@ -264,7 +84,7 @@ export default function SellerDashboardPage() {
 </div>
 <div className="mt-4 pt-3 border-t border-surface-variant/60 flex items-center justify-between">
 <span className="font-label-sm text-label-sm text-on-surface-variant">Bàn giao trước 16:00</span>
-<a className="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-0.5 group-hover:text-tertiary transition-colors" href="#">
+<Link className="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-0.5 group-hover:text-tertiary transition-colors" to="/seller/product/edit-hybrid">
                 Xem đơn <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
 </Link>
 </div>
@@ -286,7 +106,7 @@ export default function SellerDashboardPage() {
 </div>
 <div className="mt-4 pt-3 border-t border-surface-variant/60 flex items-center justify-between">
 <span className="font-label-sm text-label-sm text-error font-medium">1 tựa đã hết hẳn</span>
-<a className="font-label-md text-label-md text-secondary font-semibold flex items-center gap-0.5 group-hover:underline" href="#">
+<Link className="font-label-md text-label-md text-secondary font-semibold flex items-center gap-0.5 group-hover:underline" to="/seller/edge-cases">
                 Kiểm tra kho <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
 </Link>
 </div>
@@ -308,7 +128,7 @@ export default function SellerDashboardPage() {
 </div>
 <div className="mt-4 pt-3 border-t border-surface-variant/60 flex items-center justify-between">
 <span className="font-label-sm text-label-sm text-on-surface-variant">2 Ebook lỗi EPUB · 1 thiếu bìa</span>
-<a className="font-label-md text-label-md text-primary font-semibold flex items-center gap-0.5 group-hover:underline" href="#">
+<Link className="font-label-md text-label-md text-primary font-semibold flex items-center gap-0.5 group-hover:underline" to="/seller/edge-cases">
                 Xem sản phẩm <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
 </Link>
 </div>
@@ -667,7 +487,7 @@ export default function SellerDashboardPage() {
 
 <div className="mt-4 pt-3 border-t border-surface-variant/60 flex items-center justify-between text-label-md font-label-md">
 <span className="text-on-surface-variant">Hiển thị 4 trong tổng số 187 đơn hàng</span>
-<a className="text-tertiary font-semibold flex items-center gap-1 hover:underline" href="#">
+<Link className="text-tertiary font-semibold flex items-center gap-1 hover:underline" to="/seller/product/edit-hybrid">
                 Xem tất cả 187 đơn hàng <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
 </Link>
 </div>
@@ -747,7 +567,7 @@ export default function SellerDashboardPage() {
 </div>
 </div>
 </div>
-<a className="mt-4 block text-center py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md font-semibold transition-colors border border-surface-variant" href="#">
+<Link className="mt-4 block text-center py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md font-semibold transition-colors border border-surface-variant" to="/seller/product/create-physical">
               Xem Kho Hàng &amp; Tạo Lệnh Nhập →
             </Link>
 </div>
@@ -785,7 +605,7 @@ export default function SellerDashboardPage() {
 </div>
 </div>
 </div>
-<a className="mt-4 block text-center py-2 rounded-lg bg-tertiary/10 hover:bg-tertiary/20 text-tertiary font-label-md text-label-md font-semibold transition-colors" href="#">
+<Link className="mt-4 block text-center py-2 rounded-lg bg-tertiary/10 hover:bg-tertiary/20 text-tertiary font-label-md text-label-md font-semibold transition-colors" to="/seller/product/create-ebook">
               Quản Lý Danh Mục Ebook &amp; Bản Quyền →
             </Link>
 </div>
@@ -873,18 +693,7 @@ export default function SellerDashboardPage() {
 </div>
 </div>
 
-<footer className="pt-6 pb-4 border-t border-surface-variant/60 flex flex-col sm:flex-row items-center justify-between text-label-sm font-label-sm text-on-surface-variant gap-2">
-<p>© 2025 HUKI EBOOK. Cổng dịch vụ người bán và nhà xuất bản chuyên nghiệp.</p>
-<div className="flex items-center gap-4">
-<a className="hover:text-primary transition-colors" href="#">Điều khoản Merchant</Link>
-<a className="hover:text-primary transition-colors" href="#">Quy chuẩn bản quyền DRM</Link>
-<a className="hover:text-primary transition-colors" href="#">Hotline B2B: 1900 6868</Link>
-</div>
-</footer>
-</main>
-</div>
-
-
+      </main>
     </div>
   );
 }

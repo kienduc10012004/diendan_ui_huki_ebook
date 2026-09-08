@@ -2609,7 +2609,7 @@ function openQuickView(bookId) {
         <p class="text-xs text-stone-600 dark:text-stone-400 leading-relaxed">${book.synopsis}</p>
 
         <div class="pt-3 border-t border-stone-200 dark:border-pine-800 grid grid-cols-3 gap-3">
-          <a href="book-detail.html" class="text-xs font-bold py-3 rounded-xl border border-stone-200 dark:border-pine-700 text-pine-900 dark:text-stone-100 flex items-center justify-center gap-1.5 transition-all hover:border-terracotta-500">
+          <Link href="book-detail.html" class="text-xs font-bold py-3 rounded-xl border border-stone-200 dark:border-pine-700 text-pine-900 dark:text-stone-100 flex items-center justify-center gap-1.5 transition-all hover:border-terracotta-500">
             <i class="fa-solid fa-circle-info"></i> Chi Tiết
           </a>
           <button onclick="closeQuickViewModal(); openEbookReader(${book.id});" class="text-xs font-bold py-3 rounded-xl bg-pine-100 text-pine-900 hover:bg-pine-200 flex items-center justify-center gap-1.5 transition-all">

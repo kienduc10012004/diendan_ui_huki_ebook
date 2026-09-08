@@ -15,7 +15,7 @@ export default function SellerFooter() {
           <span>•</span>
           <Link to="/seller/register" className="hover:text-[#17201f] transition-colors">Chính sách bản quyền DRM</Link>
           <span>•</span>
-          <a href="tel:19008866" className="text-[#006953] font-bold">Hotline B2B: 1900 8866</Link>
+          <a href="tel:19008866" className="text-[#006953] font-bold">Hotline B2B: 1900 8866</a>
         </div>
       </div>
     </footer>

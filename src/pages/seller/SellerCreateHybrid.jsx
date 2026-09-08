@@ -1,144 +1,19 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function SellerCreateHybrid() {
+  const [shippingEnabled, setShippingEnabled] = useState(true);
+  const [samplePreviewEnabled, setSamplePreviewEnabled] = useState(true);
+
   return (
-    <div className="stitch-page bg-background text-on-surface font-body-md text-body-md min-h-screen antialiased flex flex-col selection:bg-tertiary-fixed selection:text-tertiary">
-      <style>{".material-symbols-outlined {\n      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;\n      font-size: 19px;\n      vertical-align: middle;\n    }\n    .material-symbols-outlined.fill-1 {\n      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 20;\n    }\n    .spine-crease {\n      position: relative;\n    }\n    .spine-crease::after {\n      content: '';\n      position: absolute;\n      top: 0;\n      bottom: 0;\n      left: 0;\n      width: 14px;\n      background: linear-gradient(to right, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.04) 30%, transparent 100%);\n      pointer-events: none;\n      border-top-left-radius: 6px;\n      border-bottom-left-radius: 6px;\n    }\n    .custom-scroll::-webkit-scrollbar {\n      width: 5px;\n      height: 5px;\n    }\n    .custom-scroll::-webkit-scrollbar-thumb {\n      background: #d8d3c8;\n      border-radius: 4px;\n    }\n    .custom-scroll::-webkit-scrollbar-track {\n      background: transparent;\n    }"}</style>
-
-
-<div className="flex flex-1 w-full min-h-screen">
-
-<aside className="w-[240px] flex-shrink-0 bg-surface-container-lowest border-r border-[#e8e5df] flex flex-col justify-between z-30 fixed top-0 bottom-0 left-0 overflow-y-auto custom-scroll">
-<div>
-
-<div className="px-5 py-4 border-b border-[#f0eee9] flex items-center gap-2.5">
-<div className="w-8 h-8 rounded-lg bg-tertiary flex items-center justify-center text-on-tertiary shadow-sm font-headline-sm text-headline-sm font-bold">
-            H
-          </div>
-<div>
-<div className="font-title-md text-title-md text-tertiary font-bold tracking-tight">HUKI EBOOK</div>
-<div className="font-label-sm text-label-sm text-on-surface-variant font-medium">KÊNH NGƯỜI BÁN</div>
-</div>
-</div>
-
-<div className="p-3">
-<div className="p-2.5 rounded-xl bg-surface-container-low border border-[#e0ece8] flex items-center justify-between hover:border-tertiary transition-colors cursor-pointer group">
-<div className="flex items-center gap-2.5 min-w-0">
-<div className="w-7 h-7 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center font-bold text-xs shrink-0">
-                α
-              </div>
-<div className="min-w-0">
-<div className="flex items-center gap-1">
-<span className="font-title-md text-xs text-on-surface font-semibold truncate block">Alpha Books Official</span>
-<span className="material-symbols-outlined fill-1 text-tertiary !text-[14px]">verified</span>
-</div>
-<div className="font-label-sm text-[10px] text-tertiary font-medium">Partner NXB Uy Tín</div>
-</div>
-</div>
-<span className="material-symbols-outlined text-[#7a8c88] group-hover:text-tertiary transition-colors">unfold_more</span>
-</div>
-</div>
-
-<nav className="px-3 space-y-4 pt-1">
-
-<div>
-<div className="px-3 pb-1.5 font-label-sm text-[10px] tracking-wider text-[#8a8880] uppercase">Tổng Quan</div>
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface hover:bg-surface-container-low text-body-sm font-medium transition-colors" href="#">
-<span className="material-symbols-outlined text-[#7a7873]">dashboard</span>
-<span>Tổng Quan Gian Hàng</span>
-</Link>
-</div>
-
-<div>
-<div className="px-3 pb-1.5 font-label-sm text-[10px] tracking-wider text-[#8a8880] uppercase">Bán Hàng</div>
-<div className="space-y-0.5">
-<a className="flex items-center justify-between px-3 py-2 rounded-lg text-on-surface hover:bg-surface-container-low text-body-sm font-medium transition-colors" href="#">
-<div className="flex items-center gap-2.5">
-<span className="material-symbols-outlined text-[#7a7873]">receipt_long</span>
-<span>Đơn Hàng</span>
-</div>
-<span className="px-1.5 py-0.5 text-[10px] font-bold bg-[#feedea] text-primary rounded-full">12</span>
-</Link>
-
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-[#e8f4f0] text-tertiary text-body-sm font-semibold border-l-4 border-tertiary -ml-[1px] shadow-sm transition-colors" href="#">
-<span className="material-symbols-outlined fill-1 text-tertiary">menu_book</span>
-<span>Sản Phẩm</span>
-</Link>
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface hover:bg-surface-container-low text-body-sm font-medium transition-colors" href="#">
-<span className="material-symbols-outlined text-[#7a7873]">inventory_2</span>
-<span>Kho Hàng Vật Lý</span>
-</Link>
-</div>
-</div>
-
-<div>
-<div className="px-3 pb-1.5 font-label-sm text-[10px] tracking-wider text-[#8a8880] uppercase">Marketing</div>
-<div className="space-y-0.5">
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface hover:bg-surface-container-low text-body-sm font-medium transition-colors" href="#">
-<span className="material-symbols-outlined text-[#7a7873]">sell</span>
-<span>Khuyến Mãi &amp; Giảm Giá</span>
-</Link>
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface hover:bg-surface-container-low text-body-sm font-medium transition-colors" href="#">
-<span className="material-symbols-outlined text-[#7a7873]">loyalty</span>
-<span>Voucher &amp; Combo</span>
-</Link>
-</div>
-</div>
-
-<div>
-<div className="px-3 pb-1.5 font-label-sm text-[10px] tracking-wider text-[#8a8880] uppercase">Cửa Hàng</div>
-<div className="space-y-0.5">
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface hover:bg-surface-container-low text-body-sm font-medium transition-colors" href="#">
-<span className="material-symbols-outlined text-[#7a7873]">storefront</span>
-<span>Hồ Sơ Gian Hàng</span>
-</Link>
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface hover:bg-surface-container-low text-body-sm font-medium transition-colors" href="#">
-<span className="material-symbols-outlined text-[#7a7873]">group</span>
-<span>Thành Viên &amp; Quyền</span>
-</Link>
-</div>
-</div>
-
-<div>
-<div className="px-3 pb-1.5 font-label-sm text-[10px] tracking-wider text-[#8a8880] uppercase">Dữ Liệu &amp; Tài Chính</div>
-<div className="space-y-0.5">
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface hover:bg-surface-container-low text-body-sm font-medium transition-colors" href="#">
-<span className="material-symbols-outlined text-[#7a7873]">insights</span>
-<span>Phân Tích Bán Hàng</span>
-</Link>
-<a className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface hover:bg-surface-container-low text-body-sm font-medium transition-colors" href="#">
-<span className="material-symbols-outlined text-[#7a7873]">account_balance_wallet</span>
-<span>Đối Soát Doanh Thu</span>
-</Link>
-</div>
-</div>
-</nav>
-</div>
-
-<div className="p-3 border-t border-[#f0eee9] space-y-1 bg-surface-container-lowest">
-<a className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-body-sm text-on-surface hover:bg-surface-container-low transition-colors" href="#">
-<span className="material-symbols-outlined text-[#8a8880]">help_outline</span>
-<span>Trung Tâm Hỗ Trợ</span>
-</Link>
-<a className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-body-sm text-on-surface hover:bg-surface-container-low transition-colors" href="#">
-<span className="material-symbols-outlined text-[#8a8880]">settings</span>
-<span>Cài Đặt Cửa Hàng</span>
-</Link>
-<a className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-body-sm text-tertiary font-medium hover:bg-[#eaf4f1] transition-colors" href="#">
-<span className="material-symbols-outlined text-tertiary">store</span>
-<span>Quay Lại Sàn HUKI</span>
-</Link>
-</div>
-</aside>
-
-<main className="ml-[240px] flex-1 min-w-0 pb-28">
+    <div className="w-full bg-background text-on-surface font-body-md text-body-md min-h-screen antialiased py-6 pb-28">
+      <main className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
 
 <header className="bg-surface-container-lowest border-b border-[#e8e5df] px-8 py-4 sticky top-0 z-20 shadow-[0_2px_8px_-2px_rgba(20,29,28,0.03)]">
 <div className="max-w-[1160px] mx-auto flex items-center justify-between">
 <div>
 
-<a className="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant hover:text-tertiary mb-1 transition-colors" href="#">
+<Link className="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant hover:text-tertiary mb-1 transition-colors" to="/seller/products">
 <span className="material-symbols-outlined !text-[16px]">arrow_back</span>
 <span>Danh Sách Sản Phẩm</span>
 </Link>
@@ -205,7 +80,7 @@ export default function SellerCreateHybrid() {
 </label>
 
 <label className="relative rounded-xl border-2 border-tertiary p-4 bg-[#f2faf7] cursor-pointer transition-all flex flex-col justify-between shadow-[0_8px_20px_-4px_rgba(0,107,79,0.12)] -translate-y-0.5">
-<input checked="" className="sr-only" name="format_type" type="radio" />
+<input defaultChecked className="sr-only" name="format_type" type="radio" />
 
 <span className="absolute top-3 right-3 w-6 h-6 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center shadow-sm">
 <span className="material-symbols-outlined !text-[16px] font-bold">check</span>
@@ -240,49 +115,49 @@ export default function SellerCreateHybrid() {
 <div className="font-label-sm text-[10px] uppercase font-bold text-[#8c887f] px-2 mb-2 tracking-wider">THÔNG TIN SẢN PHẨM</div>
 <ul className="space-y-1 text-body-sm">
 <li>
-<a className="flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-[#eef7f4] text-tertiary font-semibold" href="#sec-basic">
+<Link className="flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-[#eef7f4] text-tertiary font-semibold" to="/seller/product/edit-hybrid">
 <span className="truncate">01 Cơ Bản</span>
 <span className="w-2 h-2 rounded-full bg-tertiary"></span>
 </Link>
 </li>
 <li>
-<a className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#sec-taxonomy">
+<Link className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" to="/seller/edge-cases">
 <span className="truncate">02 Tác Giả</span>
 <span className="material-symbols-outlined text-tertiary !text-[15px]">check_circle</span>
 </Link>
 </li>
 <li>
-<a className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#sec-media">
+<Link className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" to="#sec-media">
 <span className="truncate">03 Media</span>
 <span className="material-symbols-outlined text-tertiary !text-[15px]">check_circle</span>
 </Link>
 </li>
 <li>
-<a className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#sec-pricing">
+<Link className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" to="#sec-pricing">
 <span className="truncate">04 Giá Kép</span>
 <span className="material-symbols-outlined text-tertiary !text-[15px]">check_circle</span>
 </Link>
 </li>
 <li>
-<a className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#sec-inventory">
+<Link className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" to="#sec-inventory">
 <span className="truncate">05 Kho Giấy</span>
 <span className="material-symbols-outlined text-tertiary !text-[15px]">check_circle</span>
 </Link>
 </li>
 <li>
-<a className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" href="#sec-shipping">
+<Link className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" to="#sec-shipping">
 <span className="truncate">06 Vận Chuyển</span>
 <span className="material-symbols-outlined text-tertiary !text-[15px]">check_circle</span>
 </Link>
 </li>
 <li>
-<a className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[#b83824] bg-[#fff5f2] font-medium" href="#sec-drm">
+<Link className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[#b83824] bg-[#fff5f2] font-medium" to="#sec-drm">
 <span className="truncate">07 Ebook DRM</span>
 <span className="material-symbols-outlined text-primary !text-[15px]">warning</span>
 </Link>
 </li>
 <li>
-<a className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#sec-publish">
+<Link className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors" to="/seller/product/edit-hybrid">
 <span className="truncate">08 Xuất Bản</span>
 <span className="w-1.5 h-1.5 rounded-full border border-[#8a8880]"></span>
 </Link>
@@ -364,7 +239,7 @@ export default function SellerCreateHybrid() {
 <div>
 <label className="block font-title-md text-body-sm font-semibold text-on-surface mb-1">Ngôn ngữ</label>
 <select className="w-full h-10 px-3 rounded-lg border border-[#e8e5df] bg-surface-container-lowest text-on-surface font-body-md focus:border-tertiary">
-<option selected="">Tiếng Việt</option>
+<option>Tiếng Việt</option>
 <option>Tiếng Anh (English)</option>
 <option>Song ngữ</option>
 </select>
@@ -410,7 +285,7 @@ export default function SellerCreateHybrid() {
 <div>
 <label className="block font-title-md text-body-sm font-semibold text-on-surface mb-1">Danh mục chính <span className="text-primary">*</span></label>
 <select className="w-full h-10 px-3 rounded-lg border border-[#e8e5df] bg-surface-container-lowest text-on-surface font-body-md focus:border-tertiary">
-<option selected="">Phát Triển Bản Thân</option>
+<option>Phát Triển Bản Thân</option>
 <option>Kinh Doanh &amp; Khởi Nghiệp</option>
 <option>Tâm Lý Học Ứng Dụng</option>
 </select>
@@ -418,7 +293,7 @@ export default function SellerCreateHybrid() {
 <div>
 <label className="block font-title-md text-body-sm font-semibold text-on-surface mb-1">Danh mục phụ</label>
 <select className="w-full h-10 px-3 rounded-lg border border-[#e8e5df] bg-surface-container-lowest text-on-surface font-body-md focus:border-tertiary">
-<option selected="">Thói Quen &amp; Kỷ Luật</option>
+<option>Thói Quen &amp; Kỷ Luật</option>
 <option>Quản Lý Thời Gian</option>
 <option>Tư Duy &amp; Nhận Thức</option>
 </select>
@@ -429,7 +304,7 @@ export default function SellerCreateHybrid() {
 <div>
 <div className="flex justify-between items-center mb-1">
 <label className="font-title-md text-body-sm font-semibold text-on-surface">Tác giả <span className="text-primary">*</span></label>
-<a className="text-xs text-tertiary hover:underline font-medium" href="#">+ Đề xuất tác giả mới</Link>
+<Link className="text-xs text-tertiary hover:underline font-medium" to="/">+ Đề xuất tác giả mới</Link>
 </div>
 <div className="flex items-center gap-2 p-1.5 border border-[#e8e5df] rounded-lg bg-[#faf8f5]">
 <div className="w-7 h-7 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center font-bold text-xs">JC</div>
@@ -727,15 +602,21 @@ export default function SellerCreateHybrid() {
 </div>
 </div>
 
-<div className="w-11 h-6 bg-tertiary rounded-full relative cursor-pointer flex items-center p-0.5">
-<div className="w-5 h-5 bg-white rounded-full shadow-md ml-auto"></div>
-</div>
+<button
+  type="button"
+  role="switch"
+  aria-checked={shippingEnabled}
+  onClick={() => setShippingEnabled(prev => !prev)}
+  className={`w-11 h-6 rounded-full relative cursor-pointer flex items-center p-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-tertiary/50 ${shippingEnabled ? 'bg-tertiary' : 'bg-[#d1d5db]'}`}
+>
+  <div className={`w-5 h-5 bg-white rounded-full shadow-md transition-transform ${shippingEnabled ? 'translate-x-5' : 'translate-x-0'}`}></div>
+</button>
 </div>
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
 <div>
 <label className="block text-xs font-semibold text-on-surface mb-1">Thời gian chuẩn bị đơn hàng</label>
 <select className="w-full h-10 px-3 rounded-lg border border-[#e8e5df] bg-surface-container-lowest text-xs">
-<option selected="">1 ngày (Giao cho bưu tá trước 16:00)</option>
+<option>1 ngày (Giao cho bưu tá trước 16:00)</option>
 <option>Trong ngày (Hỏa tốc nội thành)</option>
 <option>2 ngày (Chuẩn bị số lượng lớn)</option>
 </select>
@@ -813,14 +694,20 @@ export default function SellerCreateHybrid() {
 <div className="text-xs text-[#8c887f]">Tự động tạo trích đoạn 30 trang đầu để tăng tỷ lệ chuyển đổi độc giả.</div>
 </div>
 
-<div className="w-11 h-6 bg-tertiary rounded-full relative cursor-pointer flex items-center p-0.5">
-<div className="w-5 h-5 bg-white rounded-full shadow-md ml-auto"></div>
-</div>
+<button
+  type="button"
+  role="switch"
+  aria-checked={samplePreviewEnabled}
+  onClick={() => setSamplePreviewEnabled(prev => !prev)}
+  className={`w-11 h-6 rounded-full relative cursor-pointer flex items-center p-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-tertiary/50 ${samplePreviewEnabled ? 'bg-tertiary' : 'bg-[#d1d5db]'}`}
+>
+  <div className={`w-5 h-5 bg-white rounded-full shadow-md transition-transform ${samplePreviewEnabled ? 'translate-x-5' : 'translate-x-0'}`}></div>
+</button>
 </div>
 
 <div className="p-3.5 rounded-xl bg-[#fff8f5] border border-[#ffd2c7]">
 <label className="flex items-start gap-2.5 cursor-pointer">
-<input checked="" className="w-4 h-4 mt-0.5 rounded border-[#e88574] text-primary focus:ring-primary" type="checkbox" />
+<input defaultChecked className="w-4 h-4 mt-0.5 rounded border-[#e88574] text-primary focus:ring-primary" type="checkbox" />
 <span className="text-xs text-on-surface leading-relaxed">
 <strong className="text-primary block font-semibold mb-0.5">Cam kết sở hữu bản quyền phát hành số (Bắt buộc)</strong>
                       Tôi xác nhận gian hàng <strong>Alpha Books</strong> sở hữu đầy đủ văn bản hợp đồng bản quyền phát hành ấn bản điện tử tiếng Việt này trên nền tảng số HUKI Ebook và chịu mọi trách nhiệm pháp lý theo Luật Xuất Bản.
@@ -837,7 +724,7 @@ export default function SellerCreateHybrid() {
 </div>
 <div className="space-y-2.5">
 <label className="flex items-start gap-3 p-3 rounded-xl border-2 border-tertiary bg-[#f2f9f6] cursor-pointer">
-<input checked="" className="mt-1 text-tertiary focus:ring-tertiary" name="publish_plan" type="radio" />
+<input defaultChecked className="mt-1 text-tertiary focus:ring-tertiary" name="publish_plan" type="radio" />
 <div>
 <div className="font-title-md text-body-sm font-semibold text-tertiary">Tự động phát hành cả hai định dạng sau khi HUKI thẩm định hoàn tất</div>
 <p className="text-xs text-on-surface-variant mt-0.5">Đơn hàng sách giấy có thể tiếp nhận ngay lập tức và Ebook kích hoạt trực tuyến trên ứng dụng độc giả.</p>
@@ -899,7 +786,7 @@ export default function SellerCreateHybrid() {
 </div>
 
 <div className="w-full h-2 bg-[#e8f1ee] rounded-full overflow-hidden mb-3">
-<div className="h-full bg-tertiary rounded-full transition-all duration-500" style="width: 82%;"></div>
+<div className="h-full bg-tertiary rounded-full transition-all duration-500" style={{ width: '82%' }}></div>
 </div>
 <div className="space-y-1 text-xs text-[#5f5d57]">
 <div className="flex items-center gap-1.5 text-tertiary">
@@ -967,7 +854,7 @@ export default function SellerCreateHybrid() {
 </div>
 </div>
 
-<footer className="fixed bottom-0 right-0 left-[240px] bg-surface-container-lowest/95 backdrop-blur-md border-t border-[#e8e5df] px-8 py-3.5 z-40 shadow-[0_-4px_16px_rgba(20,29,28,0.06)]">
+<footer className="fixed bottom-0 right-0 left-0 bg-surface-container-lowest/95 backdrop-blur-md border-t border-[#e8e5df] px-8 py-3.5 z-40 shadow-[0_-4px_16px_rgba(20,29,28,0.06)]">
 <div className="max-w-[1160px] mx-auto flex items-center justify-between">
 
 <div className="flex items-center gap-3">
@@ -1001,8 +888,6 @@ export default function SellerCreateHybrid() {
 </div>
 </footer>
 </main>
-</div>
-
     </div>
   );
 }

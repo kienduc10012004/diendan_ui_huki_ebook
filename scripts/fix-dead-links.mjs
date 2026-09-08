@@ -1,4 +1,4 @@
-// Fix dead href="#" links - v4 - Simple string replacement approach
+// Fix dead href="#" links in all JSX files - v10
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -51,27 +51,6 @@ function guessRoute(linkText, filePath, title) {
   return '/';
 }
 
-function extractText(content, startIdx) {
-  // Extract text between > and </a>
-  let text = '';
-  let i = startIdx;
-  while (i < content.length && content[i] !== '<') {
-    text += content[i];
-    i++;
-  }
-  return text.trim();
-}
-
-function extractTitle(attrs) {
-  const m = attrs.match(/title="([^"]*)"/);
-  return m ? m[1] : '';
-}
-
-function extractClassName(attrs) {
-  const m = attrs.match(/className="([^"]*)"/);
-  return m ? m[1] : '';
-}
-
 function walkDir(dir, fileList = []) {
   const files = fs.readdirSync(dir);
   files.forEach(file => {
@@ -95,8 +74,8 @@ for (const file of allFiles) {
   const originalContent = content;
 
   // Add React Router import if needed
-  if (!content.includes('react-router-dom') &&
-      (file.includes('\\store\\') || file.includes('\\seller\\') || file.includes('\\layout\\') || file.includes('\\common\\'))) {
+  const needsRouter = file.includes('store') || file.includes('seller') || file.includes('layout') || file.includes('common');
+  if (!content.includes('react-router-dom') && needsRouter) {
     const lines = content.split('\n');
     let lastImportIdx = -1;
     for (let i = 0; i < lines.length; i++) {
@@ -111,73 +90,19 @@ for (const file of allFiles) {
     content = lines.join('\n');
   }
 
-  // Find all <a href="#" ...>TEXT</a> patterns
-  // Strategy: find href="#" then backtrack to <a and forward to </a>
   let linkCount = 0;
-  let newContent = '';
-  let i = 0;
 
-  while (i < content.length) {
-    const hrefIdx = content.indexOf('href="#"', i);
-    if (hrefIdx === -1) {
-      newContent += content.slice(i);
-      break;
-    }
-
-    // Backtrack to find <a
-    let tagStart = hrefIdx;
-    while (tagStart > 0 && content.slice(tagStart - 1, tagStart + 1) !== '<a') {
-      tagStart--;
-      if (content[tagStart] === '<' && content[tagStart + 1] !== 'a') break;
-    }
-    if (content.slice(tagStart, tagStart + 2) !== '<a') {
-      newContent += content.slice(i, hrefIdx + 7);
-      i = hrefIdx + 7;
-      continue;
-    }
-
-    // Find closing > of opening tag
-    let tagClose = content.indexOf('>', hrefIdx);
-    if (tagClose === -1) {
-      newContent += content.slice(i, hrefIdx + 7);
-      i = hrefIdx + 7;
-      continue;
-    }
-
-    // Get attributes between <a and >
-    const attrs = content.slice(tagStart + 2, tagClose);
-    const title = extractTitle(attrs);
-    const className = extractClassName(attrs);
-
-    // Find </a>
-    let closeTag = content.indexOf('</a>', tagClose);
-    if (closeTag === -1) {
-      newContent += content.slice(i, hrefIdx + 7);
-      i = hrefIdx + 7;
-      continue;
-    }
-
-    // Extract link text
-    const linkText = content.slice(tagClose + 1, closeTag).trim();
-
-    // Guess route
-    const route = guessRoute(linkText, file, title);
+  // Process all href="#" links using replace with function
+  content = content.replace(/<a\s+([^>]*?)href="#"\s+([^>]*?)>([^<]*)<\/a>/g, (match, attrs1, attrs2, linkText) => {
     linkCount++;
-
-    // Build Link tag
-    let linkTag;
-    if (className) {
-      linkTag = `<Link to="${route}" className="${className}">${linkText}</Link>`;
-    } else {
-      linkTag = `<Link to="${route}">${linkText}</Link>`;
-    }
-
-    newContent += content.slice(i, tagStart);
-    newContent += linkTag;
-    i = closeTag + 4;
-  }
-
-  content = newContent;
+    const allAttrs = (attrs1 + ' ' + attrs2).trim();
+    const titleMatch = allAttrs.match(/title="([^"]*)"/);
+    const title = titleMatch ? titleMatch[1] : '';
+    const classMatch = allAttrs.match(/className="([^"]*)"/);
+    const classAttr = classMatch ? 'className="' + classMatch[1] + '"' : '';
+    const route = guessRoute(linkText, file, title);
+    return '<Link to="' + route + '" ' + classAttr + '>' + linkText + '</Link>';
+  });
 
   // Fix window.location.href = '#'
   content = content.replace(
@@ -188,11 +113,11 @@ for (const file of allFiles) {
   if (content !== originalContent) {
     fs.writeFileSync(file, content, 'utf8');
     totalLinksFixed += linkCount;
-    report.push(`✓ ${path.relative(process.cwd(), file)}: ${linkCount} links`);
+    report.push('OK ' + path.relative(process.cwd(), file) + ': ' + linkCount + ' links');
   }
 }
 
-console.log('\n=== DEAD LINKS FIX REPORT v4 ===');
+console.log('\n=== DEAD LINKS FIX REPORT v10 ===');
 report.forEach(line => console.log(line));
-console.log(`\nTotal files: ${report.length}`);
-console.log(`Total links fixed: ${totalLinksFixed}`);
+console.log('\nTotal files: ' + report.length);
+console.log('Total links fixed: ' + totalLinksFixed);
