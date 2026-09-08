@@ -83,6 +83,11 @@ export default function App() {
                   <Route path="/reset-password" element={<ResetPasswordPage />} />
                 </Route>
 
+                {/* Standalone Fullscreen PDF / Ebook Reader */}
+                <Route path="/read/:id" element={<ReaderPage />} />
+                <Route path="/read" element={<ReaderPage />} />
+                <Route path="/reader" element={<ReaderPage />} />
+
                 {/* Public marketplace and community. */}
                 <Route element={<AppLayout />}>
                   <Route path="/" element={<HomePage />} />
@@ -122,7 +127,6 @@ export default function App() {
 
                   {/* Authenticated customer area. */}
                   <Route element={<RequireAuth />}>
-                    <Route path="/reader" element={<ReaderPage />} />
                     <Route path="/orders/:id/invoice" element={<OrderInvoicePage />} />
                     <Route path="/orders/:id/review" element={<OrderReviewPage />} />
                     <Route path="/orders/:id" element={<OrderTrackingPage />} />

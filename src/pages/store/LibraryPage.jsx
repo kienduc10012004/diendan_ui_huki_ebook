@@ -121,12 +121,12 @@ export default function LibraryPage() {
             Bạn đã hoàn thành 25 / 40 cuốn sách trong năm
           </h1>
 <p className="text-white/80 text-[14px] leading-relaxed mb-5">
-            Tiếp tục giữ vững nhịp độ 30 phút mỗi ngày. Cuốn sách “Sức Mạnh Của Thói Quen” đang đạt 68% tiến độ đọc.
+            Tiếp tục giữ vững nhịp độ 30 phút mỗi ngày. Cuốn sách “Con Đường Phía Trước – Bill Gates” đang đạt 2% tiến độ đọc.
           </p>
 <div className="flex items-center gap-3">
-<Link to="/reader" className="px-4 py-2 bg-white text-theme-primary font-semibold text-[13.5px] rounded-lg shadow-sm hover:bg-theme-bg transition-colors flex items-center gap-1.5">
+<Link to="/read/con-duong-phia-truoc" className="px-4 py-2 bg-white text-theme-primary font-semibold text-[13.5px] rounded-lg shadow-sm hover:bg-theme-bg transition-colors flex items-center gap-1.5">
 <span className="material-symbols-outlined text-[18px]">play_arrow</span>
-              Đọc tiếp Chương 4
+              Đọc tiếp Trang 3
             </Link>
 <button className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-medium text-[13.5px] rounded-lg transition-colors border border-white/20">
               Chi tiết mục tiêu
@@ -149,20 +149,20 @@ export default function LibraryPage() {
 
 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
 
-        <Link to="/reader" className="bg-theme-surface rounded-[14px] border border-theme-border p-3.5 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer flex flex-col">
+        <Link to="/read/con-duong-phia-truoc" className="bg-theme-surface rounded-[14px] border-2 border-[#fea619] p-3.5 shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer flex flex-col">
           <div className="w-full aspect-[2/3] bg-theme-secondary-subtle rounded-[8px] overflow-hidden relative shadow-inner mb-3">
-            <img alt="Sức Mạnh Của Thói Quen" className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=300" />
-            <span className="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-theme-secondary text-white text-[10.5px] font-bold">68%</span>
+            <img alt="Con Đường Phía Trước - Bill Gates" className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=300" />
+            <span className="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-[#fea619] text-black text-[10.5px] font-bold">Trang 3/166</span>
           </div>
           <div className="text-[11.5px] text-[#fea619] font-semibold flex items-center gap-1 mb-1">
             <span className="material-symbols-outlined text-[14px] fill">star</span>
-            <span>4.9</span>
-            <span className="text-[#8B9D97] font-normal">(125)</span>
+            <span>5.0</span>
+            <span className="text-[#8B9D97] font-normal">(3.8k)</span>
           </div>
-          <h4 className="font-semibold text-[14px] text-on-surface line-clamp-1 leading-snug">Sức Mạnh Của Thói Quen</h4>
-          <p className="text-[12px] text-[#728580] line-clamp-1 mt-0.5">Charles Duhigg</p>
+          <h4 className="font-semibold text-[14px] text-on-surface line-clamp-1 leading-snug">Con Đường Phía Trước</h4>
+          <p className="text-[12px] text-[#728580] line-clamp-1 mt-0.5">Bill Gates</p>
           <div className="mt-3 pt-2.5 border-t border-theme-border flex items-center justify-between">
-            <span className="text-[11.5px] text-theme-secondary font-medium bg-theme-secondary-subtle px-2 py-0.5 rounded">EPUB</span>
+            <span className="text-[11.5px] text-red-600 font-bold bg-red-50 px-2 py-0.5 rounded">PDF DRM</span>
             <span className="material-symbols-outlined text-[18px] text-[#8EA29C] hover:text-theme-secondary">more_vert</span>
           </div>
         </Link>
