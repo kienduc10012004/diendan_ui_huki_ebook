@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
@@ -13,10 +13,27 @@ export default function StoreHeader({ onToggleSidebar, onToggleMobileSidebar, is
   const { theme, setTheme, isDarkMode, toggleDarkMode, palettes, currentPalette } = useTheme();
   const [searchQuery, setSearchQuery] = useState('');
   const [showUserMenu, setShowUserMenu] = useState(false);
-  const [showThemeMenu, setShowThemeMenu] = useState(false);
+  const userMenuRef = useRef(null);
 
-  const isCommunity = location.pathname.startsWith('/community');
-  const isStore = !isCommunity && !location.pathname.startsWith('/seller');
+  // Close dropdown on click outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+        setShowUserMenu(false);
+      }
+    };
+    if (showUserMenu) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showUserMenu]);
+
+  // Close dropdown on route change
+  useEffect(() => {
+    setShowUserMenu(false);
+  }, [location.pathname]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -32,7 +49,7 @@ export default function StoreHeader({ onToggleSidebar, onToggleMobileSidebar, is
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-[var(--theme-surface,#ffffff)]/95 backdrop-blur-md border-b border-[var(--theme-border,#e8e5df)] shadow-xs shrink-0 transition-colors duration-200">
+    <header className="sticky top-0 z-40 bg-[var(--theme-surface,#ffffff)] border-b border-[var(--theme-border,#e8e5df)] shadow-sm shrink-0 transition-colors duration-200">
       {/* Top Utility Bar (h-[30px]) */}
       <div className="h-[30px] bg-[var(--theme-header-top,#003b2b)] text-[var(--theme-header-top-text,#ffffff)] text-[11px] px-4 md:px-8 flex items-center justify-between font-medium shrink-0 transition-colors duration-200">
         <div className="flex items-center gap-4">
@@ -79,7 +96,7 @@ export default function StoreHeader({ onToggleSidebar, onToggleMobileSidebar, is
                   if (onToggleSidebar) onToggleSidebar();
                 }
               }}
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface hover:text-primary hover:bg-surface-container active:scale-95 transition-all cursor-pointer"
+              className="w-10 h-10 rounded-xl border border-[var(--theme-border,#e8e5df)] hover:border-[var(--theme-primary,#003b2b)] flex items-center justify-center text-on-surface hover:text-primary hover:bg-[var(--theme-secondary-subtle,#f2fbf9)] active:scale-95 transition-all cursor-pointer"
               title={isSidebarCollapsed ? 'Mở rộng menu điều hướng' : 'Thu gọn menu điều hướng'}
               aria-label="Toggle Sidebar Navigation"
             >
@@ -90,11 +107,11 @@ export default function StoreHeader({ onToggleSidebar, onToggleMobileSidebar, is
           </div>
 
           <Link to="/" className="flex items-center gap-2.5 group pr-2">
-            <div className="w-10 h-10 rounded-xl bg-theme-primary flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-[var(--theme-primary,#003b2b)] flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform shrink-0">
               <span className="material-symbols-outlined text-xl">menu_book</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-editorial text-xl md:text-2xl font-bold tracking-tight text-theme-primary leading-none">
+              <span className="font-editorial text-xl md:text-2xl font-bold tracking-tight text-[var(--theme-primary,#003b2b)] leading-none">
                 HUKI EBOOK
               </span>
               <span className="text-[9px] md:text-[10px] uppercase tracking-widest text-[#ac2c19] font-bold mt-0.5">
@@ -102,206 +119,73 @@ export default function StoreHeader({ onToggleSidebar, onToggleMobileSidebar, is
               </span>
             </div>
           </Link>
-
-          {/* Mode Tabs: Sàn TMĐT vs Mạng Xã Hội */}
-          <div className="hidden xl:flex items-center bg-[var(--theme-secondary-subtle,#f2fbf9)] p-1 rounded-xl border border-[var(--theme-border,#e8e5df)] ml-2">
-            <Link
-              to="/"
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                isStore
-                  ? 'bg-[var(--theme-surface,#ffffff)] text-[var(--theme-primary,#003b2b)] shadow-xs border border-[var(--theme-border,#e8e5df)]'
-                  : 'text-[var(--theme-text-muted,#6b7280)] hover:text-[var(--theme-text,#17201f)]'
-              }`}
-            >
-              <span className="material-symbols-outlined text-base">storefront</span>
-              Sàn TMĐT Sách
-            </Link>
-            <Link
-              to="/community"
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                isCommunity
-                  ? 'bg-[var(--theme-primary,#003b2b)] text-white shadow-xs'
-                  : 'text-[var(--theme-text-muted,#6b7280)] hover:text-[var(--theme-text,#17201f)]'
-              }`}
-            >
-              <span className="material-symbols-outlined text-base">groups</span>
-              Mạng Xã Hội Độc Giả
-            </Link>
-          </div>
         </div>
 
-        {/* Global Semantic Search Bar */}
-        <form onSubmit={handleSearch} className="flex-1 max-w-xl relative hidden md:block">
-          <div className="flex items-center bg-[var(--theme-surface-subtle,#f8f6f1)] border border-[var(--theme-border,#e8e5df)] rounded-full px-3.5 py-1.5 focus-within:border-[var(--theme-accent,#ac2c19)] focus-within:bg-[var(--theme-surface,#ffffff)] focus-within:ring-2 focus-within:ring-[var(--theme-accent,#ac2c19)]/15 transition-all shadow-2xs">
-            <span className="material-symbols-outlined text-[var(--theme-text-muted,#6b7280)] text-lg mr-2 shrink-0">search</span>
+        {/* Global Semantic Search Bar (Lengthened & Centered) */}
+        <form onSubmit={handleSearch} className="flex-1 max-w-2xl mx-2 lg:mx-4 relative hidden md:block">
+          <div className="flex items-center bg-[var(--theme-surface-subtle,#f8f6f1)] border border-[var(--theme-border,#e8e5df)] rounded-xl px-4 py-2 focus-within:border-[var(--theme-primary,#003b2b)] focus-within:bg-[var(--theme-surface,#ffffff)] focus-within:ring-2 focus-within:ring-[var(--theme-primary,#003b2b)]/15 transition-all shadow-2xs">
+            <span className="material-symbols-outlined text-[var(--theme-text-muted,#6b7280)] text-lg mr-2.5 shrink-0">search</span>
             <input
               type="text"
-              placeholder="Tìm kiếm tác phẩm, tác giả, ISBN, bài review..."
+              placeholder="Tìm kiếm tác phẩm, tác giả, ISBN, bài review hoặc chủ đề..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-transparent border-none outline-none text-xs md:text-sm text-[var(--theme-text,#17201f)] placeholder-[var(--theme-text-muted,#6b7280)]"
             />
             <button
               type="submit"
-              className="bg-[var(--theme-accent,#ac2c19)] text-white px-3.5 py-1 rounded-full text-xs font-semibold hover:bg-[var(--theme-accent-hover,#8e1404)] transition-colors ml-2 shrink-0 cursor-pointer"
+              className="bg-[var(--theme-accent,#ac2c19)] text-white px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-[var(--theme-accent-hover,#8e1404)] transition-colors ml-2 shrink-0 cursor-pointer shadow-xs"
             >
               Tìm
             </button>
           </div>
         </form>
 
-        {/* Right Actions: Navigation, Cart & Profile / Auth */}
-        <div className="flex items-center gap-1.5 sm:gap-2.5">
-          <Link
-            to="/books"
-            className="hidden sm:flex items-center gap-1 text-xs md:text-sm font-semibold text-[var(--theme-text,#17201f)] hover:text-[var(--theme-accent,#ac2c19)] px-2.5 py-1.5 rounded-lg hover:bg-black/5 transition-colors"
-          >
-            <span className="material-symbols-outlined text-lg text-[var(--theme-secondary,#006953)]">category</span>
-            <span>Khám Phá</span>
-          </Link>
-
-          {isLoggedIn && <Link
-            to="/library"
-            className="hidden sm:flex items-center gap-1 text-xs md:text-sm font-semibold text-[var(--theme-text,#17201f)] hover:text-[var(--theme-accent,#ac2c19)] px-2.5 py-1.5 rounded-lg hover:bg-black/5 transition-colors"
-          >
-            <span className="material-symbols-outlined text-lg text-[var(--theme-secondary,#006953)]">local_library</span>
-            <span>Tủ Sách</span>
-          </Link>}
-
-          {/* Quick Reading Theme Toggle Button */}
-          <div className="relative">
-            <button
-              onClick={() => setShowThemeMenu(!showThemeMenu)}
-              className="p-2 rounded-xl text-[var(--theme-primary,#003b2b)] bg-[var(--theme-secondary-subtle,#f2fbf9)] hover:bg-[var(--theme-primary,#003b2b)] hover:text-white border border-[var(--theme-border,#e8e5df)] hover:border-[var(--theme-primary,#003b2b)] transition-all cursor-pointer flex items-center justify-center"
-              title={`Giao diện đọc: ${currentPalette.name}`}
-              aria-label="Chọn màu chủ đề đọc sách"
-            >
-              <span className="material-symbols-outlined text-xl">palette</span>
-            </button>
-
-            {showThemeMenu && (
-              <div
-                className="absolute right-0 mt-2 w-72 bg-[var(--theme-surface,#ffffff)] rounded-2xl shadow-xl border border-[var(--theme-border,#e8e5df)] p-3 z-50 text-xs animate-fade-in-up"
-                onMouseLeave={() => setShowThemeMenu(false)}
-              >
-                <div className="flex items-center justify-between pb-2 mb-2 border-b border-[var(--theme-border,#e8e5df)]">
-                  <div className="flex items-center gap-1.5 font-bold text-sm text-[var(--theme-text,#17201f)]">
-                    <span className="material-symbols-outlined text-base text-[var(--theme-primary,#003b2b)]">palette</span>
-                    <span>Reading Theme</span>
-                  </div>
-                  <span className="text-[10px] font-bold text-[var(--theme-primary,#003b2b)] bg-[var(--theme-secondary-subtle,#e6f4f0)] px-2 py-0.5 rounded-full">
-                    {currentPalette.name}
-                  </span>
-                </div>
-
-                <div className="space-y-1 max-h-64 overflow-y-auto custom-scroll pr-0.5">
-                  {palettes.map((p) => {
-                    const isSelected = theme === p.id;
-                    return (
-                      <button
-                        key={p.id}
-                        type="button"
-                        onClick={() => {
-                          setTheme(p.id);
-                          setShowThemeMenu(false);
-                        }}
-                        className={`w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs transition-all cursor-pointer ${
-                          isSelected
-                            ? 'bg-[var(--theme-secondary-subtle,#e6f4f0)] text-[var(--theme-primary,#003b2b)] ring-1 ring-[var(--theme-primary,#003b2b)]/40 font-bold shadow-2xs'
-                            : 'text-[var(--theme-text,#17201f)] hover:bg-black/5 font-medium'
-                        }`}
-                      >
-                        <div className="flex items-center gap-2.5 min-w-0">
-                          {/* 4 Semantic Role Preview Circles */}
-                          <div className="flex items-center -space-x-1 shrink-0">
-                            <span
-                              className="w-3.5 h-3.5 rounded-full border border-black/15 shadow-2xs shrink-0"
-                              style={{ backgroundColor: p.colors.background }}
-                              title={`Background: ${p.colors.background}`}
-                            />
-                            <span
-                              className="w-3.5 h-3.5 rounded-full border border-black/15 shadow-2xs shrink-0"
-                              style={{ backgroundColor: p.colors.surface }}
-                              title={`Surface: ${p.colors.surface}`}
-                            />
-                            <span
-                              className="w-3.5 h-3.5 rounded-full border border-black/15 shadow-2xs shrink-0"
-                              style={{ backgroundColor: p.colors.secondary }}
-                              title={`Secondary: ${p.colors.secondary}`}
-                            />
-                            <span
-                              className="w-3.5 h-3.5 rounded-full border border-black/15 shadow-2xs shrink-0"
-                              style={{ backgroundColor: p.colors.primary }}
-                              title={`Primary: ${p.colors.primary}`}
-                            />
-                          </div>
-                          <span className="truncate text-left">{p.name}</span>
-                        </div>
-
-                        {isSelected && (
-                          <span className="material-symbols-outlined text-base text-[var(--theme-primary,#003b2b)] font-bold shrink-0">
-                            check_circle
-                          </span>
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
-
-                <div className="flex items-center justify-between px-2.5 py-2 mt-2 pt-2 border-t border-[var(--theme-border,#e8e5df)] font-medium text-[var(--theme-text,#17201f)]">
-                  <div className="flex items-center gap-2">
-                    <span className="material-symbols-outlined text-base text-[var(--theme-text-muted,#6b7280)]">
-                      {isDarkMode ? 'dark_mode' : 'light_mode'}
-                    </span>
-                    <span>Chế độ ban đêm</span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={toggleDarkMode}
-                    className={`w-9 h-5 rounded-full p-0.5 transition-colors cursor-pointer ${
-                      isDarkMode ? 'bg-[var(--theme-primary,#003b2b)]' : 'bg-gray-300'
-                    }`}
-                    aria-label="Chuyển đổi Dark mode"
-                  >
-                    <div className={`w-4 h-4 rounded-full bg-white transition-transform ${isDarkMode ? 'translate-x-4' : ''}`} />
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Messenger / Tin nhắn & Trò chuyện */}
+        {/* Right Actions: Messenger, Cart & User Profile */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Messenger / Tin nhắn */}
           <Link
             to="/chat"
-            className={`relative p-2 rounded-xl transition-all flex items-center justify-center group ${
+            className={`w-10 h-10 rounded-xl border transition-all flex items-center justify-center relative group ${
               location.pathname.startsWith('/chat') || location.pathname.startsWith('/messages')
-                ? 'bg-[var(--theme-primary,#003b2b)] text-white shadow-xs'
-                : 'hover:bg-[var(--theme-secondary-subtle,#f2fbf9)] text-[var(--theme-text,#17201f)] border border-transparent hover:border-[var(--theme-border,#e8e5df)]'
+                ? 'bg-[var(--theme-primary,#003b2b)] text-white border-[var(--theme-primary,#003b2b)] shadow-xs'
+                : 'border-[var(--theme-border,#e8e5df)] hover:border-[var(--theme-primary,#003b2b)] hover:bg-[var(--theme-secondary-subtle,#f2fbf9)] text-[var(--theme-text,#17201f)]'
             }`}
             title="Tin nhắn & Trò chuyện"
             aria-label="Tin nhắn & Trò chuyện"
           >
-            <span className={`material-symbols-outlined text-2xl transition-colors ${
+            <span className={`material-symbols-outlined text-[22px] transition-colors ${
               location.pathname.startsWith('/chat') || location.pathname.startsWith('/messages')
                 ? 'text-white'
                 : 'group-hover:text-[var(--theme-primary,#003b2b)]'
             }`}>
               chat
             </span>
-            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.2 min-w-[18px] h-[18px] rounded-full flex items-center justify-center shadow-xs animate-pulse">
+            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.2 min-w-[18px] h-[18px] rounded-full flex items-center justify-center shadow-xs">
               1
             </span>
           </Link>
 
-          {/* Cart Icon with Live Counter */}
+          {/* Cart Icon */}
           <Link
             to="/cart"
-            className="relative p-2 rounded-xl hover:bg-[var(--theme-secondary-subtle,#f2fbf9)] text-[var(--theme-text,#17201f)] border border-transparent hover:border-[var(--theme-border,#e8e5df)] transition-all"
+            className={`w-10 h-10 rounded-xl border transition-all flex items-center justify-center relative group ${
+              location.pathname.startsWith('/cart')
+                ? 'bg-[var(--theme-primary,#003b2b)] text-white border-[var(--theme-primary,#003b2b)] shadow-xs'
+                : 'border-[var(--theme-border,#e8e5df)] hover:border-[var(--theme-primary,#003b2b)] hover:bg-[var(--theme-secondary-subtle,#f2fbf9)] text-[var(--theme-text,#17201f)]'
+            }`}
             title="Xem giỏ hàng"
+            aria-label="Xem giỏ hàng"
           >
-            <span className="material-symbols-outlined text-2xl">shopping_cart</span>
+            <span className={`material-symbols-outlined text-[22px] transition-colors ${
+              location.pathname.startsWith('/cart')
+                ? 'text-white'
+                : 'group-hover:text-[var(--theme-primary,#003b2b)]'
+            }`}>
+              shopping_cart
+            </span>
             {totalItemsCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-[var(--theme-accent,#ac2c19)] text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-bounce">
+              <span className="absolute -top-1 -right-1 bg-[var(--theme-accent,#ac2c19)] text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-xs">
                 {totalItemsCount}
               </span>
             )}
@@ -309,23 +193,25 @@ export default function StoreHeader({ onToggleSidebar, onToggleMobileSidebar, is
 
           {/* User Profile or Login/Register Buttons */}
           {isLoggedIn && user ? (
-            <div className="relative">
+            <div className="relative" ref={userMenuRef}>
               <button
                 onClick={() => setShowUserMenu(!showUserMenu)}
-                className="flex items-center gap-2 p-1 rounded-full hover:bg-black/5 transition-colors border border-[var(--theme-border,#e8e5df)] cursor-pointer"
+                className="flex items-center gap-2 p-1.5 rounded-xl hover:bg-[var(--theme-secondary-subtle,#f2fbf9)] hover:border-[var(--theme-primary,#003b2b)] transition-all border border-[var(--theme-border,#e8e5df)] cursor-pointer"
                 aria-expanded={showUserMenu}
                 aria-label="Menu tài khoản"
               >
-                <UserAvatar src={user?.avatar} name={user?.name || "Khách"} size="w-8 h-8" />
-                <span className="hidden 2xl:inline text-xs font-bold text-[var(--theme-text,#17201f)] pr-1.5 truncate max-w-[120px]">
+                <UserAvatar src={user?.avatar} name={user?.name || "Khách"} size="w-7 h-7" />
+                <span className="hidden xl:inline text-xs font-bold text-[var(--theme-text,#17201f)] pr-1.5 truncate max-w-[110px]">
                   {user?.name || "Khách"}
+                </span>
+                <span className="material-symbols-outlined text-sm text-[var(--theme-text-muted,#6b7280)] -ml-1">
+                  expand_more
                 </span>
               </button>
 
               {showUserMenu && (
                 <div
-                  className="absolute right-0 mt-2 w-72 bg-[var(--theme-surface,#ffffff)] rounded-2xl shadow-xl border border-[var(--theme-border,#e8e5df)] p-2 z-50 text-xs animate-fade-in-up"
-                  onMouseLeave={() => setShowUserMenu(false)}
+                  className="absolute right-0 mt-2 w-72 sm:w-80 max-h-[calc(100vh-105px)] overflow-y-auto overscroll-contain custom-scroll bg-[var(--theme-surface,#ffffff)] rounded-2xl shadow-2xl border border-[var(--theme-border,#e8e5df)] p-2.5 z-50 text-xs animate-fade-in-up"
                 >
                   <div className="px-3 py-2.5 border-b border-[var(--theme-border,#e8e5df)] mb-1 bg-[var(--theme-surface-subtle,#f9fbfb)] rounded-xl">
                     <p className="font-bold text-[var(--theme-text,#17201f)] text-sm truncate">{user?.name || "Khách Hàng"}</p>

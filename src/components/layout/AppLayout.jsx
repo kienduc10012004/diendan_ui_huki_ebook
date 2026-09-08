@@ -53,7 +53,7 @@ export default function AppLayout() {
           isSidebarCollapsed={isSidebarCollapsed}
         />
 
-        <div className={`flex-1 flex flex-row relative ${isChatPage ? 'overflow-hidden min-h-0' : 'min-h-[calc(100vh-108px)]'}`}>
+        <div className={`flex-1 flex flex-row relative ${isChatPage ? 'overflow-hidden min-h-0 h-[calc(100vh-92px)]' : 'min-h-[calc(100vh-108px)]'}`}>
           {/* Hierarchical Multi-Level Sidebar */}
           <HierarchicalSidebar
             isCollapsed={isSidebarCollapsed}
@@ -67,11 +67,11 @@ export default function AppLayout() {
             className={`
               flex-1 flex flex-col min-w-0 transition-all duration-300 ease-in-out
               ${isSidebarCollapsed ? 'lg:ml-[68px]' : 'lg:ml-[310px]'}
+              ${isChatPage ? 'overflow-hidden min-h-0 h-full' : ''}
               ml-0
-              ${isChatPage ? 'overflow-hidden min-h-0' : ''}
             `}
           >
-            <main id="main-content" tabIndex="-1" className={`flex-1 min-w-0 outline-none ${isChatPage ? 'overflow-hidden min-h-0 flex flex-col' : ''}`}>
+            <main id="main-content" tabIndex="-1" className={`flex-1 min-w-0 outline-none ${isChatPage ? 'overflow-hidden min-h-0 h-full flex flex-col' : ''}`}>
               <Outlet />
             </main>
 
