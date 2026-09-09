@@ -239,21 +239,28 @@ export default function BookDetailPage() {
               <div className="grid grid-cols-3 gap-2.5">
                 {Object.values(formatPricing).map((fmt) => {
                   const isSelected = selectedFormat === fmt.type;
+                  const isHybrid = fmt.type === 'hybrid';
                   return (
                     <div
                       key={fmt.type}
                       onClick={() => setSelectedFormat(fmt.type)}
                       className={`p-3 rounded-xl cursor-pointer transition-all border relative flex flex-col justify-between ${
                         isSelected
-                          ? 'border-2 border-[#006953] bg-[#006953]/5 shadow-xs'
+                          ? 'border-2 border-[#006953] bg-[#006953]/5 shadow-sm'
+                          : isHybrid
+                          ? 'border-amber-300 bg-amber-50/40 hover:border-amber-400'
                           : 'border-gray-200 bg-white hover:border-gray-300'
                       }`}
                     >
-                      {isSelected && (
+                      {isSelected ? (
                         <span className="absolute -top-2 right-2 bg-[#006953] text-white text-[9px] font-bold px-1.5 py-0.2 rounded-full">
                           ĐANG CHỌN
                         </span>
-                      )}
+                      ) : isHybrid ? (
+                        <span className="absolute -top-2 right-2 bg-amber-500 text-white text-[8px] font-extrabold px-1.5 py-0.2 rounded-full shadow-xs">
+                          🔥 TIẾT KIỆM 45%
+                        </span>
+                      ) : null}
 
                       <div>
                         <span className={`text-xs font-bold block ${isSelected ? 'text-[#006953]' : 'text-[#17201f]'}`}>
@@ -279,7 +286,7 @@ export default function BookDetailPage() {
 
           {/* Right Column: Sticky Buy Box */}
           <div className="col-span-12 lg:col-span-3">
-            <div className="sticky top-20 bg-white border border-[#e8e5df] rounded-2xl p-5 shadow-sm space-y-4">
+            <div className="sticky top-[96px] bg-white border border-[#e8e5df] rounded-2xl p-5 shadow-sm space-y-4">
               {/* Pricing Display */}
               <div className="border-b border-gray-100 pb-3">
                 <span className="text-xs text-gray-500 block mb-0.5">Tạm tính ({currentPrice.title}):</span>

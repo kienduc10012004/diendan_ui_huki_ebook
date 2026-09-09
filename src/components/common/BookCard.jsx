@@ -48,7 +48,7 @@ export default function BookCard({ book }) {
         {/* Book Title */}
         <Link
           to={`/book/${book.id}`}
-          className="font-bold text-sm text-theme-text line-clamp-2 hover:text-theme-accent transition-colors leading-snug mb-1"
+          className="font-bold text-sm text-theme-text line-clamp-1 truncate hover:text-theme-accent transition-colors leading-snug mb-1"
           title={book.title}
         >
           {book.title}

@@ -313,20 +313,20 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
     ...(isLoggedIn ? [{ id: 'mini-profile', to: '/profile', icon: 'account_circle', title: 'Tài Khoản Cá Nhân' }] : [])
   ];
 
-  // Accordion state: which groups and which submenus are expanded
+  // Accordion state: default expand active store & library groups to reduce cognitive clutter
   const [expandedGroups, setExpandedGroups] = useState({
     store: true,
-    community: true,
+    community: false,
     library: true,
-    seller: true,
-    account: true
+    seller: false,
+    account: false
   });
 
   const [expandedSubmenus, setExpandedSubmenus] = useState({
     'store-catalog': true,
     'comm-forum': false,
-    'lib-my-books': true,
-    'seller-products': true
+    'lib-my-books': false,
+    'seller-products': false
   });
 
   // Auto-expand group and submenu based on current location

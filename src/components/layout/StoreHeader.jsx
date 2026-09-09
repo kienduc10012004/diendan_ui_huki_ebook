@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
+import { booksData } from '../../data/mockData';
 import UserAvatar from '../common/UserAvatar';
 
 export default function StoreHeader({ onToggleSidebar, onToggleMobileSidebar, isSidebarCollapsed }) {
@@ -13,31 +14,47 @@ export default function StoreHeader({ onToggleSidebar, onToggleMobileSidebar, is
   const { theme, setTheme, isDarkMode, toggleDarkMode, palettes, currentPalette } = useTheme();
   const [searchQuery, setSearchQuery] = useState('');
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showSearchSuggestions, setShowSearchSuggestions] = useState(false);
   const userMenuRef = useRef(null);
+  const searchContainerRef = useRef(null);
 
-  // Close dropdown on click outside
+  // Live matching books for autocomplete
+  const searchResults = useMemo(() => {
+    if (!searchQuery.trim()) return [];
+    const q = searchQuery.toLowerCase().trim();
+    return booksData.filter(b => 
+      b.title.toLowerCase().includes(q) || 
+      b.author.toLowerCase().includes(q) || 
+      (b.category && b.category.toLowerCase().includes(q))
+    ).slice(0, 5);
+  }, [searchQuery]);
+
+  // Close dropdowns on click outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
         setShowUserMenu(false);
       }
+      if (searchContainerRef.current && !searchContainerRef.current.contains(event.target)) {
+        setShowSearchSuggestions(false);
+      }
     };
-    if (showUserMenu) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [showUserMenu]);
+  }, []);
 
-  // Close dropdown on route change
+  // Close dropdowns on route change
   useEffect(() => {
     setShowUserMenu(false);
+    setShowSearchSuggestions(false);
   }, [location.pathname]);
 
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
+      setShowSearchSuggestions(false);
       navigate(`/books?q=${encodeURIComponent(searchQuery)}`);
     }
   };
@@ -122,24 +139,83 @@ export default function StoreHeader({ onToggleSidebar, onToggleMobileSidebar, is
         </div>
 
         {/* Global Semantic Search Bar (Lengthened & Centered) */}
-        <form onSubmit={handleSearch} className="flex-1 max-w-2xl mx-2 lg:mx-4 relative hidden md:block">
-          <div className="flex items-center bg-[var(--theme-surface-subtle,#f8f6f1)] border border-[var(--theme-border,#e8e5df)] rounded-xl px-4 py-2 focus-within:border-[var(--theme-primary,#003b2b)] focus-within:bg-[var(--theme-surface,#ffffff)] focus-within:ring-2 focus-within:ring-[var(--theme-primary,#003b2b)]/15 transition-all shadow-2xs">
-            <span className="material-symbols-outlined text-[var(--theme-text-muted,#6b7280)] text-lg mr-2.5 shrink-0">search</span>
-            <input
-              type="text"
-              placeholder="Tìm kiếm tác phẩm, tác giả, ISBN, bài review hoặc chủ đề..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-transparent border-none outline-none text-xs md:text-sm text-[var(--theme-text,#17201f)] placeholder-[var(--theme-text-muted,#6b7280)]"
-            />
-            <button
-              type="submit"
-              className="bg-[var(--theme-accent,#ac2c19)] text-white px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-[var(--theme-accent-hover,#8e1404)] transition-colors ml-2 shrink-0 cursor-pointer shadow-xs"
-            >
-              Tìm
-            </button>
-          </div>
-        </form>
+        <div ref={searchContainerRef} className="flex-1 max-w-2xl mx-2 lg:mx-4 relative hidden md:block">
+          <form onSubmit={handleSearch}>
+            <div className="flex items-center bg-[var(--theme-surface-subtle,#f8f6f1)] border border-[var(--theme-border,#e8e5df)] rounded-xl px-4 py-2 focus-within:border-[var(--theme-primary,#003b2b)] focus-within:bg-[var(--theme-surface,#ffffff)] focus-within:ring-2 focus-within:ring-[var(--theme-primary,#003b2b)]/15 transition-all shadow-2xs">
+              <span className="material-symbols-outlined text-[var(--theme-text-muted,#6b7280)] text-lg mr-2.5 shrink-0">search</span>
+              <input
+                type="text"
+                placeholder="Tìm kiếm tác phẩm, tác giả, ISBN, bài review hoặc chủ đề..."
+                value={searchQuery}
+                onFocus={() => setShowSearchSuggestions(true)}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setShowSearchSuggestions(true);
+                }}
+                className="w-full bg-transparent border-none outline-none text-xs md:text-sm text-[var(--theme-text,#17201f)] placeholder-[var(--theme-text-muted,#6b7280)]"
+              />
+              <button
+                type="submit"
+                className="bg-[var(--theme-accent,#ac2c19)] text-white px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-[var(--theme-accent-hover,#8e1404)] transition-colors ml-2 shrink-0 cursor-pointer shadow-xs"
+              >
+                Tìm
+              </button>
+            </div>
+          </form>
+
+          {/* Live Search Autocomplete Popover */}
+          {showSearchSuggestions && searchQuery.trim().length > 0 && (
+            <div className="absolute left-0 right-0 top-full mt-2 bg-[var(--theme-surface,#ffffff)] rounded-2xl shadow-2xl border border-[var(--theme-border,#e8e5df)] p-3 z-50 animate-fade-in-up text-xs overflow-hidden">
+              <div className="text-[11px] font-bold text-[var(--theme-text-muted,#6b7280)] uppercase tracking-wider px-2 py-1 flex items-center justify-between">
+                <span>Gợi ý tác phẩm</span>
+                <span>{searchResults.length} kết quả</span>
+              </div>
+
+              {searchResults.length > 0 ? (
+                <div className="divide-y divide-[var(--theme-border,#e8e5df)]/50 mt-1">
+                  {searchResults.map((b) => (
+                    <Link
+                      key={b.id}
+                      to={`/book/${b.id}`}
+                      onClick={() => setShowSearchSuggestions(false)}
+                      className="flex items-center gap-3 p-2 rounded-xl hover:bg-[var(--theme-secondary-subtle,#f2fbf9)] transition-colors group"
+                    >
+                      <img src={b.cover} alt={b.title} className="w-9 h-12 rounded object-cover border border-black/10 shrink-0" />
+                      <div className="min-w-0 flex-1">
+                        <p className="font-bold text-[var(--theme-text,#17201f)] truncate group-hover:text-[var(--theme-primary,#003b2b)] transition-colors">
+                          {b.title}
+                        </p>
+                        <p className="text-[11px] text-[var(--theme-text-muted,#6b7280)] truncate">
+                          Tác giả: {b.author} • <span className="text-[var(--theme-primary,#003b2b)] font-semibold">{b.category}</span>
+                        </p>
+                      </div>
+                      <div className="text-right shrink-0">
+                        <span className="font-bold text-[var(--theme-accent,#ac2c19)] block">
+                          {(b.priceEbook || b.pricePaper || 89000).toLocaleString('vi-VN')}đ
+                        </span>
+                        <span className="text-[9px] bg-[#006953]/10 text-[#006953] px-1.5 py-0.2 rounded font-bold">
+                          Ebook / Giấy
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <div className="p-4 text-center text-[var(--theme-text-muted,#6b7280)]">
+                  Không tìm thấy sách nào khớp với "{searchQuery}"
+                </div>
+              )}
+
+              <button
+                onClick={handleSearch}
+                className="w-full mt-2 py-2 rounded-xl bg-[var(--theme-surface-subtle,#f8f6f1)] hover:bg-[var(--theme-primary,#003b2b)] hover:text-white text-[var(--theme-primary,#003b2b)] font-bold text-center transition-colors text-xs flex items-center justify-center gap-1"
+              >
+                <span>Xem tất cả kết quả cho "{searchQuery}"</span>
+                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              </button>
+            </div>
+          )}
+        </div>
 
         {/* Right Actions: Messenger, Cart & User Profile */}
         <div className="flex items-center gap-2 sm:gap-3">
@@ -283,8 +359,8 @@ export default function StoreHeader({ onToggleSidebar, onToggleMobileSidebar, is
                       </span>
                     </div>
 
-                    {/* 8-Palette List with 4 Semantic Preview Circles */}
-                    <div className="space-y-0.5 max-h-44 overflow-y-auto custom-scroll pr-0.5 my-1">
+                    {/* 8-Palette Grid (2x4 Compact Swatch Tiles) */}
+                    <div className="grid grid-cols-2 gap-1 my-1.5">
                       {palettes.map((p) => {
                         const isSelected = theme === p.id;
                         return (
@@ -292,42 +368,23 @@ export default function StoreHeader({ onToggleSidebar, onToggleMobileSidebar, is
                             key={p.id}
                             type="button"
                             onClick={() => setTheme(p.id)}
-                            className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-[11.5px] transition-all cursor-pointer ${
+                            className={`flex items-center justify-between p-1.5 rounded-xl text-[11px] transition-all cursor-pointer border ${
                               isSelected
-                                ? 'bg-[var(--theme-secondary-subtle,#e6f4f0)] text-[var(--theme-primary,#003b2b)] ring-1 ring-[var(--theme-primary,#003b2b)]/30 font-bold shadow-2xs'
-                                : 'text-[var(--theme-text,#17201f)] hover:bg-black/5 font-medium'
+                                ? 'bg-[var(--theme-secondary-subtle,#e6f4f0)] text-[var(--theme-primary,#003b2b)] border-[var(--theme-primary,#003b2b)]/40 font-bold shadow-2xs'
+                                : 'text-[var(--theme-text,#17201f)] border-transparent hover:bg-black/5 font-medium'
                             }`}
                           >
-                            <div className="flex items-center gap-2 min-w-0">
-                              {/* 4 Semantic Role Preview Circles */}
-                              <div className="flex items-center -space-x-1 shrink-0">
-                                <span
-                                  className="w-3.5 h-3.5 rounded-full border border-black/15 shadow-2xs shrink-0"
-                                  style={{ backgroundColor: p.colors.background }}
-                                  title={`Background: ${p.colors.background}`}
-                                />
-                                <span
-                                  className="w-3.5 h-3.5 rounded-full border border-black/15 shadow-2xs shrink-0"
-                                  style={{ backgroundColor: p.colors.surface }}
-                                  title={`Surface: ${p.colors.surface}`}
-                                />
-                                <span
-                                  className="w-3.5 h-3.5 rounded-full border border-black/15 shadow-2xs shrink-0"
-                                  style={{ backgroundColor: p.colors.secondary }}
-                                  title={`Secondary: ${p.colors.secondary}`}
-                                />
-                                <span
-                                  className="w-3.5 h-3.5 rounded-full border border-black/15 shadow-2xs shrink-0"
-                                  style={{ backgroundColor: p.colors.primary }}
-                                  title={`Primary: ${p.colors.primary}`}
-                                />
-                              </div>
-                              <span className="truncate text-left">{p.name}</span>
+                            <div className="flex items-center gap-1.5 min-w-0">
+                              <span
+                                className="w-3.5 h-3.5 rounded-full border border-black/20 shrink-0 shadow-2xs"
+                                style={{ backgroundColor: p.colors.primary }}
+                                title={p.name}
+                              />
+                              <span className="truncate text-left leading-none">{p.name}</span>
                             </div>
-
                             {isSelected && (
-                              <span className="material-symbols-outlined text-[15px] text-[var(--theme-primary,#003b2b)] font-bold shrink-0">
-                                check_circle
+                              <span className="material-symbols-outlined text-[13px] text-[var(--theme-primary,#003b2b)] font-bold shrink-0">
+                                check
                               </span>
                             )}
                           </button>

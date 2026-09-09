@@ -403,8 +403,8 @@ export default function ShopPage() {
         </div>
       </div>
 
-      {/* Main Book Catalog Grid (4-column responsive grid) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      {/* Main Book Catalog Grid (5-column responsive grid) */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 mb-12">
         {filteredBooks.map(book => (
           <div
             key={book.id}
@@ -423,8 +423,8 @@ export default function ShopPage() {
                   />
                 </Link>
               </div>
-              <Link to={`/book/${book.id}`}>
-                <h4 className="font-semibold text-sm text-on-surface line-clamp-2 mb-1 group-hover:text-[#ac2c19] transition-colors">
+              <Link to={`/book/${book.id}`} title={book.title}>
+                <h4 className="font-semibold text-sm text-on-surface line-clamp-1 truncate mb-1 group-hover:text-[#ac2c19] transition-colors">
                   {book.title}
                 </h4>
               </Link>

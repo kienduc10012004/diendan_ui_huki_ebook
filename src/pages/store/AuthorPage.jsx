@@ -387,7 +387,7 @@ export default function AuthorPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
           {filteredWorks.map(work => (
             <div
               key={work.id}
@@ -407,8 +407,8 @@ export default function AuthorPage() {
                   </Link>
                 </div>
                 <span className="text-[11px] font-semibold text-theme-secondary block mb-1">{work.formatLabel}</span>
-                <Link to={`/book/${work.id}`}>
-                  <h4 className="font-semibold text-sm text-on-surface line-clamp-2 mb-2 group-hover:text-[#ac2c19] transition-colors">
+                <Link to={`/book/${work.id}`} title={work.title}>
+                  <h4 className="font-semibold text-sm text-on-surface line-clamp-1 truncate mb-2 group-hover:text-[#ac2c19] transition-colors">
                     {work.title}
                   </h4>
                 </Link>

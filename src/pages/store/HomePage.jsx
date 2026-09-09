@@ -1,7 +1,52 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function HomePage() {
+  // Author Slider State & Autoplay
+  const [authorIndex, setAuthorIndex] = useState(0);
+  const [isAuthorHovered, setIsAuthorHovered] = useState(false);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
+
+  const authorsList = useMemo(() => [
+    { name: 'Haruki Murakami', books: '18 đầu sách đã dịch', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCR-OPOd7e4KsfO0t-0xMw2DyZP6jFtwwwqK09pUgJkDjYa5toolI1E43E6nK-pjKQ6oIWrou0_f2agMmZEgZ5RS2CAqewxN9TTMHgCwG3kskJbOd9X7kp7O9OAoalbSgCbAKmG8cO9bWGgyhXmV7IYpaXvZo22hV3-AQrsi84-ZhwNMBtpp6uHr5U4YKB0kas_ERbqkslBd2P7hY2oeGjp4StJDzkov6Y8h3uarnyuNI2MzhOB6sP7Vw', status: '+ Theo dõi' },
+    { name: 'James Clear', books: '4 ấn phẩm best-seller', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAnw9yJWOrKGesjDyl1-X_0R2W4HNILmzCsBYgbF0XKynDiK7fNvri-xM3jY3V_3z15MmE0g3IJX0qsypYqufMmBW5544ziG8nhUbsSR9WJhuCOKCBJisehB_5esWgbY7RkVY2LHadzTRsRvBp8TVGnTCHFoDrWjwhXvNwjNCCisa-LJUAhhMYg7n_eLSRD2IdW0XHKQl2V1i3tKp6YJXGPZUt1ZTo4IpAKkERRMoCTmqrThvqL1YOmFA', status: '✓ Đang theo dõi', isFollowing: true },
+    { name: 'Morgan Housel', books: '3 tác phẩm tài chính', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtrE0r2gXqHTig1zo3glXgfCTbKIG1iJv0jftMG7jgJJAy4XBzXb_a0OQpbRa8X1mTIRnjs54Zb5EsOBo9IE1RxUfVgYt5ysUjQ46kpM6ikrx4t_t56RpqAQbYuqKfhaO1h18LuSzCUNduXsNOWS2wX0xolsVziTAj70AnD6YrUKPB5Oyg0jtxgqFbF0yN0X6x3vCXuSCMXzIhQxcEBAP86uH8f2lmCgbn6JCxhlEqNeYzY_-Zpiv-tQ', status: '+ Theo dõi' },
+    { name: 'Yuval Noah Harari', books: '5 bộ lược sử nhân loại', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBTraLVsMiNUVda0rejvWN-zCy-uTUY55qgl17upiljc0TV6u1kOJnsntndANnLcPEmEgEEdIwvKaT_yEjZTbUveJXG5yZUXE77KuhWBL4eSEm_dlUCQuFaEisFn6uqlFfcY-RTB2cMXk3FuQCIdIfRpqkHpiSqE3hsDJW1RFT1dQTBClR3wqcCD6Y-Jt6X1SsOlJCvS-pcnFeB47QmLs4X8uc9_tU14Sv2hqeEB1ry4JzHN-_w8ji9Fw', status: '+ Theo dõi' },
+    { name: 'Nguyễn Nhật Ánh', books: '32 truyện dài tuổi thơ', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBmk40IHL8nN8QgKmmU5Htwlb2gfZo134PTe-LmHn1e02Dy8D3eLCGlU_U27hCuP3t0jn7R4F3zjTTBBAowvf6PDX6-RbVei2RSTp33PDhYHzIFrWCpK9wHIInJJ5w0ByCX87r2K5VshsFg3ne7rf6i-N_G-_nzhcvWnfSkv7aJHW-9Bx3QzTpbw_67wwMZsthqpn3yoWWuD8LZQ9LpRP-5UTOg8eIetCyfz3Txa9jlqbr0mHuqw_4EHQ', status: '+ Theo dõi' },
+    { name: 'Thích Nhất Hạnh', books: '14 tác phẩm chữa lành', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAIVd9e_xnuEa_DW6YY3L3loH6GzqT5fbdDVDUXUGPYTiwNwtsNRPsq0IDnExW68G2riBcucukM_GYSYHVIumaHSrkG6PaiousV-H7pu3UnxOPIuJWrGBo7V9SPhF9SSq4DcP2sCNM2f5IquMZ9GAjqxLJg1dxRIjLO863oh6Z8IkjciAsYS6H2z39GOVXtRqI6lEmbMpcauoOMktSp2zLuGCZFwKvcUV_nka0vi9jIw5VpguiyBRdUVg', status: '+ Theo dõi' },
+    { name: 'Paulo Coelho', books: '12 tiểu thuyết triết lý', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBMW6Ygf2v_PkH6UwpH5HtMgEnkSTukKcuSzk6OzxWbjqi9bNLJ2ZjcfiPOGzNfHcKUejI4SxFFG6lzkeh3lJ1aS3stQ-DWKwTU2gV-yjdQMLxPbv38z6vcuSwfnN2yiEMO-gw4Qa-YZ08mg9eyTX-c2yDUKxxOy28O7qT1IxG0PejgAezdSexDFr8CUezUXNwFLQsoa7_MgwFGEZxIAqpW5D6NdkvEK8TTFFJ3-TAzk0A5wXCkAEeIcQ', status: '+ Theo dõi' },
+    { name: 'Dale Carnegie', books: '6 sách kỹ năng sống', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBx7ue4Vh4KbHNkR6CR4zWzXheCx8uX-DGqYTaZ4-t33F92llGELpWK2JUtMf5wSq_hmxevwPpZIxOXyDbD7Bt7bbNejs5qLAqmzospFYfzm4dfbHKemwHCNwHH9GhQMLni_xDfeDc6xRh6K1DUbD56GLWO0TvI1vNX95rOuVyWDvDm81F0-4T050BlAhGnFOZY0Vg8TgyYuVN0WdG5neqfm04jO6ixnU40e54y0YbM_c6QZELd1zmkoA', status: '+ Theo dõi' }
+  ], []);
+
+  React.useEffect(() => {
+    const updateCols = () => {
+      if (window.innerWidth < 640) setItemsPerPage(2);
+      else if (window.innerWidth < 1024) setItemsPerPage(3);
+      else setItemsPerPage(5);
+    };
+    updateCols();
+    window.addEventListener('resize', updateCols);
+    return () => window.removeEventListener('resize', updateCols);
+  }, []);
+
+  const maxAuthorIndex = Math.max(0, authorsList.length - itemsPerPage);
+
+  const handleNextAuthor = () => {
+    setAuthorIndex(prev => (prev >= maxAuthorIndex ? 0 : prev + 1));
+  };
+
+  const handlePrevAuthor = () => {
+    setAuthorIndex(prev => (prev <= 0 ? maxAuthorIndex : prev - 1));
+  };
+
+  React.useEffect(() => {
+    if (isAuthorHovered) return;
+    const timer = setInterval(() => {
+      setAuthorIndex(prev => (prev >= maxAuthorIndex ? 0 : prev + 1));
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [isAuthorHovered, maxAuthorIndex]);
+
   return (
     <div className="w-full max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-12">
 
@@ -89,7 +134,7 @@ export default function HomePage() {
             Xem tất cả danh mục <span className="material-symbols-outlined text-[16px]">chevron_right</span>
 </Link>
 </div>
-<div className="flex items-center gap-2.5 overflow-x-auto pb-2 scrollbar-none">
+<div className="flex items-center gap-2.5 overflow-x-auto pb-2 scrollbar-none scroll-mask-x">
 <button className="px-5 py-2.5 rounded-full bg-tertiary text-on-tertiary font-title-md text-[13px] shadow-sm whitespace-nowrap">
             Tất cả sách
           </button>
@@ -159,7 +204,7 @@ export default function HomePage() {
 </div>
 </section>
 
-<section className="bg-surface-container-lowest rounded-3xl p-6 lg:p-8 border border-outline-variant/40 shadow-sm flex flex-col gap-6">
+<section className="bg-surface-container-low/60 rounded-3xl p-6 lg:p-8 border border-outline-variant/40 shadow-sm flex flex-col gap-6">
 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-outline-variant/30">
 <div className="flex items-center gap-4">
 <div className="flex items-center gap-2 bg-primary-fixed text-primary px-3.5 py-1.5 rounded-full font-title-md text-[14px] font-bold">
@@ -179,7 +224,7 @@ export default function HomePage() {
 </Link>
 </div>
 
-<div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
+<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
 
 <div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col relative group cursor-pointer hover:border-tertiary/50 transition-all">
 <span className="absolute top-4 left-4 z-20 bg-primary text-on-primary font-label-sm text-[11px] font-bold px-2 py-0.5 rounded shadow">-31%</span>
@@ -187,14 +232,14 @@ export default function HomePage() {
 <span className="material-symbols-outlined text-[18px]">favorite</span>
 </button>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-3 bg-surface-container spine-crease">
-<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Nhà Giả Kim của Paulo Coelho, thiết kế hội họa màu lam ngọc và vàng cát sa mạc huyền bí, bầu trời đêm ngàn sao lấp lánh phản chiếu chất thơ triết lý nhẹ nhàng sâu sắc." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMW6Ygf2v_PkH6UwpH5HtMgEnkSTukKcuSzk6OzxWbjqi9bNLJ2ZjcfiPOGzNfHcKUejI4SxFFG6lzkeh3lJ1aS3stQ-DWKwTU2gV-yjdQMLxPbv38z6vcuSwfnN2yiEMO-gw4Qa-YZ08mg9eyTX-c2yDUKxxOy28O7qT1IxG0PejgAezdSexDFr8CUezUXNwFLQsoa7_MgwFGEZxIAqpW5D6NdkvEK8TTFFJ3-TAzk0A5wXCkAEeIcQ" />
+<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Nhà Giả Kim của Paulo Coelho" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwPUmsBfjLGRW-n9hawXV_KRe5uns4e23Sr-vbTT3ZAC6v81LBUJpgdiDD84jx3WG0xBciu-qXcCD6b-wQm2wMDtH5m-mF3MRAUz90G7g51ctEiszyvqJOqF5Dhb0jF_Jd0YzsvrnKnu1vX5P-iRJH2r1kfgjVfuRmyIsTHUCVDw28VR_q6VSejoa2Mb-M_TF2Det6HuKZDVVEBnniYrJ6Sm4m93QoIfQz5pWuP05amWqXMb5JYtCICg" />
 </div>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mb-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
 <span>4.9</span>
 <span className="text-on-surface-variant font-normal">(1.420)</span>
 </div>
-<Link to="/book/nha-gia-kim"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Nhà Giả Kim (Tái bản đặc biệt)</h4></Link>
+<Link to="/book/nha-gia-kim" title="Nhà Giả Kim (Tái bản đặc biệt)"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-1 truncate leading-snug hover:text-tertiary transition-colors">Nhà Giả Kim (Tái bản đặc biệt)</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Paulo Coelho</p>
 <div className="mt-3 pt-2 border-t border-outline-variant/20 flex flex-col">
 <div className="flex items-baseline gap-2">
@@ -203,9 +248,9 @@ export default function HomePage() {
 </div>
 
 <div className="w-full bg-surface-container-highest h-2 rounded-full mt-2 overflow-hidden">
-<div className="bg-primary h-full rounded-full w-[85%]"></div>
+<div className="bg-gradient-to-r from-amber-500 to-tertiary h-full rounded-full w-[85%]"></div>
 </div>
-<span className="font-label-sm text-[10px] text-primary font-semibold mt-1">Đã bán 85%</span>
+<span className="font-label-sm text-[10px] text-tertiary font-semibold mt-1">Đã bán 85%</span>
 </div>
 </div>
 
@@ -215,14 +260,14 @@ export default function HomePage() {
 <span className="material-symbols-outlined text-[18px]">favorite</span>
 </button>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-3 bg-surface-container spine-crease">
-<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa cuốn sách Tâm Lý Học Về Tiền của Morgan Housel, tông màu xanh ngọc bích sẫm thanh lịch, đồ họa đồng hồ cát và tiền tệ cổ điển tinh tế, typography hiện đại sắc bén." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8jItzbAJIC3KVerOwstn03tRIb9-Ua-_Ayd_gJXO9Ljzl9MhNj9E0jAA-NsUZdlcrAYh-V2ydL0x4auN0rpQFmfG80dSCVsSRl5SygWjzwm7BSaLIqLpTnnqyIIR4e97uyqE1XtnC_P81L9aQbRcwNPrYEr2gurkLh4by197FvJhU0Rc1dzF-Bm0K87BOLnRHSI9EHxRG7plWfXbgyqj6v_e9exxMoCv0Rj7YRvJgy89bi5tRX8Gg5Q" />
+<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Tâm Lý Học Về Tiền của Morgan Housel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7ouqQ7elIuGRHZ7rj7l5cYrPzWtVWXyk8F3s9fBkQf8lEZFMOCpZ1WNMWOVoN5Uy13M3ZCCtm0Kp6qODtQ3a5mAu81yactomECdD4kLkkrlCvqEPHOgvwES7pkRYwgFiAN7MHH3veqNbCNbdX5MfzYRgsIN5CRugb_eWd0jzg2YPAWJlzYTmoYx-QBxSmQa0tUxtsTK7oDOF1qSFqUnhLUn91MXUytXRomvOwDXqwzBlH_CfbqtBLxg" />
 </div>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mb-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
 <span>4.9</span>
 <span className="text-on-surface-variant font-normal">(980)</span>
 </div>
-<Link to="/book/tam-ly-hoc-ve-tien"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Tâm Lý Học Về Tiền</h4></Link>
+<Link to="/book/tam-ly-hoc-ve-tien" title="Tâm Lý Học Về Tiền"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-1 truncate leading-snug hover:text-tertiary transition-colors">Tâm Lý Học Về Tiền</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Morgan Housel</p>
 <div className="mt-3 pt-2 border-t border-outline-variant/20 flex flex-col">
 <div className="flex items-baseline gap-2">
@@ -230,9 +275,9 @@ export default function HomePage() {
 <span className="font-body-sm text-[12px] text-on-surface-variant/60 line-through">145.000₫</span>
 </div>
 <div className="w-full bg-surface-container-highest h-2 rounded-full mt-2 overflow-hidden">
-<div className="bg-primary h-full rounded-full w-[64%]"></div>
+<div className="bg-gradient-to-r from-amber-500 to-tertiary h-full rounded-full w-[64%]"></div>
 </div>
-<span className="font-label-sm text-[10px] text-primary font-semibold mt-1">Đã bán 64%</span>
+<span className="font-label-sm text-[10px] text-tertiary font-semibold mt-1">Đã bán 64%</span>
 </div>
 </div>
 
@@ -242,14 +287,14 @@ export default function HomePage() {
 <span className="material-symbols-outlined text-[18px]">favorite</span>
 </button>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-3 bg-surface-container spine-crease">
-<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Atomic Habits của James Clear, nền màu trắng ngà kem thanh nhã với các hạt li ti hội tụ thành vòng cung vàng đồng, phong cách bìa sách phát triển bản thân sang trọng hàng đầu thế giới." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBldhgYiC5r8pQXi4qeHSTCtWbbqbNG3on0MvhA1aDlNqhPWUc0vxDN66WP08gQOhujNyn9ioDRAdk0WMZ2kusBW1UaNz_drE-pr1z6kDX__xWCUYXEou-HgS4oTKLU_PdZUYQU71wmsMrkWVQ2QQQ9TpzYAwBodRXxIwHfqU3BdZALmt5R3bfLCpA0TV9C5YDY7LX8yfeFuJj3ZWernvxTjnpvNMG56GL6j2j-E-XC_WY454GWEaLicw" />
+<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Atomic Habits của James Clear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBldhgYiC5r8pQXi4qeHSTCtWbbqbNG3on0MvhA1aDlNqhPWUc0vxDN66WP08gQOhujNyn9ioDRAdk0WMZ2kusBW1UaNz_drE-pr1z6kDX__xWCUYXEou-HgS4oTKLU_PdZUYQU71wmsMrkWVQ2QQQ9TpzYAwBodRXxIwHfqU3BdZALmt5R3bfLCpA0TV9C5YDY7LX8yfeFuJj3ZWernvxTjnpvNMG56GL6j2j-E-XC_WY454GWEaLicw" />
 </div>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mb-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
 <span>5.0</span>
 <span className="text-on-surface-variant font-normal">(3.110)</span>
 </div>
-<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Thay Đổi Tí Hon Hiệu Quả Bất Ngờ</h4></Link>
+<Link to="/book/atomic-habits" title="Thay Đổi Tí Hon Hiệu Quả Bất Ngờ"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-1 truncate leading-snug hover:text-tertiary transition-colors">Thay Đổi Tí Hon Hiệu Quả Bất Ngờ</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">James Clear</p>
 <div className="mt-3 pt-2 border-t border-outline-variant/20 flex flex-col">
 <div className="flex items-baseline gap-2">
@@ -257,9 +302,9 @@ export default function HomePage() {
 <span className="font-body-sm text-[12px] text-on-surface-variant/60 line-through">189.000₫</span>
 </div>
 <div className="w-full bg-surface-container-highest h-2 rounded-full mt-2 overflow-hidden">
-<div className="bg-primary h-full rounded-full w-[92%]"></div>
+<div className="bg-gradient-to-r from-amber-500 to-tertiary h-full rounded-full w-[92%]"></div>
 </div>
-<span className="font-label-sm text-[10px] text-primary font-semibold mt-1">Gần hết hàng (92%)</span>
+<span className="font-label-sm text-[10px] text-tertiary font-semibold mt-1">Gần hết hàng (92%)</span>
 </div>
 </div>
 
@@ -269,14 +314,14 @@ export default function HomePage() {
 <span className="material-symbols-outlined text-[18px]">favorite</span>
 </button>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-3 bg-surface-container spine-crease">
-<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách công nghệ Đột Phá AI, mạng nơ-ron phát sáng nhẹ nhàng màu lục bảo trên nền đen huyền sâu thẳm, phong cách ấn phẩm khoa học công nghệ đương đại chuẩn mực quốc tế." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsoPRm1o5oAf0LdG-UEOhv4hl5WN0P8pL54ffx0hvUIIu8xwa5CwQvQQ57VOaufr_auWd5PM3ma8-Oks_ejxXfgeKK2qNj5g8OXDAqYjPvWCyOP7uoz2pt3V0OxL-aFeL6GB2B4X_gQw5ma7EN8UY930o8Xdwt565uCw467Mqey1vTk3JLFCx3qJh8Tlu8H-9D8gbizcWBThmI3S3j7DNhDit8kTFkBVwhpzsiMt4-GdkTNfpgr3aKWQ" />
+<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Đột Phá AI" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsoPRm1o5oAf0LdG-UEOhv4hl5WN0P8pL54ffx0hvUIIu8xwa5CwQvQQ57VOaufr_auWd5PM3ma8-Oks_ejxXfgeKK2qNj5g8OXDAqYjPvWCyOP7uoz2pt3V0OxL-aFeL6GB2B4X_gQw5ma7EN8UY930o8Xdwt565uCw467Mqey1vTk3JLFCx3qJh8Tlu8H-9D8gbizcWBThmI3S3j7DNhDit8kTFkBVwhpzsiMt4-GdkTNfpgr3aKWQ" />
 </div>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mb-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
 <span>4.8</span>
 <span className="text-on-surface-variant font-normal">(420)</span>
 </div>
-<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Đột Phá AI &amp; Tương Lai Loài Người</h4></Link>
+<Link to="/book/atomic-habits" title="Đột Phá AI & Tương Lai Loài Người"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-1 truncate leading-snug hover:text-tertiary transition-colors">Đột Phá AI &amp; Tương Lai Loài Người</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Max Tegmark</p>
 <div className="mt-3 pt-2 border-t border-outline-variant/20 flex flex-col">
 <div className="flex items-baseline gap-2">
@@ -284,9 +329,9 @@ export default function HomePage() {
 <span className="font-body-sm text-[12px] text-on-surface-variant/60 line-through">220.000₫</span>
 </div>
 <div className="w-full bg-surface-container-highest h-2 rounded-full mt-2 overflow-hidden">
-<div className="bg-primary h-full rounded-full w-[45%]"></div>
+<div className="bg-gradient-to-r from-amber-500 to-tertiary h-full rounded-full w-[45%]"></div>
 </div>
-<span className="font-label-sm text-[10px] text-primary font-semibold mt-1">Đã bán 45%</span>
+<span className="font-label-sm text-[10px] text-tertiary font-semibold mt-1">Đã bán 45%</span>
 </div>
 </div>
 
@@ -296,14 +341,14 @@ export default function HomePage() {
 <span className="material-symbols-outlined text-[18px]">favorite</span>
 </button>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-3 bg-surface-container spine-crease">
-<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Dám Bị Ghét của Kishimi Ichiro, thiết kế tối giản phong cách triết học Nhật Bản tông màu lam chàm trang nhã, kiểu chữ thanh thoát trên chất liệu giấy kraft ấm áp." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkQMsE3JYx1MiacLW-pCW4R4aI2ID7OUS6jIc0zqammHEZymG_D_EbuJfIQav6ZHfMV71XcrzYulytqxP2CfVs7wfcTM73E5wSBQjS3NhZ3llvxCc_Uk0d1O-5RMuqdXqNEDK1JWbqA17kKcJOx8hyLekAuG3rqu71jN7jLJ19dWkHxNa6Nd7T2O3_VW6XqqRzqUaNgyRvwtAFuHHF7O37aK82eJQN2Tk_NqYVRdUDOPZzVix54noa2g" />
+<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Dám Bị Ghét" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkQMsE3JYx1MiacLW-pCW4R4aI2ID7OUS6jIc0zqammHEZymG_D_EbuJfIQav6ZHfMV71XcrzYulytqxP2CfVs7wfcTM73E5wSBQjS3NhZ3llvxCc_Uk0d1O-5RMuqdXqNEDK1JWbqA17kKcJOx8hyLekAuG3rqu71jN7jLJ19dWkHxNa6Nd7T2O3_VW6XqqRzqUaNgyRvwtAFuHHF7O37aK82eJQN2Tk_NqYVRdUDOPZzVix54noa2g" />
 </div>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mb-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
 <span>4.9</span>
 <span className="text-on-surface-variant font-normal">(2.180)</span>
 </div>
-<Link to="/book/dam-bi-ghet"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Dám Bị Ghét</h4></Link>
+<Link to="/book/dam-bi-ghet" title="Dám Bị Ghét"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-1 truncate leading-snug hover:text-tertiary transition-colors">Dám Bị Ghét</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Kishimi Ichiro &amp; Koga Fumitake</p>
 <div className="mt-3 pt-2 border-t border-outline-variant/20 flex flex-col">
 <div className="flex items-baseline gap-2">
@@ -311,9 +356,9 @@ export default function HomePage() {
 <span className="font-body-sm text-[12px] text-on-surface-variant/60 line-through">135.000₫</span>
 </div>
 <div className="w-full bg-surface-container-highest h-2 rounded-full mt-2 overflow-hidden">
-<div className="bg-primary h-full rounded-full w-[78%]"></div>
+<div className="bg-gradient-to-r from-amber-500 to-tertiary h-full rounded-full w-[78%]"></div>
 </div>
-<span className="font-label-sm text-[10px] text-primary font-semibold mt-1">Đã bán 78%</span>
+<span className="font-label-sm text-[10px] text-tertiary font-semibold mt-1">Đã bán 78%</span>
 </div>
 </div>
 
@@ -323,14 +368,14 @@ export default function HomePage() {
 <span className="material-symbols-outlined text-[18px]">favorite</span>
 </button>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-3 bg-surface-container spine-crease">
-<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Tư Duy Nhanh Và Chậm của Daniel Kahneman, hình vẽ hai bán cầu não cách điệu tinh xảo, phối màu xanh lục ngọc và nâu đất trầm lắng, chuẩn mực sách nghiên cứu học thuật tâm lý." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx7ue4Vh4KbHNkR6CR4zWzXheCx8uX-DGqYTaZ4-t33F92llGELpWK2JUtMf5wSq_hmxevwPpZIxOXyDbD7Bt7bbNejs5qLAqmzospFYfzm4dfbHKemwHCNwHH9GhQMLni_xDfeDc6xRh6K1DUbD56GLWO0TvI1vNX95rOuVyWDvDm81F0-4T050BlAhGnFOZY0Vg8TgyYuVN0WdG5neqfm04jO6ixnU40e54y0YbM_c6QZELd1zmkoA" />
+<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Tư Duy Nhanh Và Chậm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs4TOGpw97Vnc6jgkJQMlOiU7qkOiSmZMU8P6YK_c_Xv4yyyh5kcdgWdNcmp_7lzHDU83XTVXrEQfQ_DPSN-Mp9dSA0MQApwu8ZLxoCWnLRzqWiFkVvWX2RVAkwZvps1dOv0-yTu-_yB4018zA1AdeR8PRZO-z44u04brEkbSH_KBxSDPYogcbHMroUxaLZGIV609Be_tEY3scjX_tvWAlaSAs_WqnVoLBT2e7gBWeTaofdU_B8QdTww" />
 </div>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mb-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
 <span>4.9</span>
 <span className="text-on-surface-variant font-normal">(1.870)</span>
 </div>
-<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Tư Duy Nhanh Và Chậm</h4></Link>
+<Link to="/book/atomic-habits" title="Tư Duy Nhanh Và Chậm"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-1 truncate leading-snug hover:text-tertiary transition-colors">Tư Duy Nhanh Và Chậm</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Daniel Kahneman</p>
 <div className="mt-3 pt-2 border-t border-outline-variant/20 flex flex-col">
 <div className="flex items-baseline gap-2">
@@ -338,9 +383,9 @@ export default function HomePage() {
 <span className="font-body-sm text-[12px] text-on-surface-variant/60 line-through">200.000₫</span>
 </div>
 <div className="w-full bg-surface-container-highest h-2 rounded-full mt-2 overflow-hidden">
-<div className="bg-primary h-full rounded-full w-[88%]"></div>
+<div className="bg-gradient-to-r from-amber-500 to-tertiary h-full rounded-full w-[88%]"></div>
 </div>
-<span className="font-label-sm text-[10px] text-primary font-semibold mt-1">Đã bán 88%</span>
+<span className="font-label-sm text-[10px] text-tertiary font-semibold mt-1">Đã bán 88%</span>
 </div>
 </div>
 </div>
@@ -372,15 +417,15 @@ export default function HomePage() {
 </div>
 </div>
 
-<div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
+<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
 
 <div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between group">
 <div>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-3 bg-surface-container spine-crease relative">
-<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Cội Nguồn Tri Thức của nhà bác học Yuval Noah Harari, tông màu kem ngà và xanh cổ vịt lịch lãm, hình ảnh lịch sử văn minh nhân loại được thể hiện tinh tế mang phong vị hàn lâm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAahWq-O8ZZn50FXO2Ffh5G7bABTQCGBC0oLuWQHyBAPLufVQpmjylouUJqJgAJp83JsnQAFJ_ETlHZJ542ADUa266CMGia7A410cOiCQqd7A2g9cDYPMPTelbTkoqYAtXvSQ9MaMtvmanDOarYO11x3pYzC8VZ6iiOQQ1zM1HJgDQQVTZTZubqU-PRdhJqGuL3AQNB0uNd6sZn41MbAqLsaDUMMCrp4iNB5e2JdKHt_QEPAOLKHtpfQw" />
+<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Sapiens" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2H3l5c7_JP2T-qUtp7DCY42wLc1tMDdyQtRiGNH8LsvYEqbyEo-qNhVf3Y-KZ7Q487upiQuJrXSnZxfwkuBjlnOUhC1ckdcF1tq3pOW3BN48BgA7QIETZbXRTXLru6om1zQx1itIhe8B9R80sk9RnkV5_68mjjA7MX-1fEj0FAiAaHcySuAI3OFkRnGBT7ggCfz9PSVO64-R_x7QgsvkfhnbJvxNjkHVXfNnXcJ0fyKqOB3TYw8ZYHQ" />
 <span className="absolute bottom-2 left-2 bg-inverse-surface/80 backdrop-blur-sm text-inverse-on-surface font-label-sm text-[10px] px-2 py-0.5 rounded">Ebook + Sách Giấy</span>
 </div>
-<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Sapiens: Lược Sử Loài Người</h4></Link>
+<Link to="/book/atomic-habits" title="Sapiens: Lược Sử Loài Người"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-1 truncate leading-snug hover:text-tertiary transition-colors">Sapiens: Lược Sử Loài Người</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Yuval Noah Harari</p>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mt-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
@@ -392,7 +437,7 @@ export default function HomePage() {
 <div>
 <span className="font-title-md text-[15px] font-bold text-tertiary">168.000₫</span>
 </div>
-<button className="w-8 h-8 rounded-lg bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-sm" title="Thêm vào giỏ">
+<button className="w-8 h-8 rounded-xl bg-tertiary/10 hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-2xs cursor-pointer" title="Thêm vào giỏ" aria-label="Thêm vào giỏ">
 <span className="material-symbols-outlined text-[18px]">add_shopping_cart</span>
 </button>
 </div>
@@ -401,10 +446,10 @@ export default function HomePage() {
 <div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between group">
 <div>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-3 bg-surface-container spine-crease relative">
-<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Rừng Na Uy của Haruki Murakami, tông màu đỏ sẫm kết hợp xanh lục thẩm mỹ Nhật Bản, phong cảnh tuyết trắng rơi lãng đãng đậm chất trữ tình văn chương hiện đại." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA1xP3paoLAqBU3fKHmRDckUIE8iPzVZoNNBZhxhSwMiSKPx5pxgdTFt5D8C-BIv7ydsAWRxjc6vxLDWdemsBQBMs5XvueBE9BbE636D26rl2dCtf7SYQDTU6SRHgh96uAlcBIZpqzDpVLEa-kpiAPjj9u5y4vngAViz3HHDqV3Hi7Tn8RqAQYH-FMvsuROg6hRJAqb2loxUuR8Sckc93MuOsVDdg0M_2xAiqfdZhaVMwTTRzFUgYQXw" />
+<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Rừng Na Uy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA1xP3paoLAqBU3fKHmRDckUIE8iPzVZoNNBZhxhSwMiSKPx5pxgdTFt5D8C-BIv7ydsAWRxjc6vxLDWdemsBQBMs5XvueBE9BbE636D26rl2dCtf7SYQDTU6SRHgh96uAlcBIZpqzDpVLEa-kpiAPjj9u5y4vngAViz3HHDqV3Hi7Tn8RqAQYH-FMvsuROg6hRJAqb2loxUuR8Sckc93MuOsVDdg0M_2xAiqfdZhaVMwTTRzFUgYQXw" />
 <span className="absolute bottom-2 left-2 bg-inverse-surface/80 backdrop-blur-sm text-inverse-on-surface font-label-sm text-[10px] px-2 py-0.5 rounded">Tái Bản 2026</span>
 </div>
-<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Rừng Na Uy (Bản Dịch Mới)</h4></Link>
+<Link to="/book/atomic-habits" title="Rừng Na Uy (Bản Dịch Mới)"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-1 truncate leading-snug hover:text-tertiary transition-colors">Rừng Na Uy (Bản Dịch Mới)</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Haruki Murakami</p>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mt-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
@@ -416,7 +461,7 @@ export default function HomePage() {
 <div>
 <span className="font-title-md text-[15px] font-bold text-tertiary">132.000₫</span>
 </div>
-<button className="w-8 h-8 rounded-lg bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-sm" title="Thêm vào giỏ">
+<button className="w-8 h-8 rounded-xl bg-tertiary/10 hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-2xs cursor-pointer" title="Thêm vào giỏ" aria-label="Thêm vào giỏ">
 <span className="material-symbols-outlined text-[18px]">add_shopping_cart</span>
 </button>
 </div>
@@ -425,10 +470,10 @@ export default function HomePage() {
 <div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between group">
 <div>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-3 bg-surface-container spine-crease relative">
-<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Deep Work Làm Việc Sâu của Cal Newport, thiết kế tối giản hiện đại với khối màu xanh đậm và đường nét thanh thoát, biểu tượng cho sự tập trung tuyệt đối." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeAldOchs0jay4pfEB0J0t3--m5JpoFgODgKxnbamTXfQc3Q9wUABUJSkfstf6A8pXWiI6Y3uVi4oMfQQFC7-VLtuAb2AiiFIZm2rBmlOuf_mVOJIAK5PCBKUDl2EFR7AFI1fHiekfjNFuQVj8MtDymmATqTvDT2KRbP4A8htfV-YDlGcocEa_rVDhnbcrAFIUHjRpNjY-BWR1qcovQ_uHsrTbdYiM78YuF0gReQlUxEhJei5cqEktMA" />
+<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Deep Work" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB06UJjwmySkWO-lcfIpp-tQX2isyHgJfCNHFeVGqet945k-QEyOGtoBJmOY5mkW4OO0_fqjb2L8ZhZHezfPSJFZeluYgaOYIVJoLOWpi5X2Gqos_sc2M5ByrCMUK2PtGJD4BttxIBcmlvNhw_LflzwFjhtZ7uDkAd5d9LQ_7OZzMZEFUN7GmHdxAq5tAn-Dhpsn-QIx2iYBDYtJhNS0pomV2jRyIDclpVgHqvuJ1t2E0dSgSeMI8lWyQ" />
 <span className="absolute bottom-2 left-2 bg-inverse-surface/80 backdrop-blur-sm text-inverse-on-surface font-label-sm text-[10px] px-2 py-0.5 rounded">Được Đánh Giá Cao</span>
 </div>
-<Link to="/book/deep-work"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Deep Work: Làm Việc Sâu</h4></Link>
+<Link to="/book/deep-work" title="Deep Work: Làm Việc Sâu"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-1 truncate leading-snug hover:text-tertiary transition-colors">Deep Work: Làm Việc Sâu</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Cal Newport</p>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mt-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
@@ -440,7 +485,7 @@ export default function HomePage() {
 <div>
 <span className="font-title-md text-[15px] font-bold text-tertiary">119.000₫</span>
 </div>
-<button className="w-8 h-8 rounded-lg bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-sm" title="Thêm vào giỏ">
+<button className="w-8 h-8 rounded-xl bg-tertiary/10 hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-2xs cursor-pointer" title="Thêm vào giỏ" aria-label="Thêm vào giỏ">
 <span className="material-symbols-outlined text-[18px]">add_shopping_cart</span>
 </button>
 </div>
@@ -449,10 +494,10 @@ export default function HomePage() {
 <div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between group">
 <div>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-3 bg-surface-container spine-crease relative">
-<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Muôn Kiếp Nhân Sinh tập 3 của tác giả Nguyên Phong, minh họa hoa sen thanh tịnh và luân xa ánh sáng huyền diệu trên nền tranh thủy mặc màu xanh ngọc bích êm đềm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ8ebcHFsos4ubMNEXwR6C1JXMygF__I6x474rm8P8Sm1nDYpa_CTT5wBb-NkMzfYzu1oBjqTNDeyJyzlW_-xR6CQ-bp3l_BIajAnOl1_LrC95ExyimgbHfH2bbOM_vRqrAqfnus2lnsFor1vxKnPS9GiUVRC0dj5Y678Sgl4gOhHVxgqDiR5yQG43OSJwFIADGowh0oko0NkkAK9iVZlXGuZynAVyN7D8bYUnUu32lWEi1BZcJEj1hg" />
+<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Muôn Kiếp Nhân Sinh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ8ebcHFsos4ubMNEXwR6C1JXMygF__I6x474rm8P8Sm1nDYpa_CTT5wBb-NkMzfYzu1oBjqTNDeyJyzlW_-xR6CQ-bp3l_BIajAnOl1_LrC95ExyimgbHfH2bbOM_vRqrAqfnus2lnsFor1vxKnPS9GiUVRC0dj5Y678Sgl4gOhHVxgqDiR5yQG43OSJwFIADGowh0oko0NkkAK9iVZlXGuZynAVyN7D8bYUnUu32lWEi1BZcJEj1hg" />
 <span className="absolute bottom-2 left-2 bg-secondary-container text-on-secondary-container font-label-sm text-[10px] px-2 py-0.5 rounded font-bold">Bán Chạy Nhất</span>
 </div>
-<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Muôn Kiếp Nhân Sinh (Trọn bộ)</h4></Link>
+<Link to="/book/atomic-habits" title="Muôn Kiếp Nhân Sinh (Trọn bộ)"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-1 truncate leading-snug hover:text-tertiary transition-colors">Muôn Kiếp Nhân Sinh (Trọn bộ)</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Nguyên Phong</p>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mt-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
@@ -464,7 +509,7 @@ export default function HomePage() {
 <div>
 <span className="font-title-md text-[15px] font-bold text-tertiary">210.000₫</span>
 </div>
-<button className="w-8 h-8 rounded-lg bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-sm" title="Thêm vào giỏ">
+<button className="w-8 h-8 rounded-xl bg-tertiary/10 hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-2xs cursor-pointer" title="Thêm vào giỏ" aria-label="Thêm vào giỏ">
 <span className="material-symbols-outlined text-[18px]">add_shopping_cart</span>
 </button>
 </div>
@@ -473,10 +518,10 @@ export default function HomePage() {
 <div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between group">
 <div>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-3 bg-surface-container spine-crease relative">
-<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Không Diệt Không Sinh Đừng Sợ Hãi của Thiền sư Thích Nhất Hạnh, typography chữ thư pháp hiện đại thanh tịnh trên nền giấy mỹ thuật mộc mạc màu be ấm cúng." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIVd9e_xnuEa_DW6YY3L3loH6GzqT5fbdDVDUXUGPYTiwNwtsNRPsq0IDnExW68G2riBcucukM_GYSYHVIumaHSrkG6PaiousV-H7pu3UnxOPIuJWrGBo7V9SPhF9SSq4DcP2sCNM2f5IquMZ9GAjqxLJg1dxRIjLO863oh6Z8IkjciAsYS6H2z39GOVXtRqI6lEmbMpcauoOMktSp2zLuGCZFwKvcUV_nka0vi9jIw5VpguiyBRdUVg" />
+<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Không Diệt Không Sinh Đừng Sợ Hãi" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIVd9e_xnuEa_DW6YY3L3loH6GzqT5fbdDVDUXUGPYTiwNwtsNRPsq0IDnExW68G2riBcucukM_GYSYHVIumaHSrkG6PaiousV-H7pu3UnxOPIuJWrGBo7V9SPhF9SSq4DcP2sCNM2f5IquMZ9GAjqxLJg1dxRIjLO863oh6Z8IkjciAsYS6H2z39GOVXtRqI6lEmbMpcauoOMktSp2zLuGCZFwKvcUV_nka0vi9jIw5VpguiyBRdUVg" />
 <span className="absolute bottom-2 left-2 bg-inverse-surface/80 backdrop-blur-sm text-inverse-on-surface font-label-sm text-[10px] px-2 py-0.5 rounded">Tâm Linh Chữa Lành</span>
 </div>
-<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Không Diệt Không Sinh Đừng Sợ Hãi</h4></Link>
+<Link to="/book/atomic-habits" title="Không Diệt Không Sinh Đừng Sợ Hãi"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-1 truncate leading-snug hover:text-tertiary transition-colors">Không Diệt Không Sinh Đừng Sợ Hãi</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Thích Nhất Hạnh</p>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mt-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
@@ -488,7 +533,7 @@ export default function HomePage() {
 <div>
 <span className="font-title-md text-[15px] font-bold text-tertiary">98.000₫</span>
 </div>
-<button className="w-8 h-8 rounded-lg bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-sm" title="Thêm vào giỏ">
+<button className="w-8 h-8 rounded-xl bg-tertiary/10 hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-2xs cursor-pointer" title="Thêm vào giỏ" aria-label="Thêm vào giỏ">
 <span className="material-symbols-outlined text-[18px]">add_shopping_cart</span>
 </button>
 </div>
@@ -497,10 +542,10 @@ export default function HomePage() {
 <div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between group">
 <div>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-3 bg-surface-container spine-crease relative">
-<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Chiến Tranh Tiền Tệ của Song Hongbing, màu vàng đồng và xanh navy quyền lực, họa tiết đồng tiền cổ và đồ thị tài chính thế giới tinh xảo đẳng cấp." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB9X3iVNCsQDE09EyZoO09SvACM8dE3-aqidJnYjQGppCxNWng3hSqiFoImsWnJZeIW2cqwb4rkZpr7RERqQBGCN0RpLHcrt5EDs4tnZr_yZKIgYu__ty6b-a-OWg11m0XJEzrL5bSmPBMNGZw56FM6xANQbeO-ynAzcRXaOhwx6I5afV1mx6bi6L1pZyG7TGevA5xtH8ncPE9HYZK3o8wUGe426L_R3OIxQZOs1EvxsV3Rr2G6IEh0g" />
+<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Bìa sách Chiến Tranh Tiền Tệ" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB9X3iVNCsQDE09EyZoO09SvACM8dE3-aqidJnYjQGppCxNWng3hSqiFoImsWnJZeIW2cqwb4rkZpr7RERqQBGCN0RpLHcrt5EDs4tnZr_yZKIgYu__ty6b-a-OWg11m0XJEzrL5bSmPBMNGZw56FM6xANQbeO-ynAzcRXaOhwx6I5afV1mx6bi6L1pZyG7TGevA5xtH8ncPE9HYZK3o8wUGe426L_R3OIxQZOs1EvxsV3Rr2G6IEh0g" />
 <span className="absolute bottom-2 left-2 bg-inverse-surface/80 backdrop-blur-sm text-inverse-on-surface font-label-sm text-[10px] px-2 py-0.5 rounded">Kinh Tế Tài Chính</span>
 </div>
-<Link to="/book/atomic-habits"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-2 leading-snug hover:text-tertiary transition-colors">Chiến Tranh Tiền Tệ (Bộ 5 cuốn)</h4></Link>
+<Link to="/book/atomic-habits" title="Chiến Tranh Tiền Tệ (Bộ 5 cuốn)"><h4 className="font-title-md text-[14px] text-on-surface font-semibold line-clamp-1 truncate leading-snug hover:text-tertiary transition-colors">Chiến Tranh Tiền Tệ (Bộ 5 cuốn)</h4></Link>
 <p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Song Hongbing</p>
 <div className="flex items-center gap-1 text-[12px] text-secondary font-medium mt-1">
 <span className="material-symbols-outlined text-[14px] text-secondary-container fill-icon">star</span>
@@ -512,7 +557,7 @@ export default function HomePage() {
 <div>
 <span className="font-title-md text-[15px] font-bold text-tertiary">185.000₫</span>
 </div>
-<button className="w-8 h-8 rounded-lg bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-sm" title="Thêm vào giỏ">
+<button className="w-8 h-8 rounded-xl bg-tertiary/10 hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-2xs cursor-pointer" title="Thêm vào giỏ" aria-label="Thêm vào giỏ">
 <span className="material-symbols-outlined text-[18px]">add_shopping_cart</span>
 </button>
 </div>
@@ -574,75 +619,68 @@ export default function HomePage() {
             Xem 1.250+ đầu sách <span className="material-symbols-outlined text-[16px]">chevron_right</span>
 </Link>
 </div>
-<div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+<div className="grid grid-cols-1 lg:grid-cols-5 gap-5 items-stretch">
 
-<div className="lg:col-span-4 bg-surface-container-low rounded-2xl p-6 border border-outline-variant/40 flex flex-col justify-between relative overflow-hidden">
+<div className="lg:col-span-2 bg-surface-container-low rounded-2xl p-5 border border-outline-variant/40 flex flex-col justify-between relative overflow-hidden h-full shadow-xs">
 <div className="z-10">
-<span className="bg-tertiary text-on-tertiary font-label-sm text-[10px] uppercase font-bold px-2.5 py-1 rounded">Chủ đề của tuần</span>
-<h4 className="font-headline-md text-headline-sm font-semibold text-on-surface mt-3">Xây Dựng Mô Hình Kinh Doanh Bền Vững</h4>
-<p className="font-body-sm text-on-surface-variant mt-2">
-                Tuyển chọn những cuốn cẩm nang thực chiến giúp nhà sáng lập và quản lý vượt qua biến động thị trường toàn cầu năm 2026.
+<span className="bg-tertiary text-on-tertiary font-label-sm text-[10px] uppercase font-bold px-2.5 py-0.5 rounded-full">Chủ đề của tuần</span>
+<h4 className="font-headline-md text-[16px] font-bold text-on-surface mt-2.5 line-clamp-2 leading-snug">Xây Dựng Mô Hình Kinh Doanh Bền Vững</h4>
+<p className="font-body-sm text-[12px] text-on-surface-variant mt-1.5 line-clamp-2 leading-relaxed">
+                Tuyển chọn cẩm nang thực chiến giúp nhà sáng lập vượt qua biến động và bứt phá năm 2026.
               </p>
 </div>
-<div className="my-4 z-10 w-full aspect-[16/10] rounded-xl overflow-hidden shadow-md">
-<img className="w-full h-full object-cover" alt="Không gian làm việc của doanh nhân hiện đại với tách cà phê thơm, cuốn sổ da tay và chồng sách kinh doanh cao cấp trên bàn gỗ sồi ấm áp, ánh sáng ban mai chan hòa phản chiếu tinh thần khởi nghiệp năng động." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0LJPKennDP1Y0g9gdKp_kGaFBmH3JKfZTmPetHYAOhtqWL8h3BM1SN1AlycxVCbFU9UAmhXpr5vC5WzD0w6s1xluvJQgdJKypCsbXbW3fgBcuGOThOgl70u94a7qa2KedRRPqlHXdK3k_92NQBrEt9J-hib9tx9h_9IiFedDJUBkHZ0EaaIiW9SyMxzLGGturWn6e5zehuwY2RlZ5CCKUkNAGAWne08Qhqeynhd688JQKR0yXeqtAhw" />
+<div className="my-3 z-10 w-full h-[150px] rounded-xl overflow-hidden shadow-xs shrink-0">
+<img className="w-full h-full object-cover" alt="Xây Dựng Mô Hình Kinh Doanh Bền Vững" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0LJPKennDP1Y0g9gdKp_kGaFBmH3JKfZTmPetHYAOhtqWL8h3BM1SN1AlycxVCbFU9UAmhXpr5vC5WzD0w6s1xluvJQgdJKypCsbXbW3fgBcuGOThOgl70u94a7qa2KedRRPqlHXdK3k_92NQBrEt9J-hib9tx9h_9IiFedDJUBkHZ0EaaIiW9SyMxzLGGturWn6e5zehuwY2RlZ5CCKUkNAGAWne08Qhqeynhd688JQKR0yXeqtAhw" />
 </div>
-<button className="z-10 w-full py-2.5 rounded-xl bg-surface-container-lowest border border-outline-variant/60 hover:border-tertiary text-tertiary font-title-md text-[13px] font-semibold transition-colors">
-              Xem bộ sưu tập cẩm nang →
+<button className="z-10 w-full py-2.5 rounded-xl bg-tertiary text-on-tertiary hover:bg-tertiary-container font-title-md text-[13px] font-bold transition-colors cursor-pointer shadow-xs">
+              Xem Bộ Cẩm Nang →
             </button>
 </div>
 
-<div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
-<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between">
+<div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-5">
+<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between h-full">
 <div>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-2 bg-surface-container spine-crease">
-<img className="w-full h-full object-cover" alt="Bìa sách Từ Tốt Đến Vĩ Đại của Jim Collins, tông màu đỏ sẫm và đen thanh lịch quyền lực, đồ họa mũi tên vượt ngưỡng kỷ lục kinh tế." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUnUpUsTPVTT2aXL1sifuheoTa-M2lRoP-gxSZUz8DinaHvgh4rrwHhYC9nS98SkyYQAxoz0IK2JE_R1tRMan0RnFbZm0xxt23qPvmAwc6om5HUeUsbISapxnWhQ4455r4h_9zdvJRtQ-oH6Sys-LjyMGclScmFLMOiluJl7liJ7wq9QAZd6vTYGok_UUjVdsaS8-I3AU4_0I_rH-RBQd-pHji-FeTOJPT7xROWqzhy0-iggWoICykvw" />
+<img className="w-full h-full object-cover" alt="Bìa sách Từ Tốt Đến Vĩ Đại của Jim Collins" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUnUpUsTPVTT2aXL1sifuheoTa-M2lRoP-gxSZUz8DinaHvgh4rrwHhYC9nS98SkyYQAxoz0IK2JE_R1tRMan0RnFbZm0xxt23qPvmAwc6om5HUeUsbISapxnWhQ4455r4h_9zdvJRtQ-oH6Sys-LjyMGclScmFLMOiluJl7liJ7wq9QAZd6vTYGok_UUjVdsaS8-I3AU4_0I_rH-RBQd-pHji-FeTOJPT7xROWqzhy0-iggWoICykvw" />
 </div>
-<h5 className="font-title-md text-[13px] font-semibold text-on-surface line-clamp-2">Từ Tốt Đến Vĩ Đại</h5>
-<p className="font-body-sm text-[11px] text-on-surface-variant">Jim Collins</p>
+<h5 className="font-title-md text-[13px] font-semibold text-on-surface line-clamp-1 truncate" title="Từ Tốt Đến Vĩ Đại">Từ Tốt Đến Vĩ Đại</h5>
+<p className="font-body-sm text-[11px] text-on-surface-variant truncate">Jim Collins</p>
 </div>
 <div className="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
 <span className="font-title-md text-[14px] font-bold text-tertiary">148.000₫</span>
-<span className="material-symbols-outlined text-[18px] text-on-surface-variant hover:text-tertiary cursor-pointer">shopping_cart</span>
+<button className="w-7 h-7 rounded-lg bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-2xs cursor-pointer" title="Thêm vào giỏ" aria-label="Thêm vào giỏ">
+<span className="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+</button>
 </div>
 </div>
-<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between">
+<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between h-full">
 <div>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-2 bg-surface-container spine-crease">
-<img className="w-full h-full object-cover" alt="Bìa sách Khởi Nghiệp Tinh Gọn của Eric Ries, màu xanh ngọc bích sáng và trắng tối giản, hình ảnh chu kỳ phản hồi học hỏi đổi mới." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRaGRJNJ7vfUrylplMwfVY9QHdZBrRx7NVDK1vIzpMWZTy4_JA1q0KswqDyO6SSEUrK40l7qFx9WqA6OnE1AWtwVXpQ1yfvrVDt4dBTD45OVZIqkDlDELMJRzY9gj9XTJff4dQyGKq-l6ScglDYRWIqzzEhWxudMc37_hC1l8io1YG5J0mtPGnC7kUwfQhsES9gBczRoeCkfR5HKCJH_xa3-hEebGZRK3G9ggIFBK2rPXc10ZXVpb7SA" />
+<img className="w-full h-full object-cover" alt="Bìa sách Khởi Nghiệp Tinh Gọn của Eric Ries" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBX4Kd4G8iNHQlfF7K5cYKsiyOVqxeKAjWTmdYZNmsl2XwtRt5LbwHOa10Cm2k8Ks83vdrK1LYqrzl4TjNG_UjLLJO8YAXTf-o9kinqaBLbxQi36ETbetNY83YBHoDUTu9AqyLAqJwSwk0EFtmqxqq7Za5zYlruIt0WnBekbSGVkLTkAurg4ZslQRdxslzp8ZUhvp4o1DslKhg72GeRNQbQt72uWrVThFoqGnqRu-ApFxw6BirgD4sZ_Q" />
 </div>
-<h5 className="font-title-md text-[13px] font-semibold text-on-surface line-clamp-2">Khởi Nghiệp Tinh Gọn</h5>
-<p className="font-body-sm text-[11px] text-on-surface-variant">Eric Ries</p>
+<h5 className="font-title-md text-[13px] font-semibold text-on-surface line-clamp-1 truncate" title="Khởi Nghiệp Tinh Gọn">Khởi Nghiệp Tinh Gọn</h5>
+<p className="font-body-sm text-[11px] text-on-surface-variant truncate">Eric Ries</p>
 </div>
 <div className="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
 <span className="font-title-md text-[14px] font-bold text-tertiary">136.000₫</span>
-<span className="material-symbols-outlined text-[18px] text-on-surface-variant hover:text-tertiary cursor-pointer">shopping_cart</span>
+<button className="w-7 h-7 rounded-lg bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-2xs cursor-pointer" title="Thêm vào giỏ" aria-label="Thêm vào giỏ">
+<span className="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+</button>
 </div>
 </div>
-<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between">
+<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between h-full">
 <div>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-2 bg-surface-container spine-crease">
-<img className="w-full h-full object-cover" alt="Bìa sách Nguyên Tắc Của Ray Dalio, phông chữ serif thanh thoát sang trọng trên nền màu trắng ngọc trai, đồ họa cấu trúc tổ chức hoàn mỹ." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu1ETTpP_q49a6Or93AYr49R6qMo6Yi9idxACmUvRewI8ENEoSOH6KUg95Iep8_o2vaXfJRtYFvI-JnonNGTuxbiXUikov8gjxxWw2zEC1w4p5miiRdbLLXHwJUJu_cSNlss9oJzb-vKfdDuvhBI1EdqDQ6g99zu6iEI9cxkdkjOI8iODUKToCXrL54f4Izo5wvm18ejk4J24vnwzSh3v0VlqSgwTEaGaEgrwrIWmpp4AmlrUZizK4dw" />
+<img className="w-full h-full object-cover" alt="Bìa sách Nguyên Tắc Của Ray Dalio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANH9QImz-ucfcn9uv_MlbqtxToG_dytIK3a8VA3WhDMJxtc7C7nGB3P4THS39VcuT2OdgWu_eGDaTUI8j1aBQd9YjObATDkleR2X6wUk023tz5x5l0XYGbT8s-eLIGufFcL4aRX3zc_qLlav8X4ZhfgFjrtLdWa3cdUfuPPmARFsOJnMDclYDZhaEFkNzE9zo16on8sZQNc-K3QwPJDkP5As62z9yINTaSyFZzuO50mMkGPL_R5Vz0Pw" />
 </div>
-<h5 className="font-title-md text-[13px] font-semibold text-on-surface line-clamp-2">Principles: Những Nguyên Tắc</h5>
-<p className="font-body-sm text-[11px] text-on-surface-variant">Ray Dalio</p>
+<h5 className="font-title-md text-[13px] font-semibold text-on-surface line-clamp-1 truncate" title="Principles: Những Nguyên Tắc">Principles: Những Nguyên Tắc</h5>
+<p className="font-body-sm text-[11px] text-on-surface-variant truncate">Ray Dalio</p>
 </div>
 <div className="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
 <span className="font-title-md text-[14px] font-bold text-tertiary">225.000₫</span>
-<span className="material-symbols-outlined text-[18px] text-on-surface-variant hover:text-tertiary cursor-pointer">shopping_cart</span>
-</div>
-</div>
-<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between">
-<div>
-<div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-2 bg-surface-container spine-crease">
-<img className="w-full h-full object-cover" alt="Bìa sách Dốc Hết Trái Tim của Howard Schultz người sáng lập Starbucks, tông màu xanh lục đậm Starbucks đặc trưng và hình tách cà phê sứ tinh tế." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCvgkAYV8tHSxLicrtfk2dtzzxMmyGtceGCPTHn1R1B6-ZKXYdeX-Ht4JaoN4tGlDCSdeK2vG2pBWm68fZCF8QBG6f8CY3AmchZQnEy9NK7fxwnIpIrV0YGeOJmTUHi3Zw5B0EsygTmnDpeRvUCY2HuO6LQusjoW-UfElXoJ_Csrrmhj7tJOvChx6xBHW2qINZ1ypyXweDZYCmLb5cEhzubsRixlpmOw9hldvxfSsZKGQlkhjsM0qxAg" />
-</div>
-<h5 className="font-title-md text-[13px] font-semibold text-on-surface line-clamp-2">Dốc Hết Trái Tim</h5>
-<p className="font-body-sm text-[11px] text-on-surface-variant">Howard Schultz</p>
-</div>
-<div className="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
-<span className="font-title-md text-[14px] font-bold text-tertiary">115.000₫</span>
-<span className="material-symbols-outlined text-[18px] text-on-surface-variant hover:text-tertiary cursor-pointer">shopping_cart</span>
+<button className="w-7 h-7 rounded-lg bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-2xs cursor-pointer" title="Thêm vào giỏ" aria-label="Thêm vào giỏ">
+<span className="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+</button>
 </div>
 </div>
 </div>
@@ -661,77 +699,70 @@ export default function HomePage() {
             Xem 680+ đầu sách <span className="material-symbols-outlined text-[16px]">chevron_right</span>
 </Link>
 </div>
-<div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+<div className="grid grid-cols-1 lg:grid-cols-5 gap-5 items-stretch">
 
-<div className="lg:col-span-8 order-2 lg:order-1 grid grid-cols-2 sm:grid-cols-4 gap-4">
-<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between">
+<div className="lg:col-span-2 bg-surface-container-low rounded-2xl p-5 border border-outline-variant/40 flex flex-col justify-between relative overflow-hidden h-full shadow-xs">
+<div>
+<span className="bg-secondary text-on-secondary font-label-sm text-[10px] uppercase font-bold px-2.5 py-0.5 rounded-full">Xu hướng công nghệ</span>
+<h4 className="font-headline-md text-[16px] font-bold text-on-surface mt-2.5 line-clamp-2 leading-snug">Làm Chủ Kỷ Nguyên Trí Tuệ Nhân Tạo</h4>
+<p className="font-body-sm text-[12px] text-on-surface-variant mt-1.5 line-clamp-2 leading-relaxed">
+                Bộ sưu tập các nghiên cứu mới nhất về Generative AI, LLM và năng lực tư duy tương lai.
+              </p>
+</div>
+<div className="my-3 w-full h-[150px] rounded-xl overflow-hidden shadow-xs shrink-0">
+<img className="w-full h-full object-cover" alt="Làm Chủ Kỷ Nguyên Trí Tuệ Nhân Tạo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADpnGNexM2TF1jotLx4R4BsL2dIyucHjoHpzJDhYkb-uBDneoAYmatMZ5jDV42EOdJbXIhCBFuyb2jZGXDTuAq0BR9O8WaOUSFmZXwJNzwa2t35QQ8pQRcgVUOUBApUlAn-9B7OmrTswI10BYtACwwKGMfFZvs6xynPnoPLURX_upmgqY6EdVufSL-8RZbPGyN5HYtt2jzddY78ya3x3CDL2baRzeKZvZEjUbhariX9-nMo_fZdp4kZw" />
+</div>
+<button className="w-full py-2.5 rounded-xl bg-tertiary text-on-tertiary hover:bg-tertiary-container font-title-md text-[13px] font-bold transition-colors cursor-pointer shadow-xs">
+              Khám Phá Tủ Sách AI →
+            </button>
+</div>
+
+<div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-5">
+<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between h-full">
 <div>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-2 bg-surface-container spine-crease">
-<img className="w-full h-full object-cover" alt="Bìa sách Trí Tuệ Nhân Tạo 2041 của Kai-Fu Lee, hình ảnh thành phố tương lai rực rỡ ánh sáng công nghệ xanh ngọc và dữ liệu số." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARPqw7OevD_hTUUZaUYpo6_hVosYYl1VnIKM3DCFtz-F5a9Yx_CN-kNTW8oyPi2NI16FGDc6cA61mHnEnj_KJc2GJB7oUh18Gs1AsUrmQIgOj-NvCvQw0vtEvzMIninPuFwsXbrAi2DKXRcSkuRZ1RLtvtXxrrO5hGmGm8u1SMyXGKbNQUXPkf1YkQkyUn9XIgTyVsa-9ZpUOt9RemMTD4lMLBfFk_XpC2lp0e1K-WKsO2nMpps-iOSg" />
+<img className="w-full h-full object-cover" alt="Bìa sách Trí Tuệ Nhân Tạo 2041 của Kai-Fu Lee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjTLa-EsuM3rAWCh7QLNIibiUWD653rBXryru_Jm_EF0wZW4y-iu_MEhVPSofjLC51Q-mcpY6LK9ZFs5uMtEB0CFUp-uJycDwy6uYh4tlaXcIvZXN-K54DVKnrOpk767ZNWT6ifu0fqPVQ8L2bs9tl6LERKtNGUpUsbOX0jig_DPsfwPYYhcf6KivlIei79lVB2OH3MF9WtjhEoxYGMJQILVOWMGuMuuuvutHrRyYYwlR6EJ1732DOkg" />
 </div>
-<h5 className="font-title-md text-[13px] font-semibold text-on-surface line-clamp-2">AI 2041: 10 Viễn Cảnh Tương Lai</h5>
-<p className="font-body-sm text-[11px] text-on-surface-variant">Kai-Fu Lee</p>
+<h5 className="font-title-md text-[13px] font-semibold text-on-surface line-clamp-1 truncate" title="AI 2041: 10 Viễn Cảnh Tương Lai">AI 2041: 10 Viễn Cảnh Tương Lai</h5>
+<p className="font-body-sm text-[11px] text-on-surface-variant truncate">Kai-Fu Lee</p>
 </div>
 <div className="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
 <span className="font-title-md text-[14px] font-bold text-tertiary">172.000₫</span>
-<span className="material-symbols-outlined text-[18px] text-on-surface-variant hover:text-tertiary cursor-pointer">shopping_cart</span>
+<button className="w-7 h-7 rounded-lg bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-2xs cursor-pointer" title="Thêm vào giỏ" aria-label="Thêm vào giỏ">
+<span className="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+</button>
 </div>
 </div>
-<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between">
+<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between h-full">
 <div>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-2 bg-surface-container spine-crease">
-<img className="w-full h-full object-cover" alt="Bìa sách Chip War Cuộc Chiến Vi Mạch của Chris Miller, hình ảnh mạch silicon phát quang màu xanh ngọc bích trên nền kim loại xước." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbmG-DrwzDF7L-xQC0apLXmttMBZRPoKvu3rMyr8W7vyn4zTfdiN3JtQyOa_IObFnmj1bdvIY73nAT_QjNjLLfuYgxo6FBNn-lt7lOTfQNIva3WaAKlxnMHgy-_IhHoktDeEGEDA3rnfjz9Vfn3AevGOk0kZi2dXV-JghxIDb2TycTgXazMg_SXHXg5rQ094aGVtNPb39Rp8lmU2aE-iFWhX57HnxWU8RB7a246d1ZYO2y6aBpBliXGw" />
+<img className="w-full h-full object-cover" alt="Bìa sách Chip War Cuộc Chiến Vi Mạch của Chris Miller" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbmG-DrwzDF7L-xQC0apLXmttMBZRPoKvu3rMyr8W7vyn4zTfdiN3JtQyOa_IObFnmj1bdvIY73nAT_QjNjLLfuYgxo6FBNn-lt7lOTfQNIva3WaAKlxnMHgy-_IhHoktDeEGEDA3rnfjz9Vfn3AevGOk0kZi2dXV-JghxIDb2TycTgXazMg_SXHXg5rQ094aGVtNPb39Rp8lmU2aE-iFWhX57HnxWU8RB7a246d1ZYO2y6aBpBliXGw" />
 </div>
-<h5 className="font-title-md text-[13px] font-semibold text-on-surface line-clamp-2">Chip War: Cuộc Chiến Vi Mạch</h5>
-<p className="font-body-sm text-[11px] text-on-surface-variant">Chris Miller</p>
+<h5 className="font-title-md text-[13px] font-semibold text-on-surface line-clamp-1 truncate" title="Chip War: Cuộc Chiến Vi Mạch">Chip War: Cuộc Chiến Vi Mạch</h5>
+<p className="font-body-sm text-[11px] text-on-surface-variant truncate">Chris Miller</p>
 </div>
 <div className="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
 <span className="font-title-md text-[14px] font-bold text-tertiary">195.000₫</span>
-<span className="material-symbols-outlined text-[18px] text-on-surface-variant hover:text-tertiary cursor-pointer">shopping_cart</span>
+<button className="w-7 h-7 rounded-lg bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-2xs cursor-pointer" title="Thêm vào giỏ" aria-label="Thêm vào giỏ">
+<span className="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+</button>
 </div>
 </div>
-<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between">
+<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between h-full">
 <div>
 <div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-2 bg-surface-container spine-crease">
-<img className="w-full h-full object-cover" alt="Bìa sách Đổi Mới Sáng Tạo của Walter Isaacson, chân dung Steve Jobs và Ada Lovelace phong cách pop-art thanh lịch tối giản." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_gsZLLRb4Di9VKDAmVZLYnP1sbNwB7BNIzRhx9M95BrYFbAENKwIl5UjDLBbPRAu8PU7uFuCqLuGZ47Ok4QYtQfSjz-EVeZ4TrQr7JRlQDTiDzKA1io4U3j6zLBuLd2uuWnsg1v72eiASjQfHim3vKrFkfPYoM-TdXeb64CQKnmqQbA1hmGw5IadCRPC5gAbv9U48hd3AQ54LuAX9xTThBVpXtT8ZbmlHPsXqyDfo85n5KDIA3GGGwg" />
+<img className="w-full h-full object-cover" alt="Bìa sách Tương Lai Sau Trí Tuệ Nhân Tạo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqFYczOxI6BBEPJSMzztuWwVEuoaWCELJRJUH8TPmZfu4TGUMCLBDdIMVayaksl_ckCMcALtlmYopDNyBpIa_B749DzC1MNOvwmZOqhS2wpECcIBwflRtdvHy9VdoTbFzHF8dOjHY0HqabUfwJ-xZJ8NAdR7w2eeCJjxjT0azwVDaDemPRQEQoK8n2ib3M5PlmtfIqpKqJhGvdmsuXSvYUk5LzX_cPr74oMG-KpxiOpQ3-gMeRZp2fPQ" />
 </div>
-<h5 className="font-title-md text-[13px] font-semibold text-on-surface line-clamp-2">Những Kẻ Đổi Mới Sáng Tạo</h5>
-<p className="font-body-sm text-[11px] text-on-surface-variant">Walter Isaacson</p>
-</div>
-<div className="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
-<span className="font-title-md text-[14px] font-bold text-tertiary">238.000₫</span>
-<span className="material-symbols-outlined text-[18px] text-on-surface-variant hover:text-tertiary cursor-pointer">shopping_cart</span>
-</div>
-</div>
-<div className="bg-surface-container-lowest rounded-2xl p-3 border border-outline-variant/30 book-card-shadow flex flex-col justify-between">
-<div>
-<div className="aspect-[2/3] w-full rounded-xl overflow-hidden mb-2 bg-surface-container spine-crease">
-<img className="w-full h-full object-cover" alt="Bìa sách Tương Lai Sau Trí Tuệ Nhân Tạo, hình vẽ trừu tượng con người chạm tay vào luồng sóng dữ liệu rực rỡ." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqFYczOxI6BBEPJSMzztuWwVEuoaWCELJRJUH8TPmZfu4TGUMCLBDdIMVayaksl_ckCMcALtlmYopDNyBpIa_B749DzC1MNOvwmZOqhS2wpECcIBwflRtdvHy9VdoTbFzHF8dOjHY0HqabUfwJ-xZJ8NAdR7w2eeCJjxjT0azwVDaDemPRQEQoK8n2ib3M5PlmtfIqpKqJhGvdmsuXSvYUk5LzX_cPr74oMG-KpxiOpQ3-gMeRZp2fPQ" />
-</div>
-<h5 className="font-title-md text-[13px] font-semibold text-on-surface line-clamp-2">Kỷ Nguyên AI &amp; Tương Lai</h5>
-<p className="font-body-sm text-[11px] text-on-surface-variant">Henry Kissinger</p>
+<h5 className="font-title-md text-[13px] font-semibold text-on-surface line-clamp-1 truncate" title="Kỷ Nguyên AI & Tương Lai">Kỷ Nguyên AI &amp; Tương Lai</h5>
+<p className="font-body-sm text-[11px] text-on-surface-variant truncate">Henry Kissinger &amp; Eric Schmidt</p>
 </div>
 <div className="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
 <span className="font-title-md text-[14px] font-bold text-tertiary">145.000₫</span>
-<span className="material-symbols-outlined text-[18px] text-on-surface-variant hover:text-tertiary cursor-pointer">shopping_cart</span>
+<button className="w-7 h-7 rounded-lg bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-2xs cursor-pointer" title="Thêm vào giỏ" aria-label="Thêm vào giỏ">
+<span className="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+</button>
 </div>
 </div>
-</div>
-
-<div className="lg:col-span-4 order-1 lg:order-2 bg-surface-container-low rounded-2xl p-6 border border-outline-variant/40 flex flex-col justify-between relative overflow-hidden">
-<div>
-<span className="bg-secondary text-on-secondary font-label-sm text-[10px] uppercase font-bold px-2.5 py-1 rounded">Xu hướng công nghệ</span>
-<h4 className="font-headline-md text-headline-sm font-semibold text-on-surface mt-3">Làm Chủ Kỷ Nguyên Trí Tuệ Nhân Tạo</h4>
-<p className="font-body-sm text-on-surface-variant mt-2">
-                Bộ sưu tập các nghiên cứu mới nhất về Generative AI, đạo đức công nghệ và năng lực thích ứng của người đi làm tương lai.
-              </p>
-</div>
-<div className="my-4 w-full aspect-[16/10] rounded-xl overflow-hidden shadow-md">
-<img className="w-full h-full object-cover" alt="Một chiếc máy đọc sách hiện đại hiển thị sơ đồ thuật toán thông minh đặt trên bàn làm việc tinh tế với cây xanh và ánh sáng đèn bàn ấm cúng tông màu xanh và kem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADpnGNexM2TF1jotLx4R4BsL2dIyucHjoHpzJDhYkb-uBDneoAYmatMZ5jDV42EOdJbXIhCBFuyb2jZGXDTuAq0BR9O8WaOUSFmZXwJNzwa2t35QQ8pQRcgVUOUBApUlAn-9B7OmrTswI10BYtACwwKGMfFZvs6xynPnoPLURX_upmgqY6EdVufSL-8RZbPGyN5HYtt2jzddY78ya3x3CDL2baRzeKZvZEjUbhariX9-nMo_fZdp4kZw" />
-</div>
-<button className="w-full py-2.5 rounded-xl bg-surface-container-lowest border border-outline-variant/60 hover:border-tertiary text-tertiary font-title-md text-[13px] font-semibold transition-colors">
-              Khám phá tủ sách Công nghệ →
-            </button>
 </div>
 </div>
 </section>
@@ -816,66 +847,63 @@ export default function HomePage() {
 <h3 className="font-headline-sm text-headline-sm font-semibold text-on-surface">Gặp Gỡ Tác Giả Yêu Thích</h3>
 <p className="font-body-sm text-[13px] text-on-surface-variant mt-0.5">Theo dõi trang cá nhân tác giả để nhận thông báo ấn phẩm mới và giao lưu trực tuyến</p>
 </div>
-<Link className="font-title-md text-[13px] text-tertiary hover:underline font-semibold flex items-center gap-1" to="/">
-            Xem tất cả tác giả <span className="material-symbols-outlined text-[16px]">chevron_right</span>
-</Link>
+<div className="flex items-center gap-2">
+  {/* Prev / Next Slider Navigation Buttons */}
+  <button
+    onClick={handlePrevAuthor}
+    className="w-8 h-8 rounded-full border border-outline-variant/50 hover:bg-tertiary hover:text-white flex items-center justify-center transition-colors cursor-pointer text-on-surface-variant"
+    title="Tác giả trước"
+    aria-label="Tác giả trước"
+  >
+    <span className="material-symbols-outlined text-[18px]">chevron_left</span>
+  </button>
+  <button
+    onClick={handleNextAuthor}
+    className="w-8 h-8 rounded-full border border-outline-variant/50 hover:bg-tertiary hover:text-white flex items-center justify-center transition-colors cursor-pointer text-on-surface-variant"
+    title="Tác giả tiếp theo"
+    aria-label="Tác giả tiếp theo"
+  >
+    <span className="material-symbols-outlined text-[18px]">chevron_right</span>
+  </button>
+  <Link className="font-title-md text-[13px] text-tertiary hover:underline font-semibold flex items-center gap-1 ml-2" to="/">
+    Xem tất cả <span className="material-symbols-outlined text-[16px]">chevron_right</span>
+  </Link>
 </div>
-<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-
-<div className="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/30 flex flex-col items-center text-center hover:border-tertiary/40 transition-all book-card-shadow">
-<div className="w-20 h-20 rounded-full overflow-hidden mb-3 ring-2 ring-tertiary/20">
-<img className="w-full h-full object-cover" alt="Chân dung nhà văn Haruki Murakami với nét mặt trầm ngâm hiền hòa, ánh mắt sâu thẳm trong không gian phòng làm việc ngập tràn đĩa than jazz cổ điển, ảnh chân dung đen trắng phối nâu ấm sang trọng." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR-OPOd7e4KsfO0t-0xMw2DyZP6jFtwwwqK09pUgJkDjYa5toolI1E43E6nK-pjKQ6oIWrou0_f2agMmZEgZ5RS2CAqewxN9TTMHgCwG3kskJbOd9X7kp7O9OAoalbSgCbAKmG8cO9bWGgyhXmV7IYpaXvZo22hV3-AQrsi84-ZhwNMBtpp6uHr5U4YKB0kas_ERbqkslBd2P7hY2oeGjp4StJDzkov6Y8h3uarnyuNI2MzhOB6sP7Vw" />
-</div>
-<h4 className="font-title-md text-[14px] font-semibold text-on-surface">Haruki Murakami</h4>
-<span className="font-body-sm text-[12px] text-on-surface-variant">18 đầu sách đã dịch</span>
-<button className="mt-3 px-4 py-1.5 rounded-full bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary font-title-md text-[12px] font-semibold transition-colors">
-              + Theo dõi
-            </button>
-</div>
-
-<div className="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/30 flex flex-col items-center text-center hover:border-tertiary/40 transition-all book-card-shadow">
-<div className="w-20 h-20 rounded-full overflow-hidden mb-3 ring-2 ring-tertiary/20">
-<img className="w-full h-full object-cover" alt="Chân dung James Clear tác giả sách Thói Quen Nguyên Tử, nụ cười thông thái tự tin, ánh sáng chân dung chuyên nghiệp phong cách studio hiện đại tông màu ấm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnw9yJWOrKGesjDyl1-X_0R2W4HNILmzCsBYgbF0XKynDiK7fNvri-xM3jY3V_3z15MmE0g3IJX0qsypYqufMmBW5544ziG8nhUbsSR9WJhuCOKCBJisehB_5esWgbY7RkVY2LHadzTRsRvBp8TVGnTCHFoDrWjwhXvNwjNCCisa-LJUAhhMYg7n_eLSRD2IdW0XHKQl2V1i3tKp6YJXGPZUt1ZTo4IpAKkERRMoCTmqrThvqL1YOmFA" />
-</div>
-<h4 className="font-title-md text-[14px] font-semibold text-on-surface">James Clear</h4>
-<span className="font-body-sm text-[12px] text-on-surface-variant">4 ấn phẩm best-seller</span>
-<button className="mt-3 px-4 py-1.5 rounded-full bg-tertiary text-on-tertiary font-title-md text-[12px] font-semibold transition-colors">
-              ✓ Đang theo dõi
-            </button>
 </div>
 
-<div className="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/30 flex flex-col items-center text-center hover:border-tertiary/40 transition-all book-card-shadow">
-<div className="w-20 h-20 rounded-full overflow-hidden mb-3 ring-2 ring-tertiary/20">
-<img className="w-full h-full object-cover" alt="Chân dung Morgan Housel tác giả Tâm lý học về tiền, phong thái điềm đạm trí thức trong trang phục vest giản dị, phông nền thư viện sách mờ ảo màu nâu ấm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtrE0r2gXqHTig1zo3glXgfCTbKIG1iJv0jftMG7jgJJAy4XBzXb_a0OQpbRa8X1mTIRnjs54Zb5EsOBo9IE1RxUfVgYt5ysUjQ46kpM6ikrx4t_t56RpqAQbYuqKfhaO1h18LuSzCUNduXsNOWS2wX0xolsVziTAj70AnD6YrUKPB5Oyg0jtxgqFbF0yN0X6x3vCXuSCMXzIhQxcEBAP86uH8f2lmCgbn6JCxhlEqNeYzY_-Zpiv-tQ" />
-</div>
-<h4 className="font-title-md text-[14px] font-semibold text-on-surface">Morgan Housel</h4>
-<span className="font-body-sm text-[12px] text-on-surface-variant">3 tác phẩm tài chính</span>
-<button className="mt-3 px-4 py-1.5 rounded-full bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary font-title-md text-[12px] font-semibold transition-colors">
-              + Theo dõi
-            </button>
-</div>
-
-<div className="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/30 flex flex-col items-center text-center hover:border-tertiary/40 transition-all book-card-shadow">
-<div className="w-20 h-20 rounded-full overflow-hidden mb-3 ring-2 ring-tertiary/20">
-<img className="w-full h-full object-cover" alt="Chân dung học giả sử học Yuval Noah Harari, ánh mắt thông tuệ và sâu sắc, ánh sáng tự nhiên dịu nhẹ phong cách tư liệu danh nhân quốc tế." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTraLVsMiNUVda0rejvWN-zCy-uTUY55qgl17upiljc0TV6u1kOJnsntndANnLcPEmEgEEdIwvKaT_yEjZTbUveJXG5yZUXE77KuhWBL4eSEm_dlUCQuFaEisFn6uqlFfcY-RTB2cMXk3FuQCIdIfRpqkHpiSqE3hsDJW1RFT1dQTBClR3wqcCD6Y-Jt6X1SsOlJCvS-pcnFeB47QmLs4X8uc9_tU14Sv2hqeEB1ry4JzHN-_w8ji9Fw" />
-</div>
-<h4 className="font-title-md text-[14px] font-semibold text-on-surface">Yuval Noah Harari</h4>
-<span className="font-body-sm text-[12px] text-on-surface-variant">5 bộ lược sử nhân loại</span>
-<button className="mt-3 px-4 py-1.5 rounded-full bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary font-title-md text-[12px] font-semibold transition-colors">
-              + Theo dõi
-            </button>
-</div>
-
-<div className="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/30 flex flex-col items-center text-center hover:border-tertiary/40 transition-all book-card-shadow">
-<div className="w-20 h-20 rounded-full overflow-hidden mb-3 ring-2 ring-tertiary/20">
-<img className="w-full h-full object-cover" alt="Chân dung nhà văn Nguyễn Nhật Ánh của văn học tuổi thơ Việt Nam, nụ cười hiền hậu ấm áp bên trang bản thảo viết tay trong góc quán quen." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmk40IHL8nN8QgKmmU5Htwlb2gfZo134PTe-LmHn1e02Dy8D3eLCGlU_U27hCuP3t0jn7R4F3zjTTBBAowvf6PDX6-RbVei2RSTp33PDhYHzIFrWCpK9wHIInJJ5w0ByCX87r2K5VshsFg3ne7rf6i-N_G-_nzhcvWnfSkv7aJHW-9Bx3QzTpbw_67wwMZsthqpn3yoWWuD8LZQ9LpRP-5UTOg8eIetCyfz3Txa9jlqbr0mHuqw_4EHQ" />
-</div>
-<h4 className="font-title-md text-[14px] font-semibold text-on-surface">Nguyễn Nhật Ánh</h4>
-<span className="font-body-sm text-[12px] text-on-surface-variant">32 truyện dài tuổi thơ</span>
-<button className="mt-3 px-4 py-1.5 rounded-full bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary font-title-md text-[12px] font-semibold transition-colors">
-              + Theo dõi
-            </button>
-</div>
+<div 
+  className="overflow-hidden w-full py-1"
+  onMouseEnter={() => setIsAuthorHovered(true)}
+  onMouseLeave={() => setIsAuthorHovered(false)}
+>
+  <div 
+    className="flex transition-transform duration-500 ease-in-out gap-5"
+    style={{
+      transform: `translateX(calc(-${authorIndex} * (100% + 1.25rem) / ${itemsPerPage}))`
+    }}
+  >
+    {authorsList.map((author, idx) => (
+      <div 
+        key={`${author.name}-${idx}`} 
+        className="shrink-0 w-[calc((100%-1.25rem)/2)] sm:w-[calc((100%-2*1.25rem)/3)] lg:w-[calc((100%-4*1.25rem)/5)] bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/30 flex flex-col items-center text-center hover:border-tertiary/40 transition-all book-card-shadow justify-between"
+      >
+        <div className="flex flex-col items-center">
+          <div className="w-20 h-20 rounded-full overflow-hidden mb-3 ring-2 ring-tertiary/20 shrink-0">
+            <img className="w-full h-full object-cover" alt={author.name} src={author.avatar} />
+          </div>
+          <h4 className="font-title-md text-[14px] font-semibold text-on-surface line-clamp-1 truncate" title={author.name}>{author.name}</h4>
+          <span className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">{author.books}</span>
+        </div>
+        <button className={`mt-3 px-4 py-1.5 rounded-full font-title-md text-[12px] font-semibold transition-colors cursor-pointer w-full ${
+          author.isFollowing 
+            ? 'bg-tertiary text-on-tertiary' 
+            : 'bg-surface-container hover:bg-tertiary hover:text-on-tertiary text-tertiary'
+        }`}>
+          {author.status}
+        </button>
+      </div>
+    ))}
+  </div>
 </div>
 </section>
 
@@ -1075,62 +1103,62 @@ export default function HomePage() {
             Hộp Quà Tri Thức
           </span>
 </div>
-<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-<div className="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/30 flex flex-col sm:flex-row gap-6 items-center book-card-shadow">
-<div className="w-[200px] h-[180px] relative shrink-0 flex items-center justify-center">
-<div className="w-[100px] h-[150px] rounded-lg shadow-md absolute left-2 transform -rotate-12 border border-outline-variant/30 overflow-hidden spine-crease">
-<img className="w-full h-full object-cover" alt="Bìa sách Tư Duy Đột Phá màu xanh ngọc bích sang trọng, chi tiết tia sáng tri thức tinh xảo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_QjvduKfNR5seSn9HPQEvqsH1E7n9WeSjjr9wNbXrRGbPMZDQx-zMBxCEDXUuKTyqJgLwQjYnRRlbm3tj3ffqDtG5oIj915dx4fdYGouCBRv67zL2f4HLc0YY0dFXeQIJ2n1iUGV0DXtqTQXU6KCLevhIIzzexoCH-_6PuICpO8LDeszxFJy6bk9UliEwUulEAc_bvwTRZb7QBXVhr2SJCmaOGv8UbmgEMYqd8B3pyPYz6x6V1ZB-tA" />
+<div className="bg-surface-container-lowest rounded-2xl p-5 sm:p-6 border border-outline-variant/30 flex flex-col xl:flex-row gap-5 sm:gap-6 items-center book-card-shadow overflow-hidden min-w-0">
+<div className="w-[200px] h-[170px] relative shrink-0 flex items-center justify-center">
+<div className="w-[95px] h-[145px] rounded-lg shadow-md absolute left-2 transform -rotate-12 border border-outline-variant/30 overflow-hidden spine-crease">
+<img className="w-full h-full object-cover" alt="Tư Duy Đột Phá" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_QjvduKfNR5seSn9HPQEvqsH1E7n9WeSjjr9wNbXrRGbPMZDQx-zMBxCEDXUuKTyqJgLwQjYnRRlbm3tj3ffqDtG5oIj915dx4fdYGouCBRv67zL2f4HLc0YY0dFXeQIJ2n1iUGV0DXtqTQXU6KCLevhIIzzexoCH-_6PuICpO8LDeszxFJy6bk9UliEwUulEAc_bvwTRZb7QBXVhr2SJCmaOGv8UbmgEMYqd8B3pyPYz6x6V1ZB-tA" />
 </div>
-<div className="w-[105px] h-[155px] rounded-lg shadow-lg relative z-10 border border-outline-variant/40 overflow-hidden spine-crease">
-<img className="w-full h-full object-cover" alt="Bìa sách Rèn Luyện Tư Duy Phản Biện màu kem ngà và xanh đậm thanh nhã, phong cách ấn họa trí thức hàn lâm." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkHNckh2qNxG6vP9xBQOhN_j0cpXF9XzvB2lmrn6RNFJ588pRh96iKJIl7t1DjsTo4XWg4nHw7FOyTaZiK-CExIDPjSGlvF6Tgm3uO5Ka7C3lm9hvA0Q9SrZHUxRGn5_m_81s9p0Zgmb6j0FQMDvQw69X1Svu-VMorrJkauSziIpvFdfZG7pJJT3ufAwSAeewW60Asdh2BW8KEzFYpqjQp3DiKCLBtibBM1w7draDDvJ_s5iwkxzPSmw" />
+<div className="w-[100px] h-[150px] rounded-lg shadow-lg relative z-10 border border-outline-variant/40 overflow-hidden spine-crease">
+<img className="w-full h-full object-cover" alt="Rèn Luyện Tư Duy Phản Biện" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkHNckh2qNxG6vP9xBQOhN_j0cpXF9XzvB2lmrn6RNFJ588pRh96iKJIl7t1DjsTo4XWg4nHw7FOyTaZiK-CExIDPjSGlvF6Tgm3uO5Ka7C3lm9hvA0Q9SrZHUxRGn5_m_81s9p0Zgmb6j0FQMDvQw69X1Svu-VMorrJkauSziIpvFdfZG7pJJT3ufAwSAeewW60Asdh2BW8KEzFYpqjQp3DiKCLBtibBM1w7draDDvJ_s5iwkxzPSmw" />
 </div>
-<div className="w-[100px] h-[150px] rounded-lg shadow-md absolute right-2 transform rotate-12 border border-outline-variant/30 overflow-hidden spine-crease">
-<img className="w-full h-full object-cover" alt="Bìa sách Sức Mạnh Của Trực Giác màu xanh lam thẫm bí ẩn kết hợp ánh kim sang trọng." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD07ofHbad1Ed8bpRC3fJjNXcQHdEtXLiX2Zlrovt8CF41gqPHpReuJASicWyqIUc_FvmGOJIruGktt8garc8-MItXxGTd-cdei8NsJ-U-85yDlLFX8O4pK0p3PrWH9nQSZP6GLmJ7QPmoO_-UQ8IJ1N_4vQ9TkjdophOsPeN1nNvIO0k79B1gjI1bTwTALG8Q-rr6FEilTOzqjXO_RJo9ysWHdIJ0HurEbQQliuiK94Fgr3hjNzZr8yQ" />
+<div className="w-[95px] h-[145px] rounded-lg shadow-md absolute right-2 transform rotate-12 border border-outline-variant/30 overflow-hidden spine-crease">
+<img className="w-full h-full object-cover" alt="Sức Mạnh Của Trực Giác" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD07ofHbad1Ed8bpRC3fJjNXcQHdEtXLiX2Zlrovt8CF41gqPHpReuJASicWyqIUc_FvmGOJIruGktt8garc8-MItXxGTd-cdei8NsJ-U-85yDlLFX8O4pK0p3PrWH9nQSZP6GLmJ7QPmoO_-UQ8IJ1N_4vQ9TkjdophOsPeN1nNvIO0k79B1gjI1bTwTALG8Q-rr6FEilTOzqjXO_RJo9ysWHdIJ0HurEbQQliuiK94Fgr3hjNzZr8yQ" />
 </div>
 </div>
-<div className="flex flex-col justify-between flex-1">
+<div className="flex flex-col justify-between flex-1 min-w-0 w-full gap-2.5">
 <div>
-<span className="bg-primary-fixed text-primary font-label-sm text-[10px] font-bold px-2 py-0.5 rounded">Combo 3 cuốn - Tiết kiệm 135.000₫</span>
-<h4 className="font-title-md text-[16px] font-semibold text-on-surface mt-2">Bộ Sách Rèn Luyện Tư Duy Sắc Bén &amp; Quyết Định Đúng Đắn</h4>
-<p className="font-body-sm text-[12px] text-on-surface-variant mt-1">Gồm: Tư Duy Nhanh &amp; Chậm + Nghệ Thuật Tư Duy Rành Mạch + Rèn Luyện Trí Não</p>
+<span className="bg-primary-fixed text-primary font-label-sm text-[10px] font-bold px-2 py-0.5 rounded inline-block">Combo 3 cuốn - Tiết kiệm 135.000₫</span>
+<h4 className="font-title-md text-[15px] font-bold text-on-surface mt-1.5 line-clamp-2 leading-snug">Bộ Sách Rèn Luyện Tư Duy Sắc Bén &amp; Quyết Định Đúng Đắn</h4>
+<p className="font-body-sm text-[11.5px] text-on-surface-variant mt-1 line-clamp-2">Gồm: Tư Duy Nhanh &amp; Chậm + Nghệ Thuật Tư Duy Rành Mạch + Rèn Luyện Trí Não</p>
 </div>
-<div className="mt-4 pt-3 border-t border-outline-variant/20 flex items-center justify-between">
-<div>
-<span className="font-title-md text-[18px] font-bold text-tertiary">315.000₫</span>
-<span className="font-body-sm text-[13px] text-on-surface-variant/60 line-through ml-2">450.000₫</span>
+<div className="pt-3 border-t border-outline-variant/20 flex flex-wrap items-center justify-between gap-2.5">
+<div className="shrink-0">
+<span className="font-title-md text-[17px] font-bold text-tertiary">315.000₫</span>
+<span className="font-body-sm text-[12px] text-on-surface-variant/60 line-through ml-2">450.000₫</span>
 </div>
-<button className="px-4 py-2 rounded-xl bg-tertiary text-on-tertiary font-title-md text-[12px] font-semibold hover:bg-tertiary-container transition-colors">
+<button className="px-3.5 py-2.5 rounded-xl bg-tertiary text-on-tertiary font-title-md text-[12px] font-bold hover:bg-tertiary-container transition-colors whitespace-nowrap shrink-0 cursor-pointer shadow-xs">
                   Mua Combo Ngay
                 </button>
 </div>
 </div>
 </div>
 
-<div className="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/30 flex flex-col sm:flex-row gap-6 items-center book-card-shadow">
-<div className="w-[200px] h-[180px] relative shrink-0 flex items-center justify-center">
-<div className="w-[100px] h-[150px] rounded-lg shadow-md absolute left-2 transform -rotate-12 border border-outline-variant/30 overflow-hidden spine-crease">
-<img className="w-full h-full object-cover" alt="Bìa sách Nhà Đầu Tư Thông Minh của Benjamin Graham tông màu xanh cổ điển uy quyền." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu7LaASRbXZ7TUHWVAA27v2w_NOsutXCFd2cyMdMjko98cXe1k4fUFUxUMyAJPuv94pBCY0nl8uM01aoHKeuFpg6ZVTga7A_CyDLJnVJN3VjPtUKX01ZRbji59GS_rVb4yiV0iivvQM-Dl-auR9zcEvDyZWHwg4d1R42zRmKJ1GzWAvk2yIJlwXpOUsU44i6pD2gqSDBIi0ln-qTTye32CBClOpmCDacWI7uvsqRGnn9kwNyaDzslOYw" />
+<div className="bg-surface-container-lowest rounded-2xl p-5 sm:p-6 border border-outline-variant/30 flex flex-col xl:flex-row gap-5 sm:gap-6 items-center book-card-shadow overflow-hidden min-w-0">
+<div className="w-[200px] h-[170px] relative shrink-0 flex items-center justify-center">
+<div className="w-[95px] h-[145px] rounded-lg shadow-md absolute left-2 transform -rotate-12 border border-outline-variant/30 overflow-hidden spine-crease">
+<img className="w-full h-full object-cover" alt="Nhà Đầu Tư Thông Minh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu7LaASRbXZ7TUHWVAA27v2w_NOsutXCFd2cyMdMjko98cXe1k4fUFUxUMyAJPuv94pBCY0nl8uM01aoHKeuFpg6ZVTga7A_CyDLJnVJN3VjPtUKX01ZRbji59GS_rVb4yiV0iivvQM-Dl-auR9zcEvDyZWHwg4d1R42zRmKJ1GzWAvk2yIJlwXpOUsU44i6pD2gqSDBIi0ln-qTTye32CBClOpmCDacWI7uvsqRGnn9kwNyaDzslOYw" />
 </div>
-<div className="w-[105px] h-[155px] rounded-lg shadow-lg relative z-10 border border-outline-variant/40 overflow-hidden spine-crease">
-<img className="w-full h-full object-cover" alt="Bìa sách Tâm Lý Học Về Tiền màu lục bảo ánh vàng kim đẳng cấp quốc tế." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM7gBSVDgX1zUMWDdQFGZ7IZg2kjfHbgtiqdLWk-uRX--8P_yVE1QgBXtZc-vuME4D_3wWbkWNqk79YS-9NOXNCV3o7Y_GGruD6pzQ-iZrMq23Bl5Zdd_XQ961fXc8maykgDBp_OWE4_l2BuZ_aioFoNZ9XiJz4L1PeFwm7RTJpZLcerg1dTvIUrXf8pgpBer-e9X--S2UqUZ0cw3pb3CO56J0IDZHmJfbkpLmIECuNyvzwng-FqKPsw" />
+<div className="w-[100px] h-[150px] rounded-lg shadow-lg relative z-10 border border-outline-variant/40 overflow-hidden spine-crease">
+<img className="w-full h-full object-cover" alt="Tâm Lý Học Về Tiền" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM7gBSVDgX1zUMWDdQFGZ7IZg2kjfHbgtiqdLWk-uRX--8P_yVE1QgBXtZc-vuME4D_3wWbkWNqk79YS-9NOXNCV3o7Y_GGruD6pzQ-iZrMq23Bl5Zdd_XQ961fXc8maykgDBp_OWE4_l2BuZ_aioFoNZ9XiJz4L1PeFwm7RTJpZLcerg1dTvIUrXf8pgpBer-e9X--S2UqUZ0cw3pb3CO56J0IDZHmJfbkpLmIECuNyvzwng-FqKPsw" />
 </div>
-<div className="w-[100px] h-[150px] rounded-lg shadow-md absolute right-2 transform rotate-12 border border-outline-variant/30 overflow-hidden spine-crease">
-<img className="w-full h-full object-cover" alt="Bìa sách Bước Đi Ngẫu Nhiên Trên Phố Wall màu lam thẫm trang trọng." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsq8ZiGEIYceYqKnhpVyjqgGJm-dW0JALzvnEZGfK2Huzvok3KGyrL3q7K7vGcnyA1kVW1-2oY_HmfLRc2tErTMOfiigAX-REIRW2GxLUpRHAiVQGvqELsnSl-V5wq5jbqYwUzbeWsaVZRqXc9-clAMuow_8uYbbHrU9oHAeLeLmGMcEVkvMbX6-5rou19M_tYrelhPRHEql9PvUZj9_0VyN0zyV3dUBxO56Cw-6R0wipatHSUXQQK-g" />
+<div className="w-[95px] h-[145px] rounded-lg shadow-md absolute right-2 transform rotate-12 border border-outline-variant/30 overflow-hidden spine-crease">
+<img className="w-full h-full object-cover" alt="Bước Đi Ngẫu Nhiên" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsq8ZiGEIYceYqKnhpVyjqgGJm-dW0JALzvnEZGfK2Huzvok3KGyrL3q7K7vGcnyA1kVW1-2oY_HmfLRc2tErTMOfiigAX-REIRW2GxLUpRHAiVQGvqELsnSl-V5wq5jbqYwUzbeWsaVZRqXc9-clAMuow_8uYbbHrU9oHAeLeLmGMcEVkvMbX6-5rou19M_tYrelhPRHEql9PvUZj9_0VyN0zyV3dUBxO56Cw-6R0wipatHSUXQQK-g" />
 </div>
 </div>
-<div className="flex flex-col justify-between flex-1">
+<div className="flex flex-col justify-between flex-1 min-w-0 w-full gap-2.5">
 <div>
-<span className="bg-primary-fixed text-primary font-label-sm text-[10px] font-bold px-2 py-0.5 rounded">Combo 3 cuốn - Tiết kiệm 168.000₫</span>
-<h4 className="font-title-md text-[16px] font-semibold text-on-surface mt-2">Bộ Cẩm Nang Tự Do Tài Chính &amp; Đầu Tư Bền Vững 2026</h4>
-<p className="font-body-sm text-[12px] text-on-surface-variant mt-1">Gồm: Tâm Lý Học Về Tiền + Nhà Đầu Tư Thông Minh + Bước Đi Ngẫu Nhiên</p>
+<span className="bg-primary-fixed text-primary font-label-sm text-[10px] font-bold px-2 py-0.5 rounded inline-block">Combo 3 cuốn - Tiết kiệm 168.000₫</span>
+<h4 className="font-title-md text-[15px] font-bold text-on-surface mt-1.5 line-clamp-2 leading-snug">Bộ Cẩm Nang Tự Do Tài Chính &amp; Đầu Tư Bền Vững 2026</h4>
+<p className="font-body-sm text-[11.5px] text-on-surface-variant mt-1 line-clamp-2">Gồm: Tâm Lý Học Về Tiền + Nhà Đầu Tư Thông Minh + Bước Đi Ngẫu Nhiên</p>
 </div>
-<div className="mt-4 pt-3 border-t border-outline-variant/20 flex items-center justify-between">
-<div>
-<span className="font-title-md text-[18px] font-bold text-tertiary">392.000₫</span>
-<span className="font-body-sm text-[13px] text-on-surface-variant/60 line-through ml-2">560.000₫</span>
+<div className="pt-3 border-t border-outline-variant/20 flex flex-wrap items-center justify-between gap-2.5">
+<div className="shrink-0">
+<span className="font-title-md text-[17px] font-bold text-tertiary">392.000₫</span>
+<span className="font-body-sm text-[12px] text-on-surface-variant/60 line-through ml-2">560.000₫</span>
 </div>
-<button className="px-4 py-2 rounded-xl bg-tertiary text-on-tertiary font-title-md text-[12px] font-semibold hover:bg-tertiary-container transition-colors">
+<button className="px-3.5 py-2.5 rounded-xl bg-tertiary text-on-tertiary font-title-md text-[12px] font-bold hover:bg-tertiary-container transition-colors whitespace-nowrap shrink-0 cursor-pointer shadow-xs">
                   Mua Combo Ngay
                 </button>
 </div>

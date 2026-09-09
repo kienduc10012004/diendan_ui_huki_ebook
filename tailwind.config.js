@@ -123,6 +123,7 @@ export default {
         "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "600" }]
       },
       spacing: {
+        "4.5": "1.125rem",
         "space-2xs": "0.25rem",
         "space-xs": "0.5rem",
         "space-sm": "0.75rem",

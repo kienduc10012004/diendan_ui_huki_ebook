@@ -489,7 +489,7 @@ export default function CatalogPage() {
             </div>
           )}
 
-          <div className={viewMode === 'grid' ? "grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-5" : "flex flex-col gap-3"}>
+          <div className={viewMode === 'grid' ? "grid grid-cols-2 min-[540px]:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-5" : "flex flex-col gap-3"}>
             {filteredBooks.map((book) => (
               <article
                 key={book.id}
@@ -513,8 +513,8 @@ export default function CatalogPage() {
 
                   <div>
                     <span className="text-[11px] text-primary block font-medium mb-0.5">{book.publisher}</span>
-                    <Link to={`/book/${book.id}`}>
-                      <h3 className="font-bold text-sm text-on-surface group-hover:text-primary transition-colors line-clamp-2 leading-snug">
+                    <Link to={`/book/${book.id}`} title={book.title}>
+                      <h3 className="font-bold text-sm text-on-surface group-hover:text-primary transition-colors line-clamp-1 truncate leading-snug">
                         {book.title}
                       </h3>
                     </Link>

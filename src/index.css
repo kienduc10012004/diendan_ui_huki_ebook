@@ -496,6 +496,38 @@
     }
   }
 
+  /* Horizontal Scroll Mask Effect */
+  .scroll-mask-x {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 3%, black 90%, transparent 100%);
+  }
+
+  /* Shimmer Effect for CTAs */
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+  }
+
+  .shimmer-button {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transform: translateX(-100%);
+  }
+
+  .shimmer-button:hover::after {
+    animation: shimmer 1.2s ease-in-out infinite;
+  }
+
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
@@ -512,3 +544,4 @@
     background: var(--theme-text-muted, #8d706b);
   }
 }
+
