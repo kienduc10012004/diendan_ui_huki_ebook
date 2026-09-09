@@ -73,7 +73,7 @@ export default function ProfilePage() {
 <span className="material-symbols-outlined text-[13px] material-symbols-fill">verified</span>
                       Độc giả tích cực
                     </span>
-<span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#fea619]/15 text-[#855300] border border-[#fea619]/40 font-label-sm font-semibold text-xs">
+<span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-900 dark:text-amber-300 border border-amber-500/30 font-label-sm font-semibold text-xs">
 <span className="material-symbols-outlined text-[13px]">psychology</span>
                       Chủ CLB Phát Triển Bản Thân
                     </span>
@@ -83,12 +83,12 @@ export default function ProfilePage() {
 <span className="font-medium text-on-surface">@minhanh.reads</span>
 <span>•</span>
 <span className="inline-flex items-center gap-1">
-<span className="material-symbols-outlined text-[15px]">location_on</span>
+<span className="material-symbols-outlined text-sm">location_on</span>
                       TP. Hồ Chí Minh
                     </span>
 <span>•</span>
 <span className="inline-flex items-center gap-1">
-<span className="material-symbols-outlined text-[15px]">calendar_today</span>
+<span className="material-symbols-outlined text-sm">calendar_today</span>
                       Tham gia từ tháng 01/2025
                     </span>
 <span>•</span>
@@ -102,26 +102,26 @@ export default function ProfilePage() {
 {/* Actions */}
 <div className="flex items-center gap-2.5 self-start lg:self-center pt-2 lg:pt-0">
 <button className="h-10 px-5 rounded-xl bg-primary/10 hover:bg-primary/15 text-primary border border-primary/30 font-title-md text-xs sm:text-sm font-semibold inline-flex items-center gap-1.5 transition-all shadow-xs cursor-pointer">
-<span className="material-symbols-outlined text-[18px]">done</span>
+<span className="material-symbols-outlined text-base">done</span>
 <span>Đang Theo Dõi</span>
-<span className="material-symbols-outlined text-[16px]">expand_more</span>
+<span className="material-symbols-outlined text-base">expand_more</span>
 </button>
 <button className="h-10 px-4 rounded-xl bg-surface-container-lowest hover:bg-surface-container border border-outline-variant/80 text-on-surface font-title-md text-xs sm:text-sm font-medium inline-flex items-center gap-1.5 transition-all cursor-pointer">
-<span className="material-symbols-outlined text-[18px]">mail</span>
+<span className="material-symbols-outlined text-base">mail</span>
 <span>Nhắn Tin</span>
 </button>
 <button className="w-10 h-10 rounded-xl bg-surface-container-lowest hover:bg-surface-container border border-outline-variant/80 text-on-surface-variant flex items-center justify-center transition-all cursor-pointer" title="Tùy chọn khác">
-<span className="material-symbols-outlined text-[20px]">more_horiz</span>
+<span className="material-symbols-outlined text-lg">more_horiz</span>
 </button>
 </div>
 </div>
 
 <div className="mt-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
-<p className="font-body-lg text-[15px] text-on-surface/85 max-w-3xl leading-relaxed">
+<p className="font-body-lg text-sm sm:text-base text-on-surface/85 max-w-3xl leading-relaxed">
                 “Yêu sách tâm lý, phát triển bản thân và những câu chuyện khiến mình suy nghĩ lâu hơn sau khi gấp sách lại. Đang hướng tới mục tiêu 24 cuốn sách trong năm 2026.”
               </p>
 <div className="flex items-center gap-2 text-xs font-medium text-on-surface-variant bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant/40 self-start md:self-auto">
-<span className="material-symbols-outlined text-[16px] text-primary">auto_stories</span>
+<span className="material-symbols-outlined text-sm text-primary">auto_stories</span>
 <span>Đang đọc: <strong className="text-on-surface font-semibold">Deep Work</strong> (36%)</span>
 </div>
 </div>
@@ -129,54 +129,54 @@ export default function ProfilePage() {
 <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 p-3.5 bg-surface-container-low/70 rounded-2xl border border-outline-variant/50">
 <div className="px-3 py-1.5 flex items-center gap-3">
 <div className="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-<span className="material-symbols-outlined text-[20px]">menu_book</span>
+<span className="material-symbols-outlined text-lg">menu_book</span>
 </div>
 <div>
 <div className="font-headline-sm text-lg font-bold text-on-surface leading-tight">47</div>
-<div className="text-[12px] text-on-surface-variant font-medium">Sách đã đọc</div>
+<div className="text-xs text-on-surface-variant font-medium">Sách đã đọc</div>
 </div>
 </div>
 <div className="px-3 py-1.5 flex items-center gap-3 border-l border-outline-variant/40">
-<div className="w-9 h-9 rounded-xl bg-[#006953]/10 text-[#006953] flex items-center justify-center">
-<span className="material-symbols-outlined text-[20px]">rate_review</span>
+<div className="w-9 h-9 rounded-xl bg-theme-secondary/10 text-theme-secondary flex items-center justify-center">
+<span className="material-symbols-outlined text-lg">rate_review</span>
 </div>
 <div>
 <div className="font-headline-sm text-lg font-bold text-on-surface leading-tight">12</div>
-<div className="text-[12px] text-on-surface-variant font-medium">Bài review sâu</div>
+<div className="text-xs text-on-surface-variant font-medium">Bài review sâu</div>
 </div>
 </div>
 <div className="px-3 py-1.5 flex items-center gap-3 border-l border-outline-variant/40">
-<div className="w-9 h-9 rounded-xl bg-[#ac2c19]/10 text-tertiary flex items-center justify-center">
-<span className="material-symbols-outlined text-[20px] material-symbols-fill">local_fire_department</span>
+<div className="w-9 h-9 rounded-xl bg-theme-accent/10 text-theme-accent flex items-center justify-center">
+<span className="material-symbols-outlined text-lg material-symbols-fill">local_fire_department</span>
 </div>
 <div>
-<div className="font-headline-sm text-lg font-bold text-tertiary leading-tight">8 ngày</div>
-<div className="text-[12px] text-on-surface-variant font-medium">Chuỗi đọc hiện tại</div>
+<div className="font-headline-sm text-lg font-bold text-theme-accent leading-tight">8 ngày</div>
+<div className="text-xs text-on-surface-variant font-medium">Chuỗi đọc hiện tại</div>
 </div>
 </div>
 <div className="px-3 py-1.5 flex items-center gap-3 border-l border-outline-variant/40">
 <div className="w-9 h-9 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
-<span className="material-symbols-outlined text-[20px]">flag</span>
+<span className="material-symbols-outlined text-lg">flag</span>
 </div>
 <div>
 <div className="font-headline-sm text-lg font-bold text-on-surface leading-tight">17 / 24 <span className="text-xs text-primary font-normal">(71%)</span></div>
-<div className="text-[12px] text-on-surface-variant font-medium">Thử thách 2026</div>
+<div className="text-xs text-on-surface-variant font-medium">Thử thách 2026</div>
 </div>
 </div>
 <div className="px-3 py-1.5 flex items-center gap-3 border-l border-outline-variant/40">
-<div className="w-9 h-9 rounded-xl bg-[#13846a]/10 text-[#13846a] flex items-center justify-center">
-<span className="material-symbols-outlined text-[20px]">hub</span>
+<div className="w-9 h-9 rounded-xl bg-theme-secondary/10 text-theme-secondary flex items-center justify-center">
+<span className="material-symbols-outlined text-lg">hub</span>
 </div>
 <div>
 <div className="font-headline-sm text-lg font-bold text-on-surface leading-tight">3</div>
-<div className="text-[12px] text-on-surface-variant font-medium">CLB đang tham gia</div>
+<div className="text-xs text-on-surface-variant font-medium">CLB đang tham gia</div>
 </div>
 </div>
 </div>
 </div>
 </section>
 
-<div className="mt-6 sticky top-16 z-20 bg-[#f8faf9]/90 backdrop-blur-md pt-2 pb-3 border-b border-outline-variant/60">
+<div className="mt-6 sticky top-16 z-20 bg-theme-surface/90 backdrop-blur-md pt-2 pb-3 border-b border-outline-variant/60">
 <div className="flex items-center gap-1 overflow-x-auto no-scrollbar">
 <button className="px-5 py-2.5 rounded-xl font-title-md text-sm font-semibold text-primary bg-primary/10 border border-primary/25 shadow-xs flex items-center gap-2">
 <span className="material-symbols-outlined text-[18px]">dashboard</span>
@@ -551,16 +551,16 @@ export default function ProfilePage() {
 </div>
 </div>
 </div>
-<span className="px-2.5 py-1 rounded-full bg-[#1F8A70]/10 text-[#1F8A70] text-[11px] font-semibold border border-[#1F8A70]/20">
+<span className="px-2.5 py-1 rounded-full bg-theme-secondary/10 text-theme-secondary text-xs font-semibold border border-theme-secondary/20">
                     Top Reviewer HUKI
                   </span>
 </div>
 
-<div className="mt-4 bg-[#f8faf9] border-l-4 border-tertiary-container p-4 rounded-r-xl">
+<div className="mt-4 bg-theme-surface-subtle border-l-4 border-theme-secondary p-4 rounded-r-xl">
 <h4 className="font-title-md text-sm font-semibold text-on-surface italic">
                     “Một cuốn sách dễ áp dụng vào thực tế nhất về kiến tạo thói quen bền vững”
                   </h4>
-<p className="mt-2 text-body-sm text-on-surface-variant italic leading-relaxed font-display-lg text-[15px]">
+<p className="mt-2 text-body-sm text-on-surface-variant italic leading-relaxed font-display-lg text-sm sm:text-base">
                     «James Clear không dạy bạn cách gồng mình lên để kỷ luật thép, mà hướng dẫn bạn tái cấu trúc môi trường sống sao cho thói quen tốt trở nên hiển nhiên, còn thói quen xấu trở nên bất tiện. Điểm sáng lớn nhất của bản dịch HUKI lần này là sự mượt mà trong thuật ngữ tâm lý học hành vi.»
                   </p>
 </div>
@@ -593,9 +593,9 @@ export default function ProfilePage() {
 <img className="w-full h-full object-cover group-hover:scale-105 transition-transform" alt="Book cover of Atomic Habits by James Clear, iconic minimal red typography on ivory background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-0tmecJvt8aZyNo52miU2gu64pNgKsyDUp3a-ek_k_4i-YIO7gib9OY5b04LbgVZNIhoOUz5u-j0gCsJYLKDKFE-LE5hL9ZkoyPXhddSo9WfLJfa2WcbV7gRpWuB9baSbuQ7_9UL83L62H0cGsLe3GONX-9BPEkubpfa5GH47EI20D2YljJpvf4EPrT_G3oPtCOj49_29xzV8E451-3jtpXTKX_ZCewsUI0iHh5Xh4ulQljlVLVZhHA" />
 </div>
 <h3 className="font-title-md text-xs font-bold text-on-surface truncate">Atomic Habits</h3>
-<p className="text-[11px] text-on-surface-variant truncate">James Clear</p>
-<div className="flex items-center gap-1 mt-1 text-amber-500 text-[11px] font-semibold">
-<span className="material-symbols-outlined text-[13px] material-symbols-fill">star</span>
+<p className="text-xs text-on-surface-variant truncate">James Clear</p>
+<div className="flex items-center gap-1 mt-1 text-amber-500 text-xs font-semibold">
+<span className="material-symbols-outlined text-sm material-symbols-fill">star</span>
 <span>5.0</span>
 </div>
 </div>
@@ -605,9 +605,9 @@ export default function ProfilePage() {
 <img className="w-full h-full object-cover group-hover:scale-105 transition-transform" alt="Book cover of Deep Work by Cal Newport, bold yellow cover design with clean black graphic design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApBlXjS0lcOVNVrJhfqDhVmd62HxH1P8_QrZqNgoE3SzI9CL6cFLfS11hk95CkIea8sp9UYNn6F7GGo2aVDZCMdsqinBek6rWSYv-oIoPJYwhslD6dJV5i8apATdyzFwPKmB5s4CJlW4aBwGLRO1fxIQKouHV9kVfx_tJOfnquB71wl0WxMoZCwZSdqZpvtGIFF1nqlJecFMEdLGCAfwI6L9_5KKErG2NBj4y-thvgRLMQveWpvUL7DA" />
 </div>
 <h3 className="font-title-md text-xs font-bold text-on-surface truncate">Deep Work</h3>
-<p className="text-[11px] text-on-surface-variant truncate">Cal Newport</p>
-<div className="flex items-center gap-1 mt-1 text-amber-500 text-[11px] font-semibold">
-<span className="material-symbols-outlined text-[13px] material-symbols-fill">star</span>
+<p className="text-xs text-on-surface-variant truncate">Cal Newport</p>
+<div className="flex items-center gap-1 mt-1 text-amber-500 text-xs font-semibold">
+<span className="material-symbols-outlined text-sm material-symbols-fill">star</span>
 <span>4.9</span>
 </div>
 </div>
@@ -617,9 +617,9 @@ export default function ProfilePage() {
 <img className="w-full h-full object-cover group-hover:scale-105 transition-transform" alt="Book cover of The Psychology of Money by Morgan Housel, elegant dark emerald green and gold foil lettering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBheFIYFRJrUq02gBjRpFtHwtH1L_RVPCinr6WfQNmVJH2pxVg-Ndw2P1MltMrOLwpOptNzyqtYcqsuoMyXa18IUbmAMt9fAJOsTHHhJAK--gBH-SAFb0OLo-BmKPla5x6xhlJILOyYlESmb0jW2QJ7tAigwC2GR-mGR_pJHlVJg-0ZyNi4BhGpuVw7F_fj6LpKjwnxqQQp19cXcHEoDNmQBo9p-7ejhtjslPR3t3c3jyQH-r2r1pOf1Q" />
 </div>
 <h3 className="font-title-md text-xs font-bold text-on-surface truncate">Tâm Lý Học Về Tiền</h3>
-<p className="text-[11px] text-on-surface-variant truncate">Morgan Housel</p>
-<div className="flex items-center gap-1 mt-1 text-amber-500 text-[11px] font-semibold">
-<span className="material-symbols-outlined text-[13px] material-symbols-fill">star</span>
+<p className="text-xs text-on-surface-variant truncate">Morgan Housel</p>
+<div className="flex items-center gap-1 mt-1 text-amber-500 text-xs font-semibold">
+<span className="material-symbols-outlined text-sm material-symbols-fill">star</span>
 <span>5.0</span>
 </div>
 </div>
@@ -629,9 +629,9 @@ export default function ProfilePage() {
 <img className="w-full h-full object-cover group-hover:scale-105 transition-transform" alt="Book cover of Thinking, Fast and Slow by Daniel Kahneman, minimalist white book cover with a sharp graphite pencil illustration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrkYjf1neG-q73EgFnl36Eg6ICS53Kq5eQb7HGwitHm_cv2L2sMzFth0kTexOWsPVWuQZqyqWX7_0yS4Bn92gjIW3WXtepmAYlW-E8uggbXxd6fkAFh4y20VUtCxkJND9rUrIJVdVqSxhx1it3dmEdVElbvWVaVzXXoCZ0N1l7c21bG44_LINr3Fe-10op7v4TmqSru6U6Pgw2IZhZKEjzEObXA5uTtr2MUGN4q0vi3OGX02Nf3v2lQA" />
 </div>
 <h3 className="font-title-md text-xs font-bold text-on-surface truncate">Tư Duy Nhanh &amp; Chậm</h3>
-<p className="text-[11px] text-on-surface-variant truncate">Daniel Kahneman</p>
-<div className="flex items-center gap-1 mt-1 text-amber-500 text-[11px] font-semibold">
-<span className="material-symbols-outlined text-[13px] material-symbols-fill">star</span>
+<p className="text-xs text-on-surface-variant truncate">Daniel Kahneman</p>
+<div className="flex items-center gap-1 mt-1 text-amber-500 text-xs font-semibold">
+<span className="material-symbols-outlined text-sm material-symbols-fill">star</span>
 <span>4.8</span>
 </div>
 </div>
@@ -641,9 +641,9 @@ export default function ProfilePage() {
 <img className="w-full h-full object-cover group-hover:scale-105 transition-transform" alt="Book cover of The Daily Stoic by Ryan Holiday, classic Greek marble sculpture profile on stone grey background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN8Com1Mo_ci68S114rxlFDUSkLA24tyqEdVUiEHEhKTchDmPhlk8XNU8-DTHr19VLSjJKeCuQkXVTKVwLGfats8M-YyJU_zx9NjFFcDWyzpzVmlRWBkC5YY8kAljxS5GRtdSHtPBuSqiX2Mffj8peqPXdC3YJjavexVs34JnDbiQrDViudbHgkS7dQgvvkAETgAcwEDV_Bo_q2csYDSu64auCuVJ_6rtvTmch7dou7r41k4DKizI7YA" />
 </div>
 <h3 className="font-title-md text-xs font-bold text-on-surface truncate">Chủ Nghĩa Khắc Kỷ</h3>
-<p className="text-[11px] text-on-surface-variant truncate">Ryan Holiday</p>
-<div className="flex items-center gap-1 mt-1 text-amber-500 text-[11px] font-semibold">
-<span className="material-symbols-outlined text-[13px] material-symbols-fill">star</span>
+<p className="text-xs text-on-surface-variant truncate">Ryan Holiday</p>
+<div className="flex items-center gap-1 mt-1 text-amber-500 text-xs font-semibold">
+<span className="material-symbols-outlined text-sm material-symbols-fill">star</span>
 <span>4.7</span>
 </div>
 </div>
@@ -674,7 +674,7 @@ export default function ProfilePage() {
 <span className="font-semibold text-primary">36%</span>
 </div>
 <div className="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-<div className="bg-[#1F8A70] h-full rounded-full" style={{ width: '36%' }}></div>
+<div className="bg-theme-secondary h-full rounded-full" style={{ width: '36%' }}></div>
 </div>
 </div>
 <button className="mt-4 w-full py-2.5 px-4 rounded-xl bg-primary hover:bg-primary-container text-white font-title-md text-xs font-semibold shadow-sm transition-all flex items-center justify-center gap-1.5">
@@ -687,7 +687,7 @@ export default function ProfilePage() {
 <div className="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/70 shadow-book-card">
 <div className="flex items-center justify-between pb-3 border-b border-outline-variant/40">
 <div className="flex items-center gap-2">
-<span className="material-symbols-outlined text-primary text-[20px]">pie_chart</span>
+<span className="material-symbols-outlined text-primary text-xl">pie_chart</span>
 <h2 className="font-headline-sm text-base font-semibold text-on-surface">Gu Đọc Sách</h2>
 </div>
 <span className="text-xs text-on-surface-variant font-medium">Năm 2026</span>
@@ -707,30 +707,30 @@ export default function ProfilePage() {
 <div>
 <div className="flex justify-between text-xs mb-1">
 <span className="font-medium text-on-surface">Tâm lý học ứng dụng</span>
-<span className="font-semibold text-[#13846a]">26%</span>
+<span className="font-semibold text-theme-secondary">26%</span>
 </div>
 <div className="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-<div className="bg-[#13846a] h-full rounded-full" style={{ width: '26%' }}></div>
+<div className="bg-theme-secondary h-full rounded-full" style={{ width: '26%' }}></div>
 </div>
 </div>
 
 <div>
 <div className="flex justify-between text-xs mb-1">
 <span className="font-medium text-on-surface">Kinh doanh &amp; Quản trị</span>
-<span className="font-semibold text-[#855300]">18%</span>
+<span className="font-semibold text-amber-700 dark:text-amber-400">18%</span>
 </div>
 <div className="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-<div className="bg-[#855300] h-full rounded-full" style={{ width: '18%' }}></div>
+<div className="bg-amber-600 h-full rounded-full" style={{ width: '18%' }}></div>
 </div>
 </div>
 
 <div>
 <div className="flex justify-between text-xs mb-1">
 <span className="font-medium text-on-surface">Triết học &amp; Lối sống</span>
-<span className="font-semibold text-[#ac2c19]">12%</span>
+<span className="font-semibold text-theme-accent">12%</span>
 </div>
 <div className="w-full bg-surface-container h-2 rounded-full overflow-hidden">
-<div className="bg-[#ac2c19] h-full rounded-full" style={{ width: '12%' }}></div>
+<div className="bg-theme-accent h-full rounded-full" style={{ width: '12%' }}></div>
 </div>
 </div>
 

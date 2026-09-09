@@ -162,7 +162,7 @@ export default function UserAddressesPage() {
                   )}
                   <button
                     onClick={() => handleDelete(addr.id)}
-                    className="p-2 rounded-xl text-[#ac2c19] hover:bg-red-50 transition-colors"
+                    className="p-2 rounded-xl text-theme-accent hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
                     title="Xóa địa chỉ"
                   >
                     <span className="material-symbols-outlined text-lg">delete</span>

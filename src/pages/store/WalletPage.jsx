@@ -92,9 +92,9 @@ export default function WalletPage() {
       type: 'topup',
       date: '08/09/2026 09:15',
       amount: '+350.000 Xu',
-      amountColor: 'text-[#006B4F]',
+      amountColor: 'text-emerald-600 dark:text-emerald-400',
       status: 'Thành công',
-      statusColor: 'bg-emerald-100 text-emerald-800'
+      statusColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300'
     },
     {
       id: 'TX-98211',
@@ -102,9 +102,9 @@ export default function WalletPage() {
       type: 'purchase',
       date: '08/09/2026 09:30',
       amount: '-100.000 Xu',
-      amountColor: 'text-[#ac2c19]',
+      amountColor: 'text-theme-accent',
       status: 'Đã trừ ví',
-      statusColor: 'bg-slate-100 text-slate-700'
+      statusColor: 'bg-stone-100 text-stone-700 dark:bg-stone-800 dark:text-stone-300'
     },
     {
       id: 'TX-97500',
@@ -112,9 +112,9 @@ export default function WalletPage() {
       type: 'points',
       date: '07/09/2026 21:40',
       amount: '+30 Points',
-      amountColor: 'text-amber-600',
+      amountColor: 'text-amber-600 dark:text-amber-400',
       status: 'Thành công',
-      statusColor: 'bg-amber-100 text-amber-800'
+      statusColor: 'bg-amber-100 text-amber-800 dark:bg-amber-950/50 dark:text-amber-300'
     },
     {
       id: 'TX-96400',
@@ -122,9 +122,9 @@ export default function WalletPage() {
       type: 'reward',
       date: '05/09/2026 14:10',
       amount: '-200 Points',
-      amountColor: 'text-[#ac2c19]',
+      amountColor: 'text-theme-accent',
       status: 'Đã nhận mã',
-      statusColor: 'bg-blue-100 text-blue-800'
+      statusColor: 'bg-blue-100 text-blue-800 dark:bg-blue-950/50 dark:text-blue-300'
     }
   ];
 
@@ -198,7 +198,7 @@ export default function WalletPage() {
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
             <div className="flex items-center justify-between flex-wrap gap-2">
-              <span className="px-3.5 py-1 bg-[#fea619]/20 border border-[#fea619]/40 text-[#ffddb8] rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
+              <span className="px-3.5 py-1 bg-amber-500/20 border border-amber-500/40 text-amber-200 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>workspace_premium</span>
                 VIP Hạng Kim Cương
               </span>
@@ -215,7 +215,7 @@ export default function WalletPage() {
                   <span className="font-editorial text-3xl sm:text-4xl font-bold text-white">
                     {walletBalance.toLocaleString('vi-VN')}
                   </span>
-                  <span className="text-[#fea619] font-bold text-base">Xu</span>
+                  <span className="text-amber-400 font-bold text-base">Xu</span>
                 </div>
                 <p className="text-xs text-white/60 mt-1">≈ {walletBalance.toLocaleString('vi-VN')} VNĐ quy đổi mua sách</p>
               </div>
@@ -236,7 +236,7 @@ export default function WalletPage() {
           <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col justify-center gap-3 lg:border-l lg:border-white/10 lg:pl-8">
             <button
               onClick={() => setShowTopupModal(true)}
-              className="w-full py-3.5 px-6 bg-[#fea619] hover:bg-[#ffb95f] text-[#2a1700] font-bold rounded-xl transition-all flex items-center justify-center gap-2 shadow-md text-xs sm:text-sm"
+              className="w-full py-3.5 px-6 bg-amber-500 hover:bg-amber-400 text-stone-900 font-bold rounded-xl transition-all flex items-center justify-center gap-2 shadow-md text-xs sm:text-sm"
             >
               <span className="material-symbols-outlined text-lg">bolt</span>
               Nạp Thêm Xu
@@ -256,8 +256,8 @@ export default function WalletPage() {
       <section className="mb-12">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <span className="text-[#ac2c19] text-xs font-bold uppercase tracking-wider">Gói Ưu Đãi Đặc Biệt</span>
-            <h2 className="font-editorial text-2xl font-bold text-[#141D1C] mt-1">Các Gói Nạp Xu Đọc Sách</h2>
+            <span className="text-theme-accent text-xs font-bold uppercase tracking-wider">Gói Ưu Đãi Đặc Biệt</span>
+            <h2 className="font-editorial text-2xl font-bold text-theme-text mt-1">Các Gói Nạp Xu Đọc Sách</h2>
           </div>
         </div>
 
@@ -284,7 +284,7 @@ export default function WalletPage() {
                 <h3 className="font-editorial text-xl font-bold text-on-surface mb-1">{pkg.title}</h3>
                 <p className="text-xs text-on-surface-variant mb-4 leading-relaxed">{pkg.desc}</p>
                 <div className="flex items-baseline gap-1 mb-4">
-                  <span className="font-editorial text-2xl sm:text-3xl font-bold text-[#ac2c19]">
+                  <span className="font-editorial text-2xl sm:text-3xl font-bold text-theme-accent">
                     {pkg.price.toLocaleString('vi-VN')}
                   </span>
                   <span className="text-xs text-on-surface-variant">VNĐ</span>
@@ -299,7 +299,7 @@ export default function WalletPage() {
                 className={`w-full py-3 rounded-xl font-bold text-xs transition-all ${
                   pkg.popular
                     ? 'bg-theme-primary hover:bg-theme-primary-hover text-white shadow-sm'
-                    : 'bg-slate-100 hover:bg-theme-primary hover:text-white text-on-surface'
+                    : 'bg-theme-surface-subtle hover:bg-theme-primary hover:text-white text-on-surface'
                 }`}
               >
                 Chọn Gói Này
@@ -335,7 +335,7 @@ export default function WalletPage() {
               <div className="flex items-center justify-between pt-3 border-t border-theme-border">
                 <div>
                   <span className="font-bold text-sm text-amber-600">{item.pointsRequired}</span>
-                  <span className="text-[11px] text-slate-500 ml-1">Points</span>
+                  <span className="text-xs text-theme-text-muted ml-1">Points</span>
                 </div>
                 <button
                   onClick={() => handleRedeemReward(item)}
@@ -353,7 +353,7 @@ export default function WalletPage() {
       <section className="bg-theme-surface rounded-3xl border border-theme-border p-6 sm:p-8 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-theme-border">
           <h3 className="font-editorial text-xl font-bold text-on-surface">Lịch Sử Giao Dịch & Biến Động Số Dư</h3>
-          <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-2xl overflow-x-auto text-xs">
+          <div className="flex items-center gap-1.5 bg-theme-surface-subtle p-1 rounded-2xl overflow-x-auto text-xs">
             {[
               { id: 'all', label: 'Tất Cả' },
               { id: 'topup', label: 'Nạp Xu' },
@@ -387,7 +387,7 @@ export default function WalletPage() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-xs sm:text-sm text-on-surface">{t.title}</h4>
-                  <p className="text-[11px] text-on-surface-variant font-mono">{t.id} • {t.date}</p>
+                  <p className="text-xs text-on-surface-variant font-mono">{t.id} • {t.date}</p>
                 </div>
               </div>
 
@@ -408,7 +408,7 @@ export default function WalletPage() {
           <div className="bg-theme-surface rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-theme-border">
             <div className="flex items-center justify-between pb-3 border-b border-theme-border">
               <h3 className="font-editorial text-xl font-bold text-on-surface">Nạp Xu Vào Ví Huki</h3>
-              <button onClick={() => setShowTopupModal(false)} className="p-1 hover:bg-slate-100 rounded-lg">
+              <button onClick={() => setShowTopupModal(false)} className="p-1 hover:bg-theme-surface-subtle rounded-lg">
                 <span className="material-symbols-outlined text-lg">close</span>
               </button>
             </div>

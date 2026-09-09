@@ -32,7 +32,7 @@ export default function PdfHighlightToolbar({ bookId, pageNum }) {
           }}
           className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-all font-medium ${
             highlighterMode === 'draw' && highlighterShape === 'rect'
-              ? 'bg-[#006953] text-white shadow-sm'
+              ? 'bg-theme-secondary text-white shadow-sm'
               : 'text-zinc-400 hover:text-white'
           }`}
           title="Kéo thả hình chữ nhật thẳng tắp chuẩn chỉ (như chụp ảnh)"
@@ -49,7 +49,7 @@ export default function PdfHighlightToolbar({ bookId, pageNum }) {
           }}
           className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-all font-medium ${
             highlighterMode === 'draw' && highlighterShape === 'freehand'
-              ? 'bg-[#006953] text-white shadow-sm'
+              ? 'bg-theme-secondary text-white shadow-sm'
               : 'text-zinc-400 hover:text-white'
           }`}
           title="Bút vẽ tự do"
@@ -63,7 +63,7 @@ export default function PdfHighlightToolbar({ bookId, pageNum }) {
           onClick={() => setHighlighterMode('eraser')}
           className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-all font-medium ${
             highlighterMode === 'eraser'
-              ? 'bg-[#ac2c19] text-white shadow-sm'
+              ? 'bg-theme-accent text-white shadow-sm'
               : 'text-zinc-400 hover:text-white'
           }`}
           title="Tẩy xóa nét highlight"

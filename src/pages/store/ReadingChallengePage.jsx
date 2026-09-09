@@ -26,7 +26,7 @@ export default function ReadingChallengePage() {
   const percentage = Math.min(100, Math.round((readCount / goalCount) * 100));
 
   return (
-    <div className="min-h-screen bg-[#fbf9f4] py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-theme-bg py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         
         {/* Navigation Breadcrumb */}
@@ -55,7 +55,7 @@ export default function ReadingChallengePage() {
 
           {/* Goal Progress Ring / Box */}
           <div className="relative z-10 bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-3xl text-center min-w-[240px]">
-            <div className="text-[11px] font-bold text-white/70 uppercase tracking-wider mb-1">
+            <div className="text-xs font-bold text-white/70 uppercase tracking-wider mb-1">
               Tiến Độ Hiện Tại
             </div>
             <div className="font-editorial text-4xl font-bold text-[var(--theme-header-top-accent,#94f5d6)]">
@@ -69,7 +69,7 @@ export default function ReadingChallengePage() {
             </div>
             <div className="text-xs font-bold text-white flex items-center justify-between">
               <span>Đạt {percentage}% mục tiêu</span>
-              <span className="text-[#fea619]">🔥 Streak 14 ngày</span>
+              <span className="text-amber-400">🔥 Streak 14 ngày</span>
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function ReadingChallengePage() {
                 className={`p-4 rounded-2xl border text-center flex flex-col items-center justify-between transition-all ${
                   b.unlocked
                     ? 'bg-theme-bg border-theme-border shadow-2xs'
-                    : 'bg-gray-50 border-gray-200 opacity-50 grayscale'
+                    : 'bg-stone-50 border-stone-200 dark:bg-stone-900 dark:border-stone-800 opacity-50 grayscale'
                 }`}
               >
                 <div className={`w-12 h-12 rounded-2xl ${b.color} text-white flex items-center justify-center shadow-md mb-3`}>
@@ -102,12 +102,12 @@ export default function ReadingChallengePage() {
                 </div>
                 <div>
                   <div className="font-bold text-xs text-on-surface leading-tight mb-1">{b.name}</div>
-                  <div className="text-[10px] text-on-surface-variant leading-snug">{b.desc}</div>
+                  <div className="text-xs text-on-surface-variant leading-snug">{b.desc}</div>
                 </div>
                 <div className="mt-3">
                   <span
-                    className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${
-                      b.unlocked ? 'bg-theme-primary text-white' : 'bg-gray-200 text-gray-600'
+                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                      b.unlocked ? 'bg-theme-primary text-white' : 'bg-stone-200 text-stone-600 dark:bg-stone-800 dark:text-stone-400'
                     }`}
                   >
                     {b.unlocked ? 'Đã Đạt Được' : 'Chưa Mở Khóa'}
@@ -121,7 +121,7 @@ export default function ReadingChallengePage() {
         {/* Community Leaderboard */}
         <div className="bg-theme-surface rounded-3xl border border-theme-border p-6 sm:p-8 shadow-xs">
           <h3 className="font-editorial text-xl font-bold text-on-surface mb-4 flex items-center gap-2">
-            <span className="material-symbols-outlined text-[#fea619]">emoji_events</span>
+            <span className="material-symbols-outlined text-amber-500">emoji_events</span>
             <span>Bảng Xếp Hạng Độc Giả Tích Cực 2026</span>
           </h3>
 

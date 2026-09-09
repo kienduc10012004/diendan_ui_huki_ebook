@@ -28,7 +28,7 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
           to: '/shop/alpha-books',
           icon: 'verified',
           badge: 'Official',
-          badgeColor: 'bg-[#ac2c19]'
+          badgeColor: 'bg-theme-accent text-white'
         },
         {
           id: 'store-catalog',
@@ -58,7 +58,7 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
           to: '/chat',
           icon: 'chat',
           badge: 'Live',
-          badgeColor: 'bg-emerald-600'
+          badgeColor: 'bg-emerald-600 text-white'
         },
         {
           id: 'store-cart',
@@ -66,7 +66,7 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
           to: '/cart',
           icon: 'shopping_cart',
           badge: totalItemsCount > 0 ? `${totalItemsCount}` : null,
-          badgeColor: 'bg-[#ac2c19]'
+          badgeColor: 'bg-theme-accent text-white'
         },
         {
           id: 'store-checkout',
@@ -101,7 +101,7 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
           to: '/community/club/lean-growth',
           icon: 'diversity_3',
           badge: '14.2k',
-          badgeColor: 'bg-[#fea619] text-[#684000]'
+          badgeColor: 'bg-amber-500 text-stone-900'
         },
         {
           id: 'comm-author',
@@ -116,7 +116,7 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
           to: '/challenge/2026',
           icon: 'military_tech',
           badge: 'Streak 14d',
-          badgeColor: 'bg-[#fea619] text-[#684000]'
+          badgeColor: 'bg-amber-500 text-stone-900'
         }
       ]
     },
@@ -145,7 +145,7 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
           to: '/reader',
           icon: 'chrome_reader_mode',
           badge: 'DRM Active',
-          badgeColor: 'bg-[#006953]'
+          badgeColor: 'bg-theme-secondary text-white'
         },
         {
           id: 'lib-devices',
@@ -173,7 +173,7 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
           to: '/seller/chat',
           icon: 'chat',
           badge: 'Live',
-          badgeColor: 'bg-[#fea619] text-[#684000]'
+          badgeColor: 'bg-amber-500 text-stone-900'
         },
         {
           id: 'seller-orders',
@@ -181,7 +181,7 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
           to: '/seller/orders',
           icon: 'local_mall',
           badge: '12',
-          badgeColor: 'bg-[#ac2c19]'
+          badgeColor: 'bg-theme-accent text-white'
         },
         {
           id: 'seller-products',
@@ -194,7 +194,7 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
             { title: 'Thêm Ebook Kỹ Thuật Số', to: '/seller/product/create-ebook', icon: 'note_add' },
             { title: 'Thêm Sách Giấy & Kho', to: '/seller/product/create-physical', icon: 'library_add' },
             { title: 'Sản Phẩm Đang Bán', to: '/seller/product/edit-hybrid', icon: 'view_list' },
-            { title: 'Sản Phẩm Cần Sửa Lỗi', to: '/seller/product/correction', icon: 'report_problem', badge: '3', badgeColor: 'bg-[#ba1a1a]' }
+            { title: 'Sản Phẩm Cần Sửa Lỗi', to: '/seller/product/correction', icon: 'report_problem', badge: '3', badgeColor: 'bg-red-600 text-white' }
           ]
         },
         {
@@ -240,7 +240,7 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
           to: '/wallet',
           icon: 'account_balance_wallet',
           badge: '350k Xu',
-          badgeColor: 'bg-[#fea619] text-[#684000]'
+          badgeColor: 'bg-amber-500 text-stone-900'
         },
         {
           id: 'acc-order-tracking',
@@ -260,7 +260,7 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
           to: '/orders/HUKI-8892401/review',
           icon: 'reviews',
           badge: '+50 Xu',
-          badgeColor: 'bg-[#006953]'
+          badgeColor: 'bg-theme-secondary text-white'
         },
         {
           id: 'acc-order-return',

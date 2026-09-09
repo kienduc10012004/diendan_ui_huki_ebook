@@ -20,7 +20,7 @@ export default function BookCard({ book }) {
 
           {/* Discount Badge */}
           {book.discountPercent && (
-            <span className="absolute top-2 left-2 bg-[#ac2c19] text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow-sm z-20">
+            <span className="absolute top-2 left-2 bg-theme-accent text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow-sm z-20">
               -{book.discountPercent}%
             </span>
           )}
@@ -28,12 +28,12 @@ export default function BookCard({ book }) {
           {/* Format Badges on Cover */}
           <div className="absolute top-2 right-2 flex flex-col gap-1 z-20">
             {book.hasEbook && (
-              <span className="bg-theme-primary/90 text-[#94f5d6] text-[9px] font-bold px-1.5 py-0.5 rounded backdrop-blur">
+              <span className="bg-theme-primary/90 text-white text-[10px] font-bold px-1.5 py-0.5 rounded backdrop-blur">
                 Ebook
               </span>
             )}
             {book.hasPaper && (
-              <span className="bg-[#855300]/90 text-white text-[9px] font-bold px-1.5 py-0.5 rounded backdrop-blur">
+              <span className="bg-theme-secondary/90 text-white text-[10px] font-bold px-1.5 py-0.5 rounded backdrop-blur">
                 Sách Giấy
               </span>
             )}
@@ -41,7 +41,7 @@ export default function BookCard({ book }) {
         </div>
 
         {/* Publisher Tag */}
-        <p className="text-[11px] font-semibold text-theme-text-muted uppercase tracking-wider truncate mb-1">
+        <p className="text-xs font-semibold text-theme-text-muted uppercase tracking-wider truncate mb-1">
           {book.publisher}
         </p>
 
@@ -61,9 +61,9 @@ export default function BookCard({ book }) {
 
         {/* Rating & Review Count */}
         <div className="flex items-center gap-1 text-xs text-theme-text mb-3">
-          <span className="material-symbols-outlined text-[#f59e0b] text-sm fill-current">star</span>
+          <span className="material-symbols-outlined text-amber-500 text-sm fill-current">star</span>
           <span className="font-bold">{book.rating}</span>
-          <span className="text-theme-text-muted text-[11px]">({book.reviewCount.toLocaleString()} đánh giá)</span>
+          <span className="text-theme-text-muted text-xs">({book.reviewCount.toLocaleString()} đánh giá)</span>
         </div>
       </div>
 

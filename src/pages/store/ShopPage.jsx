@@ -46,7 +46,7 @@ export default function ShopPage() {
       rating: 4.9,
       reviews: 3420,
       tag: 'Bestseller',
-      tagColor: 'bg-[#ac2c19] text-white',
+      tagColor: 'bg-theme-accent text-white',
       format: 'hybrid',
       category: 'phat-trien-ban-than',
       cover: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA53AnKQnh_CvQZkKdgIVlAr69RGZi-Dy_-3urusFYsOguAICJMpGRsU85cbWni4isxviEEkUKqkRCbJ5ueD-G6ys8WaQ2MMUeOfQc35hhCHTyVW6HvA1qu9GgdWj-79QinbXun6KsdNRBGwwFc8KHlTtm9n-RZ3vb6WH6vSR13XZ9-w18ittfip9My_AtHU9afgpWLiOpFBdWm7G8UW0lwQztO50FOnTqdl0m9-V26JGH-brBYGrO7Cw'
@@ -60,7 +60,7 @@ export default function ShopPage() {
       rating: 4.8,
       reviews: 2150,
       tag: 'Ebook DRM',
-      tagColor: 'bg-[#006953] text-white',
+      tagColor: 'bg-theme-secondary text-white',
       format: 'ebook',
       category: 'kinh-te',
       cover: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBUoGOHjQ2hoZxnNvlZMZ0EaHKTarSa9EdssU1WWQ8_CEqlDjPkxJ-Eo73jLzR07vvMUGL3X62Bi5cAkdtSoNOn5msr3ZD-146e8TCkcN3gc-r1IiY2QTqqFwp5vHvs6ZfeOU9kdYkLQvDNXp9QZMPbIJ36ZmGICQZQ0_pAgRFNWe6OKgOLgcrsHoCORCXMiXdnKUs7a0kVDcUW1OZu89Z_pEK89aKwgsjfagK9eqmf-T5_pS96mX9_sw'
@@ -74,7 +74,7 @@ export default function ShopPage() {
       rating: 4.9,
       reviews: 5610,
       tag: 'Combo Hybrid',
-      tagColor: 'bg-[#855300] text-white',
+      tagColor: 'bg-amber-800 text-white',
       format: 'hybrid',
       category: 'tam-ly',
       cover: 'https://lh3.googleusercontent.com/aida-public/AB6AXuANH9QImz-ucfcn9uv_MlbqtxToG_dytIK3a8VA3WhDMJxtc7C7nGB3P4THS39VcuT2OdgWu_eGDaTUI8j1aBQd9YjObATDkleR2X6wUk023tz5x5l0XYGbT8s-eLIGufFcL4aRX3zc_qLlav8X4ZhfgFjrtLdWa3cdUfuPPmARFsOJnMDclYDZhaEFkNzE9zo16on8sZQNc-K3QwPJDkP5As62z9yINTaSyFZzuO50mMkGPL_R5Vz0Pw'
@@ -88,7 +88,7 @@ export default function ShopPage() {
       rating: 4.7,
       reviews: 1840,
       tag: 'Sách Giấy',
-      tagColor: 'bg-[#003b2b] text-white',
+      tagColor: 'bg-theme-primary text-white',
       format: 'physical',
       category: 'khoi-nghiep',
       cover: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAknvziFGs_CitMs_0JZvRWN1iKVDBH09Y7RKC4MlS4SsZmQNvmgy1C56mlOem0R5rPapycbEtlozf30XGURqZ1iRVLVPpPojp-adJI9DrBl97-pbkzrJDJnv8Y6i-KTEBJhtR48WcyDEUEw3bZTZPI3rOVeKHD4cSK0AnP8Amm3AM3odYYZvcKKp2RvMcicUA86798-VcN9kJfID4I3xpHcgcpXNB3SiOzUoBpEXQLrG9bvNoCDGUIpQ'
@@ -102,7 +102,7 @@ export default function ShopPage() {
       rating: 4.85,
       reviews: 2890,
       tag: 'Bestseller',
-      tagColor: 'bg-[#ac2c19] text-white',
+      tagColor: 'bg-theme-accent text-white',
       format: 'ebook',
       category: 'kinh-te',
       cover: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjgnwa9G3UcVqohHuu1ky9tGqqJaffDqENIcbnvbC4V33nXAN1RzXK7Infa5ig737CMNvJKpKbHxlGbnf3XMJix08LNjSVTkIjgsxwLgd6uSps5RzGkLczuULkinxoH_ey7coA1DnldeLUGG3ukev7R3FZaugpryH9VAvys10Il-8M0pk-q1fyN5ZiMXarjiRWn4dokVSirk_wdiZOqubfbC8Rey2_o4SyHyPrIDlrP2vAaptd6TudTg'
@@ -116,7 +116,7 @@ export default function ShopPage() {
       rating: 4.95,
       reviews: 4120,
       tag: 'Combo Hybrid',
-      tagColor: 'bg-[#855300] text-white',
+      tagColor: 'bg-amber-800 text-white',
       format: 'hybrid',
       category: 'kinh-te',
       cover: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBPtM4fEF50qiA3LJT6VRKZ4N7fTPN6jOoxh2ryBnzedt5FA5_VTRim9wYpzGX1LBNImhplf6XFrSgwnvdVFanZ2TEFWln9kRUk0j0FDd54xHUJJql6Lw3bHytmH2n_PbDCsDtu9_o0sUCgc9ZNUl--xR6TmfF825RDGooi07RHZ-74OyLPkpqUkrYgxkbp054QNKTO5hp82EqWyeC1yqcp0rOHERKeBFh7vHjCmZu9qxm5Dvs0BJkEaw'
@@ -130,7 +130,7 @@ export default function ShopPage() {
       rating: 4.75,
       reviews: 1450,
       tag: 'Sách In',
-      tagColor: 'bg-[#003b2b] text-white',
+      tagColor: 'bg-theme-primary text-white',
       format: 'physical',
       category: 'phat-trien-ban-than',
       cover: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA6z4RRX8HMlIcOvy2R0r2l59OBusqbAGxZMmlR78cuCyeDC8gGZns6bdxsLLTKhbllY6ipqLiDdY75myavSumNiw42XGt15k-jDiJpYDQPKDrkSF1w7YIIXJidh7ufUJ_vFBZtyyMiDY3oaMvyA5Egf0W9ek9yxT90H9l8M9eKSe3wAdjf0JpJcGlYPmYIve2otBzZaejypLqysxWf0ZDdUdYkqdJZuucX46VRZsUu7meEJrfU1dCVVw'
@@ -144,7 +144,7 @@ export default function ShopPage() {
       rating: 4.9,
       reviews: 3880,
       tag: 'Ebook DRM',
-      tagColor: 'bg-[#006953] text-white',
+      tagColor: 'bg-theme-secondary text-white',
       format: 'ebook',
       category: 'kinh-te',
       cover: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAjTLa-EsuM3rAWCh7QLNIibiUWD653rBXryru_Jm_EF0wZW4y-iu_MEhVPSofjLC51Q-mcpY6LK9ZFs5uMtEB0CFUp-uJycDwy6uYh4tlaXcIvZXN-K54DVKnrOpk767ZNWT6ifu0fqPVQ8L2bs9tl6LERKtNGUpUsbOX0jig_DPsfwPYYhcf6KivlIei79lVB2OH3MF9WtjhEoxYGMJQILVOWMGuMuuuvutHrRyYYwlR6EJ1732DOkg'
@@ -183,7 +183,7 @@ export default function ShopPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"></div>
           <div className="absolute bottom-6 left-6 right-6 text-white flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <span className="px-3 py-1 bg-[#ac2c19] text-white text-xs font-bold rounded-full uppercase tracking-wider mb-2 inline-block shadow-sm">
+              <span className="px-3 py-1 bg-theme-accent text-white text-xs font-bold rounded-full uppercase tracking-wider mb-2 inline-block shadow-sm">
                 NXB Đối Tác Độc Quyền
               </span>
               <h1 className="font-editorial text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white leading-tight">
@@ -192,7 +192,7 @@ export default function ShopPage() {
             </div>
             <div className="text-right hidden md:block shrink-0">
               <span className="text-emerald-300 font-semibold text-sm block">HUKI DRM Verified Publisher</span>
-              <span className="text-slate-300 text-xs">Đồng hành cùng độc giả Việt Nam từ 2010</span>
+              <span className="text-stone-300 text-xs">Đồng hành cùng độc giả Việt Nam từ 2010</span>
             </div>
           </div>
         </div>
@@ -204,7 +204,7 @@ export default function ShopPage() {
             <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-white p-1.5 shadow-xl border-4 border-white shrink-0 -mt-14 sm:-mt-16 relative z-20">
               <div className="w-full h-full rounded-xl bg-theme-primary text-white flex flex-col items-center justify-center relative overflow-hidden shadow-inner p-1">
                 <span className="font-editorial font-bold text-2xl sm:text-3xl leading-none">AB</span>
-                <span className="text-[8.5px] uppercase tracking-wider text-emerald-300 font-bold mt-1">Alpha Books</span>
+                <span className="text-[10px] uppercase tracking-wider text-emerald-300 font-bold mt-1">Alpha Books</span>
               </div>
             </div>
 
@@ -212,14 +212,14 @@ export default function ShopPage() {
             <div className="pt-1 sm:pt-2 flex-1 min-w-0">
               <div className="flex items-center gap-2.5 flex-wrap">
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold font-editorial text-on-surface">Alpha Books Official</h2>
-                <span className="bg-[#ac2c19]/10 text-[#ac2c19] px-2.5 py-0.5 rounded-full text-xs font-bold flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+                <span className="bg-theme-accent/10 text-theme-accent px-2.5 py-0.5 rounded-full text-xs font-bold flex items-center gap-1">
+                  <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
                   Gian Hàng Chính Hãng - Mall
                 </span>
               </div>
               <div className="flex items-center gap-3 sm:gap-4 mt-2 text-xs sm:text-sm text-on-surface-variant flex-wrap">
                 <span className="flex items-center gap-1 text-amber-600 font-bold">
-                  <span className="material-symbols-outlined text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                  <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                   4.9/5 <span className="text-on-surface-variant font-normal">(18.4k đánh giá)</span>
                 </span>
                 <span>•</span>
@@ -239,7 +239,7 @@ export default function ShopPage() {
               className={`flex-1 sm:flex-none px-6 py-2.5 font-semibold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2 text-sm cursor-pointer ${
                 isFollowed
                   ? 'bg-emerald-50 text-emerald-800 border border-emerald-300'
-                  : 'bg-[#ac2c19] hover:bg-[#8e1404] text-white'
+                  : 'bg-theme-primary hover:bg-theme-primary-hover text-white'
               }`}
             >
               <span className="material-symbols-outlined text-[18px]">
@@ -280,12 +280,12 @@ export default function ShopPage() {
               <div className="absolute -right-3 -top-3 w-7 h-7 rounded-full bg-theme-bg"></div>
               <div className="absolute -right-3 -bottom-3 w-7 h-7 rounded-full bg-theme-bg"></div>
               <div className="pr-2">
-                <span className={`text-[11px] uppercase font-bold px-2 py-0.5 rounded ${
+                <span className={`text-xs uppercase font-bold px-2 py-0.5 rounded ${
                   v.color === 'tertiary'
                     ? 'bg-theme-secondary-subtle text-theme-secondary'
                     : v.color === 'secondary'
-                    ? 'bg-amber-100 text-amber-900'
-                    : 'bg-red-100 text-[#ac2c19]'
+                    ? 'bg-amber-100 text-amber-900 dark:bg-amber-950/50 dark:text-amber-200'
+                    : 'bg-red-100 text-theme-accent dark:bg-red-950/50 dark:text-red-200'
                 }`}>
                   {v.discount}
                 </span>
@@ -297,7 +297,7 @@ export default function ShopPage() {
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all shrink-0 ${
                   isSaved
                     ? 'bg-theme-primary text-white'
-                    : 'bg-[#ac2c19]/10 hover:bg-[#ac2c19] hover:text-white text-[#ac2c19]'
+                    : 'bg-theme-accent/10 hover:bg-theme-accent hover:text-white text-theme-accent'
                 }`}
               >
                 {isSaved ? 'Đã lưu' : 'Lưu mã'}
@@ -324,7 +324,7 @@ export default function ShopPage() {
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
                   activeTab === tab.id
                     ? 'bg-theme-primary text-white shadow-sm'
-                    : 'text-on-surface-variant hover:bg-slate-100'
+                    : 'text-on-surface-variant hover:bg-theme-surface-subtle'
                 }`}
               >
                 {tab.label}
@@ -349,8 +349,8 @@ export default function ShopPage() {
                 onClick={() => setActiveFilter(f.id)}
                 className={`px-3 py-1 rounded-full font-medium transition-all ${
                   activeFilter === f.id
-                    ? 'bg-[#ac2c19] text-white font-bold'
-                    : 'bg-slate-100 text-on-surface hover:bg-slate-200'
+                    ? 'bg-theme-primary text-white font-bold'
+                    : 'bg-theme-surface-subtle text-on-surface hover:bg-theme-border'
                 }`}
               >
                 {f.label}
@@ -370,7 +370,7 @@ export default function ShopPage() {
         className="rounded-3xl text-white p-6 md:p-8 mb-10 shadow-lg relative overflow-hidden">
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-xl">
-            <span className="bg-[#fea619] text-[#2a1700] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 inline-block shadow-sm">
+            <span className="bg-amber-500 text-stone-900 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 inline-block shadow-sm">
               Sách Đỉnh Cao 2026
             </span>
             <h3 className="font-editorial text-2xl sm:text-3xl font-bold mb-3 text-white">
@@ -382,14 +382,14 @@ export default function ShopPage() {
             <div className="flex flex-wrap items-center gap-4">
               <Link
                 to="/book/atomic-habits"
-                className="px-6 py-3 bg-[#fea619] hover:bg-[#ffb95f] text-[#2a1700] font-bold rounded-xl shadow transition-all flex items-center gap-2 text-sm"
+                className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-stone-900 font-bold rounded-xl shadow transition-all flex items-center gap-2 text-sm"
               >
                 <span className="material-symbols-outlined text-lg">menu_book</span>
                 Xem Chi Tiết & Mua Ngay
               </Link>
               <div className="flex items-baseline gap-2">
                 <span className="text-2xl font-bold text-amber-300">129.000đ</span>
-                <span className="text-sm line-through text-slate-300">198.000đ</span>
+                <span className="text-sm line-through text-stone-300">198.000đ</span>
               </div>
             </div>
           </div>
@@ -411,7 +411,7 @@ export default function ShopPage() {
             className="bg-theme-surface border border-theme-border rounded-2xl p-4 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between group"
           >
             <div>
-              <div className="relative w-full aspect-[2/3] rounded-xl overflow-hidden mb-4 bg-slate-100">
+              <div className="relative w-full aspect-[2/3] rounded-xl overflow-hidden mb-4 bg-theme-surface-subtle">
                 <span className={`absolute top-2 left-2 z-10 text-[10px] font-bold px-2 py-0.5 rounded shadow-sm ${book.tagColor}`}>
                   {book.tag}
                 </span>
@@ -424,7 +424,7 @@ export default function ShopPage() {
                 </Link>
               </div>
               <Link to={`/book/${book.id}`} title={book.title}>
-                <h4 className="font-semibold text-sm text-on-surface line-clamp-1 truncate mb-1 group-hover:text-[#ac2c19] transition-colors">
+                <h4 className="font-semibold text-sm text-on-surface line-clamp-1 truncate mb-1 group-hover:text-theme-accent transition-colors">
                   {book.title}
                 </h4>
               </Link>
@@ -435,14 +435,14 @@ export default function ShopPage() {
 
             <div>
               <div className="flex items-center gap-1 mb-3 text-xs">
-                <span className="material-symbols-outlined text-[16px] text-amber-500" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                <span className="material-symbols-outlined text-sm text-amber-500" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                 <span className="font-bold text-on-surface">{book.rating}</span>
                 <span className="text-on-surface-variant">({book.reviews})</span>
               </div>
               <div className="flex items-center justify-between pt-2.5 border-t border-theme-border">
                 <div>
-                  <span className="font-bold text-[#ac2c19] text-base">{book.price.toLocaleString('vi-VN')}đ</span>
-                  <span className="block text-xs line-through text-slate-400">{book.originalPrice.toLocaleString('vi-VN')}đ</span>
+                  <span className="font-bold text-theme-accent text-base">{book.price.toLocaleString('vi-VN')}đ</span>
+                  <span className="block text-xs line-through text-theme-text-muted">{book.originalPrice.toLocaleString('vi-VN')}đ</span>
                 </div>
                 <button
                   onClick={() => {

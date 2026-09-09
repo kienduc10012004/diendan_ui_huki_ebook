@@ -193,7 +193,7 @@ export const CartProvider = ({ children }) => {
           name: item.publisher || 'Alpha Books Official',
           badge: sId === 'store-alpha' ? 'Chính Hãng' : 'HUKI Partner',
           tag: sId === 'store-alpha' ? 'αB' : 'FN',
-          tagBg: sId === 'store-alpha' ? 'bg-[#003B2B]' : 'bg-[#006B4F]',
+          tagBg: sId === 'store-alpha' ? 'bg-theme-primary' : 'bg-theme-secondary',
           vouchersCount: sId === 'store-alpha' ? 2 : 1,
           freeShipThreshold: 200000,
           items: []

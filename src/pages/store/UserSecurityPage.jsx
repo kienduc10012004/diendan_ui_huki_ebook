@@ -218,20 +218,20 @@ export default function UserSecurityPage() {
                           <div className="text-xs font-bold text-on-surface flex items-center gap-1.5">
                             <span>{session.device}</span>
                             {session.isCurrent && (
-                              <span className="text-[9px] bg-theme-secondary-subtle text-theme-primary px-1.5 py-0.2 rounded font-bold">
+                              <span className="text-[10px] bg-theme-secondary-subtle text-theme-primary px-2 py-0.5 rounded font-bold">
                                 Thiết bị này
                               </span>
                             )}
                           </div>
-                          <div className="text-[10px] text-on-surface-variant mt-0.5">{session.location}</div>
-                          <div className="text-[10px] text-theme-secondary font-semibold mt-0.5">{session.lastActive}</div>
+                          <div className="text-xs text-on-surface-variant mt-0.5">{session.location}</div>
+                          <div className="text-xs text-theme-secondary font-semibold mt-0.5">{session.lastActive}</div>
                         </div>
                       </div>
 
                       {!session.isCurrent && (
                         <button
                           onClick={() => handleRevokeSession(session.id, session.device)}
-                          className="text-[11px] font-bold text-[#ac2c19] hover:underline"
+                          className="text-xs font-bold text-theme-accent hover:underline"
                         >
                           Đăng xuất
                         </button>

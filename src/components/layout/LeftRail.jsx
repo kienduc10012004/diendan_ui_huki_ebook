@@ -12,7 +12,7 @@ export default function LeftRail() {
   ];
 
   return (
-    <aside className="hidden md:flex flex-col items-center justify-between w-16 bg-white border-r border-[#e8e5df] py-4 shrink-0 h-[calc(100vh-64px)] sticky top-16 z-30">
+    <aside className="hidden md:flex flex-col items-center justify-between w-16 bg-theme-surface border-r border-theme-border py-4 shrink-0 h-[calc(100vh-64px)] sticky top-16 z-30">
       <div className="flex flex-col items-center gap-3 w-full px-2">
         {navItems.map((item) => (
           <NavLink
@@ -22,8 +22,8 @@ export default function LeftRail() {
             className={({ isActive }) =>
               `flex items-center justify-center w-12 h-12 rounded-xl transition-all ${
                 isActive
-                  ? 'bg-[#003b2b] text-white shadow-md'
-                  : 'text-[#6b7280] hover:bg-[#f2fbf9] hover:text-[#003b2b]'
+                  ? 'bg-theme-primary text-white shadow-md'
+                  : 'text-theme-text-muted hover:bg-theme-secondary-subtle hover:text-theme-primary'
               }`
             }
             title={item.label}
@@ -36,7 +36,7 @@ export default function LeftRail() {
       <div className="flex flex-col items-center gap-2">
         <NavLink
           to="/seller/edge-cases"
-          className="w-10 h-10 rounded-lg flex items-center justify-center text-[#6b7280] hover:text-[#ac2c19] hover:bg-[#f2fbf9] transition-colors"
+          className="w-10 h-10 rounded-lg flex items-center justify-center text-theme-text-muted hover:text-theme-accent hover:bg-theme-secondary-subtle transition-colors"
           title="Thư viện trạng thái & Edge cases"
         >
           <span className="material-symbols-outlined text-xl">grid_view</span>

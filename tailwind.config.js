@@ -94,6 +94,7 @@ export default {
       },
       fontFamily: {
         serif: ["Newsreader", "serif"],
+        editorial: ["Newsreader", "serif"],
         sans: ["Be Vietnam Pro", "sans-serif"],
         "body-lg": ["Be Vietnam Pro"],
         "body-sm": ["Be Vietnam Pro"],
