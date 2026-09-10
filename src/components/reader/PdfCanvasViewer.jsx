@@ -165,7 +165,7 @@ export default function PdfCanvasViewer({ pdfUrl, bookTitle = 'Con Đường Ph�
     }
   }, [pdfDoc, currentPage, zoom, viewMode, renderPage]);
 
-  // Vẽ lại highlights khi có thay đổi
+  // Vẽ lại highlights khi có thay
   useEffect(() => {
     if (overlayRef1.current) {
       const dpr = window.devicePixelRatio || 1.5;
@@ -375,13 +375,12 @@ export default function PdfCanvasViewer({ pdfUrl, bookTitle = 'Con Đường Ph�
               onPointerMove={(e) => handlePointerMove(e, currentPage, overlayRef1.current)}
               onPointerUp={(e) => handlePointerUp(e, currentPage, overlayRef1.current)}
               onPointerLeave={(e) => handlePointerUp(e, currentPage, overlayRef1.current)}
-              className={`absolute inset-0 z-20 ${
-                isHighlighterActive
+              className={`absolute inset-0 z-20 ${isHighlighterActive
                   ? highlighterMode === 'eraser'
                     ? 'cursor-pointer'
                     : 'cursor-crosshair'
                   : 'pointer-events-none'
-              }`}
+                }`}
             />
 
             {/* Watermark DRM Layer */}
@@ -404,13 +403,12 @@ export default function PdfCanvasViewer({ pdfUrl, bookTitle = 'Con Đường Ph�
                 onPointerMove={(e) => handlePointerMove(e, currentPage + 1, overlayRef2.current)}
                 onPointerUp={(e) => handlePointerUp(e, currentPage + 1, overlayRef2.current)}
                 onPointerLeave={(e) => handlePointerUp(e, currentPage + 1, overlayRef2.current)}
-                className={`absolute inset-0 z-20 ${
-                  isHighlighterActive
+                className={`absolute inset-0 z-20 ${isHighlighterActive
                     ? highlighterMode === 'eraser'
                       ? 'cursor-pointer'
                       : 'cursor-crosshair'
                     : 'pointer-events-none'
-                }`}
+                  }`}
               />
 
               {/* Watermark DRM Layer */}
