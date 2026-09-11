@@ -158,7 +158,7 @@ export default function AdminDashboardPage() {
         <div className="lg:col-span-7 bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h2 className="text-sm sm:text-base font-bold text-gray-900">Tiến Trình Phát Hành &amp; Doanh Số Sàn (Sales Pipeline)</h2>
+              <h2 className="text-sm sm:text-base font-bold text-gray-900">Tiến Trình Phát Hành &amp; Phễu Doanh Số Sàn</h2>
               <p className="text-[11px] text-gray-500 mt-0.5">Phễu tổng hợp lưu lượng từ các NXB đối tác</p>
             </div>
             <div className="flex items-center gap-1 text-xs font-semibold text-gray-600 bg-gray-50 border border-gray-200 px-2.5 py-1 rounded-lg">
@@ -193,7 +193,7 @@ export default function AdminDashboardPage() {
         <div className="lg:col-span-5 bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
           <div className="flex items-center justify-between mb-3">
             <div>
-              <h2 className="text-sm sm:text-base font-bold text-gray-900">Phân Bổ Định Dạng Bán (Deal Stages)</h2>
+              <h2 className="text-sm sm:text-base font-bold text-gray-900">Cơ Cấu Doanh Thu Theo Định Dạng Sách</h2>
               <p className="text-[11px] text-gray-500 mt-0.5">Tỷ trọng doanh thu theo từng dòng xuất bản</p>
             </div>
             <Link to="/admin/deals" className="text-xs font-bold text-[#00875A] hover:underline">
@@ -252,7 +252,7 @@ export default function AdminDashboardPage() {
         <div className="lg:col-span-7 bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h2 className="text-sm sm:text-base font-bold text-gray-900">Tăng Trưởng Độc Giả Mới (Customer Acquisition)</h2>
+              <h2 className="text-sm sm:text-base font-bold text-gray-900">Tăng Trưởng Bạn Đọc Mới Toàn Sàn</h2>
               <p className="text-[11px] text-gray-500 mt-0.5">Số lượng tài khoản bạn đọc mới gia nhập sàn trong 6 tháng qua</p>
             </div>
             <div className="flex items-center gap-1 text-xs font-semibold text-gray-600 bg-gray-50 border border-gray-200 px-2.5 py-1 rounded-lg">
@@ -313,7 +313,7 @@ export default function AdminDashboardPage() {
         <div className="lg:col-span-5 bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h2 className="text-sm sm:text-base font-bold text-gray-900">Phễu Chuyển Đổi Sàn (Conversion Funnel)</h2>
+              <h2 className="text-sm sm:text-base font-bold text-gray-900">Tỷ Lệ Chuyển Đổi Độc Giả Mua Hàng</h2>
               <p className="text-[11px] text-gray-500 mt-0.5">Tỷ lệ hoàn tất thanh toán từ lượt xem sách</p>
             </div>
             <Link to="/admin/reports" className="text-xs font-bold text-[#00875A] hover:underline">

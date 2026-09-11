@@ -62,6 +62,17 @@ const SellerCorrection = page(() => import('./pages/seller/SellerCorrection'));
 const EdgeCasesLibrary = page(() => import('./pages/seller/EdgeCasesLibrary'));
 const MessengerPage = page(() => import('./pages/store/MessengerPage'));
 const AdminDashboardPage = page(() => import('./pages/admin/AdminDashboardPage'));
+const AdminPublishersPage = page(() => import('./pages/admin/AdminPublishersPage'));
+const AdminBookModerationPage = page(() => import('./pages/admin/AdminBookModerationPage'));
+const AdminUsersPage = page(() => import('./pages/admin/AdminUsersPage'));
+const AdminDrmVaultPage = page(() => import('./pages/admin/AdminDrmVaultPage'));
+const AdminFinancePage = page(() => import('./pages/admin/AdminFinancePage'));
+const AdminReportsPage = page(() => import('./pages/admin/AdminReportsPage'));
+const AdminMarketingPage = page(() => import('./pages/admin/AdminMarketingPage'));
+const AdminCalendarPage = page(() => import('./pages/admin/AdminCalendarPage'));
+const AdminIntegrationsPage = page(() => import('./pages/admin/AdminIntegrationsPage'));
+const AdminSettingsPage = page(() => import('./pages/admin/AdminSettingsPage'));
+const AdminSupportPage = page(() => import('./pages/admin/AdminSupportPage'));
 
 export default function App() {
   return (
@@ -172,8 +183,6 @@ export default function App() {
                     <Route path="/library" element={<LibraryPage />} />
                     <Route path="/profile" element={<ProfilePage />} />
                   </Route>
-
-                  <Route path="*" element={<NotFound />} />
                 </Route>
 
                 {/* 8. KHU VỰC QUẢN TRỊ NGƯỜI BÁN ĐÃ DUYỆT (SellerLayout chuẩn) */}
@@ -195,22 +204,31 @@ export default function App() {
                   </Route>
                 </Route>
 
-                {/* 9. KHU VỰC SUPER ADMIN CRM DASHBOARD (AdminLayout chuẩn macOS / Modern CRM) */}
+                {/* 9. KHU VỰC SUPER ADMIN CRM DASHBOARD (AdminLayout chuẩn Edge-to-Edge Full Screen) */}
                 <Route element={<AdminLayout />}>
                   <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
                   <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
-                  <Route path="/admin/leads" element={<AdminDashboardPage />} />
-                  <Route path="/admin/contacts" element={<AdminDashboardPage />} />
-                  <Route path="/admin/companies" element={<AdminDashboardPage />} />
-                  <Route path="/admin/deals" element={<AdminDashboardPage />} />
-                  <Route path="/admin/tasks" element={<AdminDashboardPage />} />
-                  <Route path="/admin/calendar" element={<AdminDashboardPage />} />
-                  <Route path="/admin/reports" element={<AdminDashboardPage />} />
-                  <Route path="/admin/automation" element={<AdminDashboardPage />} />
-                  <Route path="/admin/integrations" element={<AdminDashboardPage />} />
-                  <Route path="/admin/settings" element={<AdminDashboardPage />} />
-                  <Route path="/admin/support" element={<AdminDashboardPage />} />
+                  <Route path="/admin/publishers" element={<AdminPublishersPage />} />
+                  <Route path="/admin/companies" element={<AdminPublishersPage />} />
+                  <Route path="/admin/leads" element={<AdminPublishersPage />} />
+                  <Route path="/admin/tasks" element={<AdminBookModerationPage />} />
+                  <Route path="/admin/moderation" element={<AdminBookModerationPage />} />
+                  <Route path="/admin/drm" element={<AdminDrmVaultPage />} />
+                  <Route path="/admin/users" element={<AdminUsersPage />} />
+                  <Route path="/admin/contacts" element={<AdminUsersPage />} />
+                  <Route path="/admin/deals" element={<AdminFinancePage />} />
+                  <Route path="/admin/finance" element={<AdminFinancePage />} />
+                  <Route path="/admin/reports" element={<AdminReportsPage />} />
+                  <Route path="/admin/automation" element={<AdminMarketingPage />} />
+                  <Route path="/admin/marketing" element={<AdminMarketingPage />} />
+                  <Route path="/admin/calendar" element={<AdminCalendarPage />} />
+                  <Route path="/admin/integrations" element={<AdminIntegrationsPage />} />
+                  <Route path="/admin/settings" element={<AdminSettingsPage />} />
+                  <Route path="/admin/support" element={<AdminSupportPage />} />
                 </Route>
+
+                {/* 10. ROOT STANDALONE 404 NOT FOUND */}
+                <Route path="*" element={<NotFound />} />
               </Routes>
               </Suspense>
               </AppErrorBoundary>
@@ -242,20 +260,39 @@ function NavigateOrderAlias({ suffix }) {
 
 function NotFound() {
   return (
-    <div className="min-h-[60vh] flex items-center justify-center bg-background font-body-md py-16">
-      <div className="text-center px-6">
-        <div className="text-7xl font-editorial font-bold text-primary mb-4">404</div>
-        <h1 className="text-2xl font-headline-md text-on-surface mb-2">Không tìm thấy trang</h1>
-        <p className="text-on-surface-variant mb-6 max-w-md mx-auto">
-          Trang bạn đang tìm kiếm không tồn tại hoặc đã được chuyển sang danh mục khác trong hệ thống.
+    <div className="min-h-screen bg-[#0B1320] text-white flex items-center justify-center p-6 select-none font-sans">
+      <div className="text-center max-w-lg mx-auto">
+        <div className="w-20 h-20 rounded-3xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-6">
+          <span className="material-symbols-outlined text-4xl">travel_explore</span>
+        </div>
+        <div className="text-7xl font-editorial font-bold text-emerald-400 mb-3 tracking-tight">404</div>
+        <h1 className="text-2xl font-bold text-white mb-2 font-editorial">Không Tìm Thấy Trang Yêu Cầu</h1>
+        <p className="text-gray-400 text-xs sm:text-sm mb-8 leading-relaxed">
+          Đường dẫn bạn vừa truy cập không tồn tại hoặc đã được chuyển sang danh mục khác trong hệ sinh thái HUKI Ebook.
         </p>
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 bg-[#003b2b] text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-[#00523c] transition-colors shadow-sm"
-        >
-          <span className="material-symbols-outlined text-lg">arrow_back</span>
-          Quay về Trang Chủ Sàn TMĐT
-        </Link>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 bg-[#00875A] hover:bg-[#00734c] text-white px-5 py-3 rounded-xl font-bold text-xs transition-all shadow-sm cursor-pointer"
+          >
+            <span className="material-symbols-outlined text-[18px]">storefront</span>
+            Về Trang Chủ Sàn TMĐT
+          </Link>
+          <Link
+            to="/admin/dashboard"
+            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-3 rounded-xl font-bold text-xs transition-colors border border-white/10 cursor-pointer"
+          >
+            <span className="material-symbols-outlined text-[18px]">dashboard</span>
+            Super Admin
+          </Link>
+          <Link
+            to="/seller/dashboard"
+            className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-3 rounded-xl font-bold text-xs transition-colors border border-white/10 cursor-pointer"
+          >
+            <span className="material-symbols-outlined text-[18px]">store</span>
+            Kênh Người Bán NXB
+          </Link>
+        </div>
       </div>
     </div>
   );
