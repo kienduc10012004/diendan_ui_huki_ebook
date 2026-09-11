@@ -284,21 +284,75 @@ export default function MessengerPage() {
   });
 
   return (
-    <div className="w-full h-full flex flex-1 overflow-hidden bg-white select-none font-sans">
-      
-      {/* ================= 1. LEFT COLUMN: CONVERSATION LIST (COLLAPSIBLE) ================= */}
-      <aside
-        className={`border-r border-gray-200 bg-white flex flex-col shrink-0 transition-all duration-300 relative ${
-          isLeftCollapsed ? 'w-[72px]' : 'w-[280px] lg:w-[320px]'
-        }`}
-      >
-        {/* Left Header */}
-        <div className="p-3.5 border-b border-gray-100 flex items-center justify-between shrink-0">
-          {!isLeftCollapsed && (
-            <div className="flex items-center gap-2">
-              <h2 className="font-editorial text-xl font-bold text-gray-900 tracking-tight">Đoạn chat</h2>
+    <div className="h-screen w-screen flex flex-col overflow-hidden bg-white select-none font-sans">
+      {/* ================= TOP APP HEADER: BRAND & QUICK ACTIONS ================= */}
+      <header className="h-14 bg-white border-b border-gray-200 px-4 sm:px-6 flex items-center justify-between shrink-0 z-30 shadow-2xs">
+        <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#003B2B] to-[#006B50] flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
+              <span className="material-symbols-outlined text-[20px]">chat</span>
             </div>
-          )}
+            <div className="flex flex-col">
+              <span className="font-editorial text-base font-bold tracking-tight text-[#003B2B] leading-none">
+                HUKI Chat
+              </span>
+              <span className="text-[10px] uppercase font-bold tracking-wider text-[#6B7280]">
+                Tin Nhắn & Tư Vấn Đọc Sách
+              </span>
+            </div>
+          </Link>
+
+          <div className="h-4 w-px bg-gray-200 mx-2 hidden sm:block"></div>
+
+          <Link
+            to="/"
+            className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-[#003B2B] px-2.5 py-1.5 rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            <span className="material-symbols-outlined text-[16px]">arrow_back</span>
+            <span>Về Sàn Sách</span>
+          </Link>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Link
+            to="/books"
+            className="text-xs font-semibold text-gray-600 hover:text-[#003B2B] px-3 py-1.5 rounded-lg hover:bg-gray-100 transition-colors hidden md:inline-flex items-center gap-1"
+          >
+            <span className="material-symbols-outlined text-[16px]">menu_book</span>
+            <span>Khám phá sách</span>
+          </Link>
+          <Link
+            to="/cart"
+            className="text-xs font-semibold text-gray-600 hover:text-[#003B2B] px-3 py-1.5 rounded-lg hover:bg-gray-100 transition-colors inline-flex items-center gap-1"
+          >
+            <span className="material-symbols-outlined text-[16px]">shopping_cart</span>
+            <span>Giỏ hàng</span>
+          </Link>
+          <Link
+            to="/profile"
+            className="text-xs font-semibold text-gray-600 hover:text-[#003B2B] px-3 py-1.5 rounded-lg hover:bg-gray-100 transition-colors inline-flex items-center gap-1"
+          >
+            <span className="material-symbols-outlined text-[16px]">account_circle</span>
+            <span>Tài khoản</span>
+          </Link>
+        </div>
+      </header>
+
+      {/* ================= 3-COLUMN MESSENGER BODY ================= */}
+      <div className="flex-1 flex overflow-hidden min-h-0 relative">
+        {/* ================= 1. LEFT COLUMN: CONVERSATION LIST (COLLAPSIBLE) ================= */}
+        <aside
+          className={`border-r border-gray-200 bg-white flex flex-col shrink-0 transition-all duration-300 relative ${
+            isLeftCollapsed ? 'w-[72px]' : 'w-[280px] lg:w-[320px]'
+          }`}
+        >
+          {/* Left Header */}
+          <div className="p-3.5 border-b border-gray-100 flex items-center justify-between shrink-0">
+            {!isLeftCollapsed && (
+              <div className="flex items-center gap-2">
+                <h2 className="font-editorial text-xl font-bold text-gray-900 tracking-tight">Đoạn chat</h2>
+              </div>
+            )}
 
           {/* Toggle Collapse Left Button */}
           <button
