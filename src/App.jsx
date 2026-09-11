@@ -9,6 +9,8 @@ import Toast from './components/common/Toast';
 import AppErrorBoundary from './components/common/AppErrorBoundary';
 import RouteEffects from './components/common/RouteEffects';
 import AppLayout from './components/layout/AppLayout';
+import CheckoutLayout from './components/layout/CheckoutLayout';
+import SellerPortalLayout from './components/layout/SellerPortalLayout';
 import SellerLayout from './components/layout/SellerLayout';
 import { RequireAuth, RequireGuest, RequireSeller } from './components/auth/RouteGuards';
 
@@ -74,7 +76,7 @@ export default function App() {
               <AppErrorBoundary>
               <Suspense fallback={<PageLoading />}>
               <Routes>
-                {/* Authentication is intentionally outside the commerce shell. */}
+                {/* 1. KHU VỰC XÁC THỰC: Độc lập ngoài sàn TMĐT */}
                 <Route element={<RequireGuest />}>
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/register" element={<RegisterPage />} />
@@ -83,12 +85,40 @@ export default function App() {
                   <Route path="/reset-password" element={<ResetPasswordPage />} />
                 </Route>
 
-                {/* Standalone Fullscreen PDF / Ebook Reader */}
+                {/* 2. KHU VỰC TRÌNH ĐỌC SÁCH FULLSCREEN & STANDALONE (Tách biệt hoàn toàn) */}
                 <Route path="/read/:id" element={<ReaderPage />} />
                 <Route path="/read" element={<ReaderPage />} />
                 <Route path="/reader" element={<ReaderPage />} />
+                <Route path="/book/:id/preview" element={<BookPreviewPage />} />
 
-                {/* Public marketplace and community. */}
+                {/* 3. KHU VỰC CHAT TOÀN MÀN HÌNH (Full-height Messenger Workspace) */}
+                <Route path="/chat" element={<MessengerPage />} />
+                <Route path="/messages" element={<MessengerPage />} />
+                <Route path="/message" element={<Navigate to="/chat" replace />} />
+
+                {/* 4. KHU VỰC HÓA ĐƠN VAT CHUẨN IN ẤN A4 (Standalone Minimal View) */}
+                <Route element={<RequireAuth />}>
+                  <Route path="/orders/:id/invoice" element={<OrderInvoicePage />} />
+                  <Route path="/order/:id/invoice" element={<NavigateOrderAlias suffix="invoice" />} />
+                </Route>
+
+                {/* 5. KHU VỰC THANH TOÁN (Distraction-Free: Không Mega Sidebar) */}
+                <Route element={<RequireAuth />}>
+                  <Route element={<CheckoutLayout />}>
+                    <Route path="/checkout" element={<CheckoutPage />} />
+                    <Route path="/order-success" element={<OrderSuccessPage />} />
+                  </Route>
+                </Route>
+
+                {/* 6. KHU VỰC B2B PORTAL: GIỚI THIỆU & ĐĂNG KÝ NGƯỜI BÁN */}
+                <Route element={<SellerPortalLayout />}>
+                  <Route path="/seller" element={<SellerPortalPage />} />
+                  <Route element={<RequireAuth />}>
+                    <Route path="/seller/register" element={<SellerRegisterPage />} />
+                  </Route>
+                </Route>
+
+                {/* 7. KHU VỰC SÀN TMĐT, CỘNG ĐỒNG & KHÁCH HÀNG (AppLayout chuẩn có Header, Sidebar, Footer) */}
                 <Route element={<AppLayout />}>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/community" element={<CommunityPage />} />
@@ -105,7 +135,6 @@ export default function App() {
                   <Route path="/challenge" element={<ReadingChallengePage />} />
                   <Route path="/profile/challenge" element={<ReadingChallengePage />} />
                   <Route path="/books" element={<CatalogPage />} />
-                  <Route path="/book/:id/preview" element={<BookPreviewPage />} />
                   <Route path="/book/:id" element={<BookDetailPage />} />
                   <Route path="/book" element={<Navigate to="/books" replace />} />
                   <Route path="/shop/:id" element={<ShopPage />} />
@@ -120,19 +149,13 @@ export default function App() {
                   <Route path="/audio" element={<Navigate to="/audiobooks" replace />} />
                   <Route path="/podcasts" element={<Navigate to="/audiobooks" replace />} />
                   <Route path="/cart" element={<CartPage />} />
-                  <Route path="/chat" element={<MessengerPage />} />
-                  <Route path="/messages" element={<MessengerPage />} />
-                  <Route path="/message" element={<Navigate to="/chat" replace />} />
-                  <Route path="/seller" element={<SellerPortalPage />} />
 
-                  {/* Authenticated customer area. */}
+                  {/* Authenticated customer profile & orders */}
                   <Route element={<RequireAuth />}>
-                    <Route path="/orders/:id/invoice" element={<OrderInvoicePage />} />
                     <Route path="/orders/:id/review" element={<OrderReviewPage />} />
                     <Route path="/orders/:id" element={<OrderTrackingPage />} />
                     <Route path="/orders" element={<OrderTrackingPage />} />
                     <Route path="/order" element={<Navigate to="/orders" replace />} />
-                    <Route path="/order/:id/invoice" element={<NavigateOrderAlias suffix="invoice" />} />
                     <Route path="/order/:id/review" element={<NavigateOrderAlias suffix="review" />} />
                     <Route path="/order/tracking/:id" element={<NavigateOrderAlias />} />
                     <Route path="/order/:id/return" element={<NavigateOrderAlias suffix="return" />} />
@@ -145,16 +168,13 @@ export default function App() {
                     <Route path="/settings/security" element={<UserSecurityPage />} />
                     <Route path="/drm/devices" element={<Navigate to="/settings/devices" replace />} />
                     <Route path="/library" element={<LibraryPage />} />
-                    <Route path="/checkout" element={<CheckoutPage />} />
-                    <Route path="/order-success" element={<OrderSuccessPage />} />
                     <Route path="/profile" element={<ProfilePage />} />
-                    <Route path="/seller/register" element={<SellerRegisterPage />} />
                   </Route>
 
                   <Route path="*" element={<NotFound />} />
                 </Route>
 
-                {/* Seller workspace: authenticated and role-gated. */}
+                {/* 8. KHU VỰC QUẢN TRỊ NGƯỜI BÁN ĐÃ DUYỆT (SellerLayout chuẩn) */}
                 <Route element={<RequireAuth />}>
                   <Route element={<RequireSeller />}>
                     <Route element={<SellerLayout />}>
