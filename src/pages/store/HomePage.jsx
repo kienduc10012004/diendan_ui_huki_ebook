@@ -474,224 +474,221 @@ export default function HomePage() {
   const handleToggleAuthorFollow = (authorName) => {
     if (followedAuthors.includes(authorName)) {
       setFollowedAuthors(prev => prev.filter(a => a !== authorName));
-      showToast(`Đã bỏ theo dõi tác giả ${authorName}`, 'info');
-    } else {
-      setFollowedAuthors(prev => [...prev, authorName]);
-      showToast(`Đang theo dõi tác giả ${authorName}`, 'success');
-    }
-  };
-
-  // Handle Search Submit
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    if (searchKeyword.trim()) {
-      navigate(`/books?q=${encodeURIComponent(searchKeyword.trim())}`);
-    }
-  };
-
-  return (
-    <div className="w-full max-w-[1520px] mx-auto px-3 sm:px-5 lg:px-8 py-5 flex flex-col gap-8 sm:gap-10">
-
-      {/* =========================================================================
-          SECTION 1: BENTO GRID HERO (1 LỚN 65% + 2 NHỎ 35%) & TRUST BADGES
+      showToast(`Đã bỏ theo dõi tác giả ${authorName}`,       {/* =========================================================================
+          SECTION 1: HERO 3 KHỐI CHUẨN TMĐT (MENU DỌC + HERO SLIDER + 2 BANNER PHỤ)
       ========================================================================= */}
-      <section className="flex flex-col gap-3">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch">
+      <section className="flex flex-col gap-3.5">
+        <div className="grid grid-cols-12 gap-3.5 items-stretch">
           
-          {/* Main Large Hero Banner (65% width) */}
-          <div 
-            style={{ background: 'linear-gradient(135deg, var(--theme-hero-from, #00382B) 0%, var(--theme-hero-via, #004D38) 60%, var(--theme-hero-to, #00271E) 100%)' }}
-            className="lg:col-span-8 rounded-2xl p-6 sm:p-8 lg:p-10 text-white relative overflow-hidden flex flex-col justify-between shadow-md border border-white/10"
-          >
-            <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-emerald-400/10 blur-3xl pointer-events-none"></div>
-            <div className="absolute -left-10 bottom-0 w-64 h-64 rounded-full bg-amber-400/10 blur-3xl pointer-events-none"></div>
-
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-emerald-200 text-[12px] font-semibold mb-3">
-                <span className="material-symbols-outlined text-[15px] text-amber-300">auto_awesome</span>
-                <span>Hội Sách Tri Thức Mùa Xuất Bản 2026</span>
+          {/* 1.1 CỘT TRÁI: MENU DANH MỤC DỌC (Hiện trên Desktop lg+) */}
+          <div className="hidden lg:flex lg:col-span-3 flex-col bg-white rounded-2xl border border-[#E8E5DF] p-3 shadow-xs justify-between">
+            <div className="space-y-0.5">
+              <div className="px-3 py-2 text-[11px] font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1.5 border-b border-gray-100 mb-1">
+                <span className="material-symbols-outlined text-[16px] text-emerald-700">menu_book</span>
+                <span>Danh Mục Sách</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight max-w-xl">
-                Mỗi cuốn sách một thế giới mới
-              </h1>
-              <p className="text-[13.5px] sm:text-[14.5px] text-white/85 max-w-lg mt-2 leading-relaxed">
-                Khám phá hơn 50.000 đầu sách giấy &amp; Ebook bản quyền từ các Nhà xuất bản uy tín hàng đầu. Đọc tức thì trên mọi thiết bị.
-              </p>
-
-              {/* Compact Search Bar inside Hero */}
-              <form onSubmit={handleSearchSubmit} className="mt-5 max-w-xl bg-surface-container-lowest rounded-xl p-1.5 shadow-lg flex items-center gap-2 border border-white/20">
-                <span className="material-symbols-outlined text-on-surface-variant text-[20px] ml-2.5">search</span>
-                <input 
-                  type="text" 
-                  value={searchKeyword}
-                  onChange={(e) => setSearchKeyword(e.target.value)}
-                  placeholder="Tìm tên sách, tác giả, nhà xuất bản, ISBN..." 
-                  className="w-full bg-transparent border-none text-on-surface text-[13.5px] focus:outline-none placeholder:text-on-surface-variant/60"
-                />
-                <button 
-                  type="submit"
-                  className="px-5 py-2.5 rounded-lg bg-secondary-container text-on-secondary-container text-[13px] font-bold hover:brightness-105 transition-all shrink-0 flex items-center gap-1"
+              {[
+                { name: 'Văn học & Tiểu thuyết', to: '/books?category=van-hoc', icon: 'auto_stories' },
+                { name: 'Kinh tế & Đầu tư', to: '/books?category=kinh-te', icon: 'trending_up' },
+                { name: 'Kỹ năng sống & Tư duy', to: '/books?category=ky-nang', icon: 'psychology' },
+                { name: 'Công nghệ & AI 2026', to: '/books?category=cong-nghe', icon: 'smart_toy' },
+                { name: 'Thiếu nhi & Tuổi trẻ', to: '/books?category=thieu-nhi', icon: 'child_care' },
+                { name: 'Manga & Sách tranh', to: '/books?category=manga', icon: 'menu_book' },
+                { name: 'Ngoại ngữ & Du học', to: '/books?category=ngoai-ngu', icon: 'translate' },
+                { name: 'Ebook DRM Bản quyền', to: '/books?format=ebook', icon: 'tablet_mac', badge: 'Hot' },
+              ].map((cat, idx) => (
+                <Link
+                  key={idx}
+                  to={cat.to}
+                  className="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-gray-700 hover:text-emerald-800 hover:bg-emerald-50/70 transition-all group"
                 >
-                  <span>Tìm kiếm</span>
-                  <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-                </button>
-              </form>
+                  <div className="flex items-center gap-2.5">
+                    <span className="material-symbols-outlined text-[18px] text-gray-400 group-hover:text-emerald-700 transition-colors">{cat.icon}</span>
+                    <span>{cat.name}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    {cat.badge && (
+                      <span className="bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.2 rounded-full uppercase">
+                        {cat.badge}
+                      </span>
+                    )}
+                    <span className="material-symbols-outlined text-[14px] text-gray-300 group-hover:text-emerald-600 group-hover:translate-x-0.5 transition-all">chevron_right</span>
+                  </div>
+                </Link>
+              ))}
             </div>
-
-            {/* Quick Suggestions Strip */}
-            <div className="relative z-10 mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center gap-1.5 text-[11.5px] text-white/90">
-              <span className="text-emerald-300 font-semibold">Gợi ý hot:</span>
-              <Link to="/books?q=Tâm lý học" className="hover:text-emerald-200 underline decoration-white/30">Tâm lý học</Link>
-              <span className="opacity-40">•</span>
-              <Link to="/books?q=Atomic Habits" className="hover:text-emerald-200 underline decoration-white/30">Atomic Habits</Link>
-              <span className="opacity-40">•</span>
-              <Link to="/books?q=Kinh doanh" className="hover:text-emerald-200 underline decoration-white/30">Kinh doanh</Link>
-              <span className="opacity-40">•</span>
-              <Link to="/books?q=Trí tuệ nhân tạo" className="hover:text-emerald-200 underline decoration-white/30">AI 2026</Link>
+            
+            <div className="pt-2 border-t border-gray-100 px-1">
+              <Link to="/books" className="text-[11px] font-bold text-emerald-800 hover:underline flex items-center justify-between">
+                <span>Xem tất cả danh mục</span>
+                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              </Link>
             </div>
           </div>
 
-          {/* 2 Sub Banners Stacked (35% width) */}
-          <div className="lg:col-span-4 flex flex-col gap-3.5">
-            {/* Sub Banner 1 */}
-            <div className="flex-1 rounded-2xl p-5 bg-gradient-to-br from-amber-600 via-amber-700 to-amber-900 text-white relative overflow-hidden flex flex-col justify-between shadow-sm border border-amber-500/20 group cursor-pointer">
+          {/* 1.2 CỘT GIỮA: BANNER HERO LỚN (6 Cột trên LG/XL) */}
+          <div 
+            style={{ background: 'linear-gradient(135deg, var(--theme-hero-from, #00382B) 0%, var(--theme-hero-via, #004D38) 60%, var(--theme-hero-to, #00271E) 100%)' }}
+            className="col-span-12 lg:col-span-6 rounded-2xl p-6 sm:p-8 lg:p-9 text-white relative overflow-hidden flex flex-col justify-between shadow-md border border-white/10 min-h-[320px]"
+          >
+            <div className="absolute -right-16 -top-16 w-72 h-72 rounded-full bg-emerald-400/15 blur-3xl pointer-events-none"></div>
+            <div className="absolute -left-10 bottom-0 w-64 h-64 rounded-full bg-amber-400/10 blur-3xl pointer-events-none"></div>
+
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-emerald-200 text-[11.5px] font-semibold mb-3">
+                <span className="material-symbols-outlined text-[15px] text-amber-300">auto_awesome</span>
+                <span>Hội Sách Tri Thức Mùa Xuất Bản 2026</span>
+              </div>
+              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white leading-tight max-w-md font-editorial">
+                Chăm sóc tâm hồn – Tỏa sáng cùng tri thức
+              </h1>
+              <p className="text-xs sm:text-[13px] text-white/85 max-w-sm mt-2 leading-relaxed">
+                Hơn 50.000 đầu sách giấy tuyển chọn &amp; Ebook bản quyền từ các NXB uy tín. Giao nhanh 2H nội thành.
+              </p>
+
+              <div className="flex items-center gap-3 mt-4">
+                <Link
+                  to="/books"
+                  className="px-5 py-2.5 rounded-xl bg-[#c58f5e] hover:bg-[#b07d4f] text-white text-xs font-bold shadow-md transition-all inline-flex items-center gap-1.5"
+                >
+                  <span>Khám phá ngay</span>
+                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                </Link>
+                <Link
+                  to="/books?format=ebook"
+                  className="px-4 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-semibold backdrop-blur-md border border-white/20 transition-all"
+                >
+                  Đọc thử Ebook
+                </Link>
+              </div>
+            </div>
+
+            {/* Pagination Dots */}
+            <div className="relative z-10 pt-4 flex items-center justify-center gap-2">
+              <span className="w-6 h-2 rounded-full bg-white transition-all"></span>
+              <span className="w-2 h-2 rounded-full bg-white/40 hover:bg-white/70 transition-all cursor-pointer"></span>
+              <span className="w-2 h-2 rounded-full bg-white/40 hover:bg-white/70 transition-all cursor-pointer"></span>
+              <span className="w-2 h-2 rounded-full bg-white/40 hover:bg-white/70 transition-all cursor-pointer"></span>
+            </div>
+          </div>
+
+          {/* 1.3 CỘT PHẢI: 2 BANNER PHỤ XẾP CHỒNG (3 Cột trên LG/XL) */}
+          <div className="col-span-12 lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3.5">
+            {/* Sub Banner 1: Đọc sách mỗi ngày */}
+            <div className="flex-1 rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-[#FAF3EE] to-[#F5ECE4] border border-[#E8E0D7] text-[#17201F] relative overflow-hidden flex flex-col justify-between shadow-2xs group cursor-pointer">
               <div className="relative z-10">
-                <span className="bg-white/20 backdrop-blur-sm text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded-md">
-                  TOP 1 EBOOK PHÁT HÀNH
+                <span className="bg-[#003B2B]/10 text-[#003B2B] text-[10px] uppercase font-bold px-2 py-0.5 rounded-md">
+                  TOP 1 BÁN CHẠY
                 </span>
-                <h3 className="text-[17px] font-bold mt-2 leading-snug group-hover:text-amber-200 transition-colors">
-                  Con Đường Phía Trước – Bill Gates
+                <h3 className="text-[15px] font-bold mt-2 leading-snug group-hover:text-[#003B2B] transition-colors font-editorial">
+                  Đọc Sách Mỗi Ngày
                 </h3>
-                <p className="text-[12px] text-white/80 mt-1 line-clamp-2">
-                  Bản quyền số độc quyền tại HUKI. Đọc thử 20 trang đầu miễn phí.
+                <p className="text-[11.5px] text-[#6B7280] mt-1 line-clamp-2">
+                  Atomic Habits &amp; Tâm Lý Học Về Tiền ưu đãi 25%.
                 </p>
               </div>
               <Link 
-                to="/book/con-duong-phia-truoc" 
-                className="relative z-10 mt-3 inline-flex items-center gap-1 text-[12.5px] font-bold text-amber-200 group-hover:translate-x-1 transition-transform"
+                to="/book/atomic-habits" 
+                className="relative z-10 mt-3 inline-flex items-center gap-1 text-[12px] font-bold text-[#003B2B] group-hover:translate-x-1 transition-transform"
               >
-                <span>Đọc thử ngay</span>
-                <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                <span>Xem ngay</span>
+                <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
               </Link>
             </div>
 
-            {/* Sub Banner 2 */}
-            <div className="flex-1 rounded-2xl p-5 bg-gradient-to-br from-teal-800 via-emerald-900 to-slate-950 text-white relative overflow-hidden flex flex-col justify-between shadow-sm border border-teal-500/20 group cursor-pointer">
+            {/* Sub Banner 2: Combo Hybrid */}
+            <div className="flex-1 rounded-2xl p-4 sm:p-5 bg-gradient-to-br from-[#E6F4F0] to-[#D4ECE5] border border-[#C5E4DB] text-[#17201F] relative overflow-hidden flex flex-col justify-between shadow-2xs group cursor-pointer">
               <div className="relative z-10">
-                <span className="bg-emerald-400 text-emerald-950 text-[10px] uppercase font-bold px-2 py-0.5 rounded-md">
-                  ĐẠI TIỆC COMBO HYBRID
+                <span className="bg-emerald-800 text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded-md">
+                  COMBO HYBRID
                 </span>
-                <h3 className="text-[17px] font-bold mt-2 leading-snug group-hover:text-emerald-300 transition-colors">
-                  Mua Sách Giấy Tặng Ebook Đọc Ngay
+                <h3 className="text-[15px] font-bold mt-2 leading-snug group-hover:text-emerald-900 transition-colors font-editorial">
+                  Sách In Tặng Ebook
                 </h3>
-                <p className="text-[12px] text-white/80 mt-1 line-clamp-2">
-                  Tiết kiệm đến 35% khi mua trọn bộ combo sách tư duy &amp; tài chính.
+                <p className="text-[11.5px] text-[#6B7280] mt-1 line-clamp-2">
+                  Tiết kiệm đến 35% khi mua trọn bộ ấn phẩm độc quyền.
                 </p>
               </div>
               <Link 
                 to="/books?format=hybrid" 
-                className="relative z-10 mt-3 inline-flex items-center gap-1 text-[12.5px] font-bold text-emerald-300 group-hover:translate-x-1 transition-transform"
+                className="relative z-10 mt-3 inline-flex items-center gap-1 text-[12px] font-bold text-emerald-900 group-hover:translate-x-1 transition-transform"
               >
-                <span>Xem bộ sưu tập</span>
-                <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                <span>Xem ngay</span>
+                <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Compact Trust Badges Strip (44px height) */}
-        <div className="w-full bg-surface-container-lowest rounded-xl p-3 border border-outline-variant/30 grid grid-cols-2 md:grid-cols-4 gap-3 text-[12px] font-medium text-on-surface shadow-2xs">
-          <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-tertiary text-[18px]">verified_user</span>
-            <span>100% Sách Thật &amp; Bản Quyền</span>
+        {/* 4 CAM KẾT VÀNG (TRUST BADGES ROW CHUẨN ẢNH) */}
+        <div className="w-full bg-white rounded-2xl p-4 border border-[#E8E5DF] grid grid-cols-2 lg:grid-cols-4 gap-4 text-xs shadow-2xs">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-800 flex items-center justify-center shrink-0 border border-emerald-100">
+              <span className="material-symbols-outlined text-[20px]">verified_user</span>
+            </div>
+            <div>
+              <div className="font-bold text-[#17201F]">Sản phẩm chính hãng</div>
+              <div className="text-[11px] text-[#6B7280]">Cam kết chất lượng 100%</div>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-tertiary text-[18px]">local_shipping</span>
-            <span>Freeship Toàn Quốc Từ 150k</span>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-800 flex items-center justify-center shrink-0 border border-blue-100">
+              <span className="material-symbols-outlined text-[20px]">local_shipping</span>
+            </div>
+            <div>
+              <div className="font-bold text-[#17201F]">Giao nhanh 2 giờ</div>
+              <div className="text-[11px] text-[#6B7280]">Nội thành HN &amp; TP.HCM</div>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-tertiary text-[18px]">devices</span>
-            <span>Đọc Ebook Tức Thì DRM v3.4</span>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-amber-50 text-amber-800 flex items-center justify-center shrink-0 border border-amber-100">
+              <span className="material-symbols-outlined text-[20px]">cached</span>
+            </div>
+            <div>
+              <div className="font-bold text-[#17201F]">Đổi trả dễ dàng</div>
+              <div className="text-[11px] text-[#6B7280]">Trong vòng 7 ngày</div>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-tertiary text-[18px]">replay</span>
-            <span>Đổi Trả Dễ Dàng Trong 7 Ngày</span>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-rose-50 text-rose-800 flex items-center justify-center shrink-0 border border-rose-100">
+              <span className="material-symbols-outlined text-[20px]">favorite</span>
+            </div>
+            <div>
+              <div className="font-bold text-[#17201F]">Tư vấn tận tâm</div>
+              <div className="text-[11px] text-[#6B7280]">Hỗ trợ độc giả 24/7</div>
+            </div>
           </div>
         </div>
-      </section>
 
-      {/* =========================================================================
-          SECTION 2: DẢI GOM MÃ GIẢM GIÁ 1-CHẠM (1-CLICK VOUCHER STRIP)
-      ========================================================================= */}
-      <section className="bg-surface-container-low/70 rounded-2xl p-3.5 sm:p-4 border border-outline-variant/30">
-        <div className="flex items-center justify-between mb-2.5">
-          <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-primary text-[20px]">confirmation_number</span>
-            <h2 className="text-[14px] sm:text-[15px] font-bold text-on-surface">Mã Giảm Giá &amp; Ưu Đãi Hôm Nay</h2>
-            <span className="text-[11px] text-on-surface-variant hidden sm:inline">• Thu thập mã trước khi mua sắm</span>
-          </div>
-          <span className="text-[12px] text-tertiary font-semibold">Tự động áp dụng khi thanh toán</span>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
-          {voucherList.map((v) => {
-            const isSaved = savedVouchers.includes(v.code);
-            return (
-              <div 
-                key={v.code}
-                className="bg-surface-container-lowest rounded-xl p-2.5 border border-dashed border-outline-variant/60 flex items-center justify-between gap-2 shadow-2xs hover:border-tertiary/60 transition-all"
+        {/* 8 BUBBLE DANH MỤC TRÒN (CIRCULAR CATEGORY BUBBLES CHUẨN ẢNH) */}
+        <div className="w-full bg-white rounded-2xl p-4 sm:p-5 border border-[#E8E5DF] shadow-2xs">
+          <div className="grid grid-cols-4 sm:grid-cols-8 gap-3 sm:gap-4">
+            {[
+              { name: 'Văn học', icon: 'auto_stories', link: '/books?category=van-hoc', color: 'bg-emerald-50 text-emerald-700 border-emerald-200/60' },
+              { name: 'Kinh tế', icon: 'trending_up', link: '/books?category=kinh-te', color: 'bg-blue-50 text-blue-700 border-blue-200/60' },
+              { name: 'Kỹ năng sống', icon: 'psychology', link: '/books?category=ky-nang', color: 'bg-amber-50 text-amber-700 border-amber-200/60' },
+              { name: 'Ebook DRM', icon: 'tablet_mac', link: '/books?format=ebook', color: 'bg-teal-50 text-teal-700 border-teal-200/60' },
+              { name: 'Combo Hybrid', icon: 'layers', link: '/books?format=hybrid', color: 'bg-purple-50 text-purple-700 border-purple-200/60' },
+              { name: 'Thiếu nhi', icon: 'child_care', link: '/books?category=thieu-nhi', color: 'bg-rose-50 text-rose-700 border-rose-200/60' },
+              { name: 'Công nghệ & AI', icon: 'smart_toy', link: '/books?category=cong-nghe', color: 'bg-indigo-50 text-indigo-700 border-indigo-200/60' },
+              { name: 'Manga - Comic', icon: 'menu_book', link: '/books?category=manga', color: 'bg-orange-50 text-orange-700 border-orange-200/60' }
+            ].map((bubble, i) => (
+              <Link
+                key={i}
+                to={bubble.link}
+                className="flex flex-col items-center text-center group cursor-pointer"
               >
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-[18px]">{v.icon}</span>
-                  </div>
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-[12px] font-bold text-primary">{v.badge}</span>
-                      <span className="text-[10px] text-on-surface-variant font-mono bg-surface-container px-1 py-0.2 rounded">{v.code}</span>
-                    </div>
-                    <p className="text-[11px] text-on-surface font-medium truncate mt-0.5">{v.title}</p>
-                    <span className="text-[9.5px] text-on-surface-variant/80 block">{v.condition}</span>
-                  </div>
+                <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full ${bubble.color} border flex items-center justify-center shadow-xs group-hover:scale-110 group-hover:shadow-md transition-all mb-2`}>
+                  <span className="material-symbols-outlined text-[24px] sm:text-[28px]">{bubble.icon}</span>
                 </div>
-
-                <button 
-                  onClick={() => handleSaveVoucher(v.code)}
-                  className={`px-3 py-1.5 rounded-lg text-[11px] font-bold shrink-0 transition-all cursor-pointer ${
-                    isSaved 
-                      ? 'bg-surface-container text-on-surface-variant' 
-                      : 'bg-primary text-on-primary hover:brightness-105 shadow-2xs'
-                  }`}
-                >
-                  {isSaved ? 'Đã lưu' : 'Lưu mã'}
-                </button>
-              </div>
-            );
-          })}
+                <span className="text-[11.5px] sm:text-xs font-semibold text-gray-800 group-hover:text-[#003B2B] transition-colors leading-tight">
+                  {bubble.name}
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
-      </section>
-
-      {/* =========================================================================
-          SECTION 3: DANH MỤC NỔI BẬT (8 COMPACT ICON CARDS)
-      ========================================================================= */}
-      <section className="flex flex-col gap-2.5">
-        <div className="flex items-center justify-between">
-          <h2 className="text-[15px] sm:text-[16px] font-bold text-on-surface flex items-center gap-2">
-            <span className="material-symbols-outlined text-tertiary text-[20px]">category</span>
-            <span>Danh Mục Sách Nổi Bật</span>
-          </h2>
-          <Link to="/books" className="text-[12.5px] text-tertiary hover:underline font-semibold flex items-center gap-0.5">
-            <span>Xem tất cả danh mục</span>
-            <span className="material-symbols-outlined text-[16px]">chevron_right</span>
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-2.5">
-          {categoryGrid.map((cat, idx) => (
-            <Link 
-              key={idx} 
-              to={cat.link}
-              className="bg-surface-container-lowest rounded-xl p-2.5 border border-outline-variant/30 flex flex-col items-center text-center hover:border-tertiary/50 hover:shadow-sm transition-all group"
+      </section>rounded-xl p-2.5 border border-outline-variant/30 flex flex-col items-center text-center hover:border-tertiary/50 hover:shadow-sm transition-all group"
             >
               <div className={`w-10 h-10 rounded-xl ${cat.color} flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform`}>
                 <span className="material-symbols-outlined text-[20px]">{cat.icon}</span>
