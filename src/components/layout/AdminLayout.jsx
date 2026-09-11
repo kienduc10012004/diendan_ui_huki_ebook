@@ -7,6 +7,30 @@ export default function AdminLayout() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const routeMap = {
+    '/admin': { parent: 'Tổng Quan Hệ Thống', title: 'Bảng Điều Hành Sàn' },
+    '/admin/dashboard': { parent: 'Tổng Quan Hệ Thống', title: 'Bảng Điều Hành Sàn' },
+    '/admin/publishers': { parent: 'Đối Tác & NXB', title: 'Quản Lý Nhà Xuất Bản' },
+    '/admin/companies': { parent: 'Đối Tác & NXB', title: 'Quản Lý Nhà Xuất Bản' },
+    '/admin/leads': { parent: 'Đối Tác & NXB', title: 'Duyệt Đăng Ký Mới' },
+    '/admin/tasks': { parent: 'Nội Dung & Bản Quyền', title: 'Hàng Chờ Kiểm Duyệt Sách' },
+    '/admin/moderation': { parent: 'Nội Dung & Bản Quyền', title: 'Hàng Chờ Kiểm Duyệt Sách' },
+    '/admin/drm': { parent: 'Nội Dung & Bản Quyền', title: 'Kho Bản Quyền DRM' },
+    '/admin/users': { parent: 'Độc Giả & Hội Viên', title: 'Danh Sách Bạn Đọc' },
+    '/admin/contacts': { parent: 'Độc Giả & Hội Viên', title: 'Danh Sách Bạn Đọc' },
+    '/admin/deals': { parent: 'Tài Chính & Đơn Hàng', title: 'Đối Soát Doanh Thu 85/15' },
+    '/admin/finance': { parent: 'Tài Chính & Đơn Hàng', title: 'Đối Soát Doanh Thu 85/15' },
+    '/admin/reports': { parent: 'Tài Chính & Đơn Hàng', title: 'Báo Cáo Phân Tích' },
+    '/admin/automation': { parent: 'Marketing & Sự Kiện', title: 'Banner & Flash Deal' },
+    '/admin/marketing': { parent: 'Marketing & Sự Kiện', title: 'Banner & Flash Deal' },
+    '/admin/calendar': { parent: 'Marketing & Sự Kiện', title: 'Lịch Trình Toàn Sàn' },
+    '/admin/integrations': { parent: 'Hạ Tầng Kỹ Thuật', title: 'Cổng Tích Hợp DRM' },
+    '/admin/settings': { parent: 'Hạ Tầng Kỹ Thuật', title: 'Cài Đặt Hệ Thống' },
+    '/admin/support': { parent: 'Hạ Tầng Kỹ Thuật', title: 'Hỗ Trợ & Khiếu Nại' }
+  };
+
+  const currentRouteInfo = routeMap[location.pathname] || { parent: 'Hệ Thống', title: 'Quản Trị' };
+
   const menuSections = [
     {
       group: 'TỔNG QUAN HỆ THỐNG',
@@ -71,15 +95,8 @@ export default function AdminLayout() {
       {/* 1. TOP APP BAR / HEADER (FULL WIDTH EDGE-TO-EDGE) */}
       <header className="h-16 border-b border-[#E2E8F0] px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 shrink-0 bg-white z-30">
         
-        {/* Left: Window Controls & Root Brand */}
+        {/* Left: Brand Identity & Search */}
         <div className="flex items-center gap-4">
-          {/* macOS Window Dots */}
-          <div className="hidden sm:flex items-center gap-1.5 mr-2">
-            <span className="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]/50"></span>
-            <span className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]/50"></span>
-            <span className="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]/50"></span>
-          </div>
-
           {/* Mobile Menu Toggle */}
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -244,9 +261,32 @@ export default function AdminLayout() {
           </div>
         </aside>
 
-        {/* MAIN CONTENT OUTLET */}
-        <main className="flex-1 bg-[#F8FAFC] overflow-y-auto p-4 sm:p-6 lg:p-8">
-          <Outlet />
+        {/* MAIN CONTENT OUTLET WITH DYNAMIC BREADCRUMBS ("BÁNH MÌ") */}
+        <main className="flex-1 bg-[#F8FAFC] overflow-y-auto p-4 sm:p-6 lg:p-8 flex flex-col">
+          
+          {/* BREADCRUMB BAR ("BÁNH MÌ" ĐIỀU HƯỚNG TRANG) */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-gray-500 mb-5 bg-white px-4 py-2.5 rounded-2xl border border-[#E2E8F0] shadow-2xs shrink-0">
+            <Link to="/" className="text-gray-400 hover:text-[#00875A] flex items-center gap-1 transition-colors">
+              <span className="material-symbols-outlined text-[16px]">home</span>
+              <span className="hidden sm:inline">Sàn HUKI</span>
+            </Link>
+            <span className="material-symbols-outlined text-[14px] text-gray-300">chevron_right</span>
+            <Link to="/admin/dashboard" className="text-gray-500 hover:text-[#00875A] transition-colors">
+              Super Admin
+            </Link>
+            {currentRouteInfo.parent && (
+              <>
+                <span className="material-symbols-outlined text-[14px] text-gray-300">chevron_right</span>
+                <span className="text-gray-400 hidden sm:inline">{currentRouteInfo.parent}</span>
+              </>
+            )}
+            <span className="material-symbols-outlined text-[14px] text-gray-300">chevron_right</span>
+            <span className="text-[#00875A] font-bold">{currentRouteInfo.title}</span>
+          </nav>
+
+          <div className="flex-1">
+            <Outlet />
+          </div>
         </main>
       </div>
 
