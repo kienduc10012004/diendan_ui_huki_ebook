@@ -11,7 +11,7 @@ export default function SellerPortalLayout() {
     <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#17201F] font-sans antialiased">
       {/* B2B Partner Navigation Header */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#E8E5DF] shadow-xs">
-        <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+        <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4 flex items-center justify-between min-h-[68px]">
           {/* Logo & Portal Identity */}
           <div className="flex items-center gap-3">
             <Link to="/" className="flex items-center gap-2.5 group">

@@ -6,7 +6,7 @@ export default function SellerHeader({ isSidebarCollapsed, toggleSidebar, toggle
   const { seller } = useAuth();
 
   return (
-    <header className="sticky top-0 z-40 bg-theme-surface/95 backdrop-blur-md border-b border-theme-border px-4 md:px-6 py-2.5 flex items-center justify-between shadow-2xs">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-theme-border px-4 sm:px-6 py-3 flex items-center justify-between shadow-2xs min-h-[64px]">
       {/* Left: Hamburger & Brand & Shop Identity */}
       <div className="flex items-center gap-3 sm:gap-4">
         {/* Desktop Collapse Toggle */}
