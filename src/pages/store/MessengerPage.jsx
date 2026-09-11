@@ -900,6 +900,7 @@ export default function MessengerPage() {
           </div>
         </aside>
       )}
+      </div>
 
       {/* Voice / Video Call Modal */}
       {activeCallModal && (
