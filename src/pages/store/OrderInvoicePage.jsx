@@ -45,17 +45,23 @@ export default function OrderInvoicePage() {
   };
 
   return (
-    <div className="min-h-screen bg-theme-bg py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#FAF8F5] py-6 sm:py-8 px-4 sm:px-6 lg:px-8 font-sans antialiased text-[#17201F]">
       <div className="max-w-4xl mx-auto">
-        
-        {/* Navigation & Action Header (Hidden during Print) */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 print:hidden">
-          <div className="flex items-center gap-2 text-xs text-[#6b7280]">
-            <Link to="/orders" className="hover:text-theme-primary font-medium transition-colors">Lịch Sử Đơn Hàng</Link>
-            <span>/</span>
-            <Link to={`/orders/${orderId}`} className="hover:text-theme-primary font-medium transition-colors">Đơn #{orderId}</Link>
-            <span>/</span>
-            <span className="text-[#17201f] font-semibold">Hóa Đơn Điện Tử VAT</span>
+        {/* Top Floating Navigation (Hidden during Print) */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 print:hidden bg-white p-4 rounded-2xl border border-[#E8E5DF] shadow-xs">
+          <div className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-2 group">
+              <div className="w-8 h-8 rounded-lg bg-[#003B2B] flex items-center justify-center text-white shadow-xs">
+                <span className="material-symbols-outlined text-[18px]">receipt_long</span>
+              </div>
+              <span className="font-editorial text-base font-bold text-[#003B2B]">HUKI E-Invoice</span>
+            </Link>
+            <div className="h-4 w-px bg-[#E8E5DF]"></div>
+            <div className="flex items-center gap-1.5 text-xs text-[#6B7280]">
+              <Link to="/orders" className="hover:text-[#003B2B] font-medium transition-colors">Đơn Hàng</Link>
+              <span>/</span>
+              <Link to={`/orders/${orderId}`} className="hover:text-[#003B2B] font-medium transition-colors">#{orderId}</Link>
+            </div>
           </div>
 
           <div className="flex items-center gap-2">
