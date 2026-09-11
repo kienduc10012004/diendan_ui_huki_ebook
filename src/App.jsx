@@ -12,6 +12,7 @@ import AppLayout from './components/layout/AppLayout';
 import CheckoutLayout from './components/layout/CheckoutLayout';
 import SellerPortalLayout from './components/layout/SellerPortalLayout';
 import SellerLayout from './components/layout/SellerLayout';
+import AdminLayout from './components/layout/AdminLayout';
 import { RequireAuth, RequireGuest, RequireSeller } from './components/auth/RouteGuards';
 
 const page = (loader) => lazy(loader);
@@ -60,6 +61,7 @@ const SellerEditHybrid = page(() => import('./pages/seller/SellerEditHybrid'));
 const SellerCorrection = page(() => import('./pages/seller/SellerCorrection'));
 const EdgeCasesLibrary = page(() => import('./pages/seller/EdgeCasesLibrary'));
 const MessengerPage = page(() => import('./pages/store/MessengerPage'));
+const AdminDashboardPage = page(() => import('./pages/admin/AdminDashboardPage'));
 
 export default function App() {
   return (
@@ -191,6 +193,23 @@ export default function App() {
                       <Route path="/seller/edge-cases" element={<EdgeCasesLibrary />} />
                     </Route>
                   </Route>
+                </Route>
+
+                {/* 9. KHU VỰC SUPER ADMIN CRM DASHBOARD (AdminLayout chuẩn macOS / Modern CRM) */}
+                <Route element={<AdminLayout />}>
+                  <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
+                  <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+                  <Route path="/admin/leads" element={<AdminDashboardPage />} />
+                  <Route path="/admin/contacts" element={<AdminDashboardPage />} />
+                  <Route path="/admin/companies" element={<AdminDashboardPage />} />
+                  <Route path="/admin/deals" element={<AdminDashboardPage />} />
+                  <Route path="/admin/tasks" element={<AdminDashboardPage />} />
+                  <Route path="/admin/calendar" element={<AdminDashboardPage />} />
+                  <Route path="/admin/reports" element={<AdminDashboardPage />} />
+                  <Route path="/admin/automation" element={<AdminDashboardPage />} />
+                  <Route path="/admin/integrations" element={<AdminDashboardPage />} />
+                  <Route path="/admin/settings" element={<AdminDashboardPage />} />
+                  <Route path="/admin/support" element={<AdminDashboardPage />} />
                 </Route>
               </Routes>
               </Suspense>

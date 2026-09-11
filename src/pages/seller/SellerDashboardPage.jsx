@@ -1,699 +1,476 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function SellerDashboardPage() {
+  const [pipelinePeriod, setPipelinePeriod] = useState('Tháng này');
+  const [acqPeriod, setAcqPeriod] = useState('Tháng này');
+
   return (
-    <div className="w-full bg-surface text-on-surface antialiased min-h-screen py-6">
-      <main className="w-full max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+    <div className="w-full bg-[#F8FAFC] text-[#1E293B] antialiased min-h-screen p-4 sm:p-6 lg:p-8 font-sans">
+      <div className="max-w-[1560px] mx-auto space-y-6">
 
-<div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-2 border-b border-surface-variant/60">
-<div>
-<h1 className="font-headline-lg text-headline-lg text-on-surface tracking-tight font-medium">
-            Chào buổi sáng, <span className="italic text-tertiary font-serif">Alpha Books</span>
-</h1>
-<p className="font-body-md text-body-md text-on-surface-variant mt-1">
-            Đây là tình hình vận hành và đơn hàng của cửa hàng hôm nay. Tất cả hệ thống cấp quyền Ebook DRM đều vận hành ổn định.
-          </p>
-</div>
-<div className="flex items-center gap-2.5 shrink-0">
+        {/* 1. TOP GREETING & STORE CONTROLS */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-xs sm:text-sm font-semibold text-gray-500">Chào buổi sáng,</span>
+              <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">
+                Alpha Books Official Store
+              </span>
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mt-0.5 font-editorial">
+              Tổng Quan Vận Hành Gian Hàng
+            </h1>
+            <p className="text-xs sm:text-sm text-gray-500 mt-1">
+              Quản lý độc giả tiềm năng, theo dõi đơn hàng phát hành sách in &amp; kiểm soát cấp quyền Ebook DRM bản quyền.
+            </p>
+          </div>
 
-<div className="relative">
-<select className="appearance-none h-9 pl-3 pr-8 rounded-lg bg-surface-container-lowest border border-surface-variant font-label-md text-label-md text-on-surface font-medium hover:border-outline focus:outline-none focus:border-tertiary cursor-pointer transition-colors shadow-sm">
-<option>Hôm nay (07/09)</option>
-<option>7 ngày gần nhất (01/09 - 07/09)</option>
-<option>30 ngày qua</option>
-<option>Tháng này (Tháng 9/2025)</option>
-</select>
-<span className="material-symbols-outlined absolute right-2.5 top-2.5 text-[16px] text-on-surface-variant pointer-events-none">expand_more</span>
-</div>
+          <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+            {/* Date Range Selector */}
+            <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl border border-[#E2E8F0] bg-white text-xs font-semibold text-gray-700 shadow-2xs">
+              <span className="material-symbols-outlined text-[16px] text-emerald-700">calendar_month</span>
+              <span>01/06/2026 – 30/06/2026</span>
+              <span className="material-symbols-outlined text-[14px] text-gray-400">expand_more</span>
+            </div>
 
-<button className="flex items-center gap-1.5 h-9 px-3.5 rounded-lg bg-surface-container-lowest border border-surface-variant hover:bg-surface-container text-on-surface font-label-md text-label-md font-semibold transition-colors shadow-sm">
-<span className="material-symbols-outlined text-[16px]">file_download</span>
-<span>Xuất báo cáo</span>
-</button>
-</div>
-</div>
+            <button className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white border border-[#E2E8F0] hover:bg-gray-50 text-gray-700 font-semibold text-xs transition-colors shadow-2xs cursor-pointer">
+              <span className="material-symbols-outlined text-[16px]">file_download</span>
+              <span>Xuất Báo Cáo</span>
+            </button>
 
-<div>
-<div className="flex items-center justify-between mb-3">
-<div className="flex items-center gap-2">
-<span className="w-2.5 h-2.5 rounded-full bg-primary"></span>
-<h2 className="font-title-lg text-title-lg text-on-surface font-semibold">Cần Bạn Xử Lý Ngay</h2>
-<span className="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-medium">28 công việc tồn đọng</span>
-</div>
-<span className="font-label-sm text-label-sm text-on-surface-variant">Tự động cập nhật mỗi 60 giây</span>
-</div>
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-
-<div className="bg-surface-container-lowest border border-tertiary/30 rounded-xl p-4 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between relative overflow-hidden">
-<div className="absolute top-0 right-0 w-16 h-16 bg-tertiary/5 rounded-bl-full pointer-events-none"></div>
-<div>
-<div className="flex items-center justify-between">
-<span className="font-label-md text-label-md text-tertiary font-semibold uppercase tracking-wider flex items-center gap-1">
-<span className="material-symbols-outlined text-[16px]">notifications_active</span>
-                  Đơn Mới
-                </span>
-<span className="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
-</div>
-<div className="mt-2 flex items-baseline gap-2">
-<span className="font-headline-lg text-headline-lg font-bold text-on-surface">12</span>
-<span className="font-body-sm text-body-sm text-on-surface-variant">đơn đang chờ xác nhận</span>
-</div>
-</div>
-<div className="mt-4 pt-3 border-t border-surface-variant/60 flex items-center justify-between">
-<span className="font-label-sm text-label-sm text-on-surface-variant">Sách giấy: 9 · Ebook: 3</span>
-<Link className="font-label-md text-label-md text-tertiary font-semibold flex items-center gap-0.5 group-hover:underline" to="/seller/orders">
-                Xử lý đơn <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-</Link>
-</div>
-</div>
-
-<div className="bg-surface-container-lowest border border-surface-variant rounded-xl p-4 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
-<div>
-<div className="flex items-center justify-between">
-<span className="font-label-md text-label-md text-secondary font-semibold uppercase tracking-wider flex items-center gap-1">
-<span className="material-symbols-outlined text-[16px]">inventory</span>
-                  Cần Chuẩn Bị
-                </span>
-<span className="material-symbols-outlined text-[18px] text-secondary">pending_actions</span>
-</div>
-<div className="mt-2 flex items-baseline gap-2">
-<span className="font-headline-lg text-headline-lg font-bold text-on-surface">8</span>
-<span className="font-body-sm text-body-sm text-on-surface-variant">đơn chờ đóng gói &amp; in mã</span>
-</div>
-</div>
-<div className="mt-4 pt-3 border-t border-surface-variant/60 flex items-center justify-between">
-<span className="font-label-sm text-label-sm text-on-surface-variant">Bàn giao trước 16:00</span>
-<Link className="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-0.5 group-hover:text-tertiary transition-colors" to="/seller/product/edit-hybrid">
-                Xem đơn <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-</Link>
-</div>
-</div>
-
-<div className="bg-surface-container-lowest border border-secondary-container/40 rounded-xl p-4 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
-<div>
-<div className="flex items-center justify-between">
-<span className="font-label-md text-label-md text-secondary font-semibold uppercase tracking-wider flex items-center gap-1">
-<span className="material-symbols-outlined text-[16px]">warning</span>
-                  Sắp Hết Hàng
-                </span>
-<span className="px-1.5 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold">KHO SÁCH</span>
-</div>
-<div className="mt-2 flex items-baseline gap-2">
-<span className="font-headline-lg text-headline-lg font-bold text-secondary">5</span>
-<span className="font-body-sm text-body-sm text-on-surface-variant">tựa sách tồn &lt; 5 cuốn</span>
-</div>
-</div>
-<div className="mt-4 pt-3 border-t border-surface-variant/60 flex items-center justify-between">
-<span className="font-label-sm text-label-sm text-error font-medium">1 tựa đã hết hẳn</span>
-<Link className="font-label-md text-label-md text-secondary font-semibold flex items-center gap-0.5 group-hover:underline" to="/seller/edge-cases">
-                Kiểm tra kho <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-</Link>
-</div>
-</div>
-
-<div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 shadow-sm hover:shadow-md transition-all group flex flex-col justify-between">
-<div>
-<div className="flex items-center justify-between">
-<span className="font-label-md text-label-md text-primary font-semibold uppercase tracking-wider flex items-center gap-1">
-<span className="material-symbols-outlined text-[16px]">security</span>
-                  Cần Kiểm Tra
-                </span>
-<span className="px-1.5 py-0.5 rounded bg-error-container text-on-error-container text-[10px] font-bold">DRM &amp; METADATA</span>
-</div>
-<div className="mt-2 flex items-baseline gap-2">
-<span className="font-headline-lg text-headline-lg font-bold text-primary">3</span>
-<span className="font-body-sm text-body-sm text-on-surface-variant">sản phẩm số cần duyệt</span>
-</div>
-</div>
-<div className="mt-4 pt-3 border-t border-surface-variant/60 flex items-center justify-between">
-<span className="font-label-sm text-label-sm text-on-surface-variant">2 Ebook lỗi EPUB · 1 thiếu bìa</span>
-<Link className="font-label-md text-label-md text-primary font-semibold flex items-center gap-0.5 group-hover:underline" to="/seller/edge-cases">
-                Xem sản phẩm <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-</Link>
-</div>
-</div>
-</div>
-</div>
-
-<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-
-<div className="bg-surface-container-lowest border border-surface-variant rounded-xl p-4 shadow-sm flex items-center justify-between">
-<div>
-<p className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Doanh Thu 7 Ngày</p>
-<p className="font-title-lg text-[22px] font-bold text-on-surface mt-1">12.480.000đ</p>
-<div className="flex items-center gap-1 mt-1 text-tertiary font-label-sm text-label-sm font-semibold">
-<span className="material-symbols-outlined text-[14px]">trending_up</span>
-<span>↑ 8,4%</span>
-<span className="text-on-surface-variant font-normal">so với tuần trước</span>
-</div>
-</div>
-<div className="w-11 h-11 rounded-lg bg-surface-container-low text-tertiary flex items-center justify-center">
-<span className="material-symbols-outlined text-[24px]">payments</span>
-</div>
-</div>
-
-<div className="bg-surface-container-lowest border border-surface-variant rounded-xl p-4 shadow-sm flex items-center justify-between">
-<div>
-<p className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Tổng Đơn Hàng</p>
-<p className="font-title-lg text-[22px] font-bold text-on-surface mt-1">86 đơn</p>
-<div className="flex items-center gap-1 mt-1 text-tertiary font-label-sm text-label-sm font-semibold">
-<span className="material-symbols-outlined text-[14px]">trending_up</span>
-<span>↑ 6,1%</span>
-<span className="text-on-surface-variant font-normal">tỷ lệ duyệt 100%</span>
-</div>
-</div>
-<div className="w-11 h-11 rounded-lg bg-surface-container-low text-on-surface flex items-center justify-center">
-<span className="material-symbols-outlined text-[24px]">receipt_long</span>
-</div>
-</div>
-
-<div className="bg-surface-container-lowest border border-surface-variant rounded-xl p-4 shadow-sm flex items-center justify-between">
-<div>
-<p className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Sản Phẩm Đã Bán</p>
-<p className="font-title-lg text-[22px] font-bold text-on-surface mt-1">112 bản</p>
-<div className="flex items-center gap-1 mt-1 font-label-sm text-label-sm text-on-surface-variant">
-<span className="text-tertiary font-semibold">68 sách giấy</span>
-<span>·</span>
-<span className="text-secondary font-semibold">44 ebook số</span>
-</div>
-</div>
-<div className="w-11 h-11 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
-<span className="material-symbols-outlined text-[24px]">auto_stories</span>
-</div>
-</div>
-
-<div className="bg-surface-container-lowest border border-surface-variant rounded-xl p-4 shadow-sm flex items-center justify-between">
-<div>
-<p className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-medium">Tỷ Lệ Hoàn Thành</p>
-<p className="font-title-lg text-[22px] font-bold text-on-surface mt-1">96,8%</p>
-<div className="flex items-center gap-1 mt-1 text-tertiary font-label-sm text-label-sm font-semibold">
-<span className="material-symbols-outlined text-[14px]">check_circle</span>
-<span>Đạt chuẩn xuất sắc HUKI</span>
-</div>
-</div>
-<div className="w-11 h-11 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center">
-<span className="material-symbols-outlined text-[24px]">grade</span>
-</div>
-</div>
-</div>
-
-<div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-
-<div className="lg:col-span-8 space-y-6">
-
-<div className="bg-surface-container-lowest border border-surface-variant rounded-2xl p-6 shadow-sm">
-<div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-surface-variant/60">
-<div>
-<h3 className="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Doanh Thu &amp; Tăng Trưởng</h3>
-<p className="font-body-sm text-body-sm text-on-surface-variant">Phân bổ doanh thu sách in và bản quyền số Ebook DRM 7 ngày qua</p>
-</div>
-
-<div className="flex items-center p-1 bg-surface-container-low rounded-lg border border-surface-variant text-label-md font-label-md">
-<button className="px-3 py-1 rounded bg-surface-container-lowest shadow-xs text-on-surface font-semibold">Doanh thu</button>
-<button className="px-3 py-1 text-on-surface-variant hover:text-on-surface transition-colors">Số lượng đơn</button>
-<button className="px-3 py-1 text-on-surface-variant hover:text-on-surface transition-colors">Lượt tải Ebook</button>
-</div>
-</div>
-
-<div className="mt-4 relative">
-<div className="flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant mb-2">
-<span>Đơn vị: VNĐ (Triệu)</span>
-<div className="flex items-center gap-4">
-<div className="flex items-center gap-1.5">
-<span className="w-3 h-1 bg-tertiary rounded"></span>
-<span>Sách giấy truyền thống</span>
-</div>
-<div className="flex items-center gap-1.5">
-<span className="w-3 h-1 bg-primary rounded"></span>
-<span>Ebook bản quyền số</span>
-</div>
-</div>
-</div>
-
-<div className="relative w-full h-[220px]">
-<svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 700 200">
-
-<line stroke="#e6f0ee" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="700" y1="20" y2="20"></line>
-<line stroke="#e6f0ee" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="700" y1="70" y2="70"></line>
-<line stroke="#e6f0ee" stroke-dasharray="3 3" stroke-width="1" x1="0" x2="700" y1="120" y2="120"></line>
-<line stroke="#e6f0ee" stroke-width="1" x1="0" x2="700" y1="170" y2="170"></line>
-
-<defs>
-<linearGradient id="tertiaryGradient" x1="0%" x2="0%" y1="0%" y2="100%">
-<stop offset="0%" stop-color="#006953" stop-opacity="0.18"></stop>
-<stop offset="100%" stop-color="#006953" stop-opacity="0.0"></stop>
-</linearGradient>
-</defs>
-
-<path d="M 30,150 Q 130,135 210,105 T 380,85 T 490,45 T 580,60 T 670,30 L 670,170 L 30,170 Z" fill="url(#tertiaryGradient)"></path>
-
-<path d="M 30,150 Q 130,135 210,105 T 380,85 T 490,45 T 580,60 T 670,30" fill="none" stroke="#006953" stroke-linecap="round" stroke-width="2.5"></path>
-
-<path d="M 30,165 Q 130,155 210,140 T 380,120 T 490,100 T 580,110 T 670,85" fill="none" stroke="#ac2c19" stroke-dasharray="4 4" stroke-linecap="round" stroke-width="2"></path>
-
-<circle className="stroke-surface-container-lowest stroke-2" cx="30" cy="150" fill="#006953" r="3.5"></circle>
-<circle className="stroke-surface-container-lowest stroke-2" cx="140" cy="125" fill="#006953" r="3.5"></circle>
-<circle className="stroke-surface-container-lowest stroke-2" cx="250" cy="98" fill="#006953" r="3.5"></circle>
-<circle className="stroke-surface-container-lowest stroke-2" cx="370" cy="85" fill="#006953" r="3.5"></circle>
-<circle className="stroke-surface-container-lowest stroke-2 shadow" cx="490" cy="45" fill="#006953" r="5"></circle>
-<circle className="stroke-surface-container-lowest stroke-2" cx="580" cy="60" fill="#006953" r="3.5"></circle>
-<circle className="stroke-surface-container-lowest stroke-2" cx="670" cy="30" fill="#006953" r="4"></circle>
-</svg>
-
-<div className="absolute top-2 left-[66%] -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-3 py-2 rounded-lg shadow-xl pointer-events-none text-left z-10">
-<div className="flex items-center justify-between gap-3">
-<span className="font-label-sm text-label-sm text-surface-variant">Thứ 6, 05/09</span>
-<span className="font-label-sm text-label-sm text-tertiary-fixed font-bold">14 đơn</span>
-</div>
-<p className="font-title-md text-[14px] font-bold text-white mt-0.5">2.140.000đ</p>
-<p className="font-label-sm text-[11px] text-tertiary-fixed-dim">Sách giấy: 1.480.000đ · Ebook: 660.000đ</p>
-</div>
-</div>
-
-<div className="flex items-center justify-between text-label-md font-label-md text-on-surface-variant px-4 mt-2">
-<span>01/09</span>
-<span>02/09</span>
-<span>03/09</span>
-<span>04/09</span>
-<span className="font-semibold text-tertiary">05/09 (Đỉnh điểm)</span>
-<span>06/09</span>
-<span>07/09 (Hôm nay)</span>
-</div>
-</div>
-
-<div className="mt-6 pt-4 border-t border-surface-variant grid grid-cols-2 sm:grid-cols-5 gap-3 text-center">
-<div className="p-2 rounded-lg bg-surface-container-low/60">
-<span className="font-label-sm text-label-sm text-on-surface-variant">Chờ xác nhận</span>
-<p className="font-title-lg text-title-lg font-bold text-tertiary mt-0.5">12</p>
-</div>
-<div className="p-2 rounded-lg bg-surface-container-low/60">
-<span className="font-label-sm text-label-sm text-on-surface-variant">Đang chuẩn bị</span>
-<p className="font-title-lg text-title-lg font-bold text-secondary mt-0.5">8</p>
-</div>
-<div className="p-2 rounded-lg bg-surface-container-low/60">
-<span className="font-label-sm text-label-sm text-on-surface-variant">Đang giao hàng</span>
-<p className="font-title-lg text-title-lg font-bold text-on-surface mt-0.5">21</p>
-</div>
-<div className="p-2 rounded-lg bg-surface-container-low/60">
-<span className="font-label-sm text-label-sm text-on-surface-variant">Đã hoàn tất</span>
-<p className="font-title-lg text-title-lg font-bold text-tertiary mt-0.5">156</p>
-</div>
-<div className="p-2 rounded-lg bg-surface-container-low/60">
-<span className="font-label-sm text-label-sm text-on-surface-variant">Đã hủy / Hoàn</span>
-<p className="font-title-lg text-title-lg font-bold text-error mt-0.5">4</p>
-</div>
-</div>
-</div>
-
-<div className="bg-surface-container-lowest border border-surface-variant rounded-2xl p-6 shadow-sm">
-<div className="flex items-center justify-between pb-4 border-b border-surface-variant/60">
-<div>
-<div className="flex items-center gap-2">
-<h3 className="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight">Đơn Hàng Mới Nhất</h3>
-<span className="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">187 đơn tổng</span>
-</div>
-<p className="font-body-sm text-body-sm text-on-surface-variant">Quy trình xử lý đơn tích hợp cả giao vận sách vật lý và cấp quyền đọc Ebook tức thì.</p>
-</div>
-<div className="flex items-center gap-2">
-<button className="px-3 py-1.5 rounded-lg border border-surface-variant text-label-md font-label-md text-on-surface hover:bg-surface-container transition-colors flex items-center gap-1">
-<span className="material-symbols-outlined text-[16px]">filter_list</span>
-                  Lọc trạng thái
-                </button>
-</div>
-</div>
-
-<div className="overflow-x-auto -mx-6 px-6 mt-3">
-<table className="w-full text-left border-collapse">
-<thead>
-<tr className="border-b border-surface-variant text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
-<th className="py-3 px-2 font-semibold">Mã Đơn</th>
-<th className="py-3 px-2 font-semibold">Khách Hàng</th>
-<th className="py-3 px-2 font-semibold">Sản Phẩm</th>
-<th className="py-3 px-2 font-semibold">Định Dạng</th>
-<th className="py-3 px-2 font-semibold">Tổng Tiền</th>
-<th className="py-3 px-2 font-semibold">Vận Hành / DRM</th>
-<th className="py-3 px-2 font-semibold">Thời Gian</th>
-<th className="py-3 px-2 font-semibold text-right">Thao Tác</th>
-</tr>
-</thead>
-<tbody className="divide-y divide-surface-variant/60 font-body-sm text-body-sm">
-
-<tr className="hover:bg-surface-container-low/40 transition-colors group">
-<td className="py-3.5 px-2 font-semibold text-on-surface font-mono">
-                      #HK24090125
-                    </td>
-<td className="py-3.5 px-2">
-<p className="font-medium text-on-surface">Nguyễn Minh</p>
-<p className="text-[11px] text-on-surface-variant">0912•••458</p>
-</td>
-<td className="py-3.5 px-2 max-w-[180px]">
-<p className="font-medium text-on-surface truncate">Atomic Habits (x2)</p>
-<span className="text-[11px] text-on-surface-variant">Bìa mềm · Tái bản 2024</span>
-</td>
-<td className="py-3.5 px-2">
-<span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-label-sm text-[11px] bg-surface-container text-on-surface font-medium border border-surface-variant">
-<span className="material-symbols-outlined text-[12px]">menu_book</span>
-                        Sách Giấy
-                      </span>
-</td>
-<td className="py-3.5 px-2">
-<p className="font-bold text-primary font-mono">278.000đ</p>
-<span className="font-label-sm text-[10px] text-tertiary">Đã TT (VNPay)</span>
-</td>
-<td className="py-3.5 px-2">
-<span className="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-[11px] bg-secondary-fixed/50 text-on-secondary-fixed-variant font-semibold">
-<span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                        Chờ xác nhận
-                      </span>
-</td>
-<td className="py-3.5 px-2 text-on-surface-variant text-[12px]">10 phút trước</td>
-<td className="py-3.5 px-2 text-right">
-<button className="px-2.5 py-1 rounded-md bg-tertiary text-on-tertiary font-label-md text-label-md font-semibold hover:bg-tertiary-container shadow-xs transition-colors">
-                        Xác nhận
-                      </button>
-</td>
-</tr>
-
-<tr className="hover:bg-surface-container-low/40 transition-colors group bg-tertiary-container/5">
-<td className="py-3.5 px-2 font-semibold text-on-surface font-mono">
-                      #HK24090124
-                    </td>
-<td className="py-3.5 px-2">
-<p className="font-medium text-on-surface">Trần Thu Hà</p>
-<p className="text-[11px] text-on-surface-variant">ha.tran•••@gmail.com</p>
-</td>
-<td className="py-3.5 px-2 max-w-[180px]">
-<p className="font-medium text-on-surface truncate">Deep Work: Làm Việc Sâu</p>
-<span className="text-[11px] text-tertiary">Đã kích hoạt License key</span>
-</td>
-<td className="py-3.5 px-2">
-<span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-label-sm text-[11px] bg-tertiary-fixed text-on-tertiary-fixed font-semibold">
-<span className="material-symbols-outlined text-[12px] fill-icon">devices</span>
-                        Ebook DRM
-                      </span>
-</td>
-<td className="py-3.5 px-2">
-<p className="font-bold text-primary font-mono">79.000đ</p>
-<span className="font-label-sm text-[10px] text-tertiary">Đã TT (MoMo)</span>
-</td>
-<td className="py-3.5 px-2">
-<span className="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-[11px] bg-tertiary/10 text-tertiary font-semibold">
-<span className="material-symbols-outlined text-[13px] fill-icon">check_circle</span>
-                        Đã cấp Tủ Sách
-                      </span>
-</td>
-<td className="py-3.5 px-2 text-on-surface-variant text-[12px]">18 phút trước</td>
-<td className="py-3.5 px-2 text-right">
-<button className="px-2.5 py-1 rounded-md bg-surface-container-lowest border border-surface-variant text-on-surface font-label-md text-label-md font-semibold hover:border-tertiary hover:text-tertiary transition-colors">
-                        Chi tiết
-                      </button>
-</td>
-</tr>
-
-<tr className="hover:bg-surface-container-low/40 transition-colors group">
-<td className="py-3.5 px-2 font-semibold text-on-surface font-mono">
-                      #HK24090123
-                    </td>
-<td className="py-3.5 px-2">
-<p className="font-medium text-on-surface">Lê Hoàng</p>
-<p className="text-[11px] text-on-surface-variant">0988•••112 (Đà Nẵng)</p>
-</td>
-<td className="py-3.5 px-2 max-w-[180px]">
-<p className="font-medium text-on-surface truncate">Tâm Lý Học Về Tiền + 1 khác</p>
-<span className="text-[11px] text-on-surface-variant">Tư Duy Nhanh &amp; Chậm</span>
-</td>
-<td className="py-3.5 px-2">
-<span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-label-sm text-[11px] bg-surface-container text-on-surface font-medium border border-surface-variant">
-<span className="material-symbols-outlined text-[12px]">menu_book</span>
-                        Sách Giấy
-                      </span>
-</td>
-<td className="py-3.5 px-2">
-<p className="font-bold text-primary font-mono">427.000đ</p>
-<span className="font-label-sm text-[10px] text-on-surface-variant">COD khi nhận</span>
-</td>
-<td className="py-3.5 px-2">
-<span className="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-[11px] bg-surface-container-high text-on-surface font-medium">
-<span className="material-symbols-outlined text-[13px]">package_2</span>
-                        Đang chuẩn bị
-                      </span>
-</td>
-<td className="py-3.5 px-2 text-on-surface-variant text-[12px]">31 phút trước</td>
-<td className="py-3.5 px-2 text-right">
-<button className="px-2.5 py-1 rounded-md bg-surface-container-lowest border border-outline text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-container transition-colors">
-                        In vận đơn
-                      </button>
-</td>
-</tr>
-
-<tr className="hover:bg-surface-container-low/40 transition-colors group">
-<td className="py-3.5 px-2 font-semibold text-on-surface font-mono">
-                      #HK24090122
-                    </td>
-<td className="py-3.5 px-2">
-<p className="font-medium text-on-surface">Phan Bảo Anh</p>
-<p className="text-[11px] text-on-surface-variant">0903•••890 (Hà Nội)</p>
-</td>
-<td className="py-3.5 px-2 max-w-[180px]">
-<p className="font-medium text-on-surface truncate">Sức Mạnh Của Thói Quen</p>
-<span className="text-[11px] text-on-surface-variant">Combo kép tiết kiệm 20%</span>
-</td>
-<td className="py-3.5 px-2">
-<span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-label-sm text-[11px] bg-secondary-fixed text-on-secondary-fixed font-semibold">
-<span className="material-symbols-outlined text-[12px]">layers</span>
-                        Sách + Ebook
-                      </span>
-</td>
-<td className="py-3.5 px-2">
-<p className="font-bold text-primary font-mono">215.000đ</p>
-<span className="font-label-sm text-[10px] text-tertiary">Đã TT (Thẻ VISA)</span>
-</td>
-<td className="py-3.5 px-2">
-<span className="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-[10px] bg-tertiary/10 text-tertiary font-semibold">
-                        Ebook: Đã cấp · Sách: Đang giao
-                      </span>
-</td>
-<td className="py-3.5 px-2 text-on-surface-variant text-[12px]">1 giờ trước</td>
-<td className="py-3.5 px-2 text-right">
-<button className="px-2.5 py-1 rounded-md bg-surface-container-lowest border border-surface-variant text-on-surface font-label-md text-label-md font-semibold hover:text-tertiary transition-colors">
-                        Theo dõi
-                      </button>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<div className="mt-4 pt-3 border-t border-surface-variant/60 flex items-center justify-between text-label-md font-label-md">
-<span className="text-on-surface-variant">Hiển thị 4 trong tổng số 187 đơn hàng</span>
-<Link className="text-tertiary font-semibold flex items-center gap-1 hover:underline" to="/seller/product/edit-hybrid">
-                Xem tất cả 187 đơn hàng <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-</Link>
-</div>
-</div>
-</div>
-
-<div className="lg:col-span-4 space-y-6">
-
-<div className="bg-surface-container-lowest border border-surface-variant rounded-2xl p-5 shadow-sm">
-<div className="flex items-center justify-between pb-3 border-b border-surface-variant/60">
-<div className="flex items-center gap-2">
-<span className="material-symbols-outlined text-[20px] text-secondary">inventory_2</span>
-<h3 className="font-title-lg text-title-lg text-on-surface font-semibold">Cảnh Báo Tồn Kho</h3>
-</div>
-<span className="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed font-bold">5 tựa sách</span>
-</div>
-<p className="font-body-sm text-body-sm text-on-surface-variant mt-2 mb-3">Các đầu sách bán chạy chạm ngưỡng an toàn, hãy nhập thêm kho để tránh hủy đơn.</p>
-<div className="space-y-3">
-
-<div className="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low/50 hover:bg-surface-container-low transition-colors">
-<div className="flex items-center gap-2.5 overflow-hidden">
-<div className="w-8 h-11 bg-surface-container-high rounded shrink-0 paper-edge flex items-center justify-center font-bold text-xs text-on-surface-variant border border-surface-variant">
-                    AH
-                  </div>
-<div className="truncate">
-<p className="font-title-md text-[13px] font-semibold text-on-surface truncate">Atomic Habits</p>
-<p className="font-label-sm text-[11px] text-on-surface-variant">Mức tối thiểu: 10 bản</p>
-</div>
-</div>
-<div className="text-right shrink-0">
-<span className="px-2 py-0.5 rounded font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed-variant font-bold">Còn 4 cuốn</span>
-</div>
-</div>
-
-<div className="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low/50 hover:bg-surface-container-low transition-colors">
-<div className="flex items-center gap-2.5 overflow-hidden">
-<div className="w-8 h-11 bg-surface-container-high rounded shrink-0 paper-edge flex items-center justify-center font-bold text-xs text-on-surface-variant border border-surface-variant">
-                    NGK
-                  </div>
-<div className="truncate">
-<p className="font-title-md text-[13px] font-semibold text-on-surface truncate">Nhà Giả Kim (Bản in đặc biệt)</p>
-<p className="font-label-sm text-[11px] text-on-surface-variant">Mức tối thiểu: 8 bản</p>
-</div>
-</div>
-<div className="text-right shrink-0">
-<span className="px-2 py-0.5 rounded font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed-variant font-bold">Còn 3 cuốn</span>
-</div>
-</div>
-
-<div className="flex items-center justify-between p-2.5 rounded-xl bg-error-container/30 border border-error/20">
-<div className="flex items-center gap-2.5 overflow-hidden">
-<div className="w-8 h-11 bg-error-container rounded shrink-0 flex items-center justify-center font-bold text-xs text-on-error-container">
-                    CC
-                  </div>
-<div className="truncate">
-<p className="font-title-md text-[13px] font-semibold text-on-surface truncate">Clean Code (Bản dịch chuẩn)</p>
-<p className="font-label-sm text-[11px] text-error">Đang mất doanh thu đơn giấy</p>
-</div>
-</div>
-<div className="text-right shrink-0">
-<span className="px-2 py-0.5 rounded font-label-sm text-label-sm bg-error text-on-error font-bold">Hết hàng (0)</span>
-</div>
-</div>
-
-<div className="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low/50 hover:bg-surface-container-low transition-colors">
-<div className="flex items-center gap-2.5 overflow-hidden">
-<div className="w-8 h-11 bg-surface-container-high rounded shrink-0 paper-edge flex items-center justify-center font-bold text-xs text-on-surface-variant border border-surface-variant">
-                    4H
-                  </div>
-<div className="truncate">
-<p className="font-title-md text-[13px] font-semibold text-on-surface truncate">Tuần Làm Việc 4 Giờ</p>
-<p className="font-label-sm text-[11px] text-on-surface-variant">Mức tối thiểu: 10 bản</p>
-</div>
-</div>
-<div className="text-right shrink-0">
-<span className="px-2 py-0.5 rounded font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed-variant font-bold">Còn 6 cuốn</span>
-</div>
-</div>
-</div>
-<Link className="mt-4 block text-center py-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md font-semibold transition-colors border border-surface-variant" to="/seller/product/create-physical">
-              Xem Kho Hàng &amp; Tạo Lệnh Nhập →
+            <Link 
+              to="/seller/product/create-hybrid"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#00875A] hover:bg-[#00734c] text-white font-bold text-xs transition-all shadow-sm"
+            >
+              <span className="material-symbols-outlined text-[16px]">add</span>
+              <span>Đăng Sách Mới</span>
             </Link>
-</div>
+          </div>
+        </div>
 
-<div className="bg-surface-container-lowest border border-tertiary/20 rounded-2xl p-5 shadow-sm relative overflow-hidden">
-<div className="absolute -right-6 -bottom-6 w-28 h-28 bg-tertiary/5 rounded-full pointer-events-none"></div>
-<div className="flex items-center justify-between pb-3 border-b border-surface-variant/60">
-<div className="flex items-center gap-2">
-<span className="material-symbols-outlined text-[20px] text-tertiary">verified_user</span>
-<h3 className="font-title-lg text-title-lg text-on-surface font-semibold">Bản Quyền Số DRM</h3>
-</div>
-<span className="font-label-sm text-label-sm text-tertiary font-bold">32 Ebook Đang Bán</span>
-</div>
-<div className="mt-3 space-y-3">
-<div className="p-3 rounded-xl bg-surface-container-low/80 border border-surface-variant text-left">
-<div className="flex items-start gap-2">
-<span className="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">error</span>
-<div>
-<p className="font-title-md text-[13px] font-semibold text-on-surface leading-tight">Clean Code (Bản EPUB)</p>
-<p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Chưa hoàn tất định dạng đọc chuẩn trên ứng dụng HUKI Reader mobile.</p>
-<button className="mt-2 text-primary font-label-sm text-label-sm font-bold hover:underline flex items-center gap-0.5">
-                      Kiểm tra file &amp; tải lại <span className="material-symbols-outlined text-[13px]">chevron_right</span>
-</button>
-</div>
-</div>
-</div>
-<div className="p-3 rounded-xl bg-surface-container-low/80 border border-surface-variant text-left">
-<div className="flex items-start gap-2">
-<span className="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">hourglass_top</span>
-<div>
-<p className="font-title-md text-[13px] font-semibold text-on-surface leading-tight">Dẫn Dắt Sự Thay Đổi</p>
-<p className="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Hệ thống đang mã hóa chứng chỉ DRM và watermarking chống sao chép trái phép.</p>
-<span className="inline-block mt-1 font-label-sm text-[11px] text-secondary font-semibold">Đang xử lý (80%)</span>
-</div>
-</div>
-</div>
-</div>
-<Link className="mt-4 block text-center py-2 rounded-lg bg-tertiary/10 hover:bg-tertiary/20 text-tertiary font-label-md text-label-md font-semibold transition-colors" to="/seller/product/create-ebook">
-              Quản Lý Danh Mục Ebook &amp; Bản Quyền →
-            </Link>
-</div>
+        {/* 2. 4 TOP METRIC CARDS (HUKI BOOKSTORE THEMED) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+          
+          {/* Card 1: Độc Giả Tiềm Năng (Leads) */}
+          <div className="bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-2xs flex flex-col justify-between hover:shadow-sm transition-shadow">
+            <div className="flex items-start justify-between">
+              <div>
+                <span className="text-xs font-semibold text-gray-500">Độc Giả Theo Dõi Shop</span>
+                <div className="text-2xl sm:text-[28px] font-extrabold text-gray-900 mt-1">4.320</div>
+              </div>
+              <div className="w-10 h-10 rounded-xl bg-[#EBF7F2] text-[#00875A] flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined text-[20px]">group_add</span>
+              </div>
+            </div>
+            <div className="mt-3.5 flex items-center gap-1.5 text-xs font-bold text-[#00875A]">
+              <span className="material-symbols-outlined text-[16px]">trending_up</span>
+              <span>+18.3%</span>
+              <span className="text-gray-400 font-normal">so với tháng trước</span>
+            </div>
+          </div>
 
-<div className="bg-surface-container-lowest border border-surface-variant rounded-2xl p-5 shadow-sm">
-<div className="flex items-center justify-between pb-3 border-b border-surface-variant/60">
-<h3 className="font-title-lg text-title-lg text-on-surface font-semibold">Top Sách Bán Chạy</h3>
-<span className="font-label-sm text-label-sm text-on-surface-variant">7 ngày qua</span>
-</div>
-<div className="mt-3 space-y-3">
+          {/* Card 2: Khách Đọc Ebook Tương Tác (Contacts) */}
+          <div className="bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-2xs flex flex-col justify-between hover:shadow-sm transition-shadow">
+            <div className="flex items-start justify-between">
+              <div>
+                <span className="text-xs font-semibold text-gray-500">Độc Giả Tương Tác &amp; Đọc Thử</span>
+                <div className="text-2xl sm:text-[28px] font-extrabold text-gray-900 mt-1">2.856</div>
+              </div>
+              <div className="w-10 h-10 rounded-xl bg-[#EFF6FF] text-[#2563EB] flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined text-[20px]">menu_book</span>
+              </div>
+            </div>
+            <div className="mt-3.5 flex items-center gap-1.5 text-xs font-bold text-[#2563EB]">
+              <span className="material-symbols-outlined text-[16px]">trending_up</span>
+              <span>+12.6%</span>
+              <span className="text-gray-400 font-normal">so với tháng trước</span>
+            </div>
+          </div>
 
-<div className="flex items-center justify-between">
-<div className="flex items-center gap-2.5">
-<span className="w-5 h-5 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold flex items-center justify-center shrink-0">1</span>
-<div>
-<p className="font-title-md text-[13px] font-semibold text-on-surface">Atomic Habits</p>
-<span className="font-label-sm text-[11px] text-tertiary">Combo Sách + Ebook</span>
-</div>
-</div>
-<div className="text-right">
-<p className="font-title-md text-[13px] font-bold text-on-surface">42 bản</p>
-<p className="font-label-sm text-[11px] text-on-surface-variant font-mono">4.860.000đ</p>
-</div>
-</div>
+          {/* Card 3: Khách Hàng Đã Mua Sách (Customers) */}
+          <div className="bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-2xs flex flex-col justify-between hover:shadow-sm transition-shadow">
+            <div className="flex items-start justify-between">
+              <div>
+                <span className="text-xs font-semibold text-gray-500">Đơn Hàng Giao Thành Công</span>
+                <div className="text-2xl sm:text-[28px] font-extrabold text-gray-900 mt-1">1.024</div>
+              </div>
+              <div className="w-10 h-10 rounded-xl bg-[#FAF5FF] text-[#9333EA] flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined text-[20px]">shopping_bag</span>
+              </div>
+            </div>
+            <div className="mt-3.5 flex items-center gap-1.5 text-xs font-bold text-[#9333EA]">
+              <span className="material-symbols-outlined text-[16px]">trending_up</span>
+              <span>+20.1%</span>
+              <span className="text-gray-400 font-normal">so với tháng trước</span>
+            </div>
+          </div>
 
-<div className="flex items-center justify-between">
-<div className="flex items-center gap-2.5">
-<span className="w-5 h-5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold flex items-center justify-center shrink-0">2</span>
-<div>
-<p className="font-title-md text-[13px] font-semibold text-on-surface">Deep Work</p>
-<span className="font-label-sm text-[11px] text-primary">Ebook DRM bản quyền</span>
-</div>
-</div>
-<div className="text-right">
-<p className="font-title-md text-[13px] font-bold text-on-surface">31 bản</p>
-<p className="font-label-sm text-[11px] text-on-surface-variant font-mono">2.449.000đ</p>
-</div>
-</div>
+          {/* Card 4: Tổng Doanh Thu (Revenue) */}
+          <div className="bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-2xs flex flex-col justify-between hover:shadow-sm transition-shadow">
+            <div className="flex items-start justify-between">
+              <div>
+                <span className="text-xs font-semibold text-gray-500">Tổng Doanh Thu Gian Hàng</span>
+                <div className="text-2xl sm:text-[28px] font-extrabold text-gray-900 mt-1">98.430.000₫</div>
+              </div>
+              <div className="w-10 h-10 rounded-xl bg-[#F0FDF4] text-[#16A34A] flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+              </div>
+            </div>
+            <div className="mt-3.5 flex items-center gap-1.5 text-xs font-bold text-[#16A34A]">
+              <span className="material-symbols-outlined text-[16px]">trending_up</span>
+              <span>+22.4%</span>
+              <span className="text-gray-400 font-normal">so với tháng trước</span>
+            </div>
+          </div>
+        </div>
 
-<div className="flex items-center justify-between">
-<div className="flex items-center gap-2.5">
-<span className="w-5 h-5 rounded-full bg-surface-container-high text-on-surface-variant text-xs font-bold flex items-center justify-center shrink-0">3</span>
-<div>
-<p className="font-title-md text-[13px] font-semibold text-on-surface">Tâm Lý Học Về Tiền</p>
-<span className="font-label-sm text-[11px] text-on-surface-variant">Sách giấy bìa mềm</span>
-</div>
-</div>
-<div className="text-right">
-<p className="font-title-md text-[13px] font-bold text-on-surface">27 bản</p>
-<p className="font-label-sm text-[11px] text-on-surface-variant font-mono">4.023.000đ</p>
-</div>
-</div>
-</div>
-</div>
+        {/* QUICK OPERATIONAL STATUS BAR (Xử lý đơn & tồn kho) */}
+        <div className="bg-[#EBF7F2] rounded-2xl p-4 border border-[#BDE6D7] flex flex-wrap items-center justify-between gap-3 shadow-2xs">
+          <div className="flex items-center gap-2.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#00875A] animate-ping"></span>
+            <span className="text-xs font-bold text-[#003B2B] uppercase tracking-wider">Cần xử lý ngay:</span>
+            <span className="text-xs font-semibold text-gray-700">12 đơn mới · 8 đơn chờ đóng gói · 5 tựa sách sắp hết kho · 3 bản thảo chờ duyệt DRM</span>
+          </div>
+          <Link to="/seller/orders" className="text-xs font-bold text-[#00875A] hover:underline flex items-center gap-1">
+            <span>Xử lý đơn hàng ngay</span>
+            <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
+          </Link>
+        </div>
 
-<div className="bg-surface-container-lowest border border-surface-variant rounded-2xl p-5 shadow-sm">
-<h3 className="font-title-lg text-title-lg text-on-surface font-semibold pb-3 border-b border-surface-variant/60">Hoạt Động Gần Đây</h3>
-<div className="mt-4 space-y-3 relative pl-4 border-l-2 border-surface-variant font-body-sm text-[12px]">
+        {/* 3. ROW 1 CHARTS (SALES PIPELINE & DEAL STAGES) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+          
+          {/* 3.1 SALES PIPELINE (7 Cols - Tiến trình xử lý & đơn hàng phát hành) */}
+          <div className="lg:col-span-7 bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h2 className="text-sm sm:text-base font-bold text-gray-900">Tiến Trình Phát Hành &amp; Đơn Hàng (Sales Pipeline)</h2>
+                <p className="text-[11px] text-gray-500 mt-0.5">Theo dõi luồng chuyển đổi từ độc giả xem sách đến kích hoạt hoàn tất</p>
+              </div>
+              <div className="flex items-center gap-1 text-xs font-semibold text-gray-600 bg-gray-50 border border-gray-200 px-2.5 py-1 rounded-lg cursor-pointer">
+                <span>{pipelinePeriod}</span>
+                <span className="material-symbols-outlined text-[14px]">expand_more</span>
+              </div>
+            </div>
 
-<div className="relative">
-<span className="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-tertiary ring-4 ring-surface-container-lowest"></span>
-<span className="font-mono text-[11px] text-on-surface-variant">10:42</span>
-<p className="text-on-surface font-medium mt-0.5">Đơn hàng <span className="font-mono font-bold">#HK24090125</span> thanh toán thành công qua VNPay.</p>
-</div>
+            {/* Horizontal Progressive Bars */}
+            <div className="space-y-3.5 py-2">
+              {[
+                { stage: 'Đọc thử Ebook', value: 1240, max: 1240, color: 'bg-[#4ADE80]' },
+                { stage: 'Thêm vào giỏ sách', value: 832, max: 1240, color: 'bg-[#6EE7B7]' },
+                { stage: 'Tạo đơn đặt mua', value: 540, max: 1240, color: 'bg-[#A7F3D0]' },
+                { stage: 'Đang vận chuyển & DRM', value: 310, max: 1240, color: 'bg-[#86EFAC]' },
+                { stage: 'Giao & Kích hoạt xong', value: 208, max: 1240, color: 'bg-[#15803D]' },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center text-xs font-medium text-gray-700">
+                  <span className="w-36 sm:w-40 shrink-0 font-semibold truncate">{item.stage}</span>
+                  <div className="flex-1 bg-gray-100 rounded-full h-4.5 overflow-hidden mx-2 relative">
+                    <div 
+                      className={`h-full ${item.color} rounded-full transition-all duration-500`}
+                      style={{ width: `${(item.value / item.max) * 100}%` }}
+                    ></div>
+                  </div>
+                  <span className="w-14 text-right font-bold text-gray-900">{item.value.toLocaleString()}</span>
+                </div>
+              ))}
+            </div>
+          </div>
 
-<div className="relative">
-<span className="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-secondary ring-4 ring-surface-container-lowest"></span>
-<span className="font-mono text-[11px] text-on-surface-variant">10:31</span>
-<p className="text-on-surface font-medium mt-0.5">Tồn kho <span className="font-semibold">Atomic Habits</span> giảm xuống mức cảnh báo (4 cuốn).</p>
-</div>
+          {/* 3.2 DEAL STAGES (5 Cols Donut Chart - Phân bổ định dạng sách) */}
+          <div className="lg:col-span-5 bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+            <div className="flex items-center justify-between mb-3">
+              <div>
+                <h2 className="text-sm sm:text-base font-bold text-gray-900">Phân Bổ Định Dạng Sách (Deal Stages)</h2>
+                <p className="text-[11px] text-gray-500 mt-0.5">Tỷ trọng giao dịch theo loại ấn phẩm</p>
+              </div>
+              <Link to="/seller/orders" className="text-xs font-bold text-[#00875A] hover:underline">
+                Xem tất cả
+              </Link>
+            </div>
 
-<div className="relative">
-<span className="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-tertiary-container ring-4 ring-surface-container-lowest"></span>
-<span className="font-mono text-[11px] text-on-surface-variant">10:18</span>
-<p className="text-on-surface font-medium mt-0.5">Ebook <span className="font-semibold">Deep Work</span> tự động cấp quyền vào Tủ Sách độc giả Thu Hà.</p>
-</div>
+            <div className="flex flex-col sm:flex-row items-center justify-around gap-4 py-2">
+              {/* SVG Donut */}
+              <div className="relative w-40 h-40 flex items-center justify-center shrink-0">
+                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                  {/* Background Ring */}
+                  <circle cx="50" cy="50" r="38" stroke="#F1F5F9" strokeWidth="14" fill="none" />
+                  {/* Segment 1: Sách Giấy Bìa Mềm (28%) */}
+                  <circle cx="50" cy="50" r="38" stroke="#00875A" strokeWidth="14" fill="none"
+                    strokeDasharray="238.76" strokeDashoffset="0" className="transition-all duration-700" />
+                  {/* Segment 2: Ebook DRM (25%) */}
+                  <circle cx="50" cy="50" r="38" stroke="#06B6D4" strokeWidth="14" fill="none"
+                    strokeDasharray="238.76" strokeDashoffset="-66.85" className="transition-all duration-700" />
+                  {/* Segment 3: Combo Hybrid (20%) */}
+                  <circle cx="50" cy="50" r="38" stroke="#3B82F6" strokeWidth="14" fill="none"
+                    strokeDasharray="238.76" strokeDashoffset="-126.54" className="transition-all duration-700" />
+                  {/* Segment 4: Sách Nói Audio (15%) */}
+                  <circle cx="50" cy="50" r="38" stroke="#F59E0B" strokeWidth="14" fill="none"
+                    strokeDasharray="238.76" strokeDashoffset="-174.29" className="transition-all duration-700" />
+                  {/* Segment 5: Bản Bìa Cứng Đặc Biệt (12%) */}
+                  <circle cx="50" cy="50" r="38" stroke="#FB7185" strokeWidth="14" fill="none"
+                    strokeDasharray="238.76" strokeDashoffset="-210.1" className="transition-all duration-700" />
+                </svg>
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
+                  <span className="text-xl font-extrabold text-gray-900 leading-tight">540</span>
+                  <span className="text-[9.5px] text-gray-500 font-semibold uppercase">Đơn Đang Xử Lý</span>
+                </div>
+              </div>
 
-<div className="relative">
-<span className="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-on-surface-variant ring-4 ring-surface-container-lowest"></span>
-<span className="font-mono text-[11px] text-on-surface-variant">09:55</span>
-<p className="text-on-surface font-medium mt-0.5">Sách mới <span className="font-semibold">Tư Duy Phản Biện</span> được ban biên tập HUKI duyệt bán.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+              {/* Legend List */}
+              <div className="space-y-1.5 text-xs w-full sm:w-auto">
+                {[
+                  { name: 'Sách Giấy In', pct: '28%', color: 'bg-[#00875A]' },
+                  { name: 'Ebook DRM', pct: '25%', color: 'bg-[#06B6D4]' },
+                  { name: 'Combo Hybrid', pct: '20%', color: 'bg-[#3B82F6]' },
+                  { name: 'Audiobook', pct: '15%', color: 'bg-[#F59E0B]' },
+                  { name: 'Bìa Cứng Limited', pct: '12%', color: 'bg-[#FB7185]' },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-2">
+                      <span className={`w-2.5 h-2.5 rounded-full ${item.color}`}></span>
+                      <span className="text-gray-600 font-medium">{item.name}</span>
+                    </div>
+                    <span className="font-bold text-gray-900">{item.pct}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
 
-      </main>
+        {/* 4. ROW 2 CHARTS (CUSTOMER ACQUISITION & CONVERSION FUNNEL) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+          
+          {/* 4.1 CUSTOMER ACQUISITION (7 Cols Line Chart - Tăng trưởng bạn đọc) */}
+          <div className="lg:col-span-7 bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h2 className="text-sm sm:text-base font-bold text-gray-900">Tăng Trưởng Độc Giả Mới (Customer Acquisition)</h2>
+                <p className="text-[11px] text-gray-500 mt-0.5">Số lượng bạn đọc mới đăng ký và theo dõi gian hàng trong 6 tháng qua</p>
+              </div>
+              <div className="flex items-center gap-1 text-xs font-semibold text-gray-600 bg-gray-50 border border-gray-200 px-2.5 py-1 rounded-lg cursor-pointer">
+                <span>{acqPeriod}</span>
+                <span className="material-symbols-outlined text-[14px]">expand_more</span>
+              </div>
+            </div>
+
+            <div className="relative pt-6 pb-2">
+              {/* SVG Line Chart */}
+              <div className="h-44 w-full relative">
+                {/* Y Axis Grid Lines */}
+                <div className="absolute inset-0 flex flex-col justify-between text-[10px] text-gray-400 pointer-events-none">
+                  <div className="border-b border-gray-100 w-full flex justify-between"><span>1k bạn đọc</span></div>
+                  <div className="border-b border-gray-100 w-full flex justify-between"><span>750</span></div>
+                  <div className="border-b border-gray-100 w-full flex justify-between"><span>500</span></div>
+                  <div className="border-b border-gray-100 w-full flex justify-between"><span>250</span></div>
+                  <div className="border-b border-gray-100 w-full flex justify-between"><span>0</span></div>
+                </div>
+
+                {/* Area & Line */}
+                <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 500 150">
+                  <defs>
+                    <linearGradient id="sellerAcqGradient2" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#22C55E" stopOpacity="0.35" />
+                      <stop offset="100%" stopColor="#22C55E" stopOpacity="0.0" />
+                    </linearGradient>
+                  </defs>
+                  {/* Fill Path */}
+                  <path
+                    d="M 20 120 Q 70 140 120 100 T 220 90 T 320 60 T 420 30 T 480 20 L 480 150 L 20 150 Z"
+                    fill="url(#sellerAcqGradient2)"
+                  />
+                  {/* Stroke Path */}
+                  <path
+                    d="M 20 120 Q 70 140 120 100 T 220 90 T 320 60 T 420 30 T 480 20"
+                    fill="none"
+                    stroke="#16A34A"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                  {/* Peak Indicator Dot */}
+                  <circle cx="420" cy="30" r="5" fill="#16A34A" stroke="#FFFFFF" strokeWidth="2" />
+                </svg>
+
+                {/* Floating Tooltip matching reference image */}
+                <div className="absolute top-2 right-14 bg-[#1E293B] text-white text-[11px] font-bold px-2.5 py-1.5 rounded-lg shadow-lg flex flex-col items-center">
+                  <span>720 bạn đọc</span>
+                  <span className="text-[9px] text-gray-400 font-normal">Tháng 6/2026</span>
+                </div>
+              </div>
+
+              {/* X Axis Months */}
+              <div className="flex items-center justify-between text-[11px] font-semibold text-gray-500 mt-3 px-3">
+                <span>Tháng 1</span>
+                <span>Tháng 2</span>
+                <span>Tháng 3</span>
+                <span>Tháng 4</span>
+                <span>Tháng 5</span>
+                <span>Tháng 6</span>
+              </div>
+            </div>
+          </div>
+
+          {/* 4.2 CONVERSION FUNNEL (5 Cols Trapezoid Funnel - Phễu mua sách) */}
+          <div className="lg:col-span-5 bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h2 className="text-sm sm:text-base font-bold text-gray-900">Phễu Mua Sách (Conversion Funnel)</h2>
+                <p className="text-[11px] text-gray-500 mt-0.5">Tỷ lệ độc giả hoàn tất đặt mua từ bước xem</p>
+              </div>
+              <Link to="/seller/products" className="text-xs font-bold text-[#00875A] hover:underline">
+                Chi tiết
+              </Link>
+            </div>
+
+            {/* Tiered Funnel Bars */}
+            <div className="space-y-2 py-1 flex flex-col items-center">
+              {/* Tier 1: Xem sách */}
+              <div className="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-[#22C55E] text-white text-xs font-bold shadow-xs">
+                <span>Lượt xem &amp; Đọc thử</span>
+                <div className="flex items-center gap-3">
+                  <span>4.320</span>
+                  <span className="text-[10px] text-emerald-100 font-normal">100%</span>
+                </div>
+              </div>
+
+              {/* Tier 2: Thêm giỏ */}
+              <div className="w-[82%] flex items-center justify-between px-3 py-2 rounded-xl bg-[#4ADE80] text-gray-900 text-xs font-bold shadow-xs">
+                <span>Thêm vào giỏ sách</span>
+                <div className="flex items-center gap-3">
+                  <span>2.160</span>
+                  <span className="text-[10px] text-gray-700 font-semibold">50%</span>
+                </div>
+              </div>
+
+              {/* Tier 3: Đặt hàng */}
+              <div className="w-[66%] flex items-center justify-between px-3 py-2 rounded-xl bg-[#86EFAC] text-gray-900 text-xs font-bold shadow-xs">
+                <span>Tiến hành đặt mua</span>
+                <div className="flex items-center gap-3">
+                  <span>864</span>
+                  <span className="text-[10px] text-gray-700 font-semibold">20%</span>
+                </div>
+              </div>
+
+              {/* Tier 4: Thanh toán xong */}
+              <div className="w-[50%] flex items-center justify-between px-3 py-2 rounded-xl bg-[#15803D] text-white text-xs font-bold shadow-xs">
+                <span>Thanh toán thành công</span>
+                <div className="flex items-center gap-3">
+                  <span>432</span>
+                  <span className="text-[10px] text-emerald-200 font-normal">10%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 5. ROW 3 ACTIVITY WIDGETS (3 EQUAL COLUMNS) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          
+          {/* Widget 1: Upcoming Tasks & Calendar (Lịch trình phát hành & sự kiện) */}
+          <div className="bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+            <div className="flex items-center justify-between mb-3.5 pb-2 border-b border-gray-100">
+              <h2 className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-[#00875A] text-[18px]">event_note</span>
+                <span>Lịch Sự Kiện &amp; Ký Tác Quyền</span>
+              </h2>
+              <span className="text-xs font-bold text-[#00875A] hover:underline cursor-pointer">
+                Xem lịch
+              </span>
+            </div>
+
+            <div className="space-y-3">
+              {[
+                { day: '10', month: 'T6', title: 'Họp ký kết tác quyền sách mới', place: 'Tác giả James Clear', time: '10:00 SA', color: 'bg-emerald-500' },
+                { day: '11', month: 'T6', title: 'Kiểm tra mã hóa file EPUB DRM', place: 'Sách Công nghệ AI 2026', time: '02:00 CH', color: 'bg-blue-500' },
+                { day: '12', month: 'T6', title: 'Gửi bản in thử bìa cứng', place: 'Xưởng in Alpha Books', time: '11:30 SA', color: 'bg-amber-500' },
+                { day: '13', month: 'T6', title: 'Livestream ra mắt sách mới', place: 'Hội Sách HUKI Online', time: '04:00 CH', color: 'bg-purple-500' }
+              ].map((task, idx) => (
+                <div key={idx} className="flex items-center justify-between text-xs py-1 hover:bg-gray-50 rounded-lg px-1.5 transition-colors">
+                  <div className="flex items-center gap-2.5">
+                    <div className="text-center w-7 shrink-0">
+                      <span className="block font-bold text-gray-900 leading-none">{task.day}</span>
+                      <span className="text-[10px] text-gray-400 uppercase">{task.month}</span>
+                    </div>
+                    <span className={`w-2 h-2 rounded-full shrink-0 ${task.color}`}></span>
+                    <div className="min-w-0">
+                      <div className="font-bold text-gray-800 truncate">{task.title}</div>
+                      <span className="text-[10px] text-gray-400 block truncate">{task.place}</span>
+                    </div>
+                  </div>
+                  <span className="text-[11px] font-semibold text-gray-500 shrink-0">{task.time}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Widget 2: Recent Messages (Tin nhắn khách đọc & hỗ trợ) */}
+          <div className="bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+            <div className="flex items-center justify-between mb-3.5 pb-2 border-b border-gray-100">
+              <h2 className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-[#00875A] text-[18px]">chat_bubble_outline</span>
+                <span>Tin Nhắn Khách Đọc Gần Đây</span>
+              </h2>
+              <Link to="/seller/chat" className="text-xs font-bold text-[#00875A] hover:underline">
+                Hộp thư
+              </Link>
+            </div>
+
+            <div className="space-y-3">
+              {[
+                { name: 'Nguyễn Thu Hà', msg: 'Sách Atomic Habits còn bản in bìa cứng kèm bookmark không shop?', time: '10:24', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80' },
+                { name: 'Trần Đức Anh', msg: 'Mình vừa kích hoạt Ebook DRM trên tablet đọc rất mượt!', time: 'Hôm qua', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80' },
+                { name: 'Lê Minh Tuấn', msg: 'Shop có áp dụng mã giảm combo 35% cho đơn sách này không?', time: 'Hôm qua', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80' },
+                { name: 'Vũ Thanh Hằng', msg: 'Đã nhận sách giao hỏa tốc 2H, bọc sách cẩn thận lắm nhé.', time: '08/06', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80' }
+              ].map((msg, idx) => (
+                <div key={idx} className="flex items-center justify-between text-xs py-1 hover:bg-gray-50 rounded-lg px-1.5 transition-colors cursor-pointer">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <img src={msg.avatar} alt={msg.name} className="w-8 h-8 rounded-full object-cover shrink-0" />
+                    <div className="min-w-0">
+                      <div className="font-bold text-gray-900 truncate">{msg.name}</div>
+                      <p className="text-[11px] text-gray-500 truncate">{msg.msg}</p>
+                    </div>
+                  </div>
+                  <span className="text-[10px] text-gray-400 shrink-0 ml-2 font-medium">{msg.time}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Widget 3: Store Activity (Nhật ký hoạt động gian hàng) */}
+          <div className="bg-white rounded-2xl p-5 border border-[#E2E8F0] shadow-2xs flex flex-col justify-between">
+            <div className="flex items-center justify-between mb-3.5 pb-2 border-b border-gray-100">
+              <h2 className="text-sm font-bold text-gray-900 flex items-center gap-1.5">
+                <span className="material-symbols-outlined text-[#00875A] text-[18px]">history</span>
+                <span>Hoạt Động Gian Hàng</span>
+              </h2>
+              <span className="text-xs font-bold text-[#00875A] hover:underline cursor-pointer">
+                Lịch sử
+              </span>
+            </div>
+
+            <div className="space-y-3">
+              {[
+                { name: 'CSKH Hoàng Nam', action: 'xác nhận đơn hàng #HUK-9821 (Combo Hybrid)', time: '2h trước', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80' },
+                { name: 'Kho Vận Minh Trí', action: 'bàn giao 24 bưu kiện cho Giao Nhanh 2H', time: '4h trước', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80' },
+                { name: 'BTV Lan Anh', action: 'hoàn tất kiểm duyệt file PDF đọc thử', time: '6h trước', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80' },
+                { name: 'Quản Lý Alpha Books', action: 'cập nhật voucher giảm 25K cho hội viên mới', time: '1d trước', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80' }
+              ].map((act, idx) => (
+                <div key={idx} className="flex items-center justify-between text-xs py-1 hover:bg-gray-50 rounded-lg px-1.5 transition-colors">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <img src={act.avatar} alt={act.name} className="w-8 h-8 rounded-full object-cover shrink-0" />
+                    <div className="min-w-0">
+                      <span className="font-bold text-gray-900">{act.name} </span>
+                      <span className="text-gray-500 text-[11px]">{act.action}</span>
+                    </div>
+                  </div>
+                  <span className="text-[10px] text-gray-400 shrink-0 ml-2 font-medium">{act.time}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
