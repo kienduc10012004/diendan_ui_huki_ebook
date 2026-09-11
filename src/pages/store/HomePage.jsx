@@ -474,7 +474,25 @@ export default function HomePage() {
   const handleToggleAuthorFollow = (authorName) => {
     if (followedAuthors.includes(authorName)) {
       setFollowedAuthors(prev => prev.filter(a => a !== authorName));
-      showToast(`Đã bỏ theo dõi tác giả ${authorName}`,       {/* =========================================================================
+      showToast(`Đã bỏ theo dõi tác giả ${authorName}`, 'info');
+    } else {
+      setFollowedAuthors(prev => [...prev, authorName]);
+      showToast(`Đang theo dõi tác giả ${authorName}`, 'success');
+    }
+  };
+
+  // Handle Search Submit
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchKeyword.trim()) {
+      navigate(`/books?q=${encodeURIComponent(searchKeyword.trim())}`);
+    }
+  };
+
+  return (
+    <div className="w-full max-w-[1520px] mx-auto px-3 sm:px-5 lg:px-8 py-5 flex flex-col gap-8 sm:gap-10">
+
+      {/* =========================================================================
           SECTION 1: HERO 3 KHỐI CHUẨN TMĐT (MENU DỌC + HERO SLIDER + 2 BANNER PHỤ)
       ========================================================================= */}
       <section className="flex flex-col gap-3.5">
