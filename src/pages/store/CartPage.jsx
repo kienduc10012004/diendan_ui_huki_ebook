@@ -131,7 +131,7 @@ export default function CartPage() {
             className="text-xs font-semibold text-primary hover:underline flex items-center gap-1 self-start sm:self-auto"
           >
             <span className="material-symbols-outlined text-[16px]">arrow_back</span>
-            Tiếp tục chọn sách
+            Tiếp tục chọn
           </Link>
         </div>
 
@@ -150,8 +150,8 @@ export default function CartPage() {
                   {hasEbookItems && hasPhysicalItems
                     ? '⚡ Ebook số kích hoạt ngay tức thì + Miễn phí vận chuyển cho đơn sách giấy từ 250.000đ.'
                     : hasEbookItems
-                    ? '⚡ Đơn hàng Ebook bản quyền DRM được miễn phí 100% chi phí vận chuyển.'
-                    : '📦 Miễn phí vận chuyển toàn quốc cho đơn sách giấy từ 250.000đ.'}
+                      ? '⚡ Đơn hàng Ebook bản quyền DRM được miễn phí 100% chi phí vận chuyển.'
+                      : '📦 Miễn phí vận chuyển toàn quốc cho đơn sách giấy từ 250.000đ.'}
                 </span>
               </div>
             </div>
