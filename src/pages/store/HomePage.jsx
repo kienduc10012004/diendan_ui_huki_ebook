@@ -8,6 +8,59 @@ export default function HomePage() {
   const { addToCart } = useCart();
   const { showToast } = useToast();
 
+  // Hero Slider State & Autoplay
+  const [activeHeroSlide, setActiveHeroSlide] = useState(0);
+  const [isHeroHovered, setIsHeroHovered] = useState(false);
+
+  // Hero Slides with Real Photography Backgrounds
+  const heroSlides = useMemo(() => [
+    {
+      id: 'slide-1',
+      badge: 'Hội Sách Tri Thức Mùa Xuất Bản 2026',
+      icon: 'auto_awesome',
+      title: 'Chăm sóc tâm hồn –\nTỏa sáng cùng tri thức',
+      desc: 'Hơn 50.000 đầu sách tuyển chọn & Ebook bản quyền từ các NXB uy tín. Giao nhanh 2H nội thành.',
+      bgImage: '/banners/hero-library.jpg',
+      overlay: 'linear-gradient(to right, rgba(0, 42, 32, 0.94) 0%, rgba(0, 42, 32, 0.82) 48%, rgba(0, 42, 32, 0.2) 100%)',
+      primaryBtn: { text: 'Khám phá ngay', to: '/books' },
+      secondaryBtn: { text: 'Đọc thử Ebook', to: '/books?format=ebook' },
+      accent: '#C58F5E'
+    },
+    {
+      id: 'slide-2',
+      badge: 'Không Gian Đọc Ebook DRM & Audio',
+      icon: 'tablet_mac',
+      title: 'Đọc mọi lúc mọi nơi –\nĐồng bộ đa thiết bị',
+      desc: 'Kho Ebook bản quyền chuẩn DRM, highlight và ghi chú thông minh, đọc mượt mà trên App & Web.',
+      bgImage: '/banners/sub-hybrid.jpg',
+      overlay: 'linear-gradient(to right, rgba(14, 38, 50, 0.94) 0%, rgba(14, 38, 50, 0.82) 50%, rgba(14, 38, 50, 0.2) 100%)',
+      primaryBtn: { text: 'Trải nghiệm Ebook', to: '/books?format=ebook' },
+      secondaryBtn: { text: 'Mua Combo Tiết Kiệm', to: '/books?format=hybrid' },
+      accent: '#38BDF8'
+    },
+    {
+      id: 'slide-3',
+      badge: 'Ấn Bản Sách Đẹp & Sưu Tầm Cao Cấp',
+      icon: 'workspace_premium',
+      title: 'Bìa cứng mạ vàng –\nQuà tặng tri thức sang trọng',
+      desc: 'Tuyển tập kiệt tác văn học, sách giới hạn kèm chữ ký tác giả và bookmark cao cấp.',
+      bgImage: '/banners/hero-podium.jpg',
+      overlay: 'linear-gradient(to right, rgba(38, 26, 12, 0.94) 0%, rgba(38, 26, 12, 0.82) 48%, rgba(38, 26, 12, 0.2) 100%)',
+      primaryBtn: { text: 'Xem bộ sưu tập', to: '/books?filter=special' },
+      secondaryBtn: { text: 'Săn Deal Bán Chạy', to: '/books?filter=flash-sale' },
+      accent: '#F59E0B'
+    }
+  ], []);
+
+  // Autoplay Hero Slider
+  useEffect(() => {
+    if (isHeroHovered) return;
+    const timer = setInterval(() => {
+      setActiveHeroSlide(prev => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [isHeroHovered, heroSlides.length]);
+
   // Search State
   const [searchKeyword, setSearchKeyword] = useState('');
 
@@ -544,149 +597,145 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* 1.2 CỘT GIỮA: BANNER HERO LỚN VỚI HÌNH ẢNH SÁCH 3D & PODIUM NGHỆ THUẬT */}
+          {/* 1.2 CỘT GIỮA: BANNER HERO LỚN VỚI HÌNH ẢNH NỀN SỐNG ĐỘNG (BACKGROUND PHOTO + SLIDER) */}
           <div 
-            style={{ background: 'linear-gradient(135deg, var(--theme-hero-from, #00382B) 0%, var(--theme-hero-via, #004D38) 60%, var(--theme-hero-to, #00271E) 100%)' }}
-            className="col-span-12 lg:col-span-6 rounded-2xl p-6 sm:p-8 text-white relative overflow-hidden flex flex-col justify-between shadow-md border border-white/10 min-h-[340px]"
+            onMouseEnter={() => setIsHeroHovered(true)}
+            onMouseLeave={() => setIsHeroHovered(false)}
+            style={{ 
+              backgroundImage: `${heroSlides[activeHeroSlide].overlay}, url('${heroSlides[activeHeroSlide].bgImage}')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center right'
+            }}
+            className="col-span-12 lg:col-span-6 rounded-2xl p-6 sm:p-8 text-white relative overflow-hidden flex flex-col justify-between shadow-md border border-white/10 min-h-[340px] transition-all duration-700"
           >
-            <div className="absolute -right-16 -top-16 w-72 h-72 rounded-full bg-emerald-400/15 blur-3xl pointer-events-none"></div>
+            {/* Ambient glowing highlights */}
+            <div className="absolute -right-16 -top-16 w-72 h-72 rounded-full bg-emerald-400/10 blur-3xl pointer-events-none"></div>
             <div className="absolute -left-10 bottom-0 w-64 h-64 rounded-full bg-amber-400/10 blur-3xl pointer-events-none"></div>
 
-            <div className="relative z-10 grid grid-cols-1 sm:grid-cols-12 gap-4 items-center h-full">
-              {/* Left Content */}
-              <div className="sm:col-span-7 flex flex-col justify-between">
-                <div>
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-emerald-200 text-[11px] font-semibold mb-2.5">
-                    <span className="material-symbols-outlined text-[14px] text-amber-300">auto_awesome</span>
-                    <span>Hội Sách Mùa Xuất Bản 2026</span>
-                  </div>
-                  <h1 className="text-2xl sm:text-[28px] font-bold tracking-tight text-white leading-tight font-editorial">
-                    Chăm sóc tâm hồn – <br className="hidden sm:inline" />Tỏa sáng cùng tri thức
-                  </h1>
-                  <p className="text-xs text-white/85 mt-2 leading-relaxed max-w-xs">
-                    Hơn 50.000 đầu sách tuyển chọn &amp; Ebook bản quyền từ các NXB uy tín. Giao nhanh 2H.
-                  </p>
+            <div className="relative z-10 flex flex-col justify-between h-full">
+              <div className="max-w-md">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-emerald-100 text-[11px] font-semibold mb-3 shadow-xs">
+                  <span className="material-symbols-outlined text-[14px] text-amber-300">{heroSlides[activeHeroSlide].icon}</span>
+                  <span>{heroSlides[activeHeroSlide].badge}</span>
                 </div>
-
-                <div className="flex items-center gap-2.5 mt-5">
-                  <Link
-                    to="/books"
-                    className="px-4 py-2 rounded-xl bg-[#c58f5e] hover:bg-[#b07d4f] text-white text-xs font-bold shadow-md transition-all inline-flex items-center gap-1"
-                  >
-                    <span>Khám phá ngay</span>
-                    <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                  </Link>
-                  <Link
-                    to="/books?format=ebook"
-                    className="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-semibold backdrop-blur-md border border-white/20 transition-all"
-                  >
-                    Đọc thử Ebook
-                  </Link>
-                </div>
+                <h1 className="text-2xl sm:text-[28px] font-bold tracking-tight text-white leading-tight font-editorial whitespace-pre-line drop-shadow-md">
+                  {heroSlides[activeHeroSlide].title}
+                </h1>
+                <p className="text-xs sm:text-[13px] text-white/90 mt-2.5 leading-relaxed max-w-sm drop-shadow-sm font-medium">
+                  {heroSlides[activeHeroSlide].desc}
+                </p>
               </div>
 
-              {/* Right Visual Podium with Real Books Arrangement (Matching Beauty Shop & Tiệm Hoa staging) */}
-              <div className="sm:col-span-5 relative flex items-center justify-center pt-2 sm:pt-0">
-                {/* Glowing pedestal base */}
-                <div className="relative w-44 h-48 sm:w-48 sm:h-52 flex items-center justify-center">
-                  <div className="absolute bottom-2 w-40 h-10 bg-white/10 rounded-full blur-md border border-white/20"></div>
-                  
-                  {/* Book 1 (Background left tilted) */}
-                  <img 
-                    src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80" 
-                    alt="Book 1" 
-                    className="absolute -left-2 bottom-6 w-24 h-34 object-cover rounded-lg shadow-2xl transform -rotate-12 border-2 border-white/40 hover:scale-105 transition-transform"
-                  />
-
-                  {/* Book 2 (Center prominent) */}
-                  <img 
-                    src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80" 
-                    alt="Book 2" 
-                    className="relative z-10 bottom-3 w-26 h-38 object-cover rounded-lg shadow-2xl border-2 border-white/60 hover:scale-105 transition-transform"
-                  />
-
-                  {/* Book 3 (Right tilted) */}
-                  <img 
-                    src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=400&q=80" 
-                    alt="Book 3" 
-                    className="absolute -right-2 bottom-5 w-24 h-34 object-cover rounded-lg shadow-2xl transform rotate-12 border-2 border-white/40 hover:scale-105 transition-transform"
-                  />
-                </div>
+              <div className="flex flex-wrap items-center gap-2.5 mt-6">
+                <Link
+                  to={heroSlides[activeHeroSlide].primaryBtn.to}
+                  className="px-4 py-2 rounded-xl bg-[#c58f5e] hover:bg-[#b07d4f] text-white text-xs font-bold shadow-md transition-all inline-flex items-center gap-1.5 transform hover:-translate-y-0.5 cursor-pointer"
+                >
+                  <span>{heroSlides[activeHeroSlide].primaryBtn.text}</span>
+                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                </Link>
+                <Link
+                  to={heroSlides[activeHeroSlide].secondaryBtn.to}
+                  className="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-semibold backdrop-blur-md border border-white/25 transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                >
+                  {heroSlides[activeHeroSlide].secondaryBtn.text}
+                </Link>
               </div>
             </div>
 
-            {/* Pagination Dots */}
-            <div className="relative z-10 pt-2 flex items-center justify-center gap-1.5">
-              <span className="w-5 h-1.5 rounded-full bg-white transition-all"></span>
-              <span className="w-1.5 h-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all cursor-pointer"></span>
-              <span className="w-1.5 h-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all cursor-pointer"></span>
-              <span className="w-1.5 h-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all cursor-pointer"></span>
+            {/* Slider Controls & Pagination Dots */}
+            <div className="relative z-10 pt-4 flex items-center justify-between">
+              <div className="flex items-center gap-1.5">
+                {heroSlides.map((slide, idx) => (
+                  <button
+                    key={slide.id}
+                    onClick={() => setActiveHeroSlide(idx)}
+                    className={`transition-all rounded-full cursor-pointer ${
+                      activeHeroSlide === idx
+                        ? 'w-6 h-1.5 bg-white shadow-xs'
+                        : 'w-1.5 h-1.5 bg-white/40 hover:bg-white/80'
+                    }`}
+                    aria-label={`Slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
+
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => setActiveHeroSlide(prev => (prev - 1 + heroSlides.length) % heroSlides.length)}
+                  className="w-6 h-6 rounded-full bg-black/25 hover:bg-black/40 text-white flex items-center justify-center backdrop-blur-xs transition-colors cursor-pointer"
+                  aria-label="Previous slide"
+                >
+                  <span className="material-symbols-outlined text-[14px]">chevron_left</span>
+                </button>
+                <button
+                  onClick={() => setActiveHeroSlide(prev => (prev + 1) % heroSlides.length)}
+                  className="w-6 h-6 rounded-full bg-black/25 hover:bg-black/40 text-white flex items-center justify-center backdrop-blur-xs transition-colors cursor-pointer"
+                  aria-label="Next slide"
+                >
+                  <span className="material-symbols-outlined text-[14px]">chevron_right</span>
+                </button>
+              </div>
             </div>
           </div>
 
-          {/* 1.3 CỘT PHẢI: 2 BANNER PHỤ CÓ HÌNH ẢNH MINH HỌA */}
+          {/* 1.3 CỘT PHẢI: 2 BANNER PHỤ CÓ HÌNH ẢNH NỀN THỰC TẾ & VIVID */}
           <div className="col-span-12 lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3.5">
             {/* Sub Banner 1: Đọc sách mỗi ngày */}
-            <div className="flex-1 rounded-2xl p-4 bg-gradient-to-br from-[#FAF3EE] to-[#F5ECE4] border border-[#E8E0D7] text-[#17201F] relative overflow-hidden flex items-center justify-between shadow-2xs group cursor-pointer">
-              <div className="relative z-10 flex-1 pr-2">
-                <span className="bg-[#003B2B]/10 text-[#003B2B] text-[9.5px] uppercase font-bold px-2 py-0.5 rounded-md">
+            <Link
+              to="/book/atomic-habits"
+              style={{
+                backgroundImage: `linear-gradient(to right, rgba(255, 248, 240, 0.96) 0%, rgba(255, 248, 240, 0.88) 55%, rgba(255, 248, 240, 0.25) 100%), url('/banners/sub-atomic.jpg')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center right'
+              }}
+              className="flex-1 rounded-2xl p-4.5 border border-[#E8E0D7] text-[#17201F] relative overflow-hidden flex flex-col justify-between shadow-2xs group cursor-pointer hover:shadow-md transition-all min-h-[160px]"
+            >
+              <div className="relative z-10 max-w-[210px]">
+                <span className="bg-[#B02E1B] text-white text-[9.5px] uppercase font-bold px-2 py-0.5 rounded-md shadow-xs">
                   TOP 1 BÁN CHẠY
                 </span>
-                <h3 className="text-sm font-bold mt-1.5 leading-snug group-hover:text-[#003B2B] transition-colors font-editorial">
+                <h3 className="text-[15px] font-bold mt-1.5 leading-snug group-hover:text-[#003B2B] transition-colors font-editorial">
                   Đọc Sách Mỗi Ngày
                 </h3>
-                <p className="text-[11px] text-[#6B7280] mt-0.5 line-clamp-2">
+                <p className="text-[11px] text-[#5A6065] mt-0.5 line-clamp-2 font-medium">
                   Atomic Habits &amp; Tâm Lý Học Về Tiền ưu đãi 25%.
                 </p>
-                <Link 
-                  to="/book/atomic-habits" 
-                  className="mt-2 inline-flex items-center gap-1 text-[11.5px] font-bold text-[#003B2B] group-hover:translate-x-1 transition-transform"
-                >
-                  <span>Xem ngay</span>
-                  <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-                </Link>
               </div>
 
-              {/* Sub Banner 1 Image */}
-              <div className="w-20 h-24 rounded-xl overflow-hidden shadow-md shrink-0 border border-white group-hover:scale-105 transition-transform">
-                <img 
-                  src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=300&q=80" 
-                  alt="Đọc sách mỗi ngày" 
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative z-10 mt-2 flex items-center gap-1 text-[12px] font-bold text-[#003B2B] group-hover:translate-x-1 transition-transform">
+                <span>Xem ngay</span>
+                <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
               </div>
-            </div>
+            </Link>
 
             {/* Sub Banner 2: Combo Hybrid */}
-            <div className="flex-1 rounded-2xl p-4 bg-gradient-to-br from-[#E6F4F0] to-[#D4ECE5] border border-[#C5E4DB] text-[#17201F] relative overflow-hidden flex items-center justify-between shadow-2xs group cursor-pointer">
-              <div className="relative z-10 flex-1 pr-2">
-                <span className="bg-emerald-800 text-white text-[9.5px] uppercase font-bold px-2 py-0.5 rounded-md">
+            <Link
+              to="/books?format=hybrid"
+              style={{
+                backgroundImage: `linear-gradient(to right, rgba(235, 248, 244, 0.96) 0%, rgba(235, 248, 244, 0.88) 55%, rgba(235, 248, 244, 0.25) 100%), url('/banners/sub-hybrid.jpg')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center right'
+              }}
+              className="flex-1 rounded-2xl p-4.5 border border-[#C5E4DB] text-[#17201F] relative overflow-hidden flex flex-col justify-between shadow-2xs group cursor-pointer hover:shadow-md transition-all min-h-[160px]"
+            >
+              <div className="relative z-10 max-w-[210px]">
+                <span className="bg-emerald-800 text-white text-[9.5px] uppercase font-bold px-2 py-0.5 rounded-md shadow-xs">
                   COMBO HYBRID
                 </span>
-                <h3 className="text-sm font-bold mt-1.5 leading-snug group-hover:text-emerald-900 transition-colors font-editorial">
+                <h3 className="text-[15px] font-bold mt-1.5 leading-snug group-hover:text-emerald-900 transition-colors font-editorial">
                   Sách In Tặng Ebook
                 </h3>
-                <p className="text-[11px] text-[#6B7280] mt-0.5 line-clamp-2">
-                  Tiết kiệm đến 35% khi mua trọn bộ combo sách.
+                <p className="text-[11px] text-[#5A6065] mt-0.5 line-clamp-2 font-medium">
+                  Tiết kiệm đến 35% khi mua trọn bộ ấn phẩm độc quyền.
                 </p>
-                <Link 
-                  to="/books?format=hybrid" 
-                  className="mt-2 inline-flex items-center gap-1 text-[11.5px] font-bold text-emerald-900 group-hover:translate-x-1 transition-transform"
-                >
-                  <span>Xem ngay</span>
-                  <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
-                </Link>
               </div>
 
-              {/* Sub Banner 2 Image */}
-              <div className="w-20 h-24 rounded-xl overflow-hidden shadow-md shrink-0 border border-white group-hover:scale-105 transition-transform">
-                <img 
-                  src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=300&q=80" 
-                  alt="Combo Hybrid" 
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative z-10 mt-2 flex items-center gap-1 text-[12px] font-bold text-emerald-900 group-hover:translate-x-1 transition-transform">
+                <span>Xem ngay</span>
+                <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
 
@@ -734,21 +783,21 @@ export default function HomePage() {
         <div className="w-full bg-white rounded-2xl p-4 sm:p-5 border border-[#E8E5DF] shadow-2xs">
           <div className="grid grid-cols-4 sm:grid-cols-8 gap-3 sm:gap-4">
             {[
-              { name: 'Văn học', image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=240&q=80', link: '/books?category=van-hoc' },
-              { name: 'Kinh tế', image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=240&q=80', link: '/books?category=kinh-te' },
-              { name: 'Kỹ năng sống', image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=240&q=80', link: '/books?category=ky-nang' },
-              { name: 'Ebook DRM', image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=240&q=80', link: '/books?format=ebook' },
-              { name: 'Combo Hybrid', image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=240&q=80', link: '/books?format=hybrid' },
-              { name: 'Thiếu nhi', image: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=240&q=80', link: '/books?category=thieu-nhi' },
-              { name: 'Công nghệ & AI', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=240&q=80', link: '/books?category=cong-nghe' },
-              { name: 'Manga - Comic', image: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=240&q=80', link: '/books?category=manga' }
+              { name: 'Văn học', image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=300&q=80', link: '/books?category=van-hoc' },
+              { name: 'Kinh tế', image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=300&q=80', link: '/books?category=kinh-te' },
+              { name: 'Kỹ năng sống', image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=300&q=80', link: '/books?category=ky-nang' },
+              { name: 'Ebook DRM', image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=300&q=80', link: '/books?format=ebook' },
+              { name: 'Combo Hybrid', image: '/banners/sub-hybrid.jpg', link: '/books?format=hybrid' },
+              { name: 'Thiếu nhi', image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=300&q=80', link: '/books?category=thieu-nhi' },
+              { name: 'Công nghệ & AI', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=300&q=80', link: '/books?category=cong-nghe' },
+              { name: 'Manga - Comic', image: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=300&q=80', link: '/books?category=manga' }
             ].map((bubble, i) => (
               <Link
                 key={i}
                 to={bubble.link}
                 className="flex flex-col items-center text-center group cursor-pointer"
               >
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-emerald-100 p-0.5 shadow-xs group-hover:scale-110 group-hover:border-emerald-600 group-hover:shadow-md transition-all mb-2 bg-[#FAF8F5]">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-emerald-100/80 p-0.5 shadow-xs group-hover:scale-110 group-hover:border-emerald-600 group-hover:shadow-md transition-all mb-2 bg-[#FAF8F5]">
                   <img 
                     src={bubble.image} 
                     alt={bubble.name}
