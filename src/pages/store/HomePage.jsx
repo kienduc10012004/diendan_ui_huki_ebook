@@ -687,63 +687,116 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
+      {/* =========================================================================
+          SECTION 2: DẢI GOM MÃ GIẢM GIÁ 1-CHẠM (1-CLICK VOUCHER STRIP)
+      ========================================================================= */}
+      <section className="bg-surface-container-low/70 rounded-2xl p-3.5 sm:p-4 border border-outline-variant/30">
+        <div className="flex items-center justify-between mb-2.5">
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-primary text-[20px]">confirmation_number</span>
+            <h2 className="text-[14px] sm:text-[15px] font-bold text-on-surface">Mã Giảm Giá &amp; Ưu Đãi Hôm Nay</h2>
+            <span className="text-[11px] text-on-surface-variant hidden sm:inline">• Thu thập mã trước khi mua sắm</span>
+          </div>
+          <span className="text-[12px] text-tertiary font-semibold">Tự động áp dụng khi thanh toán</span>
         </div>
-      </section>rounded-xl p-2.5 border border-outline-variant/30 flex flex-col items-center text-center hover:border-tertiary/50 hover:shadow-sm transition-all group"
-            >
-              <div className={`w-10 h-10 rounded-xl ${cat.color} flex items-center justify-center mb-1.5 group-hover:scale-105 transition-transform`}>
-                <span className="material-symbols-outlined text-[20px]">{cat.icon}</span>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+          {voucherList.map((v) => {
+            const isSaved = savedVouchers.includes(v.code);
+            return (
+              <div 
+                key={v.code}
+                className="bg-surface-container-lowest rounded-xl p-2.5 border border-dashed border-outline-variant/60 flex items-center justify-between gap-2 shadow-2xs hover:border-tertiary/60 transition-all"
+              >
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <span className="material-symbols-outlined text-[18px]">{v.icon}</span>
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[12px] font-bold text-primary">{v.badge}</span>
+                      <span className="text-[10px] text-on-surface-variant font-mono bg-surface-container px-1 py-0.2 rounded">{v.code}</span>
+                    </div>
+                    <p className="text-[11px] text-on-surface font-medium truncate mt-0.5">{v.title}</p>
+                    <span className="text-[9.5px] text-on-surface-variant/80 block">{v.condition}</span>
+                  </div>
+                </div>
+
+                <button 
+                  onClick={() => handleSaveVoucher(v.code)}
+                  className={`px-3 py-1.5 rounded-lg text-[11px] font-bold shrink-0 transition-all cursor-pointer ${
+                    isSaved 
+                      ? 'bg-surface-container text-on-surface-variant' 
+                      : 'bg-primary text-on-primary hover:brightness-105 shadow-2xs'
+                  }`}
+                >
+                  {isSaved ? 'Đã lưu' : 'Lưu mã'}
+                </button>
               </div>
-              <span className="text-[12px] font-semibold text-on-surface line-clamp-1 leading-tight group-hover:text-tertiary transition-colors">{cat.name}</span>
-              <span className="text-[10px] text-on-surface-variant mt-0.5">{cat.count}</span>
-            </Link>
-          ))}
+            );
+          })}
         </div>
       </section>
 
       {/* =========================================================================
-          SECTION 4: FLASH SALE HÔM NAY (6 COMPACT CARDS - 1 HÀNG CHUẨN TMĐT)
+          SECTION 3: HUKI DEAL HÔM NAY (FLASH SALE CHUẨN TMĐT CAO CẤP)
       ========================================================================= */}
-      <section className="bg-surface-container-low/60 rounded-2xl p-4 sm:p-5 border border-outline-variant/40 shadow-xs flex flex-col gap-3.5">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2.5 border-b border-outline-variant/30">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5 bg-primary-fixed text-primary px-3 py-1 rounded-full text-[12.5px] font-bold">
-              <span className="material-symbols-outlined text-[17px] fill-icon">local_fire_department</span>
-              <span>FLASH SALE HÔM NAY</span>
+      <section className="bg-[#FAF3EE] rounded-3xl p-4 sm:p-6 border border-[#EADBCE] shadow-sm flex flex-col gap-4">
+        {/* Header Deal Bar (Coral / Warm Red Tone matching Image 1/3) */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#E8D6C4]">
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="bg-[#B02E1B] text-white px-3.5 py-1.5 rounded-xl font-editorial font-bold text-sm sm:text-base tracking-wide flex items-center gap-1.5 shadow-xs">
+              <span className="material-symbols-outlined text-[18px]">local_fire_department</span>
+              <span>HUKI DEAL HÔM NAY</span>
             </div>
 
-            <div className="flex items-center gap-1.5 text-[12px] text-on-surface font-medium">
-              <span className="text-on-surface-variant">Kết thúc sau:</span>
-              <span className="bg-inverse-surface text-inverse-on-surface px-1.5 py-0.5 rounded text-[11px] font-mono font-bold">08</span>:
-              <span className="bg-inverse-surface text-inverse-on-surface px-1.5 py-0.5 rounded text-[11px] font-mono font-bold">24</span>:
-              <span className="bg-inverse-surface text-inverse-on-surface px-1.5 py-0.5 rounded text-[11px] font-mono font-bold">17</span>
+            <div className="flex items-center gap-1.5 text-xs text-[#59413C] font-semibold">
+              <span>Kết thúc sau:</span>
+              <span className="bg-[#17201F] text-white px-2 py-1 rounded-lg text-xs font-mono font-bold">06</span>
+              <span>:</span>
+              <span className="bg-[#17201F] text-white px-2 py-1 rounded-lg text-xs font-mono font-bold">45</span>
+              <span>:</span>
+              <span className="bg-[#17201F] text-white px-2 py-1 rounded-lg text-xs font-mono font-bold">32</span>
             </div>
           </div>
 
-          <Link to="/books?filter=flash-sale" className="text-[12.5px] text-primary hover:underline font-semibold flex items-center gap-0.5">
-            <span>Xem toàn bộ Flash Sale</span>
-            <span className="material-symbols-outlined text-[16px]">chevron_right</span>
+          <Link to="/books?filter=flash-sale" className="text-xs text-[#B02E1B] hover:underline font-bold flex items-center gap-0.5">
+            <span>Xem tất cả ưu đãi</span>
+            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
           </Link>
         </div>
 
-        {/* 6 COMPACT CARDS GRID */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-2.5 sm:gap-3">
+        {/* 5-6 Product Cards Grid (Matching reference layout) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
           {flashSaleBooks.map((book) => (
             <div 
               key={book.id}
-              className="bg-surface-container-lowest rounded-xl p-2.5 border border-outline-variant/30 flex flex-col justify-between relative group hover:border-tertiary/50 hover:shadow-md transition-all cursor-pointer"
+              className="bg-white rounded-2xl p-3 border border-[#E8E5DF] flex flex-col justify-between relative group hover:border-[#B02E1B]/50 hover:shadow-lg transition-all"
             >
               {/* Discount Tag */}
-              <span className="absolute top-2 left-2 z-20 bg-primary text-on-primary text-[10px] font-bold px-1.5 py-0.5 rounded shadow-xs">
+              <span className="absolute top-2.5 left-2.5 z-20 bg-[#B02E1B] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-md shadow-xs">
                 {book.discount}
               </span>
 
-              {/* Cover Image (Aspect 2/3 compact ~175px) */}
+              {/* Wishlist Heart Icon Button */}
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  showToast(`Đã lưu "${book.title}" vào danh sách yêu thích`, 'info');
+                }}
+                className="absolute top-2.5 right-2.5 z-20 w-7 h-7 rounded-full bg-white/90 hover:bg-white text-gray-400 hover:text-red-500 flex items-center justify-center shadow-xs transition-colors"
+                title="Yêu thích"
+              >
+                <span className="material-symbols-outlined text-[16px]">favorite</span>
+              </button>
+
+              {/* Book Cover */}
               <Link to={`/book/${book.id}`} className="block">
-                <div className="aspect-[2/3] w-full rounded-lg overflow-hidden mb-2 bg-surface-container spine-crease relative">
+                <div className="aspect-[3/4] w-full rounded-xl overflow-hidden mb-2 bg-[#FAF8F5] relative group-hover:scale-102 transition-transform">
                   <img 
                     src={book.cover} 
                     alt={book.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                   />
                 </div>
@@ -751,49 +804,48 @@ export default function HomePage() {
 
               {/* Book Info */}
               <div className="flex flex-col flex-1">
-                <div className="flex items-center gap-1 text-[10.5px] text-secondary font-semibold mb-0.5">
-                  <span className="material-symbols-outlined text-[12px] text-secondary fill-icon">star</span>
+                {/* Rating & Reviews */}
+                <div className="flex items-center gap-1 text-[11px] text-amber-500 font-bold mb-1">
+                  <span>★</span>
                   <span>{book.rating}</span>
-                  <span className="text-on-surface-variant font-normal">({book.reviews})</span>
+                  <span className="text-gray-400 font-normal">({book.reviews})</span>
                 </div>
 
+                {/* Title */}
                 <Link 
                   to={`/book/${book.id}`} 
                   title={book.title}
-                  className="text-[12.5px] font-semibold text-on-surface line-clamp-2 leading-tight hover:text-tertiary transition-colors h-[32px]"
+                  className="text-xs font-bold text-[#17201F] line-clamp-1 hover:text-[#003B2B] transition-colors"
                 >
                   {book.title}
                 </Link>
 
-                <span className="text-[11px] text-on-surface-variant truncate mt-0.5">{book.author}</span>
-                <span className="text-[10px] text-tertiary/90 truncate font-medium">{book.shop}</span>
-
-                {/* Price & Quick Add Button */}
-                <div className="mt-2 pt-1.5 border-t border-outline-variant/20 flex items-center justify-between">
-                  <div>
-                    <div className="text-[13.5px] font-bold text-tertiary">{book.price.toLocaleString('vi-VN')}₫</div>
-                    <div className="text-[10.5px] text-on-surface-variant/60 line-through">{book.originalPrice.toLocaleString('vi-VN')}₫</div>
-                  </div>
-
-                  <button 
-                    onClick={(e) => handleQuickAdd(book, e)}
-                    className="w-7 h-7 rounded-lg bg-tertiary/10 hover:bg-tertiary hover:text-on-tertiary text-tertiary flex items-center justify-center transition-colors shadow-2xs cursor-pointer"
-                    title="Thêm vào giỏ hàng"
-                    aria-label="Thêm vào giỏ hàng"
-                  >
-                    <span className="material-symbols-outlined text-[16px]">add_shopping_cart</span>
-                  </button>
+                {/* Price Section */}
+                <div className="mt-1.5 flex items-baseline gap-1.5">
+                  <span className="text-sm font-bold text-[#B02E1B]">{book.price.toLocaleString('vi-VN')}₫</span>
+                  <span className="text-[10px] text-gray-400 line-through">{book.originalPrice.toLocaleString('vi-VN')}₫</span>
                 </div>
 
-                {/* Slim Progress Bar */}
-                <div className="mt-1.5">
-                  <div className="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
-                    <div 
-                      className="bg-gradient-to-r from-amber-500 to-primary h-full rounded-full"
-                      style={{ width: `${book.soldPercent}%` }}
-                    ></div>
-                  </div>
-                  <span className="text-[9.5px] text-on-surface-variant font-medium mt-0.5 block">{book.soldText}</span>
+                {/* Sales Progress Text */}
+                <div className="text-[10px] text-gray-500 font-medium mt-0.5">
+                  {book.soldText}
+                </div>
+
+                {/* Buy Button */}
+                <div className="mt-2.5 pt-2 border-t border-gray-100 flex items-center gap-1.5">
+                  <button
+                    onClick={(e) => handleQuickAdd(book, e)}
+                    className="flex-1 py-1.5 px-2 rounded-xl bg-[#003B2B] hover:bg-[#00523C] text-white text-[11px] font-bold transition-all flex items-center justify-center gap-1 shadow-2xs cursor-pointer"
+                  >
+                    <span>Mua ngay</span>
+                  </button>
+                  <button
+                    onClick={(e) => handleQuickAdd(book, e)}
+                    className="w-7 h-7 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 flex items-center justify-center transition-colors shrink-0"
+                    title="Thêm vào giỏ"
+                  >
+                    <span className="material-symbols-outlined text-[15px]">add_shopping_cart</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -802,32 +854,31 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
-          SECTION 5: BẢNG XẾP HẠNG BESTSELLER (TOP #1 ĐẾN #6 CÓ HUY HIỆU RANK)
+          SECTION 4: SẢN PHẨM BÁN CHẠY (PILL TABS THEO CHUẨN ẢNH)
       ========================================================================= */}
-      <section className="flex flex-col gap-3">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2 border-b border-outline-variant/30">
+      <section className="flex flex-col gap-3.5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-[#E8E5DF]">
           <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined text-amber-500 text-[22px] fill-icon">emoji_events</span>
+            <span className="material-symbols-outlined text-amber-500 text-[24px] fill-icon">emoji_events</span>
             <div>
-              <h2 className="text-[15px] sm:text-[16px] font-bold text-on-surface">Bảng Xếp Hạng Sách Bán Chạy</h2>
-              <p className="text-[11px] text-on-surface-variant">Những tác phẩm được độc giả HUKI chọn mua nhiều nhất trong tuần</p>
+              <h2 className="font-editorial text-lg sm:text-xl font-bold text-[#17201F]">Sản Phẩm Bán Chạy</h2>
             </div>
           </div>
 
-          {/* Filter Tabs */}
+          {/* Pill Tabs (as in Image 1/3) */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
             {[
               { id: 'all', label: 'Tất cả' },
-              { id: 'paper', label: 'Sách giấy' },
-              { id: 'ebook', label: 'Ebook thịnh hành' }
+              { id: 'paper', label: 'Sách Giấy' },
+              { id: 'ebook', label: 'Ebook Bản Quyền' }
             ].map(tab => (
               <button
                 key={tab.id}
                 onClick={() => setBestsellerTab(tab.id)}
-                className={`px-3 py-1 rounded-lg text-[12px] font-semibold whitespace-nowrap transition-colors cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                   bestsellerTab === tab.id
-                    ? 'bg-tertiary text-on-tertiary shadow-2xs'
-                    : 'bg-surface-container text-on-surface hover:bg-surface-container-high'
+                    ? 'bg-[#003B2B] text-white shadow-xs'
+                    : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
                 }`}
               >
                 {tab.label}
