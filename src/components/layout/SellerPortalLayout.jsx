@@ -34,11 +34,11 @@ export default function SellerPortalLayout() {
               <Link to="/seller" className={`hover:text-[#003B2B] transition-colors ${!isRegisterPage ? 'text-[#003B2B] font-bold' : ''}`}>
                 Giới Thiệu Kênh Bán
               </Link>
-              <Link to="/seller/edge-cases" className="hover:text-[#003B2B] transition-colors">
-                Thư Viện Mẫu & Tình Huống
+              <Link to="/seller/register" className={`hover:text-[#003B2B] transition-colors ${isRegisterPage ? 'text-[#003B2B] font-bold' : ''}`}>
+                Đăng Ký Đối Tác NXB
               </Link>
-              <Link to="/books" className="hover:text-[#003B2B] transition-colors">
-                Xem Sàn Người Mua
+              <Link to="/seller/edge-cases" className="hover:text-[#003B2B] transition-colors">
+                Thư Viện Trạng Thái Sách
               </Link>
             </nav>
           </div>
@@ -47,29 +47,19 @@ export default function SellerPortalLayout() {
           <div className="flex items-center gap-3">
             <Link
               to="/"
-              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-[#59413C] hover:text-[#003B2B] px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-[#59413C] hover:text-[#003B2B] px-3 py-2 rounded-xl hover:bg-gray-100 transition-colors"
             >
               <span className="material-symbols-outlined text-[18px]">storefront</span>
-              <span>Về Sàn Người Mua</span>
+              <span>Về Sàn HUKI Store</span>
             </Link>
 
-            {isLoggedIn && hasRole('seller') ? (
-              <Link
-                to="/seller/dashboard"
-                className="inline-flex items-center gap-1.5 bg-[#003B2B] hover:bg-[#005140] text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition-all"
-              >
-                <span className="material-symbols-outlined text-[18px]">dashboard</span>
-                <span>Vào Kênh Quản Trị</span>
-              </Link>
-            ) : (
-              <Link
-                to="/seller/register"
-                className="inline-flex items-center gap-1.5 bg-[#003B2B] hover:bg-[#005140] text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition-all"
-              >
-                <span className="material-symbols-outlined text-[18px]">add_business</span>
-                <span>Đăng Ký Gian Hàng</span>
-              </Link>
-            )}
+            <Link
+              to="/seller/dashboard"
+              className="inline-flex items-center gap-1.5 bg-[#003B2B] hover:bg-[#005140] text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition-all"
+            >
+              <span className="material-symbols-outlined text-[18px]">dashboard</span>
+              <span>Vào Kênh Quản Trị</span>
+            </Link>
           </div>
         </div>
       </header>

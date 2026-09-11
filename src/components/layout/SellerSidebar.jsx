@@ -15,7 +15,7 @@ export default function SellerSidebar({ isCollapsed, toggleSidebar, isMobile, on
         { to: '/seller/orders', icon: 'orders', label: 'Quản Lý Đơn Hàng', badge: '12' },
         { to: '/seller/chat', icon: 'chat', label: 'Tin Nhắn & Chat', badge: '3', badgeColor: 'bg-emerald-600' },
         { to: '/seller/product/create-hybrid', icon: 'add_box', label: 'Thêm Sản Phẩm Mới' },
-        { to: '/seller/product/edit-hybrid', icon: 'edit_note', label: 'Sản Phẩm Đang Bán' },
+        { to: '/seller/products', icon: 'edit_note', label: 'Sản Phẩm Đang Bán' },
         { to: '/seller/product/correction', icon: 'report_problem', label: 'Sản Phẩm Cần Sửa', badge: '3', badgeColor: 'bg-[#ba1a1a]' }
       ]
     },
