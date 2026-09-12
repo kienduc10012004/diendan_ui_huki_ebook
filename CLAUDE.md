@@ -226,7 +226,7 @@ On Surface Variant:    #6b7280   (secondary text)
 ### Page Loading
 All pages are lazy-loaded via `React.lazy()`. Wrap in `<Suspense fallback={<PageLoading />}>`. No page-level loading states are used — Suspense covers it.
 
-### Cart Flow
+## Cart Flow
 CartPage → CheckoutPage → OrderSuccessPage. Cart is cleared on successful order placement (`clearCart()`).
 
 ### Hybrid Product Format
