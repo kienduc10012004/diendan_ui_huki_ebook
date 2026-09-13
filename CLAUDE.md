@@ -229,7 +229,7 @@ All pages are lazy-loaded via `React.lazy()`. Wrap in `<Suspense fallback={<Page
 ## Cart Flow
 CartPage → CheckoutPage → OrderSuccessPage. Cart is cleared on successful order placement (`clearCart()`).
 
-### Hybrid Product Format
+### Hybrid Product Form
 BookDetailPage supports 3 formats per product:
 - **Ebook**: instant DRM activation, free shipping
 - **Physical**: shipping fee applies, 2-3 day delivery
