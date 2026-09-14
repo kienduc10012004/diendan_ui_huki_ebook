@@ -26,7 +26,7 @@ export default function CartPage() {
   const [savedItems, setSavedItems] = useState([
     {
       id: 'saved-1',
-      title: 'Dam bij ',
+      title: 'Dám Bị Ghét',
       author: 'Koga Fumitake, Kishimi Ichiro',
       format: 'Ebook',
       price: 69000,
