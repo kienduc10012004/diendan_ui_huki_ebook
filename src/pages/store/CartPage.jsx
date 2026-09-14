@@ -89,7 +89,7 @@ export default function CartPage() {
         cover: item.cover
       }
     ]);
-    showToast(`Đã lưu "${item.title}" để mua sau!`, 'info');
+    showToast(`Đã lưu "${item.title}" để mua !`, 'info');
   };
 
   const handleCheckout = () => {
