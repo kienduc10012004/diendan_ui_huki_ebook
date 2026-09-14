@@ -94,7 +94,7 @@ export default function CartPage() {
 
   const handleCheckout = () => {
     if (checkedItemsCount === 0) {
-      showToast('Vui lòng chọn ít nhất 1 ấn phẩm để thanh toán!', 'warning');
+      showToast('Vui lòng chọn ít nhất một ấn phẩm để thanh toán!', 'warning');
       return;
     }
     navigate('/checkout');
