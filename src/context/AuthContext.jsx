@@ -75,7 +75,7 @@ export const AuthProvider = ({ children }) => {
       name: emailOrPhone.split('@')[0] || 'Độc giả HUKI',
       email: emailOrPhone.includes('@') ? emailOrPhone : `${emailOrPhone}@huki.vn`,
       phone: emailOrPhone.includes('@') ? '0912 345 678' : emailOrPhone,
-      role: 'Độc giả Thành ',
+      role: 'Độc giả Thành viên mới',
       roleKey: 'reader',
       permissions: ['catalog.read', 'library.read', 'orders.manage', 'profile.manage'],
       avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=200',
