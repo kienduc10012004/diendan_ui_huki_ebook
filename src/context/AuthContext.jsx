@@ -103,7 +103,7 @@ export const AuthProvider = ({ children }) => {
       name: formData.name || 'Độc giả HUKI Mới',
       email: formData.email,
       phone: formData.phone || '',
-      role: 'Độc giả Thành viên mới',
+      role: 'Độc giả VIP (Gold)',
       roleKey: 'reader',
       permissions: ['catalog.read', 'library.read', 'orders.manage', 'profile.manage'],
       avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=200',
