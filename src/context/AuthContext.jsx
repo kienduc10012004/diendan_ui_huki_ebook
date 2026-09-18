@@ -132,7 +132,7 @@ export const AuthProvider = ({ children }) => {
     if (otpCode && otpCode.length === 6) {
       return { success: true };
     }
-    return { success: false, message: 'Mã OTP không đúng. Vui lòng thử lại!' };
+    return { success: false, message: 'Mã OTP. Vui lòng thử lại!' };
   };
 
   // Đặt lại mật khẩu
