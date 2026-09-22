@@ -140,7 +140,7 @@ export const AuthProvider = ({ children }) => {
     if (newPassword && newPassword.length >= 6) {
       return { success: true };
     }
-    return { success: false, message: 'Mật khẩu phải có tối thiểu 6 ký tự!' };
+    return { success: false, message: 'Mật khẩu có tối thiểu 6 ký tự!' };
   };
 
   // Switch demo preset account
