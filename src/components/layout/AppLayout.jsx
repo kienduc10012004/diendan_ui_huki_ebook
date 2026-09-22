@@ -64,7 +64,18 @@ export default function AppLayout() {
             `}
           >
             <main id="main-content" tabIndex="-1" className="flex-1 min-w-0 outline-none">
-              <Outlet />
+              <React.Suspense
+                fallback={
+                  <div className="flex-1 min-h-[40vh] flex items-center justify-center p-8 animate-fade-in">
+                    <div className="flex items-center gap-3 rounded-2xl border border-[var(--theme-border,#e8e5df)] bg-[var(--theme-surface,#ffffff)] px-5 py-3 text-xs font-semibold text-[var(--theme-text,#17201f)] shadow-md">
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-[var(--theme-primary,#003b2b)]/20 border-t-[var(--theme-primary,#003b2b)]" aria-hidden="true" />
+                      <span>Đang chuyển trang...</span>
+                    </div>
+                  </div>
+                }
+              >
+                <Outlet />
+              </React.Suspense>
             </main>
 
             {/* Unified E-Commerce Footer */}

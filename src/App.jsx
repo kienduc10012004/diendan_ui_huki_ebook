@@ -15,24 +15,27 @@ import SellerLayout from './components/layout/SellerLayout';
 import AdminLayout from './components/layout/AdminLayout';
 import { RequireAuth, RequireGuest, RequireSeller } from './components/auth/RouteGuards';
 
+// Primary Store Pages directly imported for instant 0ms transitions & zero white flash
+import HomePage from './pages/store/HomePage';
+import CommunityPage from './pages/store/CommunityPage';
+import CatalogPage from './pages/store/CatalogPage';
+import BookDetailPage from './pages/store/BookDetailPage';
+import ShopPage from './pages/store/ShopPage';
+import AuthorPage from './pages/store/AuthorPage';
+import AudiobooksPage from './pages/store/AudiobooksPage';
+import LibraryPage from './pages/store/LibraryPage';
+import CartPage from './pages/store/CartPage';
+import ProfilePage from './pages/store/ProfilePage';
+import MessengerPage from './pages/store/MessengerPage';
+
 const page = (loader) => lazy(loader);
-const HomePage = page(() => import('./pages/store/HomePage'));
-const CommunityPage = page(() => import('./pages/store/CommunityPage'));
-const CatalogPage = page(() => import('./pages/store/CatalogPage'));
-const BookDetailPage = page(() => import('./pages/store/BookDetailPage'));
-const ShopPage = page(() => import('./pages/store/ShopPage'));
-const AuthorPage = page(() => import('./pages/store/AuthorPage'));
 const OrderTrackingPage = page(() => import('./pages/store/OrderTrackingPage'));
 const OrderReturnPage = page(() => import('./pages/store/OrderReturnPage'));
 const WalletPage = page(() => import('./pages/store/WalletPage'));
-const AudiobooksPage = page(() => import('./pages/store/AudiobooksPage'));
 const BookClubDetailPage = page(() => import('./pages/store/BookClubDetailPage'));
 const DeviceManagementPage = page(() => import('./pages/store/DeviceManagementPage'));
-const LibraryPage = page(() => import('./pages/store/LibraryPage'));
-const CartPage = page(() => import('./pages/store/CartPage'));
 const CheckoutPage = page(() => import('./pages/store/CheckoutPage'));
 const OrderSuccessPage = page(() => import('./pages/store/OrderSuccessPage'));
-const ProfilePage = page(() => import('./pages/store/ProfilePage'));
 const ReaderPage = page(() => import('./pages/store/ReaderPage'));
 const BookPreviewPage = page(() => import('./pages/store/BookPreviewPage'));
 const BookReviewsFeedPage = page(() => import('./pages/store/BookReviewsFeedPage'));
@@ -60,7 +63,6 @@ const SellerCreateHybrid = page(() => import('./pages/seller/SellerCreateHybrid'
 const SellerEditHybrid = page(() => import('./pages/seller/SellerEditHybrid'));
 const SellerCorrection = page(() => import('./pages/seller/SellerCorrection'));
 const EdgeCasesLibrary = page(() => import('./pages/seller/EdgeCasesLibrary'));
-const MessengerPage = page(() => import('./pages/store/MessengerPage'));
 const AdminDashboardPage = page(() => import('./pages/admin/AdminDashboardPage'));
 const AdminPublishersPage = page(() => import('./pages/admin/AdminPublishersPage'));
 const AdminBookModerationPage = page(() => import('./pages/admin/AdminBookModerationPage'));

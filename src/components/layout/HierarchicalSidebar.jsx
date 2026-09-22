@@ -376,8 +376,8 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
       {/* Main Sidebar Container */}
       <aside
         className={`
-          fixed left-0 bottom-0 bg-[var(--theme-surface,#ffffff)] border-r border-[var(--theme-border,#e8e5df)] flex flex-col justify-between
-          transition-all duration-300 ease-in-out select-none
+          fixed left-0 bottom-0 bg-[var(--theme-primary,#003b2b)] text-white border-r border-white/10 flex flex-col justify-between
+          transition-all duration-300 ease-in-out select-none shadow-xl
           /* Mobile Drawer: full height with top-0 and z-50 */
           ${isMobileOpen ? 'top-0 z-50 translate-x-0 shadow-2xl w-[310px]' : '-translate-x-full lg:translate-x-0'}
           /* Desktop: positioned precisely under StoreHeader (top-[92px]) with z-30 */
@@ -386,20 +386,20 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
         `}
       >
         {/* Mobile-Only Header Bar with Brand & Close Button */}
-        <div className="h-[62px] border-b border-[var(--theme-border,#e8e5df)] px-4 flex items-center justify-between shrink-0 bg-[var(--theme-surface-subtle,#f9fbfb)] lg:hidden">
+        <div className="h-[62px] border-b border-white/10 px-4 flex items-center justify-between shrink-0 bg-black/15 lg:hidden">
           <Link to="/" onClick={closeMobile} className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-[var(--theme-primary,#003b2b)] flex items-center justify-center text-white shadow-sm shrink-0">
+            <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center text-[var(--theme-primary,#003b2b)] shadow-sm shrink-0">
               <span className="material-symbols-outlined text-xl">menu_book</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-editorial text-lg font-bold tracking-tight text-[var(--theme-primary,#003b2b)] leading-tight">HUKI EBOOK</span>
-              <span className="text-[9px] uppercase tracking-wider text-[var(--theme-accent,#ac2c19)] font-bold">Hệ Thống Phân Tầng</span>
+              <span className="font-editorial text-lg font-bold tracking-tight text-white leading-tight">HUKI EBOOK</span>
+              <span className="text-[9px] uppercase tracking-wider text-amber-300 font-bold">Hệ Thống Phân Tầng</span>
             </div>
           </Link>
 
           <button
             onClick={closeMobile}
-            className="p-1.5 rounded-lg text-[var(--theme-text-muted,#6b7280)] hover:text-[var(--theme-text,#17201f)] hover:bg-black/5"
+            className="p-1.5 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
             aria-label="Đóng sidebar"
           >
             <span className="material-symbols-outlined text-2xl">close</span>
@@ -419,10 +419,10 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
                   <NavLink
                     to={item.to}
                     className={`
-                      w-11 h-11 rounded-xl flex items-center justify-center relative transition-all
+                      w-11 h-11 rounded-xl flex items-center justify-center relative transition-all duration-200
                       ${isActive
-                        ? 'bg-[var(--theme-primary,#003b2b)] text-white shadow-sm'
-                        : 'text-[var(--theme-text-muted,#556963)] hover:text-[var(--theme-primary,#003b2b)] hover:bg-[var(--theme-secondary-subtle,#f2fbf9)]'
+                        ? 'bg-white text-[var(--theme-primary,#003b2b)] shadow-lg font-bold scale-[1.04]'
+                        : 'text-white/75 hover:text-white hover:bg-white/15'
                       }
                     `}
                   >
@@ -438,7 +438,7 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
 
                   {/* Floating Hover Tooltip */}
                   <div className="absolute left-[54px] top-1/2 -translate-y-1/2 z-50 pointer-events-none opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-150">
-                    <div className="bg-[var(--theme-primary,#003b2b)] text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-xl whitespace-nowrap flex items-center gap-1.5 border border-white/10">
+                    <div className="bg-stone-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-2xl whitespace-nowrap flex items-center gap-1.5 border border-white/15">
                       <span>{item.title}</span>
                       {item.badge && (
                         <span className="bg-[var(--theme-accent,#ac2c19)] text-white text-[9px] px-1.5 py-0.2 rounded-full font-bold">
@@ -455,7 +455,7 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
           /* ---------------------------------------------------- */
           /* VIEW 2: FULL EXPANDED HIERARCHICAL TREE VIEW          */
           /* ---------------------------------------------------- */
-          <div className="flex-1 overflow-y-auto overflow-x-hidden py-3 px-2 space-y-3 custom-scroll">
+          <div className="flex-1 overflow-y-auto overflow-x-hidden py-3 px-2.5 space-y-3 custom-scroll">
             {navGroups.map((group) => {
               const isGrpExpanded = expandedGroups[group.id];
 
@@ -464,17 +464,17 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
                   {/* Group Header */}
                   <button
                     onClick={() => toggleGroup(group.id)}
-                    className="w-full flex items-center justify-between px-2 py-1.5 text-[10.5px] font-bold tracking-wider text-[var(--theme-text-muted,#8d706b)] hover:text-[var(--theme-primary,#003b2b)] rounded-lg transition-colors group cursor-pointer"
+                    className="w-full flex items-center justify-between px-2 py-1.5 text-[10.5px] font-bold tracking-wider text-white/55 hover:text-white rounded-lg transition-colors group cursor-pointer"
                   >
                     <span className="uppercase truncate text-left">{group.title}</span>
-                    <span className={`material-symbols-outlined text-[18px] text-[var(--theme-text-muted,#8d706b)] group-hover:text-[var(--theme-primary,#003b2b)] transition-transform duration-200 shrink-0 ml-1 ${isGrpExpanded ? 'rotate-180' : ''}`}>
+                    <span className={`material-symbols-outlined text-[18px] text-white/50 group-hover:text-white transition-transform duration-200 shrink-0 ml-1 ${isGrpExpanded ? 'rotate-180' : ''}`}>
                       expand_more
                     </span>
                   </button>
 
                   {/* Group Items */}
                   {isGrpExpanded && (
-                    <div className="space-y-0.5">
+                    <div className="space-y-1">
                       {group.items.map((item) => {
                         const isSubExpanded = expandedSubmenus[item.id];
                         const isParentActive = location.pathname.startsWith(item.to);
@@ -488,15 +488,15 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
                                 end={item.end}
                                 onClick={closeMobile}
                                 className={({ isActive }) => `
-                                  flex-1 min-w-0 flex items-center justify-between px-2.5 py-2 rounded-xl text-[12px] font-semibold transition-all
+                                  flex-1 min-w-0 flex items-center justify-between px-2.5 py-2 rounded-xl text-[12px] font-semibold transition-all duration-200
                                   ${isActive
-                                    ? 'bg-[var(--theme-primary,#003b2b)] text-white shadow-xs'
-                                    : 'text-[var(--theme-text,#33443f)] hover:bg-[var(--theme-secondary-subtle,#f2fbf9)] hover:text-[var(--theme-primary,#003b2b)]'
+                                    ? 'bg-white text-[var(--theme-primary,#003b2b)] shadow-md shadow-black/15 font-bold'
+                                    : 'text-white/80 hover:bg-white/12 hover:text-white'
                                   }
                                 `}
                               >
-                                <div className="flex items-center gap-1.5 min-w-0 flex-1">
-                                  <span className="material-symbols-outlined text-[18px] shrink-0">
+                                <div className="flex items-center gap-2 min-w-0 flex-1">
+                                  <span className="material-symbols-outlined text-[19px] shrink-0">
                                     {item.icon}
                                   </span>
                                   <span className="truncate leading-tight">{item.title}</span>
@@ -504,8 +504,8 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
 
                                 {item.badge && (
                                   <span
-                                    className={`text-[9px] px-1.5 py-0.5 rounded font-bold text-white shrink-0 whitespace-nowrap leading-none ml-1 ${
-                                      item.badgeColor || 'bg-[var(--theme-secondary,#006953)]'
+                                    className={`text-[9px] px-1.5 py-0.5 rounded font-bold text-white shrink-0 whitespace-nowrap leading-none ml-1 shadow-2xs ${
+                                      item.badgeColor || 'bg-[var(--theme-accent,#ac2c19)]'
                                     }`}
                                   >
                                     {item.badge}
@@ -517,8 +517,8 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
                               {item.hasSubmenu && (
                                 <button
                                   onClick={(e) => toggleSubmenu(item.id, e)}
-                                  className={`p-1.5 rounded-lg text-[var(--theme-text-muted,#6b7280)] hover:text-[var(--theme-primary,#003b2b)] hover:bg-[var(--theme-secondary-subtle,#f2fbf9)] ml-0.5 transition-colors shrink-0 cursor-pointer ${
-                                    isParentActive ? 'text-[var(--theme-primary,#003b2b)]' : ''
+                                  className={`p-1.5 rounded-lg text-white/60 hover:text-white hover:bg-white/15 ml-0.5 transition-colors shrink-0 cursor-pointer ${
+                                    isParentActive ? 'text-white' : ''
                                   }`}
                                   title={isSubExpanded ? "Thu gọn danh mục con" : "Mở rộng danh mục con"}
                                   aria-label="Toggle submenu"
@@ -536,17 +536,23 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
 
                             {/* Submenu Items (Level 2 Tree) */}
                             {item.hasSubmenu && isSubExpanded && (
-                              <div className="pl-2.5 pr-1 py-0.5 space-y-0.5 border-l border-[var(--theme-border,#ded8cf)] ml-3 mt-0.5">
+                              <div className="pl-2.5 pr-1 py-1 space-y-0.5 border-l border-white/20 ml-3.5 mt-0.5">
                                 {item.subItems.map((sub, idx) => {
+                                  const isSubActive = location.pathname + location.search === sub.to || (sub.to !== '/books' && sub.to !== '/community' && sub.to !== '/library' && location.pathname.startsWith(sub.to));
+
                                   return (
                                     <Link
                                       key={idx}
                                       to={sub.to}
                                       onClick={closeMobile}
-                                      className="flex items-center justify-between gap-1.5 px-2 py-1.5 rounded-lg text-[11.5px] font-medium text-[var(--theme-text-muted,#556963)] hover:text-[var(--theme-primary,#003b2b)] hover:bg-[var(--theme-secondary-subtle,#f2fbf9)] transition-colors group"
+                                      className={`flex items-center justify-between gap-1.5 px-2 py-1.5 rounded-lg text-[11.5px] font-medium transition-colors group ${
+                                        isSubActive
+                                          ? 'bg-white/20 text-white font-semibold'
+                                          : 'text-white/75 hover:text-white hover:bg-white/10'
+                                      }`}
                                     >
                                       <div className="flex items-center gap-1.5 min-w-0 flex-1">
-                                        <span className="material-symbols-outlined text-[15px] text-[var(--theme-text-muted,#8d706b)] group-hover:text-[var(--theme-primary,#003b2b)] shrink-0">
+                                        <span className="material-symbols-outlined text-[15px] text-white/60 group-hover:text-white shrink-0">
                                           {sub.icon}
                                         </span>
                                         <span className="truncate leading-tight">{sub.title}</span>
@@ -577,10 +583,10 @@ export default function HierarchicalSidebar({ isCollapsed, setIsCollapsed, isMob
         )}
 
         {/* Bottom Bar: Expand / Collapse Toggle Handle */}
-        <div className="p-2 border-t border-[var(--theme-border,#e8e5df)] bg-[var(--theme-surface-subtle,#fbfdfc)] shrink-0 hidden lg:block">
+        <div className="p-2 border-t border-white/10 bg-black/15 shrink-0 hidden lg:block">
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-semibold text-[var(--theme-text-muted,#556963)] hover:text-[var(--theme-primary,#003b2b)] hover:bg-[var(--theme-secondary-subtle,#eaf4f1)] transition-all border border-transparent hover:border-[var(--theme-border,#cfe5dd)] cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-semibold text-white/75 hover:text-white hover:bg-white/10 transition-all border border-transparent hover:border-white/15 cursor-pointer"
             title={isCollapsed ? 'Mở rộng thanh bên' : 'Thu gọn thanh bên'}
           >
             <span className="material-symbols-outlined text-[18px]">
