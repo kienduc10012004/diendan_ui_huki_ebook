@@ -3,7 +3,7 @@
 export const booksData = [
   {
     id: "con-duong-phia-truoc",
-    title: "Con Đường Phía Trước (The Road Ahead)",
+    title: "Con Đường (The Road Ahead)",
     author: "Bill Gates",
     translator: "Nathan Myhrvold & Peter Rinearson",
     publisher: "HUKI Digital Publishing",
